@@ -23,13 +23,10 @@
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link href="../vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
+    <link href="./src/clockpicker.css" rel="stylesheet" type="text/css">
     <link href="../vendor/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet" type="text/css">
-    <style type="text/css">
-        ul.ui-autocomplete {
-            z-index: 1100;
-        }
-    </style>
+    <link href="./src/bootstrap-switch.css" rel="stylesheet" type="text/css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -152,58 +149,10 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Contractors Settlement Record</h1>
-                        <div class="btn-group form-group">
-                        
-                        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                          Filters
-                        </button>
-                        
-                        
-                        <button type="button" class="btn btn-primary btn-lg">
-                          Print
-                        </button>
-                        
-                        </div>
-                        <!--Start Modal  -->
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                              </div>
-                              
-                              <div class="modal-body">
-                                <div class="form-group">
-                                <label>Driver</label>
-                                    <input class="form-control typeahead" placeholder="">
-                                </div>
-
-                                <label>Start Date</label>
-                                <div class="input-group date">
-                                  
-                                  <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                </div>
-                                <label>End Date</label>
-                                <div class="input-group date">
-                                
-                                  <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                </div>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <!--End Modal  -->
+                        <h1 class="page-header">Manifest</h1>
                         <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Settlement Record
+                                    Striped Rows
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
@@ -211,72 +160,85 @@
                                         <table class="table table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th>Date</th>
+                                                    <th>City</th>
                                                     <th>Time</th>
                                                     <th>Student Name</th>
                                                     <th>Driver Name</th>
-                                                    <th>Total</th>
-                                                    <th>Corp</th>
-                                                    <th>Advance</th>
-                                                    <th>Fuel Card</th>
-                                                    <th>Tip</th>
+                                                    <th>Pick Up Time</th>
+                                                    <th>Pick Up Loc</th>
+                                                    <th>Drop Off Time</th>
+                                                    <th>Pax</th>
+                                                    <th>Trip Status</th>
+                                                    <th>Edit Trip</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>08/07/2016</td>
+                                                    <td>Port</td>
                                                     <td>9:30 AM</td>
                                                     <td>Mark</td>
                                                     <td>Otto</td>
-                                                    <td>34</td>
-                                                    <td>31</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>3</td>
+                                                    <td>
+                                                    <div class="col-xs-4 input-group clockpicker">
+                                                    <input type="text" class="col-xs-4 form-control" value="18:00">
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-time"></span>
+                                                    </span>
+                                                    </div>
+                                                    </td>
+                                                    <td>1049 2nd Street</td>
+                                                    <td>9:30 AM</td>
+                                                    <td>1</td>
+                                                    <td><button type="button" class="btn btn-success">Success</button></td>
+                                                    <td><input type="checkbox" name="bill-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>08/07/2016</td>
+                                                    <td>VB</td>
                                                     <td>9:30 AM</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>34</td>
-                                                    <td>31</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>3</td>
+                                                    <td>Jacob</td>
+                                                    <td>Thornton</td>
+                                                    <td>9:30 AM</td>
+                                                    <td>1049 2nd Street</td>
+                                                    <td>9:30 AM</td>
+                                                    <td>1</td>
+                                                    <td><button type="button" class="btn btn-warning">Pending</button></td>
+                                                    <td><input type="checkbox" name="bill-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>08/07/2016</td>
+                                                    <td>Ches</td>
                                                     <td>9:30 AM</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>34</td>
-                                                    <td>31</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>3</td>
+                                                    <td>Larry</td>
+                                                    <td>Bird</td>
+                                                    <td>9:30 AM</td>
+                                                    <td>1049 2nd Street</td>
+                                                    <td>9:30 AM</td>
+                                                    <td>1</td>
+                                                    <td><button type="button" class="btn btn-success">Success</button></td>
+                                                    <td><input type="checkbox" name="bill-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>08/07/2016</td>
+                                                    <td>Nor</td>
                                                     <td>9:30 AM</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>34</td>
-                                                    <td>31</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>3</td>
+                                                    <td>Larry</td>
+                                                    <td>Bird</td>
+                                                    <td>9:30 AM</td>
+                                                    <td>1049 2nd Street</td>
+                                                    <td>9:30 AM</td>
+                                                    <td>2</td>
+                                                    <td><button type="button" class="btn btn-primary">Cancelled</button></td>
+                                                    <td><input type="checkbox" name="bill-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>08/07/2016</td>
+                                                    <td>VB</td>
                                                     <td>9:30 AM</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>34</td>
-                                                    <td>31</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>3</td>
+                                                    <td>Larry</td>
+                                                    <td>Bird</td>
+                                                    <td>9:30 AM</td>
+                                                    <td>1049 2nd Street</td>
+                                                    <td>9:30 AM</td>
+                                                    <td>1</td>
+                                                    <td><button type="button" class="btn btn-danger">No Show</button></td>
+                                                    <td><input type="checkbox" name="bill-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -286,60 +248,7 @@
                                 <!-- /.panel-body -->
                             </div>
                             <!-- /.panel -->
-                            <h3 class="page-header">Contractors Settlement Summary</h3>
-                            <div class="col-lg-4">
-                            
-                            <div class="form-group">
-                            
-                                <label>Total Billing</label>
-                                <p>450</p>
-                            </div>
-                            <div class="form-group">
-                                <label>25% Pay To Contractors</label>
-                                <p>50</p>
-                            </div>
-                            <div class="form-group">
-                                <label>Tips</label>
-                                <p>25</p>
-                            </div>
-                            <div class="form-group">
-                                <label>Additions</label>
-                                <p>00</p>
-                            </div>
-                            <div class="form-group">
-                                <label>Contactors Total</label>
-                                <p>550</p>
-                            </div>
 
-                            </div>
-                            <div class="col-lg-4">
-                            
-                            <div class="form-group">
-                            
-                                <label>Fuel Advance</label>
-                                <p>450</p>
-                            </div>
-                            <div class="form-group">
-                                <label>Tolls</label>
-                                <p>50</p>
-                            </div>
-                            <div class="form-group">
-                                <label>Advances</label>
-                                <p>25</p>
-                            </div>
-                            <div class="form-group">
-                                <label>Other</label>
-                                <p>00</p>
-                            </div>
-                            
-
-                            </div>
-                            <div class="col-lg-4">
-                            <div class="form-group">
-                                <label>Total Settlement Check</label>
-                                <p>590</p>
-                            </div>
-                            </div>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -364,15 +273,17 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
-    <script src="../vendor/jquery-ui-1.12.1/jquery-ui.js"></script>
-    <script src="../vendor/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script>
-    <script type="text/javascript">
-        $('.input-group.date').datepicker({
+    
+    <script src="./src/clockpicker.js"></script>
+    <script src="./src/bootstrap-switch.js"></script>
 
-        });
-        var aTags = ["Deidra Burchard ", "Paz Nealey ", "Katia Sartain ", "Mammie Baughman ", "Norbert Gularte ", "Romeo Saur ", "Bula Snelson ", "Reita Norden ", "Pete Beverly ", "Erik Esquilin ", "Oswaldo Porcaro ", "Josephina Kautz ", "Merlene Rhone ", "Mark Luckey ", "Rikki Weber ", "Gwyneth Tinajero ", "Lavonia Ryman ", "Emily Cornwall ", "Rolland Ledesma ", "Tawanda Mcnitt ", "Daniela Walford ", "Jennette Theberge ", "Jackson Holleman ", "Ezekiel Bouldin ", "Krishna Beedle ", "Bert Sandridge ", "Ines Abeyta ", "Rivka Seabolt ", "Cortney Gassett ", "Georgina Walts"];
-        $( ".typeahead" ).autocomplete({
-            source: aTags
+    <script>
+      $("[name='bill-checkbox']").bootstrapSwitch();
+
+      $('.clockpicker').clockpicker({
+            placement: 'top',
+            align: 'left',
+            donetext: 'Done'
         });
     </script>
 

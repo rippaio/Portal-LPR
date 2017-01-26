@@ -23,10 +23,7 @@
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link href="./src/clockpicker.css" rel="stylesheet" type="text/css">
-    <link href="../vendor/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet" type="text/css">
-    <link href="./src/bootstrap-switch.css" rel="stylesheet" type="text/css">
-
+    <link href="./src/fullcalendar.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -111,7 +108,7 @@
                                     <a href="#">Schools</a>
                                 </li>
                                 <li>
-                                    <a href="driverbilling.html">Drivers</a>
+                                    <a href="#">Drivers</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -132,7 +129,7 @@
                                     <a href="#">Calendar</a>
                                 </li>
                                 <li>
-                                    <a href="drivers.html">Drivers</a>
+                                    <a href="#">Drivers</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -148,101 +145,86 @@
         <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Manifest</h1>
+                <h1 class="page-header">School Data</h1>
+                    <div class="col-lg-4">
+                        <!-- <h1 class="page-header">School Data</h1> -->
                         <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    Striped Rows
+                                    Client Data
                                 </div>
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>City</th>
-                                                    <th>Time</th>
-                                                    <th>Student Name</th>
-                                                    <th>Driver Name</th>
-                                                    <th>Pick Up Time</th>
-                                                    <th>Pick Up Loc</th>
-                                                    <th>Drop Off Time</th>
-                                                    <th>Pax</th>
-                                                    <th>Trip Status</th>
-                                                    <th>Edit Trip</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Port</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>Mark</td>
-                                                    <td>Otto</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>1049 2nd Street</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>1</td>
-                                                    <td><button type="button" class="btn btn-success">Success</button></td>
-                                                    <td><input type="checkbox" name="bill-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>VB</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>Jacob</td>
-                                                    <td>Thornton</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>1049 2nd Street</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>1</td>
-                                                    <td><button type="button" class="btn btn-warning">Pending</button></td>
-                                                    <td><input type="checkbox" name="bill-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Ches</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>Larry</td>
-                                                    <td>Bird</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>1049 2nd Street</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>1</td>
-                                                    <td><button type="button" class="btn btn-success">Success</button></td>
-                                                    <td><input type="checkbox" name="bill-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nor</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>Larry</td>
-                                                    <td>Bird</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>1049 2nd Street</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>2</td>
-                                                    <td><button type="button" class="btn btn-primary">Cancelled</button></td>
-                                                    <td><input type="checkbox" name="bill-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>VB</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>Larry</td>
-                                                    <td>Bird</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>1049 2nd Street</td>
-                                                    <td>9:30 AM</td>
-                                                    <td>1</td>
-                                                    <td><button type="button" class="btn btn-danger">No Show</button></td>
-                                                    <td><input type="checkbox" name="bill-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                	   
+		                            <p>Norfolk Public Schools (NPS)</p>
+		                            <p>Norfolk Public Schools Special Education (NSPED)</p>
+		                            <p>Norfolk Department of Human Services (NDHS)</p>
+		                            <p>Portsmouth Public Schools (PPS)</p>
+		                            <p>Portsmouth Public Schools Special Education (PSPED)</p>
+		                            <p>Chesapeake Public Schools (CPS)</p>
+		                            <p>Chesapeake Public Schools Special Education (CSPED)</p>
+		                            <p>Hampton Public Schools (HPS)</p>
+		                            <p>Suffolk Public Schools (SPS)</p>
+		                            <p>Isle of Wight Public Schools (IWPS)</p>
+		                            <p>Southampton County Public Schools (SCPS)</p>
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                        <div class="form-group">
+                            <a href="addclient.html" class="btn btn-primary btn-lg btn-block" role="button">Add Client</a>
+                        </div>
+                            <!-- /.panel -->
+
+                    </div>
+                    <div class="col-lg-4">
+                        <!-- <h1 class="page-header">School Data</h1> -->
+                        <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    School Data
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                	  
+                                    <p>School Name</p>
+                                    <p>School Name</p>
+                                    <p>School Name</p>
+                                    <p>School Name</p>
+                                    <p>School Name</p>
+                                    <p>School Name</p>
+                                    <p>School Name</p>
+                                    <p>School Name</p>
+                                    <p>School Name</p>
+                                    <p>School Name</p>
+                                    <p>School Name</p>
+
+                                </div>
+                                <!-- /.panel-body -->
+                            </div>
+                        <div class="form-group">
+                            <a href="addschool.html" class="btn btn-primary btn-lg btn-block" role="button">Add School</a>
+                        </div>
+                            <!-- /.panel -->
+
+                    </div>
+                    <div class="col-lg-4">
+                        <!-- <h1 class="page-header">School Data</h1> -->
+                        <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    All Rows
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                	    
                                     <!-- /.table-responsive -->
                                 </div>
                                 <!-- /.panel-body -->
                             </div>
+                        <div class="form-group">
+                            <a href="addevent.html" class="btn btn-primary btn-lg btn-block" role="button">Add Data</a>
+                        </div>
                             <!-- /.panel -->
 
                     </div>
+                    
                     <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
@@ -266,20 +248,35 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
-    
-    <script src="./src/clockpicker.js"></script>
-    <script src="./src/bootstrap-switch.js"></script>
+    <script src="./src/moment.min.js"></script>
 
-    <script>
-      $("[name='bill-checkbox']").bootstrapSwitch();
+    <script src="./src/fullcalendar.js"></script>
+    <script type="text/javascript">
 
-      $('.clockpicker').clockpicker({
-            placement: 'top',
-            align: 'left',
-            donetext: 'Done'
-        });
-    </script>
+    // page is now ready, initialize the calendar...
 
+    $('#calendar').fullCalendar({
+    	header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,basicWeek,basicDay'
+        },
+
+        events: [
+        {
+            title: 'Event1',
+            start: '2017-01-01'
+        },
+        {
+            title: 'Event2',
+            start: '2017-01-05'
+        }
+    ]
+
+
+
+	});
+        </script>
 </body>
 
 </html>
