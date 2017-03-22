@@ -432,41 +432,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="split">Split Bills
-                                                </label>
-                                                <div class ="split box">
-                                                    <h5>Select the cities where the bills needs to be split</h5>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="">Hampton
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="">Virginia Beach
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="">Chesapeake
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="">Suffolk
-                                                        </label>
-                                                    </div>
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" value="">Portsmouth
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <div class="checkbox">
                                                 <label>
@@ -481,12 +447,51 @@
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" value="">Out Zone
+                                                        <input type="checkbox" value="outzone">Out Zone
                                                     </label>
+                                                </div>
+                                                <div class="splitcheckbox box">
+                                                <label>
+                                                    Split Bills
+                                                </label>
+                                                <div class ="split">
+                                                    <h5>Select the cities where the bills needs to be split</h5>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="">Hampton
+                                                            <input type="text" placeholder="">
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="">Virginia Beach
+                                                            <input type="text" placeholder="">
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="">Chesapeake
+                                                            <input type="text" placeholder="">
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="">Suffolk
+                                                            <input type="text" placeholder="">
+                                                        </label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input type="checkbox" value="">Portsmouth
+                                                            <input type="text" placeholder="">
+                                                        </label>
+                                                    </div>
+                                                </div>
                                                 </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        
                                         <div class="form-group">
                                             <label>Driver</label>
                                             <input class="form-control typeahead" placeholder="">
@@ -544,15 +549,22 @@
             donetext: 'Done'
         });
         
-        $('input[type="checkbox"]').click(function(){
-            if($(this).attr("value")=="split"){
-                $(".split").toggle();
-            }
+        // $('input[type="checkbox"]').click(function(){
+        //     if($(this).attr("value")=="split"){
+        //         $(".split").toggle();
+        //     }
             
-        });
+        // });
         $('input[type="checkbox"]').click(function(){
             if($(this).attr("value")=="splitbill"){
                 $(".splitbill").toggle();
+            }
+            
+        });
+
+        $('input[type="checkbox"]').click(function(){
+            if($(this).attr("value")=="outzone"){
+                $(".splitcheckbox").toggle();
             }
             
         });
