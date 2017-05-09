@@ -19,9 +19,10 @@
 
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../dist/css/styles.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="./src/clockpicker.css" rel="stylesheet" type="text/css">
     <style type="text/css">
     .box{

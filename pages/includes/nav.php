@@ -80,7 +80,7 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Data<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="schooldata.html">Schools</a>
+                                    <a href="schooldata.php">Schools</a>
                                 </li>
                                 <li>
                                     <a href="#">Rates</a>
