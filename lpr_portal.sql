@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 11, 2017 at 09:37 PM
+-- Generation Time: May 11, 2017 at 09:40 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -28,6 +28,7 @@ USE `lpr_portal`;
 -- Table structure for table `lpr_client`
 --
 
+DROP TABLE IF EXISTS `lpr_client`;
 CREATE TABLE `lpr_client` (
   `client_id` int(11) NOT NULL,
   `client_abr` varchar(10) NOT NULL,
@@ -59,6 +60,7 @@ INSERT INTO `lpr_client` (`client_id`, `client_abr`, `client_name`, `client_stre
 -- Table structure for table `lpr_school`
 --
 
+DROP TABLE IF EXISTS `lpr_school`;
 CREATE TABLE `lpr_school` (
   `school_id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
