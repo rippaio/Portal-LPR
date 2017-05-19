@@ -47,13 +47,13 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="snapshot.html"><i class="fa fa-dashboard fa-fw"></i> Snapshot</a>
+                            <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Snapshot</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Orders<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="neworder.html">New Order</a>
+                                    <a href="neworder.php">New Order</a>
                                 </li>
                                 <li>
                                     <a href="changeorder.html">Change Order</a>

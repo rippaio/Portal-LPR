@@ -75,7 +75,7 @@
 		$query  = "UPDATE lpr_client SET ";
 		$query .= "client_name = '$client_name', client_abr = '$client_abr', client_street = '$client_street', client_address = '$client_address' , client_city = '$client_city', client_state = '$client_state', client_zip = $client_zip, client_country ='$client_country', client_contact ='$client_contact' ";
 		$query .= "WHERE client_id = $client_id ";
-		echo $query;
+		//echo $query;
 		$result_id = mysqli_query($connection, $query);
 		//error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		confirm_query($result_id);
@@ -84,4 +84,12 @@
 		
 	}
 
+	function select_schools($client_name,$school_type){
+		global $connection;
+
+		$query_client  = "SELECT * FROM lpr_client JOIN lpr_school ON lpr_client.client_id=lpr_school.client_id WHERE client_name='$client_name' AND school_type='$school_type'" ;
+		$result_client = mysqli_query($connection, $query_client);
+		confirm_query($result_client);
+		return $result_client;
+	}
 ?>
