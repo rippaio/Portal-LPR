@@ -5,6 +5,7 @@ function log(val){
 $('#stypeSelect').change(function(){
 	//log("inside click");
 	var sdata = {};
+	sdata['mode'] = "typedropdown";
 	sdata['client_name'] = $('#ctypeSelect').val();
 	sdata['school_type'] = $('#stypeSelect').val().toLowerCase();
 	$.ajax({
@@ -27,6 +28,7 @@ $('#stypeSelect').change(function(){
 
 function append_schools(myObj) {
 	$("#sSelect").children().remove();
+	$("#sSelect").append('<option value="0">'+"Select"+'</option>');
 	for (var i = 0; i < myObj.length; i++) {
 		$("#sSelect").append('<option value='+myObj[i].school_id+'>'+myObj[i].school_name+'</option>');
 	}
@@ -37,16 +39,16 @@ function append_schools(myObj) {
 $('#sSelect').change(function(){
 	log("inside click");
 	var sdata = {};
-	sdata['school_name'] = $('#ctypeSelect').val();
-	sdata['school_type'] = $('#stypeSelect').val().toLowerCase();
+	sdata['mode'] = "schooldropdown";
+	sdata['school_id'] = $('#sSelect').val();
 	$.ajax({
         url: 'ajax/neworder_ajax.php',
         type: 'post',
         data: {myData:sdata},
         success: function(data) {
-            var schoolObj = $.parseJSON(data);
-            append_schools(schoolObj);
-            //log(schoolObj);
+            //var schoolObj = $.parseJSON(data);
+            //append_schools(schoolObj);
+            log(data);
           
         },
         error: function(xhr, desc, err) {

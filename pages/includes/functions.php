@@ -77,7 +77,7 @@
 		$query .= "WHERE client_id = $client_id ";
 		//echo $query;
 		$result_id = mysqli_query($connection, $query);
-		//error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		
 		confirm_query($result_id);
 		redirect_to("schooldata.php");
 
@@ -91,5 +91,19 @@
 		$result_client = mysqli_query($connection, $query_client);
 		confirm_query($result_client);
 		return $result_client;
+	}
+
+	function select_school($school_id){
+		global $connection;
+
+		$query_client  = "SELECT * FROM lpr_school WHERE school_id = $school_id" ;
+		$result_client = mysqli_query($connection, $query_client);
+		error_log("Inside query\n" . $query_client , 3, "C:/xampp/apache/logs/error.log");
+		confirm_query($result_client);
+		if($result = mysqli_fetch_assoc($result_client)) {
+			return $result;
+		} else {
+			return null;
+		}
 	}
 ?>
