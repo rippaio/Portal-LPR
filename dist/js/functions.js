@@ -46,9 +46,9 @@ $('#sSelect').change(function(){
         type: 'post',
         data: {myData:sdata},
         success: function(data) {
-            //var schoolObj = $.parseJSON(data);
-            //append_schools(schoolObj);
-            log(data);
+            var schoolObj = $.parseJSON(data);
+            fillLocation(schoolObj);
+            log(schoolObj);
           
         },
         error: function(xhr, desc, err) {
@@ -58,3 +58,8 @@ $('#sSelect').change(function(){
       }); // end ajax call
 
 });
+
+function fillLocation(data){
+	$('#amDropLoc').val(data.school_street+","+data.school_address+","+data.school_city);
+	$('#pmDropLoc').val(data.school_street+","+data.school_address+","+data.school_city);
+}

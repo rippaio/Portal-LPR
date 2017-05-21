@@ -144,7 +144,7 @@ confirm_query($result_client);
                                             </div>
                                             <div class="form-group">
                                                 <label>Drop Location</label>
-                                                <input class="form-control" placeholder="Enter Location">
+                                                <input class="form-control" id="amDropLoc" placeholder="Enter Location">
                                             </div>
                                             <div class="form-group">
                                                 <label>Drop Time</label>
@@ -158,7 +158,7 @@ confirm_query($result_client);
                                             <h4>PM Trip</h4>
                                             <div class="form-group">
                                                 <label>Pickup Location</label>
-                                                <input class="form-control" placeholder="Enter Location">
+                                                <input class="form-control" id="pmDropLoc" placeholder="Enter Location">
                                             </div>
                                             <div class="form-group">
                                                 <label>Pickup Time</label>

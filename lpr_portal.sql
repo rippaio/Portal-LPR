@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2017 at 06:12 PM
+-- Generation Time: May 22, 2017 at 12:05 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.0.16
 
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `lpr_portal` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `lpr_portal`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lpr_billing`
+--
+
+DROP TABLE IF EXISTS `lpr_billing`;
+CREATE TABLE `lpr_billing` (
+  `o_id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `share` int(5) NOT NULL,
+  `amount` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -116,6 +130,31 @@ CREATE TABLE `lpr_order` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `lpr_rates`
+--
+
+DROP TABLE IF EXISTS `lpr_rates`;
+CREATE TABLE `lpr_rates` (
+  `rate_id` int(11) NOT NULL,
+  `item` varchar(30) NOT NULL,
+  `rate` float NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `type` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lpr_rates`
+--
+
+INSERT INTO `lpr_rates` (`rate_id`, `item`, `rate`, `client_id`, `type`) VALUES
+(1, 'inzone', 25, 3, 'inzone'),
+(2, 'outzone', 40, 3, 'outzone'),
+(3, 'wheelchair', 25, 3, 'inzone'),
+(4, 'wheelchair', 40, 3, 'outzone');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `lpr_school`
 --
 
@@ -135,6 +174,16 @@ CREATE TABLE `lpr_school` (
   `school_contact_no` varchar(20) DEFAULT NULL,
   `school_type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lpr_school`
+--
+
+INSERT INTO `lpr_school` (`school_id`, `client_id`, `school_name`, `school_abr`, `school_street`, `school_address`, `school_city`, `school_state`, `school_zip`, `school_country`, `school_contact_name`, `school_contact_no`, `school_type`) VALUES
+(1, 3, 'NPS School 1', 'School 1', 'adfdf', 'adsfdsfdsf', 'fdsfsfsdf', 'sdfdfsdf', 543545, 'fghfgfgf', 'ghjghjghj', '345345', 'middle'),
+(2, 3, 'NPS School 2', 'School 2', 'adfdf', 'adsfdsfdsf', 'fdsfsfsdf', 'sdfdfsdf', 543545, 'fghfgfgf', 'ghjghjghj', '345345', 'high'),
+(3, 3, 'NPS School 3', 'School 3', 'adfdf', 'adsfdsfdsf', 'fdsfsfsdf', 'sdfdfsdf', 543545, 'fghfgfgf', 'ghjghjghj', '345345', 'elementary'),
+(4, 3, 'NPS School 4', 'School 4', 'adfdf', 'adsfdsfdsf', 'fdsfsfsdf', 'sdfdfsdf', 543545, 'fghfgfgf', 'ghjghjghj', '345345', 'elementary');
 
 -- --------------------------------------------------------
 
@@ -167,6 +216,13 @@ CREATE TABLE `lpr_student` (
 --
 
 --
+-- Indexes for table `lpr_billing`
+--
+ALTER TABLE `lpr_billing`
+  ADD KEY `o_id` (`o_id`),
+  ADD KEY `client_id` (`client_id`);
+
+--
 -- Indexes for table `lpr_client`
 --
 ALTER TABLE `lpr_client`
@@ -186,6 +242,13 @@ ALTER TABLE `lpr_order`
   ADD KEY `client_id` (`client_id`),
   ADD KEY `school_id` (`school_id`),
   ADD KEY `driver_id` (`driver_id`);
+
+--
+-- Indexes for table `lpr_rates`
+--
+ALTER TABLE `lpr_rates`
+  ADD PRIMARY KEY (`rate_id`),
+  ADD KEY `client_id` (`client_id`);
 
 --
 -- Indexes for table `lpr_school`
@@ -221,10 +284,15 @@ ALTER TABLE `lpr_driver`
 ALTER TABLE `lpr_order`
   MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `lpr_rates`
+--
+ALTER TABLE `lpr_rates`
+  MODIFY `rate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `lpr_school`
 --
 ALTER TABLE `lpr_school`
-  MODIFY `school_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `school_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `lpr_student`
 --
@@ -235,12 +303,25 @@ ALTER TABLE `lpr_student`
 --
 
 --
+-- Constraints for table `lpr_billing`
+--
+ALTER TABLE `lpr_billing`
+  ADD CONSTRAINT `lpr_billing_ibfk_1` FOREIGN KEY (`o_id`) REFERENCES `lpr_order` (`o_id`),
+  ADD CONSTRAINT `lpr_billing_ibfk_2` FOREIGN KEY (`client_id`) REFERENCES `lpr_client` (`client_id`);
+
+--
 -- Constraints for table `lpr_order`
 --
 ALTER TABLE `lpr_order`
   ADD CONSTRAINT `lpr_order_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `lpr_client` (`client_id`),
   ADD CONSTRAINT `lpr_order_ibfk_2` FOREIGN KEY (`school_id`) REFERENCES `lpr_school` (`school_id`),
   ADD CONSTRAINT `lpr_order_ibfk_3` FOREIGN KEY (`driver_id`) REFERENCES `lpr_driver` (`driver_id`);
+
+--
+-- Constraints for table `lpr_rates`
+--
+ALTER TABLE `lpr_rates`
+  ADD CONSTRAINT `lpr_rates_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `lpr_client` (`client_id`);
 
 --
 -- Constraints for table `lpr_school`
