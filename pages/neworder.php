@@ -5,6 +5,7 @@
 <?php 
 $query_client  = "SELECT * FROM lpr_client";
 $result_client = mysqli_query($connection, $query_client);
+$result_client2 = mysqli_query($connection, $query_client);
 confirm_query($result_client);
 ?>
 <?php
@@ -39,7 +40,7 @@ confirm_query($result_client);
                                                 while($subject_client = mysqli_fetch_assoc($result_client)) {
                                                     // output data from each row
                                             ?>
-                                                    <option><?php echo $subject_client["client_name"]; ?></option>
+                                                    <option value="<?php echo $subject_client["client_id"]; ?>"><?php echo $subject_client["client_name"]; ?></option>
                                             <?php
                                                 }
                                             ?>
@@ -222,22 +223,22 @@ confirm_query($result_client);
                                             <label>Add-ons</label>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Female Driver Only
+                                                    <input type="checkbox" class="aocheckbox" value="femaledriver">Female Driver Only
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Ride Along
+                                                    <input type="checkbox" class="aocheckbox" value="ridealong">Ride Along
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Wheel Chair
+                                                    <input type="checkbox" class="aocheckbox" value="wheelchair">Wheel Chair
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="">Additional Stop
+                                                    <input type="checkbox" class="aocheckbox" value="addnlstop">Additional Stop
                                                 </label>
                                             </div>
                                             <div class="form-group">
@@ -251,37 +252,17 @@ confirm_query($result_client);
                                         </div>
                                         <div class="form-group">
                                             <label>Requested By</label>
-
-                                            <div class="radio">
-                                              <label><input type="radio" name="optradio">Norfolk Public Schools (NPS)</label>
-                                            </div>
-                                            <div class="radio">
-                                              <label><input type="radio" name="optradio">Norfolk Public Schools Special Education (NSPED)</label>
-                                            </div>
-                                            <div class="radio">
-                                              <label><input type="radio" name="optradio">Norfolk Department of Human Services (NDHS)</label>
-                                            </div>
-                                            <div class="radio">
-                                              <label><input type="radio" name="optradio">Portsmouth Public Schools (PPS)</label>
-                                            </div>
-                                            <div class="radio">
-                                              <label><input type="radio" name="optradio">Portsmouth Public Schools Special Education (PSPED)</label>
-                                            </div>
-                                            <div class="radio">
-                                              <label><input type="radio" name="optradio">Chesapeake Public Schools Special Education (CSPED)</label>
-                                            </div>
-                                            <div class="radio">
-                                              <label><input type="radio" name="optradio">Hampton Public Schools (HPS)</label>
-                                            </div>
-                                            <div class="radio">
-                                              <label><input type="radio" name="optradio">Suffolk Public Schools (SPS)</label>
-                                            </div>
-                                            <div class="radio">
-                                              <label><input type="radio" name="optradio">Isle of Wight Public Schools (IWPS)</label>
-                                            </div>
-                                            <div class="radio">
-                                              <label><input type="radio" name="optradio">Southampton County Public Schools (SCPS)</label>
-                                            </div>
+                                             <?php
+                                                // 3. Use returned data (if any)
+                                                while($subject_client = mysqli_fetch_assoc($result_client2)) {
+                                                    // output data from each row
+                                            ?>
+                                                <div class="radio">
+                                                    <label><input type="radio" name="optradio" value="<?php echo $subject_client["client_id"]; ?>"><?php echo $subject_client["client_name"]; ?></label>
+                                                </div>
+                                            <?php
+                                                }
+                                            ?>
                                         </div>
                                         
                                         <div class="form-group">
@@ -295,12 +276,12 @@ confirm_query($result_client);
                                                 <div class="form-group">
                                                 <div class="radio">
                                                 <label>
-                                                    <input type="radio" value="inzone" name="billingradio">In Zone
+                                                    <input type="radio" value="inzone" class="aocheckbox" name="billingradio" checked>In Zone
                                                 </label>
                                                 </div>
                                                 <div class="radio">
                                                     <label>
-                                                        <input type="radio" value="outzone" name="billingradio">Out Zone
+                                                        <input type="radio" value="outzone" class="aocheckbox" name="billingradio">Out Zone
                                                     </label>
                                                 </div>
                                                 </div>
@@ -348,7 +329,7 @@ confirm_query($result_client);
                                         <div class="form-group">
                                             <label>Billable</label>
                                             <div class="input-group">
-                                            <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
+                                            <input type="text" id="billtext" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
 
                                             </div>
                                         </div>
@@ -367,6 +348,9 @@ confirm_query($result_client);
                                     
                                     </div>
                                     <!-- /.col-lg-6 (nested) -->
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-lg" name="createorder">Submit</button>
+                                    </div>
                                 </form>
                             </div>
                             <!-- /.row (nested) -->

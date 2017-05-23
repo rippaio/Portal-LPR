@@ -84,11 +84,12 @@
 		
 	}
 
-	function select_schools($client_name,$school_type){
+	function select_schools($client_id,$school_type){
 		global $connection;
 
-		$query_client  = "SELECT * FROM lpr_client JOIN lpr_school ON lpr_client.client_id=lpr_school.client_id WHERE client_name='$client_name' AND school_type='$school_type'" ;
+		$query_client  = "SELECT * FROM lpr_client JOIN lpr_school ON lpr_client.client_id=lpr_school.client_id WHERE lpr_school.client_id=$client_id AND school_type='$school_type'" ;
 		$result_client = mysqli_query($connection, $query_client);
+		error_log("Inside query\n" . $query_client , 3, "C:/xampp/apache/logs/error.log");
 		confirm_query($result_client);
 		return $result_client;
 	}
@@ -98,9 +99,23 @@
 
 		$query_client  = "SELECT * FROM lpr_school WHERE school_id = $school_id" ;
 		$result_client = mysqli_query($connection, $query_client);
-		error_log("Inside query\n" . $query_client , 3, "C:/xampp/apache/logs/error.log");
+		//error_log("Inside query\n" . $query_client , 3, "C:/xampp/apache/logs/error.log");
 		confirm_query($result_client);
 		if($result = mysqli_fetch_assoc($result_client)) {
+			return $result;
+		} else {
+			return null;
+		}
+	}
+
+	function tripcost($client_id,$type,$items){
+		global $connection;
+		
+		$query = "SELECT SUM(rate) FROM lpr_rates WHERE item IN ('$items') AND type='$type' AND client_id=$client_id GROUP BY client_id,type" ;
+		$result_rate = mysqli_query($connection, $query);
+		error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		confirm_query($result_rate);
+		if($result = mysqli_fetch_assoc($result_rate)) {
 			return $result;
 		} else {
 			return null;

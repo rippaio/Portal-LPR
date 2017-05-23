@@ -6,7 +6,7 @@ $('#stypeSelect').change(function(){
 	//log("inside click");
 	var sdata = {};
 	sdata['mode'] = "typedropdown";
-	sdata['client_name'] = $('#ctypeSelect').val();
+	sdata['client_id'] = $('#ctypeSelect').val();
 	sdata['school_type'] = $('#stypeSelect').val().toLowerCase();
 	$.ajax({
         url: 'ajax/neworder_ajax.php',
@@ -37,7 +37,7 @@ function append_schools(myObj) {
 
 
 $('#sSelect').change(function(){
-	log("inside click");
+	//log("inside click");
 	var sdata = {};
 	sdata['mode'] = "schooldropdown";
 	sdata['school_id'] = $('#sSelect').val();
@@ -62,4 +62,32 @@ $('#sSelect').change(function(){
 function fillLocation(data){
 	$('#amDropLoc').val(data.school_street+","+data.school_address+","+data.school_city);
 	$('#pmDropLoc').val(data.school_street+","+data.school_address+","+data.school_city);
+}
+
+$('#billtext').on('focus', function(){
+	tripcost();
+});
+function tripcost() {
+	var sdata = {};
+	sdata['mode'] = "tripcost";
+	sdata['addons'] = $('.aocheckbox:checked').map(function() {
+				    return this.value;
+				}).get().join("','");
+	sdata['client_id'] = $('#ctypeSelect').val();
+	sdata['type'] = $('input[name="billingradio"]:checked').val();
+
+	$.ajax({
+        url: 'ajax/neworder_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            $('#billtext').val(data);
+            log(data);
+          
+        },
+        error: function(xhr, desc, err) {
+          console.log(xhr);
+          console.log("Details: " + desc + "\nError:" + err);
+        }
+      }); // end ajax call
 }

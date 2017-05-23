@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 22, 2017 at 12:05 AM
+-- Generation Time: May 23, 2017 at 09:56 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.0.16
 
@@ -28,7 +28,6 @@ USE `lpr_portal`;
 -- Table structure for table `lpr_billing`
 --
 
-DROP TABLE IF EXISTS `lpr_billing`;
 CREATE TABLE `lpr_billing` (
   `o_id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
@@ -42,7 +41,6 @@ CREATE TABLE `lpr_billing` (
 -- Table structure for table `lpr_client`
 --
 
-DROP TABLE IF EXISTS `lpr_client`;
 CREATE TABLE `lpr_client` (
   `client_id` int(11) NOT NULL,
   `client_abr` varchar(10) NOT NULL,
@@ -74,7 +72,6 @@ INSERT INTO `lpr_client` (`client_id`, `client_abr`, `client_name`, `client_stre
 -- Table structure for table `lpr_driver`
 --
 
-DROP TABLE IF EXISTS `lpr_driver`;
 CREATE TABLE `lpr_driver` (
   `driver_id` int(11) NOT NULL,
   `driver_fname` varchar(20) NOT NULL,
@@ -99,7 +96,6 @@ CREATE TABLE `lpr_driver` (
 -- Table structure for table `lpr_order`
 --
 
-DROP TABLE IF EXISTS `lpr_order`;
 CREATE TABLE `lpr_order` (
   `o_id` int(11) NOT NULL,
   `client_id` int(10) NOT NULL,
@@ -133,7 +129,6 @@ CREATE TABLE `lpr_order` (
 -- Table structure for table `lpr_rates`
 --
 
-DROP TABLE IF EXISTS `lpr_rates`;
 CREATE TABLE `lpr_rates` (
   `rate_id` int(11) NOT NULL,
   `item` varchar(30) NOT NULL,
@@ -150,7 +145,9 @@ INSERT INTO `lpr_rates` (`rate_id`, `item`, `rate`, `client_id`, `type`) VALUES
 (1, 'inzone', 25, 3, 'inzone'),
 (2, 'outzone', 40, 3, 'outzone'),
 (3, 'wheelchair', 25, 3, 'inzone'),
-(4, 'wheelchair', 40, 3, 'outzone');
+(4, 'wheelchair', 40, 3, 'outzone'),
+(5, 'femaledriver', 30, 3, 'inzone'),
+(6, 'femaledriver', 50, 3, 'outzone');
 
 -- --------------------------------------------------------
 
@@ -158,7 +155,6 @@ INSERT INTO `lpr_rates` (`rate_id`, `item`, `rate`, `client_id`, `type`) VALUES
 -- Table structure for table `lpr_school`
 --
 
-DROP TABLE IF EXISTS `lpr_school`;
 CREATE TABLE `lpr_school` (
   `school_id` int(11) NOT NULL,
   `client_id` int(11) NOT NULL,
@@ -191,7 +187,6 @@ INSERT INTO `lpr_school` (`school_id`, `client_id`, `school_name`, `school_abr`,
 -- Table structure for table `lpr_student`
 --
 
-DROP TABLE IF EXISTS `lpr_student`;
 CREATE TABLE `lpr_student` (
   `s_id` int(11) NOT NULL,
   `o_id` int(11) NOT NULL,
@@ -287,7 +282,7 @@ ALTER TABLE `lpr_order`
 -- AUTO_INCREMENT for table `lpr_rates`
 --
 ALTER TABLE `lpr_rates`
-  MODIFY `rate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `rate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `lpr_school`
 --
