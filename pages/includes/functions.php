@@ -108,17 +108,126 @@
 		}
 	}
 
-	function tripcost($client_id,$type,$items){
+	function tripcost($zone_id,$item){
 		global $connection;
-		
-		$query = "SELECT SUM(rate) FROM lpr_rates WHERE item IN ('$items') AND type='$type' AND client_id=$client_id GROUP BY client_id,type" ;
+
+		$query = "SELECT SUM(amount) FROM lpr_rates WHERE item IN ('$item') AND zone_id=$zone_id" ;
+		error_log("Trip cost\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result_rate = mysqli_query($connection, $query);
-		error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		confirm_query($result_rate);
 		if($result = mysqli_fetch_assoc($result_rate)) {
 			return $result;
 		} else {
 			return null;
 		}
+	}
+
+	function tripcost_outzone($zone_id,$zone_id2,$item){
+		global $connection;
+
+		$query = "SELECT SUM(amount) FROM lpr_rates WHERE item IN ('$item') AND zone_id=$zone_id OR zone_id=$zone_id2" ;
+		error_log("Trip ot cost\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		$result_rate = mysqli_query($connection, $query);
+		confirm_query($result_rate);
+		if($result = mysqli_fetch_assoc($result_rate)) {
+			return $result;
+		} else {
+			return null;
+		}
+	}
+
+	function createorder($client_id,$school_id,$o_startdate,$o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip){
+
+		global $connection;
+		$query = "INSERT INTO lpr_order(client_id, school_id, o_startdate, o_enddate, o_status, o_ampickloc, o_ampicktime, o_amdroploc, o_amdroptime, o_pmdroploc, o_pmpicktime, o_days, o_fd, o_ra, o_wc, o_as, driver_id, o_icomment, o_dcomment, o_billable, o_reqby, o_payable, o_tip) ";
+		$query .= "VALUES ($client_id,  $school_id, '$o_startdate', '$o_enddate', '$o_status', '$o_ampickloc', '$o_ampicktime', '$o_amdroploc', '$o_amdroptime',  '$o_pmdroploc', '$o_pmpicktime', '$o_days', '$o_fd',  '$o_ra', '$o_wc', '$o_as', $driver_id, '$o_icomment', '$o_dcomment', $o_billable, $o_reqby, $o_payable, $o_tip) ";
+		error_log("Insert order\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		$result = mysqli_query($connection, $query);
+		
+		confirm_query($result);
+		$query_id = "SELECT LAST_INSERT_ID() AS o_id ";
+		$result_id = mysqli_query($connection, $query_id);
+		confirm_query($result_id);
+		if($result_oid = mysqli_fetch_assoc($result_id)) {
+			return $result_oid;
+		} else {
+			return null;
+		}
+		//redirect_to("schooldata.php");
+	}
+	function createstudnet($o_id, $s_fname, $s_lname, $s_grade, $s_gender, $s_pfname, $s_plname, $s_phone, $s_altphone, $s_street, $s_address, $s_city, $s_state, $s_zip, $s_country)
+	{
+		global $connection;
+
+		if (is_array($s_fname)){
+			for ($i=0; $i < sizeof($s_fname); $i++) {
+
+			$fname = $s_fname[$i];
+			$lname = $s_lname[$i];
+			$grade = $s_grade[$i];
+			$gender = $s_gender[$i];
+
+			$query = "INSERT INTO lpr_student(o_id, s_fname, s_lname, s_grade, s_gender, s_pfname, s_plname, s_phone, s_altphone, s_street, s_address, s_city, s_state, s_zip, s_country) ";
+			$query .= "VALUES ($o_id, '$fname', '$lname', '$grade', '$gender', '$s_pfname', '$s_plname', '$s_phone',  '$s_altphone', '$s_street', '$s_address', '$s_city',  '$s_state', '$s_zip', '$s_country') ";
+			error_log("Insert student\n" . $query.sizeof($s_fname) , 3, "C:/xampp/apache/logs/error.log");
+			$result = mysqli_query($connection, $query);
+			
+			confirm_query($result);
+			}
+		}
+		else{
+			
+			$query = "INSERT INTO lpr_student(o_id, s_fname, s_lname, s_grade, s_gender, s_pfname, s_plname, s_phone, s_altphone, s_street, s_address, s_city, s_state, s_zip, s_country) ";
+			$query .= "VALUES ($o_id, '$s_fname', '$s_lname', '$s_grade', '$s_gender', '$s_pfname', '$s_plname', '$s_phone',  '$s_altphone', '$s_street', '$s_address', '$s_city',  '$s_state', '$s_zip', '$s_country') ";
+			error_log("Insert student\n" . $query.sizeof($s_fname) , 3, "C:/xampp/apache/logs/error.log");
+			$result = mysqli_query($connection, $query);
+			
+			confirm_query($result);
+		}
+		
+	}
+
+
+	function insertbill_outzone($o_id,$billsplit,$billsplitvalue)
+	{
+		global $connection;
+		$j = 0;
+		for ($i=0; $i < sizeof($billsplitvalue); $i++) {
+			if ((int)$billsplitvalue[$i] > 0) {
+			 
+			$client_id = (int)$billsplit[$j];
+			$amount = (int)$billsplitvalue[$i];
+			$query = "INSERT INTO lpr_billing(o_id, client_id, amount) VALUES ($o_id,$client_id,$amount) ";
+			error_log("Insert bill\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+			$result = mysqli_query($connection, $query);
+			
+			confirm_query($result);
+			$j = $j + 1;	
+			}
+		} 
+	}
+
+	function insertbill_inzone($o_id,$o_billable,$o_reqby)
+	{
+		global $connection;
+		$query = "INSERT INTO lpr_billing(o_id, client_id, amount) VALUES ($o_id,$o_reqby,$o_billable) ";
+		error_log("Insert bill\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		$result = mysqli_query($connection, $query);
+		
+		confirm_query($result);
+
+
+	}
+
+
+	function driverdetails()
+	{
+		global $connection;
+		$query = "SELECT driver_id AS value,CONCAT(driver_fname,' ', driver_lname) AS label FROM `lpr_driver` ";
+		//error_log("Insert bill\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		$result_client = mysqli_query($connection, $query);
+		
+		confirm_query($result_client);
+		return $result_client;
 	}
 ?>
