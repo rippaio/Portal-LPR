@@ -6,3 +6,16 @@
 .help-block {
 	color: red !important;
 }
+
+.input-group-clock {
+            padding: 6px 6px;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1;
+            color: #555;
+            text-align: center;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 5px;
+        }

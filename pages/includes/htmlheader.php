@@ -26,6 +26,7 @@
     <link href="./src/clockpicker.css" rel="stylesheet" type="text/css">
     <link href="../vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
     <link href="../vendor/jquery-ui-1.12.1/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../dist/css/bootstrapValidator.css"/>
     <style type="text/css">
     .box{
         display: none;

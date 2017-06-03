@@ -20,7 +20,8 @@
     <script src="./src/clockpicker.js"></script>
     <script src="../vendor/jquery-ui-1.12.1/jquery-ui.js"></script>
     <!-- <script src="../vendor/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script> -->
-
+    <script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
+    
     <script src="../dist/js/functions.js"></script>
 
 
