@@ -20,8 +20,9 @@ $droptime = '00:00:00';
 $pax = $obj["pax"];
 $status = $obj["status"];
 $current_date = $obj["current_date"];
+$clockperiod = $obj['clockperiod'];
 
-$trip = insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$current_date);
+$trip = insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$current_date,$clockperiod);
 print_r($trip['id']);
 }
 
