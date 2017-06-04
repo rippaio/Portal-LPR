@@ -36,12 +36,12 @@
     }
 
 	
-	function insert_client($client_name,  $client_abr, $client_street, $client_address, $client_city, $client_state, $client_zip, $client_country, $client_contact) {
+	function insert_client($client_name,  $client_abr, $client_street, $client_address, $client_city, $client_state, $client_zip, $client_country, $client_contact,$client_zone) {
 		global $connection;
 		
 		$query  = "INSERT INTO lpr_client ";
-		$query .= "(client_name, client_abr, client_street, client_address, client_city, client_state, client_zip, client_country, client_contact) ";
-		$query .= "VALUES ('$client_name',  '$client_abr', '$client_street', '$client_address', '$client_city', '$client_state', $client_zip, '$client_country', '$client_contact') ";
+		$query .= "(client_name, client_abr, client_street, client_address, client_city, client_state, client_zip, client_country, client_contact, zone_id) ";
+		$query .= "VALUES ('$client_name',  '$client_abr', '$client_street', '$client_address', '$client_city', '$client_state', $client_zip, '$client_country', '$client_contact', $client_zone) ";
 		//echo $query;
 		$result_id = mysqli_query($connection, $query);
 		//error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
@@ -69,11 +69,11 @@
 			return null;
 		}
 	}
-	function update_client($client_name,  $client_abr, $client_street, $client_address, $client_city, $client_state, $client_zip, $client_country, $client_contact, $client_id) {
+	function update_client($client_name,  $client_abr, $client_street, $client_address, $client_city, $client_state, $client_zip, $client_country, $client_contact, $client_id,$client_zone) {
 		global $connection;
 		
 		$query  = "UPDATE lpr_client SET ";
-		$query .= "client_name = '$client_name', client_abr = '$client_abr', client_street = '$client_street', client_address = '$client_address' , client_city = '$client_city', client_state = '$client_state', client_zip = $client_zip, client_country ='$client_country', client_contact ='$client_contact' ";
+		$query .= "client_name = '$client_name', client_abr = '$client_abr', client_street = '$client_street', client_address = '$client_address' , client_city = '$client_city', client_state = '$client_state', client_zip = $client_zip, client_country ='$client_country', client_contact ='$client_contact', zone_id= $client_zone ";
 		$query .= "WHERE client_id = $client_id ";
 		//echo $query;
 		$result_id = mysqli_query($connection, $query);
@@ -272,14 +272,16 @@ function update_driver($driver_fname,$driver_mname,$driver_lname,$driver_street,
     redirect_to("drivers.php");
 }
 
-function  insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$current_date,$clockperiod){
+function  insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$clockperiod,$current_date){
     global $connection;
     $trip_city=trim($city);
     $query  = "INSERT INTO lpr_triplog ";
-    $query.="(`triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_city`, `triplog_time`, `triplog_pickloc`, `triplog_picktime`, `triplog_droptime`, `triplog_pax`, `triplog_status`, `triplog_date`, triplog_clock ) ";
-    $query.="VALUES ('$orderid', '$clientid', '$schoolid', '$driverid', '$s_id', '$trip_city', '$time', '$pickloc', '$picktime', '$droptime', '$pax', '$status', '$current_date', '$clockperiod')";
+    $query.="(`triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_city`, `triplog_time`, `triplog_pickloc`, `triplog_picktime`, `triplog_droptime`, `triplog_pax`, `triplog_status`, `triplog_date`, triplog_clock, triplog_date_updated ) ";
+    $query.="VALUES ('$orderid', '$clientid', '$schoolid', '$driverid', '$s_id', '$trip_city', '$time', '$pickloc', '$picktime', '$droptime', '$pax', '$status', '$trip_date', '$clockperiod', '$current_date')";
+     error_log("\nInside insert_trip" . $query , 3, "C:/xampp/apache/logs/error.log");
     $result_id = mysqli_query($connection, $query);
     confirm_query($result_id);
+    
     //redirect_to("manifest.php");
     $query_id = "SELECT LAST_INSERT_ID() AS id ";
 		$result_id = mysqli_query($connection, $query_id);
@@ -291,14 +293,14 @@ function  insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$
 		}
 }
 
-function update_trip($orderid, $clientid, $schoolid, $driverid, $s_id, $city, $time, $pickloc, $droptime, $pax, $status, $current_date,$trip_id){
+function update_trip($orderid, $clientid, $schoolid, $driverid, $s_id, $city, $time, $pickloc, $picktime, $droptime, $pax, $status, $trip_date,$trip_id){
     global $connection;
     $city=trim($city);
     $query  = "UPDATE lpr_triplog SET ";
-    $query.="triplog_client_id=$clientid,triplog_school_id=$schoolid,triplog_driver_id=$driverid,triplog_studentid=$s_id,triplog_city='$city',triplog_time='$time',triplog_pickloc='$pickloc',triplog_droptime='$droptime',triplog_pax='$pax',triplog_status='$status',triplog_o_id=$orderid ";
-    $query .= "WHERE triplog_o_id = $orderid and triplog_date='$current_date' and triplog_tripid=$trip_id";
+    $query.="triplog_client_id=$clientid,triplog_school_id=$schoolid,triplog_driver_id=$driverid,triplog_studentid=$s_id,triplog_city='$city',triplog_time='$time',triplog_pickloc='$pickloc',triplog_picktime='$picktime',triplog_droptime='$droptime',triplog_pax='$pax',triplog_status='$status',triplog_o_id=$orderid ";
+    $query .= "WHERE triplog_o_id = $orderid and triplog_date='$trip_date' and triplog_tripid=$trip_id";
     $result_id = mysqli_query($connection, $query);
-    error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+    error_log("\nInside query" . $query , 3, "C:/xampp/apache/logs/error.log");
     confirm_query($result_id);
     //redirect_to("manifest.php");
 

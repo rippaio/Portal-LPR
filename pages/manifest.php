@@ -8,20 +8,27 @@ $c=0;
 if(isset($_POST["clock"])){
     $clck= $_POST["clock"];
 }
+$daterequired=date("Y-m-d");
+if(isset($_POST["dateValue"])){
+    $daterequired=$_POST["dateValue"];
+}
+$timestamp = strtotime($daterequired);
+$day = date('l', $timestamp);
 $query ="select * from  
-(select * from lpr_triplog where triplog_date=CURRENT_DATE and triplog_clock='$clck')t1
+(select * from lpr_triplog where triplog_date='$daterequired' and triplog_clock='$clck')t1
 RIGHT outer join 
-(select * from ((select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.driver_fname,t1.o_ampicktime as picktime,t1.o_ampickloc as pickloc,t1.o_amdroptime as droptime,t2.pax,'AM' as clockperiod from( 
-select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_driver.driver_id, lpr_school.school_city,lpr_order.o_ampicktime as time,lpr_student.s_fname,lpr_driver.driver_fname,lpr_order.o_ampicktime,lpr_order.o_ampickloc,lpr_order.o_amdroptime from 
-lpr_order,lpr_driver,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and lpr_order.driver_id=lpr_driver.driver_id and CURRENT_DATE between lpr_order.o_startdate and lpr_order.o_enddate group by lpr_order.o_id) t1 
+(select * from ((select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.driver_fname,t1.o_ampicktime as picktime,t1.o_ampickloc as pickloc,t1.o_amdroptime as droptime,t2.pax,'AM' as clockperiod, t1.o_days from ( 
+select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_driver.driver_id, lpr_school.school_city,lpr_order.o_ampicktime as time,lpr_student.s_fname,lpr_driver.driver_fname,lpr_order.o_ampicktime,lpr_order.o_ampickloc,lpr_order.o_amdroptime, lpr_order.o_days from 
+lpr_order,lpr_driver,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and lpr_order.driver_id=lpr_driver.driver_id and  lpr_order.o_startdate <='$daterequired' and lpr_order.o_enddate >='$daterequired' group by lpr_order.o_id) t1 
 left join (select lpr_student.o_id,COUNT(lpr_student.s_id) as pax from lpr_student group BY lpr_student.o_id)t2 
 on t1.o_id=t2.o_id)
 UNION 
-(select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.driver_fname,t1.picktime,t1.droploc,t1.droptime,t2.pax,'PM' as clockperiod from(select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_driver.driver_id, lpr_school.school_city,lpr_order.o_pmpicktime as time,lpr_student.s_fname,lpr_driver.driver_fname,lpr_order.o_pmpicktime as picktime,lpr_order.o_pmdroploc as droploc,'NA' as droptime from 
-lpr_order,lpr_driver,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and lpr_order.driver_id=lpr_driver.driver_id and CURRENT_DATE between lpr_order.o_startdate and lpr_order.o_enddate group by lpr_order.o_id) t1 
+(select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.driver_fname,t1.picktime,t1.droploc,t1.droptime,t2.pax,'PM' as clockperiod, t1.o_days from (select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_driver.driver_id, lpr_school.school_city,lpr_order.o_pmpicktime as time,lpr_student.s_fname,lpr_driver.driver_fname,lpr_order.o_pmpicktime as picktime,lpr_order.o_pmdroploc as droploc,'NA' as droptime,lpr_order.o_days from 
+lpr_order,lpr_driver,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and lpr_order.driver_id=lpr_driver.driver_id and lpr_order.o_startdate <='$daterequired' and lpr_order.o_enddate >='$daterequired' group by lpr_order.o_id) t1 
 left join (select lpr_student.o_id,COUNT(lpr_student.s_id) as pax from lpr_student group BY lpr_student.o_id)t2 
-on t1.o_id=t2.o_id)) temp where temp.clockperiod='$clck') t2 on t1.triplog_o_id=t2.o_id  ORDER BY time";
+on t1.o_id=t2.o_id)) temp where temp.clockperiod='$clck' and o_days like '%$day%') t2 on t1.triplog_o_id=t2.o_id  ORDER BY time";
 
+//error_log("\nManifest" . $query , 3, "C:/xampp/apache/logs/error.log");
 $result_triporder = mysqli_query($connection, $query);
 
 confirm_query($result_triporder);
@@ -46,9 +53,13 @@ include("./includes/nav.php");
                         <select class="form-control" id="clock" onchange="getdata(id,this)">
                                     <option value="AM" <?php if($clck == 'AM'): ?> selected="selected"<?php endif; ?> >AM</option>
                                     <option value="PM" <?php if($clck == 'PM'): ?> selected="selected"<?php endif; ?>>PM</option>
-                                </select>
-                        
+                                </select> 
                         </div>
+                <div class="form-group" style="width: 10%;" >
+                    <div class="input-group">
+                        <input type="text" name="o_startdate" class="form-control" id="manifestdate" placeholder="Select Date"  value="<?php echo $daterequired; ?>" required><span class="input-group-addon"><i class="glyphicon glyphicon-th" ></i></span>
+                    </div>
+                </div>
 
 
                 <div class="panel panel-default">
@@ -81,20 +92,20 @@ include("./includes/nav.php");
                                 while($subject_tripdata = mysqli_fetch_assoc($result_triporder)) {
                                     // output data from each row
                                     ++$c;
-
+                                      if($subject_tripdata["picktime"]!= NULL && trim($subject_tripdata["picktime"])!=''){  
                                       //  echo "<script type='text/javascript'>alert('$totriplogdata'+'inside');</script>";
                                         if ($subject_tripdata['triplog_status'] != NULL) {
                                             // $sname=get_studentname($subject_tripdata["triplog_studentid"]);
-                                            // $drivername=get_drivername($subject_tripdata["triplog_driver_id"]);
+                                            $drivername=get_drivername($subject_tripdata["triplog_driver_id"]);
 
                                             ?>
-                                            <tr id ="<?php echo $subject_data["triplog_o_id"]; ?>">
+                                            <tr id ="<?php echo $subject_tripdata["triplog_o_id"]; ?>">
                                                 <td class="col-xs-1" headers ="city">
                                                     <?php echo $subject_tripdata["triplog_city"]; ?>
                                                 </td>
                                                 <td class="col-xs-1" headers ="time"><?php echo $subject_tripdata["triplog_time"]; ?></td>
                                                 <td class="col-xs-1"><?php echo $subject_tripdata["s_fname"]; ?></td>
-                                                <td class="col-xs-1"><?php echo $subject_tripdata["driver_fname"]; ?></td>
+                                                <td class="col-xs-1" headers ="dname"><?php echo $drivername["driver_fname"]; ?></td>
                                                 <td class="col-xs-1" headers ="pickloc"><?php echo $subject_tripdata["triplog_pickloc"]; ?></td>
 
 
@@ -103,7 +114,7 @@ include("./includes/nav.php");
                                                           id="<?php echo $c.$c.$c.$c; ?>"><i
                                                             class="glyphicon glyphicon-time"></i></span></td> -->
 
-                                                <td class="col-xs-1" headers ="droptime"><?php echo $subject_tripdata["triplog_picktime"]; ?>
+                                                <td class="col-xs-1" headers ="picktime"><span><?php echo $subject_tripdata["triplog_picktime"]; ?></span>
                                                     <span class="input-group-clock" 
                                                       <?php if($subject_tripdata['triplog_status'] != 'success' && $subject_tripdata['triplog_status'] != 'pending'){?>
                                                           style="color: #bc2328;"
@@ -112,7 +123,7 @@ include("./includes/nav.php");
                                                       <?php } else { echo ('style="color: #68ca1b;" <i class="glyphicon glyphicon-time"></i>');}?>
                                                           <i class="glyphicon glyphicon-time"></i></span></td>
 
-                                                <td class="col-xs-1" headers ="droptime"><?php echo $subject_tripdata["triplog_droptime"]; ?>
+                                                <td class="col-xs-1" headers ="droptime"><span><?php echo $subject_tripdata["triplog_droptime"]; ?></span>
                                                     <span class="input-group-clock" 
                                                       <?php if($subject_tripdata['triplog_status'] != 'success'){?>
                                                           style="color: #bc2328;"
@@ -154,7 +165,7 @@ include("./includes/nav.php");
                                                 </td>
 
                                                 
-                                                <input type="hidden" name="" data-orderid="<?php echo $subject_tripdata["triplog_o_id"]; ?>" data-schoolid="<?php echo $subject_tripdata["triplog_school_id"]; ?>" data-driverid="<?php echo $subject_tripdata["triplog_driver_id"]; ?>" data-clientid="<?php echo $subject_tripdata["triplog_client_id"]; ?>" data-sid="<?php echo $subject_tripdata["triplog_studentid"]; ?>" data-updated="true" data-trip_id="<?php echo $subject_tripdata["triplog_tripid"]; ?>" data-trip_period="<?php echo $subject_tripdata["clockperiod"]; ?>">
+                                                <input type="hidden" name="" data-orderid="<?php echo $subject_tripdata["triplog_o_id"]; ?>" data-schoolid="<?php echo $subject_tripdata["triplog_school_id"]; ?>" data-driverid="<?php echo $subject_tripdata["triplog_driver_id"]; ?>" data-clientid="<?php echo $subject_tripdata["triplog_client_id"]; ?>" data-sid="<?php echo $subject_tripdata["triplog_studentid"]; ?>" data-updated="true" data-trip_id="<?php echo $subject_tripdata["triplog_tripid"]; ?>" data-trip_period="<?php echo $subject_tripdata["clockperiod"]; ?>" data-trip_status = "<?php echo $subject_tripdata["triplog_status"]; ?>" data-trip_date="<?php echo $daterequired; ?>" >
                                             </tr>
 
 
@@ -169,7 +180,7 @@ include("./includes/nav.php");
                                                 </td>
                                                 <td class="col-xs-1" headers ="time"><?php echo $subject_tripdata["time"]; ?></td>
                                                 <td class="col-xs-1"><?php echo $subject_tripdata["s_fname"]; ?></td>
-                                                <td class="col-xs-1"><?php echo $subject_tripdata["driver_fname"]; ?></td>
+                                                <td class="col-xs-1" headers ="dname"><?php echo $subject_tripdata["driver_fname"]; ?></td>
                                                 <td class="col-xs-1" headers ="pickloc"><?php echo $subject_tripdata["pickloc"]; ?></td>
                                                 <td class="col-xs-1" headers ="picktime" ><span><?php echo $subject_tripdata["picktime"]; ?></span>
                                                     <span class="input-group-clock" style="color: #bc2328;"
@@ -189,11 +200,12 @@ include("./includes/nav.php");
                                                     
                                                 </td>
                                                 <td class="col-xs-1"><span class="noshow size2" id ="<?php echo uniqid(); ?>"><i class="fa fa-male" aria-hidden="true"></i></span><span class="cancel size2 pad" id ="<?php echo uniqid(); ?>"><i class="fa fa-times-circle" aria-hidden="true"></i></span></td>
-                                                <input type="hidden" name="" data-orderid="<?php echo $subject_tripdata["o_id"] ?>" data-schoolid="<?php echo $subject_tripdata["school_id"]; ?>" data-driverid="<?php echo $subject_tripdata["driver_id"]; ?>" data-clientid="<?php echo $subject_tripdata["client_id"]; ?>" data-sid="<?php echo $subject_tripdata["s_id"]; ?>" data-updated="false" data-trip_id="0" data-trip_period="<?php echo $subject_tripdata["clockperiod"]; ?>">
+                                                <input type="hidden" name="" data-orderid="<?php echo $subject_tripdata["o_id"] ?>" data-schoolid="<?php echo $subject_tripdata["school_id"]; ?>" data-driverid="<?php echo $subject_tripdata["driver_id"]; ?>" data-clientid="<?php echo $subject_tripdata["client_id"]; ?>" data-sid="<?php echo $subject_tripdata["s_id"]; ?>" data-updated="false" data-trip_id="0" data-trip_period="<?php echo $subject_tripdata["clockperiod"]; ?>" data-trip_status ="none" data-trip_date="<?php echo $daterequired; ?>">
                                             </tr>
 
 
                                <?php         }
+                             }
 
 
                                         ?>

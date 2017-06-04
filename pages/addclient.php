@@ -14,8 +14,9 @@ if(isset($_POST['addclient']))
     $client_zip = $_POST['zipcode'];
     $client_country = $_POST['country'];
     $client_contact = $_POST['contact'];
+    $client_zone = (int)$_POST['zone'];
 
-insert_client($client_name, $client_abr, $client_street, $client_address, $client_city, $client_state, $client_zip, $client_country, $client_contact);
+insert_client($client_name, $client_abr, $client_street, $client_address, $client_city, $client_state, $client_zip, $client_country, $client_contact,$client_zone);
 }
 if(isset($_POST['updateclient']))
 {
@@ -28,8 +29,9 @@ if(isset($_POST['updateclient']))
     $client_zip = $_POST['zipcode'];
     $client_country = $_POST['country'];
     $client_contact = $_POST['contact'];
+    $client_zone = (int)$_POST['zone'];
 
-update_client($client_name, $client_abr, $client_street, $client_address, $client_city, $client_state, $client_zip, $client_country, $client_contact, $_GET['client_id']);
+update_client($client_name, $client_abr, $client_street, $client_address, $client_city, $client_state, $client_zip, $client_country, $client_contact, $_GET['client_id'],$client_zone);
 }
 ?>
 <?php
@@ -83,6 +85,19 @@ update_client($client_name, $client_abr, $client_street, $client_address, $clien
                                 <input class="form-control" placeholder="Contact Number" name="contact" value="<?php echo $result_client["client_contact"]; ?>">
                                 <p class="help-block"></p>
                             </div>
+                            <div class="form-group">
+                                <label>Zone-Type</label>
+                                    <select class="form-control" id="stypeSelect" name="stypeSelect" required>
+                                        <option value="">Select</option>
+                                        <option value="1">Norfolk</option>
+                                        <option value="2">Virginia Beach</option>
+                                        <option value="3">Chesapeake</option>
+                                        <option value="4">Portsmouth</option>
+                                        <option value="5">Hampton</option>
+                                        <option value="6">Suffolk</option>
+
+                                    </select>
+                                </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-lg" name="updateclient">Submit</button>
                             </div>
@@ -143,6 +158,19 @@ else{
                                 <input class="form-control" placeholder="Contact Number" name="contact">
                                 <p class="help-block"></p>
                             </div>
+                            <div class="form-group">
+                                <label>Zone-Type</label>
+                                    <select class="form-control" id="stypeSelect" name="zone" required>
+                                        <option value="">Select</option>
+                                        <option value="1">Norfolk</option>
+                                        <option value="2">Virginia Beach</option>
+                                        <option value="3">Chesapeake</option>
+                                        <option value="4">Portsmouth</option>
+                                        <option value="5">Hampton</option>
+                                        <option value="6">Suffolk</option>
+
+                                    </select>
+                                </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-lg" name="addclient">Submit</button>
                             </div>

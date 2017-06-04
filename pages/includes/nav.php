@@ -35,7 +35,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
+                        <!-- <li class="sidebar-search">
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
@@ -44,8 +44,7 @@
                                     </button>
                                 </span>
                             </div>
-                            <!-- /input-group -->
-                        </li>
+                        </li> -->
                         <li>
                             <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Snapshot</a>
                         </li>
@@ -55,41 +54,40 @@
                                 <li>
                                     <a href="neworder.php">New Order</a>
                                 </li>
-                                <li>
-                                    <a href="changeorder.html">Change Order</a>
-                                </li>
+                              <!--  <li>
+                                    <a href="changeorder.php">Change Order</a>
+                                </li>-->
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="manifest.html"><i class="fa fa-dashboard fa-fw"></i> Manifest</a>
+                            <a href="manifest.php"><i class="fa fa-dashboard fa-fw"></i> Manifest</a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Billing<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="studentbilling.html">Schools</a>
+                                    <a href="studentbilling.php">Schools</a>
                                 </li>
                                 <li>
-                                    <a href="driverbilling.html">Drivers</a>
+                                    <a href="driverbilling.php">Drivers</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                        </li> -->
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Data<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="schooldata.php">Schools</a>
                                 </li>
-                                <li>
+                                <!-- <li>
                                     <a href="#">Rates</a>
                                 </li>
                                 <li>
-                                    <a href="calendar.html">Calendar</a>
-                                </li>
+                                    <a href="calendar.php">Calendar</a>
+                                </li> -->
                                 <li>
-                                    <a href="drivers.html">Drivers</a>
+                                    <a href="drivers.php">Drivers</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

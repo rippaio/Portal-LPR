@@ -166,6 +166,7 @@ $( "#createorder" ).submit(function( event ) {
         success: function(data) {
             //$('#billtext').val(data);
             log(data);
+            alert("Order created! Please proceed to manifest");
           
         },
         error: function(xhr, desc, err) {
@@ -236,6 +237,11 @@ function getdrivers() {
 }
 
 $('input[name="o_ampickloc"]').on('focus', function(){
+	if (this.value == ""||this.value == undefined) {
+		this.value = $('input[name="street"]').val() +","+ $('input[name="address"]').val() +","+ $('input[name="city"]').val() +","+ $('input[name="zipcode"]').val();
+	}
+});
+$('input[name="o_pmdroploc"]').on('focus', function(){
 	if (this.value == ""||this.value == undefined) {
 		this.value = $('input[name="street"]').val() +","+ $('input[name="address"]').val() +","+ $('input[name="city"]').val() +","+ $('input[name="zipcode"]').val();
 	}
@@ -312,24 +318,7 @@ function timeToSeconds(time) {
 
     log($(th).parent().siblings('input').data());
     var id = $(th).attr('id');
-    insupd(id);
-    //$(th).closest('td').html('<span>'+gettime()+'</span>'+gclock());
-
-    }
-
-  function trip_status(time1,time2) {
-  	log(time1,time2);
-  	if ( (timeToSeconds(time2)-timeToSeconds(time2)) > (2*3600) ){
-  		return "noshow";
-  	}
-  	else return "success";
-  }
-
-function insupd(id){
-
-
-
-	var sdata = {};
+    var sdata = {};
 	
     sdata['orderid'] = $('#'+id).parent().siblings('input').data('orderid');
     sdata['clientid'] = $('#'+id).parent().siblings('input').data('clientid');
@@ -340,12 +329,22 @@ function insupd(id){
     sdata['city'] = $('#'+id).parent().siblings("[headers='city']").text();
     sdata['time'] = $('#'+id).parent().siblings("[headers='time']").text();
     sdata['pickloc'] = $('#'+id).parent().siblings("[headers='pickloc']").text();
-    sdata['picktime'] = gettime();
-   	sdata['droptime'] = gettime();
+    if ($('#'+id).parent().attr('headers') == 'picktime') {
+    	sdata['picktime'] = gettime();
+    	sdata['droptime'] = $('#'+id).parent().siblings("[headers='droptime']").children('span:first').text();	
+    }
+    if ($('#'+id).parent().attr('headers') == 'droptime') {
+    	sdata['picktime'] = $('#'+id).parent().siblings("[headers='picktime']").children('span:first').text();
+    	sdata['droptime'] = gettime(); 	
+    }
+    
+   	
     sdata['pax']= $('#'+id).parent().siblings("[headers='pax']").text();
 
     
     sdata['current_date'] = getday();
+    sdata['trip_date'] = $('#'+id).parent().siblings('input').data('trip_date');
+
     log($('#'+id).parent().siblings('input').data('updated'));
 
     if ($('#'+id).parent().siblings('input').data('updated') == false){
@@ -372,7 +371,12 @@ function insupd(id){
     if ($('#'+id).parent().siblings('input').data('updated') == true){
     sdata['mode'] = "update_trip";
     sdata['trip_id'] = $('#'+id).parent().siblings('input').data('trip_id');
-    sdata['status'] = trip_status(sdata['time'],$('#'+id).parent().siblings("[headers='picktime']").children('span:first').text());
+    if ( $('#'+id).parent().siblings('input').data('trip_status') == "pending"||$('#'+id).parent().attr('headers') == 'droptime') {
+    	sdata['status'] = "success";
+	}
+	else {
+		sdata['status'] = $('#'+id).parent().siblings('input').data('trip_status')
+	}
     log(sdata['mode']+sdata['trip_id']);
     $.ajax({
         url: 'ajax/manifest_ajax.php',
@@ -390,7 +394,17 @@ function insupd(id){
       }); // end ajax call
     }
 
-}
+
+    }
+
+  function trip_status(time1,time2) {
+  	log(time1,time2);
+  	if ( (timeToSeconds(time2)-timeToSeconds(time2)) > (2*3600) ){
+  		return "noshow";
+  	}
+  	else return "success";
+  }
+
 
 $('.noshow').click(function(element){
 	log(element.target);
@@ -409,11 +423,12 @@ $('.noshow').click(function(element){
     sdata['time'] = $('#'+id).parent().siblings("[headers='time']").text();
     sdata['pickloc'] = $('#'+id).parent().siblings("[headers='pickloc']").text();
     sdata['picktime'] = gettime();
-   	sdata['droptime'] = gettime();
+   	sdata['droptime'] = $('#'+id).parent().siblings("[headers='droptime']").children('span:first').text();
     sdata['pax']= $('#'+id).parent().siblings("[headers='pax']").text();
 
     
     sdata['current_date'] = getday();
+    sdata['trip_date'] = $('#'+id).parent().siblings('input').data('trip_date');
 
 	if ($('#'+id).parent().siblings('input').data('updated') == false){
 		sdata['mode'] = "insert_trip";
@@ -476,11 +491,12 @@ $('.cancel').click(function(element){
     sdata['time'] = $('#'+id).parent().siblings("[headers='time']").text();
     sdata['pickloc'] = $('#'+id).parent().siblings("[headers='pickloc']").text();
     sdata['picktime'] = gettime();
-   	sdata['droptime'] = gettime();
+   	sdata['droptime'] = $('#'+id).parent().siblings("[headers='droptime']").children('span:first').text();
     sdata['pax']= $('#'+id).parent().siblings("[headers='pax']").text();
 
     
     sdata['current_date'] = getday();
+    sdata['trip_date'] = $('#'+id).parent().siblings('input').data('trip_date');
 
 	if ($('#'+id).parent().siblings('input').data('updated') == false){
 		sdata['mode'] = "insert_trip";
@@ -538,36 +554,131 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
     sdata['orderid'] = $(id).siblings('input').data('orderid');
     sdata['clientid'] = $(id).siblings('input').data('clientid');
     sdata['schoolid'] = $(id).siblings('input').data('schoolid');
-    sdata['driverid'] = $(id).siblings('input').data('driverid');
+    var diver_temp = $(id).siblings('input').data('driverid');
+    sdata['driverid'] = $(id).siblings("[headers='dname']").children('input[type="hidden"]').val();
     sdata['s_id'] = $(id).siblings('input').data('sid');
     sdata['clockperiod'] = $(id).siblings('input').data('trip_period');
     sdata['city'] = $(id).siblings("[headers='city']").text();
-    sdata['time'] = $(id).parent().siblings("[headers='time']").text();
-    //sdata['pickloc'] = $('#'+id).parent().siblings("[headers='pickloc']").text();
+    sdata['time'] = $(id).siblings("[headers='time']").text();
+    sdata['pickloc'] = $(id).siblings("[headers='pickloc']").text();
+    sdata['picktime'] = gettime();
+    //var dropt = $(id).siblings("[headers='picktime']").children().children('input').val();
+    sdata['picktime'] = $(id).siblings("[headers='picktime']").children().children('input').val();
+   	sdata['droptime'] = $(id).siblings("[headers='droptime']").children().children('input').val();
+   	sdata['picktime'] = sdata['picktime']+ ':00';
+   	sdata['droptime'] = sdata['droptime']+ ':00';
+   	sdata['pax']= $(id).siblings("[headers='pax']").text();
+   	sdata['current_date'] = getday();
+   	sdata['trip_date'] = $(id).siblings('input').data('trip_date');
+    //log(dropt);
+    //sdata['pickloc'] = .children('input').val();
     log(sdata);
+
+	    if ($(id).siblings('input').data('updated') == false){
+			sdata['mode'] = "insert_trip";
+		    sdata['status'] = "success";
+		    log(sdata['mode']);
+		    $.ajax({
+		        url: 'ajax/manifest_ajax.php',
+		        type: 'post',
+		        data: {myData:sdata},
+		        success: function(data) {
+		         //    log(data);
+		        	// $('#'+id).parent().siblings('input').attr('data-trip_id',data);
+		        	// $('#'+id).parent().siblings('input').attr('data-updated',"true");
+		        	location.reload();  
+		        },
+		        error: function(xhr, desc, err) {
+		          console.log(xhr);
+		          console.log("Details: " + desc + "\nError:" + err);
+		        }
+		      }); // end ajax call
+			}
+
+		if ($(id).siblings('input').data('updated') == true){
+		    sdata['mode'] = "update_trip";
+		    sdata['trip_id'] = $(id).siblings('input').data('trip_id');
+		    sdata['status'] = $(id).siblings('input').data('trip_status');;
+		    log(sdata['mode']+sdata['trip_id']);
+		    $.ajax({
+		        url: 'ajax/manifest_ajax.php',
+		        type: 'post',
+		        data: {myData:sdata},
+		        success: function(data) {
+		            //log(data);
+		            location.reload();
+		          
+		        },
+		        error: function(xhr, desc, err) {
+		          console.log(xhr);
+		          console.log("Details: " + desc + "\nError:" + err);
+		        }
+		      }); // end ajax call
+	    }
+
 	}
 	if (state == false){
+		var diver_temp = $(id).siblings("[headers='dname']").text();
+		 var diver_temp_id = $(id).siblings('input').data('driverid');
 		log($(id).parents('tr').find('td'));
-		$(id).parents('tr').find('td').eq(6).replaceWith('<td class="col-xs-1"><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true"> <input type="text" class="form-control" value="09:00:00"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div></td>');
-		$(id).parents('tr').find('td').eq(6).replaceWith('<td class="col-xs-1"><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true"> <input type="text" class="form-control" value="09:00:00"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div></td>');
+		$(id).parents('tr').find('td').eq(6).replaceWith('<td class="col-xs-1" headers="droptime"><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true"> <input type="text" class="form-control" value="09:00"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div></td>');
+		$(id).parents('tr').find('td').eq(5).replaceWith('<td class="col-xs-1" headers="picktime"><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true"> <input type="text" class="form-control" value="09:00"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div></td>');
+		$(id).parents('tr').find('td').eq(3).replaceWith('<td class="col-xs-1" headers="dname"><input class="form-control typeahead" placeholder="'+diver_temp+'"><input class="form-control" name="driver_id" type="hidden" value ="'+diver_temp_id+'"placeholder=""></td>');
+		$('.clockpicker').clockpicker({
+            placement: 'top',
+            align: 'left',
+            donetext: 'Done'
+
+       });
+		$('.typeahead').click(function(){
+			getdrivers();
+		});
 	}
 });
  function  getdata(id,th){
      var clock=document.getElementById(id).value;
+     var manifestdate =$("#manifestdate").datepicker("getDate");
+     var dateformated=$("#manifestdate").val();
      var form = document.createElement("form");
      var element1 = document.createElement("input");
+     var element2 = document.createElement("input");
      form.method = "POST";
      form.name="manifestform";
      form.action="manifest.php";
 
      element1.value=clock
      element1.name="clock";
+     element2.value=dateformated
+     element2.name="dateValue";
      element1.setAttribute("type","hidden");
+     element2.setAttribute("type","hidden");
      form.appendChild(element1);
+     form.appendChild(element2);
      document.body.appendChild(form);
      form.submit();
 
  }
+ $("#manifestdate").change(function(){
+            var manifestdate =$("#manifestdate").datepicker("getDate");
+            var dateformated=$(this).val();
+            log(dateformated);
+            var form = document.createElement("form");
+            var element1 = document.createElement("input");
+            form.method = "POST";
+            form.name="dmanifestform";
+            form.action="manifest.php";
+
+            element1.value=dateformated
+            element1.name="dateValue";
+            element1.setAttribute("type","hidden");
+            form.appendChild(element1);
+            document.body.appendChild(form);
+            form.submit();
+
+
+        });
+
+
             function changetext(id){
              var butntext= document.getElementById(id).innerHTML;
              if(butntext=="Pending") {
