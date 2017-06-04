@@ -764,3 +764,143 @@ $(document).ready(function() {
 
             return true;
         }
+
+
+//schooldata.php
+
+$( function() {
+	
+    $( "#accordion" ).accordion({
+		active: false,
+    collapsible: true  
+	});
+	
+	
+	
+  } );
+
+var firstClicked = false;
+
+$('.schools').click(function(){
+		if(!firstClicked){
+			firstClicked = true;
+			/******** Elementary School Data **********/
+			var sdata = {};
+			sdata['mode'] = "typedropdown";
+			sdata['client_id'] = $('.schools').attr('value');
+			sdata['school_type'] = "elementary";
+			
+			//ajax call to find schools data according to the client
+			$.ajax({
+				url: 'ajax/neworder_ajax.php',
+				type: 'post',
+				data: {myData:sdata},
+				success: function(data) {
+					var schoolObjForElementary = $.parseJSON(data);
+
+					if(firstClicked){
+						 $('#elementary .elemList li').remove();
+						for (i = 0; i < schoolObjForElementary.length; i++){
+							$('#elementary .elemList').append('<li class="list-group-item"><p class="elemItem">'+schoolObjForElementary[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+						}
+					}
+
+				  
+				},
+				error: function(xhr, desc, err) {
+				  console.log(xhr);
+				  console.log("Details: " + desc + "\nError:" + err);
+				}
+			  }); // end ajax call
+			  
+			  /******** Middle School Data **********/
+			var sdata = {};
+			sdata['mode'] = "typedropdown";
+			sdata['client_id'] = $('.schools').attr('value');
+			sdata['school_type'] = "middle";
+			//ajax call to find schools data according to the client
+			$.ajax({
+				url: 'ajax/neworder_ajax.php',
+				type: 'post',
+				data: {myData:sdata},
+				success: function(data) {
+					//console.log(data);
+					var schoolObjForMiddle = $.parseJSON(data);
+					if(firstClicked){
+						for (i = 0; i < schoolObjForMiddle.length; i++){
+							$('#middle .middleList').append('<li class="list-group-item"><p class="middleItem">'+schoolObjForMiddle[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+						}
+					}
+					//console.log(schoolObjForElementary);
+				  
+				},
+				error: function(xhr, desc, err) {
+				  console.log(xhr);
+				  console.log("Details: " + desc + "\nError:" + err);
+				}
+			  }); // end ajax call
+			  
+			   /******** High School Data **********/
+			var sdata = {};
+			sdata['mode'] = "typedropdown";
+			sdata['client_id'] = $('.schools').attr('value');
+			sdata['school_type'] = "high";
+			//ajax call to find schools data according to the client
+			$.ajax({
+				url: 'ajax/neworder_ajax.php',
+				type: 'post',
+				data: {myData:sdata},
+				success: function(data) {
+					//console.log(data);
+					var schoolObjForHigh = $.parseJSON(data);
+					if(firstClicked){
+						for (i = 0; i < schoolObjForHigh.length; i++){
+							$('#high .highList').append('<li class="list-group-item"><p class="highItem">'+schoolObjForHigh[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+						}
+					}
+					//console.log(schoolObjForElementary);
+				  
+				},
+				error: function(xhr, desc, err) {
+				  console.log(xhr);
+				  console.log("Details: " + desc + "\nError:" + err);
+				}
+			  }); // end ajax call
+			  
+			  /******** Other School Data **********/
+			var sdata = {};
+			sdata['mode'] = "typedropdown";
+			sdata['client_id'] = $('.schools').attr('value');
+			sdata['school_type'] = "other";
+			//ajax call to find schools data according to the client
+			$.ajax({
+				url: 'ajax/neworder_ajax.php',
+				type: 'post',
+				data: {myData:sdata},
+				success: function(data) {
+					var schoolObjForOther = $.parseJSON(data);
+					if(schoolObjForOther.length != 0){	
+						if(firstClicked){
+							for (i = 0; i < schoolObjForOther.length; i++){
+								$('#other .otherList').append('<li class="list-group-item"><p class="otherItem">'+schoolObjForOther[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;" ><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+							}
+						}
+					}else{
+						$("#accordion").find('h3').filter(':contains(Other)').hide();
+						$( ".other" ).hide();
+					}
+				},
+				error: function(xhr, desc, err) {
+				  console.log(xhr);
+				  console.log("Details: " + desc + "\nError:" + err);
+				}
+			  }); // end ajax call
+			  
+			  
+	}
+	
+	  $( ".elementary" ).button().on( "click", function() {
+		  
+		  
+	  });
+});

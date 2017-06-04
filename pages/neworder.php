@@ -53,9 +53,11 @@ confirm_query($result_client);
                                             <select class="form-control" id="stypeSelect" name="stypeSelect" required>
                                                 <option value="">Select</option>
                                                 <option>Elementary</option>
+                                                <option>Preschool</option>
                                                 <option>Middle</option>
-                                                <option>High</option>
-                                                <option>Other</option>
+                                                <option>Upper</option>
+                                                <option>Special</option>
+                                                <option>Alternative</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
