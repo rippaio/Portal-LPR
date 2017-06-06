@@ -125,7 +125,7 @@
 	function tripcost_outzone($zone_id,$zone_id2,$item){
 		global $connection;
 
-		$query = "SELECT SUM(amount) FROM lpr_rates WHERE item IN ('$item') AND zone_id=$zone_id OR zone_id=$zone_id2" ;
+		$query = "SELECT SUM(amount) FROM lpr_rates WHERE item IN ('$item') AND (zone_id=$zone_id OR zone_id=$zone_id2)" ;
 		error_log("Trip ot cost\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result_rate = mysqli_query($connection, $query);
 		confirm_query($result_rate);

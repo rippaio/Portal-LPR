@@ -315,7 +315,7 @@ confirm_query($result_client);
                                             
                                         </div>
                                         <div class="form-group">
-                                            <label>Billable</label>
+                                            <label>Billable to the client</label>
                                             <div class="input-group">
                                             <input type="text" id="billtext" name="o_billable" class="form-control" required><span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
                                             </div>
@@ -328,7 +328,7 @@ confirm_query($result_client);
                                         </div>
                                         
                                          <div class="form-group">
-                                            <label>Payable</label>
+                                            <label>Payable to the driver</label>
                                             <div class="input-group">
                                             <input type="text" name="o_payable" class="form-control" required><span class="input-group-addon" ><i class="glyphicon glyphicon-usd"></i></span>
 
