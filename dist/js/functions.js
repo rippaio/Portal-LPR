@@ -72,9 +72,9 @@ function fillLocation(data){
 $('.aocheckbox').click(function(){
 	verifytrip();
 });
-$('#billtext').on('focus', function(){
-	verifytrip();
-});
+// $('#billtext').on('focus', function(){
+// 	verifytrip();
+// });
 $('input[name="optradio"]').click(function(){
 	verifytrip();
 });
