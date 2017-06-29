@@ -6,400 +6,88 @@ include("./includes/functions.php");
 include("./includes/htmlheader.php");
 include("./includes/nav.php");
 ?>
+<?php
+
+$query =" SELECT * FROM `lpr_order` LEFT JOIN lpr_client ON lpr_order.client_id = lpr_client.client_id LEFT JOIN lpr_school ON lpr_order.school_id = lpr_school.school_id LEFT JOIN lpr_student ON lpr_order.o_id = lpr_student.o_id LEFT JOIN lpr_driver ON lpr_order.driver_id = lpr_driver.driver_id LEFT JOIN (SELECT lpr_billing.o_id,count(lpr_billing.o_id) as zones ,SUM(lpr_billing.amount) as clientbill from lpr_billing GROUP by lpr_billing.o_id) AS bill ON lpr_order.o_id = bill.o_id GROUP by lpr_order.o_id";
+
+//error_log("\nChange Order" . $query , 3, "C:/xampp/apache/logs/error.log");
+$result = mysqli_query($connection, $query);
+
+confirm_query($result);
 
 
+
+?>
 <div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">New Order</h1>
-            </div>
-            <!-- /.col-lg-12 -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        New Order
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <form role="form-inline">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>Client</label>
-                                        <select class="form-control">
-                                            <option>Norfolk Public Schools (NPS)</option>
-                                            <option>Norfolk Public Schools Special Education (NSPED)</option>
-                                            <option>Norfolk Department of Human Services (NDHS)</option>
-                                            <option>Portsmouth Public Schools (PPS)</option>
-                                            <option>Portsmouth Public Schools Special Education (PSPED)</option>
-                                            <option>Chesapeake Public Schools (CPS)</option>
-                                            <option>Chesapeake Public Schools Special Education (CSPED)</option>
-                                            <option>Hampton Public Schools (HPS)</option>
-                                            <option>Suffolk Public Schools (SPS)</option>
-                                            <option>Isle of Wight Public Schools (IWPS)</option>
-                                            <option>Southampton County Public Schools (SCPS)</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>School-Type</label>
-                                        <select class="form-control">
-                                            <option>Elementary School</option>
-                                            <option>Middle School</option>
-                                            <option>High School</option>
-                                            <option>Other</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>School-Name</label>
-                                        <select class="form-control">
-                                            <option>NPS</option>
-                                            <option>Chesapeake</option>
-                                            <option>School-3</option>
-                                            <option>School-4</option>
-                                            <option>School-5</option>
-                                        </select>
-                                    </div>
-                                    <div id="studentdetails">
-                                        <span>
-                                            <div class="form-group">
-                                                <label>First Name</label>
-                                                <input class="form-control" placeholder="First Name">
-                                                <p class="help-block"></p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Last Name</label>
-                                                <input class="form-control" placeholder="Last Name">
-                                                <p class="help-block"></p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Grade</label>
-                                                <input class="form-control" placeholder="Enter Grade">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Gender</label>
-                                                <input class="form-control" placeholder="Enter Gender">
-                                            </div>
-                                            <div class="form-group">
-                                            <label>Start Date</label>
-                                            <div class="input-group date">
-
-                                              <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                            </div>
-                                            </div>
-                                            <div class="form-group">
-                                            <label>End Date</label>
-                                            <div class="input-group date">
-
-                                              <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
-                                            </div>
-                                            </div>
-                                        </span>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="button" id ="addstudent" class="btn btn-primary">Add Student</button>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Days Needed</label>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Monday
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Tuesday
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Wednesday
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Thursday
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Friday
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <h4>AM Trip</h4>
-                                    <div class="form-group">
-                                        <label>Pickup Location</label>
-                                        <input class="form-control" placeholder="Enter Location">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Pickup Time</label>
-                                        <div class="input-group clockpicker">
-                                            <input type="text" class="form-control" value="18:00">
-                                            <span class="input-group-addon">
-                                                        <span class="glyphicon glyphicon-time"></span>
-                                                    </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Drop Location</label>
-                                        <input class="form-control" placeholder="Enter Location">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Drop Time</label>
-                                        <div class="input-group clockpicker">
-                                            <input type="text" class="form-control" value="18:00">
-                                            <span class="input-group-addon">
-                                                        <span class="glyphicon glyphicon-time"></span>
-                                                    </span>
-                                        </div>
-                                    </div>
-                                    <h4>PM Trip</h4>
-                                    <div class="form-group">
-                                        <label>Pickup Location</label>
-                                        <input class="form-control" placeholder="Enter Location">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Pickup Time</label>
-                                        <div class="input-group clockpicker">
-                                            <input type="text" class="form-control" value="18:00">
-                                            <span class="input-group-addon">
-                                                        <span class="glyphicon glyphicon-time"></span>
-                                                    </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Drop Location</label>
-                                        <input class="form-control" placeholder="Enter Location">
-                                    </div>
-
-
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Orders</h1>
+                        <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    All Orders
                                 </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Client</th>
+                                                    <th>School</th>
+                                                    <th>Student Name</th>
+                                                    <th>Driver Name</th>
+                                                    <th>Start Date</th>
+                                                    <th>End Date</th>
+                                                    <th>Pick Up</th>
+                                                    <th>Order Status</th>
+                                                    <th>Edit Trip</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
 
+                                            <?php
+                                            // Use returned data (if any)
+                                            while($subject = mysqli_fetch_assoc($result)) {
 
-                                <!-- /.col-lg-6 (nested) -->
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="control-label" for="inputSuccess">Residing Address</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter Street">
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $subject["client_abr"]; ?></td>
+                                                    <td><?php echo $subject["school_abr"]; ?></td>
+                                                    <td><?php echo $subject["s_fname"] . " ".$subject["s_lname"]; ?></td>
+                                                    <?php if ($subject["driver_dname"] == NULL) { ?>
+                                                    <td><?php echo $subject["driver_fname"]. " ".$subject["driver_lname"]; ?></td>
+                                                    <?php } else {?>
+                                                    <td><?php echo $subject["driver_dname"]; ?></td>
+                                                    <?php } ?>
+                                                    <td><?php echo $subject["o_startdate"]; ?></td>
+                                                    <td><?php echo $subject["o_enddate"]; ?></td>
+                                                    <td><?php echo $subject["o_ampickloc"]; ?></td>
+                                                    <?php if ($subject["o_status"] == "active") { ?>
+                                                    <td><button type="button" class="btn btn-success ostatus" onclick="changestatus(this);">Active</button></td>
+                                                    <?php } else {?>
+                                                    <td><button type="button" class="btn btn-danger ostatus" onclick="changestatus(this);">Inactive</button></td>
+                                                    <?php } ?>
+                                                    <td><a type="button" href="editorder.php?oid=<?php echo $subject['o_id']; ?>" class="btn btn-primary">Edit</a></td>
+                                                    <input type="hidden" name="" data-orderid="<?php echo $subject["o_id"]; ?>">
+                                                </tr>
+                                            <?php } ?>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Addresss line 2">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="City">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="State / Province / Region">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Postal / Zip Code">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Country">
-                                    </div>
-                                    <h4>Parent Details</h4>
-                                    <div class="form-group">
-                                        <label>First Name</label>
-                                        <input class="form-control" placeholder="First Name">
-                                        <p class="help-block"></p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input class="form-control" placeholder="Last Name">
-                                        <p class="help-block"></p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Phone</label>
-                                        <input class="form-control" placeholder="Enter Phone">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Alternate Phone</label>
-                                        <input class="form-control" placeholder="Enter Phone">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Add-ons</label>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Female Driver Only
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Ride Along
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Wheel Chair
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Additional Stop
-                                            </label>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleTextarea">Internal Comment</label>
-                                            <textarea class="form-control input-sm" id="exampleTextarea" rows="3"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleTextarea">Driver Comment</label>
-                                            <textarea class="form-control input-sm" id="exampleTextarea" rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Requested By</label>
-
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Hampton
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Virginia Beach
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Chesapeake
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Suffolk
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="">Portsmouth
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="split">Split Bills
-                                            </label>
-                                            <div class ="split box">
-                                                <h5>Select the cities where the bills needs to be split</h5>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" value="">Hampton
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" value="">Virginia Beach
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" value="">Chesapeake
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" value="">Suffolk
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" value="">Portsmouth
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" value="splitbill">Billing
-                                            </label>
-                                            <div class ="splitbill box">
-                                                <h5>Select the type of billing</h5>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" value="">In Zone
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" value="">Out Zone
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Driver</label>
-                                        <input class="form-control typeahead" placeholder="">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Payable</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
-
-                                        </div>
-                                    </div>
-
+                                    <!-- /.table-responsive -->
                                 </div>
-                                <!-- /.col-lg-6 (nested) -->
-                            </form>
-                        </div>
-                        <!-- /.row (nested) -->
+                                <!-- /.panel-body -->
+                            </div>
+                            <!-- /.panel -->
+
                     </div>
-                    <!-- /.panel-body -->
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.panel -->
+                <!-- /.row -->
             </div>
-            <!-- /.col-lg-12 -->
+            <!-- /.container-fluid -->
         </div>
-        <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
 require_once("./includes/footer.php");

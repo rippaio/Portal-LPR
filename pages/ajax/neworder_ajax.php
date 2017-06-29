@@ -35,17 +35,18 @@ echo json_encode($return_dobj);
 if ($obj["mode"]=="tripcost") {
 
 $zone_id = (int)$obj["zone_id"];
-$item = $obj["addons"];
+$additems = $obj["addons"];
+$item = $obj['item'];
 //$return_obj = array();
-$rate = tripcost($zone_id,$item);
+$rate = tripcost($zone_id,$item,$additems);
 print_r($rate['SUM(amount)']);
 }
 if ($obj["mode"]=="tripcost_outzone") {
 
-$zone_id = (int)$obj["zone_id"];
-$item = $obj["addons"];
-$zone_id2 = (int)$obj["zone_id2"];
-$rate = tripcost_outzone($zone_id,$zone_id2,$item);
+$zone_id = $obj["zone_id"];
+$item = $obj['item'];
+$additems = $obj["addons"];
+$rate = tripcost_outzone($zone_id,$item,$additems);
 print_r($rate['SUM(amount)']);
 }
 if ($obj["mode"]=="insert") {
@@ -67,7 +68,7 @@ $o_fd = (isset($obj["o_fd"]) ? 'TRUE' : 'FALSE');
 $o_ra = (isset($obj["o_ra"]) ? 'TRUE' : 'FALSE');
 $o_wc = (isset($obj["o_wc"]) ? 'TRUE' : 'FALSE');
 $o_as = (isset($obj["o_as"]) ? 'TRUE' : 'FALSE');
-$driver_id = (int)$obj["driver_id"];
+$driver_id = ((int)$obj["driver_id"]==0? 'NULL' : (int)$obj["driver_id"]) ;
 $o_icomment = $obj["icomment"];
 $o_dcomment = $obj["dcomment"];
 $o_billable = (float)$obj["o_billable"];

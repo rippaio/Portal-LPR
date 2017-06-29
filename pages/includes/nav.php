@@ -54,16 +54,16 @@
                                 <li>
                                     <a href="neworder.php">New Order</a>
                                 </li>
-                              <!--  <li>
+                                <li>
                                     <a href="changeorder.php">Change Order</a>
-                                </li>-->
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="manifest.php"><i class="fa fa-dashboard fa-fw"></i> Manifest</a>
                         </li>
-                        <!-- <li>
+                        <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Billing<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -73,7 +73,7 @@
                                     <a href="driverbilling.php">Drivers</a>
                                 </li>
                             </ul>
-                        </li> -->
+                        </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Data<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">

@@ -69,36 +69,62 @@ function fillLocation(data){
 	$('#amDropLoc').val(data.school_street+","+data.school_address+","+data.school_city);
 	$('#pmDropLoc').val(data.school_street+","+data.school_address+","+data.school_city);
 }
+
+ $('input[name="billsplit"]').change(function(element) {
+    var ele = element.target;
+    if(this.checked) {
+        
+        $(ele).siblings('input').attr('disabled',false);
+    }
+    else {
+    	$(ele).siblings('input').attr('disabled',true);
+    }
+});
+
 $('.aocheckbox').click(function(){
+	verifytrip();
+});
+$('input[name="billsplit"]').click(function(){
+	verifytrip();
+});
+$('input[name="o_wc"]').click(function(){
 	verifytrip();
 });
 // $('#billtext').on('focus', function(){
 // 	verifytrip();
 // });
-$('input[name="optradio"]').click(function(){
-	verifytrip();
-});
+// $('input[name="optradio"]').click(function(){
+// 	verifytrip();
+// });
 
 function verifytrip() {
 	var bill_zone_id = $('input[name="optradio"]').filter(":checked").data('zone_id');
 	var dest_zone_id = $('#ctypeSelect').children("option").filter(":selected").data('zone_id');
+	var type = $('input[name="billingradio"]:checked').val();
 	log(bill_zone_id,dest_zone_id);
-	if (bill_zone_id==dest_zone_id) {
+	if (type=="inzone") {
 		tripcost();
 	}
-	if (bill_zone_id!=dest_zone_id) {
+	if (type=="outzone") {
 		tripcostOutzone();
 	}
 }	
 function tripcost() {
 	var sdata = {};
 	sdata['mode'] = "tripcost";
+	// sdata['item'] = $('.aocheckbox:checked').map(function() {
+	// 			    return this.value;
+	// 			}).get().join("','");
+	if ($('input[name="o_wc"]').is(":checked")==true) {
+		sdata['item'] = 'wheelchair-in';
+	}
+	else {sdata['item'] = 'inzone';}
+	
+	sdata['zone_id'] = $('input[name="optradio"]').filter(":checked").data('zone_id');
+	sdata['type'] = $('input[name="billingradio"]:checked').val();
 	sdata['addons'] = $('.aocheckbox:checked').map(function() {
 				    return this.value;
 				}).get().join("','");
-	sdata['addons'] = sdata['addons'] + "','standard";
-	sdata['zone_id'] = $('input[name="optradio"]').filter(":checked").data('zone_id');
-	sdata['type'] = $('input[name="billingradio"]:checked').val();
 
 	$.ajax({
         url: 'ajax/neworder_ajax.php',
@@ -121,10 +147,15 @@ function tripcostOutzone() {
 	sdata['addons'] = $('.aocheckbox:checked').map(function() {
 				    return this.value;
 				}).get().join("','");
-	sdata['addons'] = sdata['addons'] + "','standard";
-	sdata['zone_id'] = $('input[name="optradio"]').filter(":checked").data('zone_id');
-	sdata['zone_id2'] = $('#ctypeSelect').children("option").filter(":selected").data('zone_id');
+	sdata['zone_id'] = $('input[name="billsplit"]:checked').map(function() {
+				    return this.value;
+				}).get().join(",");
 	sdata['type'] = $('input[name="billingradio"]:checked').val();
+
+	if ($('input[name="o_wc"]').is(":checked")==true) {
+		sdata['item'] = 'wheelchair-out';
+	}
+	else {sdata['item'] = 'outzone';}
 
 	$.ajax({
         url: 'ajax/neworder_ajax.php',
@@ -176,6 +207,43 @@ $( "#createorder" ).submit(function( event ) {
       }); // end ajax call
 	}
 });
+
+$( "#updateorder" ).submit(function( event ) {
+	var formData = $("#updateorder").serializeObject();
+	formData['o_days'] = $('input[name="dayscheckbox"]:checked').map(function() {
+				    return this.value;
+				}).get().join(",");
+	formData['mode'] = "update";
+	formData['o_ampicktime'] = formData['o_ampicktime'] + ':00';
+	formData['o_amdroptime'] = formData['o_amdroptime'] + ':00';
+	formData['o_pmpicktime'] = formData['o_pmpicktime'] + ':00';
+	event.preventDefault();
+	log(formData);
+
+	 if ((!matchsum(formData['billsplit'],formData['billsplitvalue'],formData["o_billable"],"billtext") )|| (!matchtotal(formData["o_billable"],formData["o_payable"],"o_payable") )){
+	 	return false;
+	 }
+	 else {
+
+	 
+	$.ajax({
+        url: 'ajax/change_order_ajax.php',
+        type: 'post',
+        data: {myData:formData},
+        success: function(data) {
+            //$('#billtext').val(data);
+            log(data);
+            alert("Order created! Please proceed to manifest");
+          
+        },
+        error: function(xhr, desc, err) {
+          console.log(xhr);
+          console.log("Details: " + desc + "\nError:" + err);
+        }
+      }); // end ajax call
+	}
+});
+
 
 $.fn.serializeObject = function()
 {
@@ -251,6 +319,9 @@ $('input[name="o_pmdroploc"]').on('focus', function(){
 
 function matchsum(billsplit,billsplitvalue,bill,id) {
 	var amount=0;
+	if($('input[name="billingradio"]:checked').val()=='inzone')
+	{return true;}
+
 	for (i=0; i < billsplitvalue.length; i++) {
 		if (parseInt(billsplitvalue[i]) > 0) { 
 			amount = amount + parseInt(billsplitvalue[i]);
@@ -307,8 +378,45 @@ function gclock() {
 }
 function timeToSeconds(time) {
     time = time.split(/:/);
-    return time[0] * 3600 + time[1] * 60 + time[2];
+    return ((time[0] * 3600) + (time[1] * 60) + (time[2] * 1));
 }
+
+function five () {
+    var triptime = $("[headers='time']").map(function() {
+				    return this.innerText;
+				}).get();
+
+    if (getday() == $("[name='o_startdate']").val()) {
+    	//console.log("five");
+    	for (var i = 0; i < triptime.length; i++) {
+    		//log(gettime()+","+triptime[i])
+    		if((timeToSeconds(gettime())-timeToSeconds(triptime[i]))>420){
+    			color_row(i);
+    		}
+    	}
+    }
+    
+
+    
+
+}
+setInterval(five, 5000);
+
+function color_row(i) {
+	var a = $("tr")[i+1];
+	if ($(a).children('input').attr('data-updated') == "false"){
+		$(a).css('background-color','Red');
+	}
+	
+}
+  function trip_status(time1,time2) {
+  	log(time1,time2);
+  	if ( (timeToSeconds(time2)-timeToSeconds(time2)) > (2*3600) ){
+  		return "noshow";
+  	}
+  	else return "success";
+  }
+
  function setColor(event,id,th) {
  	//$(th).closest('td').html('<span>'+gettime()+'</span>'+gclock());
     // var an=th.getAttribute("data-updated");
@@ -371,12 +479,15 @@ function timeToSeconds(time) {
     if ($('#'+id).parent().siblings('input').data('updated') == true){
     sdata['mode'] = "update_trip";
     sdata['trip_id'] = $('#'+id).parent().siblings('input').data('trip_id');
-    if ( $('#'+id).parent().siblings('input').data('trip_status') == "pending"||$('#'+id).parent().attr('headers') == 'droptime') {
-    	sdata['status'] = "success";
-	}
-	else {
-		sdata['status'] = $('#'+id).parent().siblings('input').data('trip_status')
-	}
+	    if ( $('#'+id).parent().siblings('input').data('trip_status') == "pending"||$('#'+id).parent().attr('headers') == 'droptime') {
+	    	sdata['status'] = "success";
+		}
+		else if ( $('#'+id).parent().siblings('input').data('trip_status') == "none") {
+	    	sdata['status'] = "pending";
+		}
+		else {
+			sdata['status'] = $('#'+id).parent().siblings('input').data('trip_status')
+		}
     log(sdata['mode']+sdata['trip_id']);
     $.ajax({
         url: 'ajax/manifest_ajax.php',
@@ -397,40 +508,34 @@ function timeToSeconds(time) {
 
     }
 
-  function trip_status(time1,time2) {
-  	log(time1,time2);
-  	if ( (timeToSeconds(time2)-timeToSeconds(time2)) > (2*3600) ){
-  		return "noshow";
-  	}
-  	else return "success";
-  }
+
 
 
 $('.noshow').click(function(element){
 	log(element.target);
 	ele = element.target;
 	log($(ele).parent().attr('id'));
-	var id = $(ele).parent().attr('id');
+	var id = $(ele).closest('td');
 	var sdata = {};
 	
-    sdata['orderid'] = $('#'+id).parent().siblings('input').data('orderid');
-    sdata['clientid'] = $('#'+id).parent().siblings('input').data('clientid');
-    sdata['schoolid'] = $('#'+id).parent().siblings('input').data('schoolid');
-    sdata['driverid'] = $('#'+id).parent().siblings('input').data('driverid');
-    sdata['s_id'] = $('#'+id).parent().siblings('input').data('sid');
-    sdata['clockperiod'] = $('#'+id).parent().siblings('input').data('trip_period');
-    sdata['city'] = $('#'+id).parent().siblings("[headers='city']").text();
-    sdata['time'] = $('#'+id).parent().siblings("[headers='time']").text();
-    sdata['pickloc'] = $('#'+id).parent().siblings("[headers='pickloc']").text();
+    sdata['orderid'] = $(id).siblings('input').data('orderid');
+    sdata['clientid'] = $(id).siblings('input').data('clientid');
+    sdata['schoolid'] = $(id).siblings('input').data('schoolid');
+    sdata['driverid'] = $(id).siblings('input').data('driverid');
+    sdata['s_id'] = $(id).siblings('input').data('sid');
+    sdata['clockperiod'] = $(id).siblings('input').data('trip_period');
+    sdata['city'] = $(id).siblings("[headers='city']").text();
+    sdata['time'] = $(id).siblings("[headers='time']").text();
+    sdata['pickloc'] = $(id).siblings("[headers='pickloc']").text();
     sdata['picktime'] = gettime();
-   	sdata['droptime'] = $('#'+id).parent().siblings("[headers='droptime']").children('span:first').text();
-    sdata['pax']= $('#'+id).parent().siblings("[headers='pax']").text();
+   	sdata['droptime'] = $(id).siblings("[headers='droptime']").children('span:first').text();
+    sdata['pax']= $(id).siblings("[headers='pax']").text();
 
     
     sdata['current_date'] = getday();
-    sdata['trip_date'] = $('#'+id).parent().siblings('input').data('trip_date');
+    sdata['trip_date'] = $(id).siblings('input').data('trip_date');
 
-	if ($('#'+id).parent().siblings('input').data('updated') == false){
+	if ($(id).siblings('input').data('updated') == false){
 		sdata['mode'] = "insert_trip";
 	    sdata['status'] = "noshow";
 	    log(sdata['mode']);
@@ -440,8 +545,8 @@ $('.noshow').click(function(element){
 	        data: {myData:sdata},
 	        success: function(data) {
 	            log(data);
-	        	$('#'+id).parent().siblings('input').attr('data-trip_id',data);
-	        	$('#'+id).parent().siblings('input').attr('data-updated',"true");
+	        	$(id).siblings('input').attr('data-trip_id',data);
+	        	$(id).siblings('input').attr('data-updated',"true");
 	        	location.reload();  
 	        },
 	        error: function(xhr, desc, err) {
@@ -451,9 +556,9 @@ $('.noshow').click(function(element){
 	      }); // end ajax call
 		}
 
-	if ($('#'+id).parent().siblings('input').data('updated') == true){
+	if ($(id).siblings('input').data('updated') == true){
 	    sdata['mode'] = "update_trip";
-	    sdata['trip_id'] = $('#'+id).parent().siblings('input').data('trip_id');
+	    sdata['trip_id'] = $(id).siblings('input').data('trip_id');
 	    sdata['status'] = "noshow";
 	    log(sdata['mode']+sdata['trip_id']);
 	    $.ajax({
@@ -478,27 +583,64 @@ $('.cancel').click(function(element){
 	log(element.target);
 	ele = element.target;
 	log($(ele).parent().attr('id'));
-	var id = $(ele).parent().attr('id');
+	var id = $(ele).closest('td');
 	var sdata = {};
 	
-    sdata['orderid'] = $('#'+id).parent().siblings('input').data('orderid');
-    sdata['clientid'] = $('#'+id).parent().siblings('input').data('clientid');
-    sdata['schoolid'] = $('#'+id).parent().siblings('input').data('schoolid');
-    sdata['driverid'] = $('#'+id).parent().siblings('input').data('driverid');
-    sdata['s_id'] = $('#'+id).parent().siblings('input').data('sid');
-    sdata['clockperiod'] = $('#'+id).parent().siblings('input').data('trip_period');
-    sdata['city'] = $('#'+id).parent().siblings("[headers='city']").text();
-    sdata['time'] = $('#'+id).parent().siblings("[headers='time']").text();
-    sdata['pickloc'] = $('#'+id).parent().siblings("[headers='pickloc']").text();
+    sdata['orderid'] = $(id).siblings('input').data('orderid');
+    sdata['clientid'] = $(id).siblings('input').data('clientid');
+    sdata['schoolid'] = $(id).siblings('input').data('schoolid');
+    sdata['driverid'] = $(id).siblings('input').data('driverid');
+    sdata['s_id'] = $(id).siblings('input').data('sid');
+    sdata['clockperiod'] = $(id).siblings('input').data('trip_period');
+    sdata['city'] = $(id).siblings("[headers='city']").text();
+    sdata['time'] = $(id).siblings("[headers='time']").text();
+    sdata['pickloc'] = $(id).siblings("[headers='pickloc']").text();
     sdata['picktime'] = gettime();
-   	sdata['droptime'] = $('#'+id).parent().siblings("[headers='droptime']").children('span:first').text();
-    sdata['pax']= $('#'+id).parent().siblings("[headers='pax']").text();
+   	sdata['droptime'] = $(id).siblings("[headers='droptime']").children('span:first').text();
+    sdata['pax']= $(id).siblings("[headers='pax']").text();
 
     
     sdata['current_date'] = getday();
-    sdata['trip_date'] = $('#'+id).parent().siblings('input').data('trip_date');
+    sdata['trip_date'] = $(id).siblings('input').data('trip_date');
 
-	if ($('#'+id).parent().siblings('input').data('updated') == false){
+    
+
+    if (getday() == $("[name='o_startdate']").val()) {
+    	log((timeToSeconds(sdata['time'])-timeToSeconds(gettime())));
+
+    		log(timeToSeconds(sdata['time'])+","+sdata['time']+","+timeToSeconds(gettime())+","+gettime());
+    		if((timeToSeconds(sdata['time'])-timeToSeconds(gettime()))<7200 && ((timeToSeconds(sdata['time'])-timeToSeconds(gettime())))>0){
+    			var resp = confirm("Is driver payable?");
+			    if (resp == true) {
+			        sdata['driver_payable'] = "TRUE";
+			    } else {
+			        sdata['driver_payable'] = "FALSE";
+			    }
+			    sdata['client_payable'] = "FALSE"
+    		}
+
+    }    
+
+
+
+  //   $( function() {
+  //   $( "#dialog-confirm" ).dialog({
+  //     resizable: false,
+  //     height: "auto",
+  //     width: 400,
+  //     modal: true,
+  //     buttons: {
+  //       "Delete all items": function() {
+  //         $( this ).dialog( "close" );
+  //       },
+  //       Cancel: function() {
+  //         $( this ).dialog( "close" );
+  //       }
+  //     }
+  //   });
+  // } );
+
+	if ($(id).siblings('input').data('updated') == false){
 		sdata['mode'] = "insert_trip";
 	    sdata['status'] = "cancel";
 	    log(sdata['mode']);
@@ -508,8 +650,8 @@ $('.cancel').click(function(element){
 	        data: {myData:sdata},
 	        success: function(data) {
 	            log(data);
-	        	$('#'+id).parent().siblings('input').attr('data-trip_id',data);
-	        	$('#'+id).parent().siblings('input').attr('data-updated',"true");
+	        	$(id).siblings('input').attr('data-trip_id',data);
+	        	$(id).siblings('input').attr('data-updated',"true");
 	        	location.reload();  
 	        },
 	        error: function(xhr, desc, err) {
@@ -519,9 +661,9 @@ $('.cancel').click(function(element){
 	      }); // end ajax call
 		}
 
-	if ($('#'+id).parent().siblings('input').data('updated') == true){
+	if ($(id).siblings('input').data('updated') == true){
 	    sdata['mode'] = "update_trip";
-	    sdata['trip_id'] = $('#'+id).parent().siblings('input').data('trip_id');
+	    sdata['trip_id'] = $(id).siblings('input').data('trip_id');
 	    sdata['status'] = "cancel";
 	    log(sdata['mode']+sdata['trip_id']);
 	    $.ajax({
@@ -576,7 +718,7 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
 
 	    if ($(id).siblings('input').data('updated') == false){
 			sdata['mode'] = "insert_trip";
-		    sdata['status'] = "success";
+		    sdata['status'] = "none";
 		    log(sdata['mode']);
 		    $.ajax({
 		        url: 'ajax/manifest_ajax.php',
@@ -618,11 +760,13 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
 
 	}
 	if (state == false){
+		var picktime = $(id).siblings("[headers='picktime']").children('span:first').text();
+   		var droptime = $(id).siblings("[headers='droptime']").children('span:first').text();
 		var diver_temp = $(id).siblings("[headers='dname']").text();
 		 var diver_temp_id = $(id).siblings('input').data('driverid');
 		log($(id).parents('tr').find('td'));
-		$(id).parents('tr').find('td').eq(6).replaceWith('<td class="col-xs-1" headers="droptime"><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true"> <input type="text" class="form-control" value="09:00"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div></td>');
-		$(id).parents('tr').find('td').eq(5).replaceWith('<td class="col-xs-1" headers="picktime"><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true"> <input type="text" class="form-control" value="09:00"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div></td>');
+		$(id).parents('tr').find('td').eq(6).replaceWith('<td class="col-xs-1" headers="droptime"><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true"> <input type="text" class="form-control" value="'+droptime+'"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div></td>');
+		$(id).parents('tr').find('td').eq(5).replaceWith('<td class="col-xs-1" headers="picktime"><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true"> <input type="text" class="form-control" value="'+picktime+'"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div></td>');
 		$(id).parents('tr').find('td').eq(3).replaceWith('<td class="col-xs-1" headers="dname"><input class="form-control typeahead" placeholder="'+diver_temp+'"><input class="form-control" name="driver_id" type="hidden" value ="'+diver_temp_id+'"placeholder=""></td>');
 		$('.clockpicker').clockpicker({
             placement: 'top',
@@ -635,6 +779,65 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
 		});
 	}
 });
+
+//Change order
+
+// $('.ostatus').click(function(element){
+// 	var ele = element.target;
+// 	var par_ele = $(ele).parent();
+// 	if ($(ele).text() == "Active" ) {
+// 		$(par_ele).children().remove();
+// 		$(par_ele).append('<button type="button" class="btn btn-danger ostatus">Completed</button>');
+// 	}
+// 	else{
+// 		$(par_ele).children().remove();
+// 		$(par_ele).append('<button type="button" class="btn btn-success ostatus">Active</button>');
+// 	}
+// });
+
+function changestatus(a){
+		var ele = a;
+	var par_ele = $(ele).parent();
+	var id = $(ele).closest('td');
+	var oid = $(id).siblings('input').data('orderid');
+	//log(oid);
+	if ($(ele).text() == "Active" ) {
+		$(par_ele).children().remove();
+		$(par_ele).append('<button type="button" class="btn btn-danger ostatus" onclick="changestatus(this)";>Inactive</button>');
+		changestatus_ajax(oid,"inactive");
+	}
+	else{
+		$(par_ele).children().remove();
+		$(par_ele).append('<button type="button" class="btn btn-success ostatus" onclick="changestatus(this)";>Active</button>');
+		changestatus_ajax(oid,"active");
+	}
+
+}
+
+function changestatus_ajax(oid,status){
+
+		var sdata = {};
+		sdata["mode"] = "changestatus";
+		sdata["o_id"] = oid;
+		sdata["status"] = status;
+			    $.ajax({
+		        url: 'ajax/change_order_ajax.php',
+		        type: 'post',
+		        data: {myData:sdata},
+		        success: function(data) {
+		            //log(data);
+		            //location.reload();
+		          
+		        },
+		        error: function(xhr, desc, err) {
+		          console.log(xhr);
+		          console.log("Details: " + desc + "\nError:" + err);
+		        }
+		      }); // end ajax call
+}
+
+
+
  function  getdata(id,th){
      var clock=document.getElementById(id).value;
      var manifestdate =$("#manifestdate").datepicker("getDate");

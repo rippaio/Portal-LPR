@@ -7,7 +7,7 @@ $obj = $_POST['myData'];
 
 if ($obj["mode"]=="insert_trip") {
 
-error_log("\nInside insert_trip", 3, "C:/xampp/apache/logs/error.log");
+//error_log("\nInside insert_trip", 3, "C:/xampp/apache/logs/error.log");
 
 $clientid = (int)$obj["clientid"];
 $orderid = (int)$obj["orderid"];
@@ -24,8 +24,9 @@ $status = $obj["status"];
 $current_date = $obj["current_date"];
 $trip_date = $obj["trip_date"];
 $clockperiod = $obj['clockperiod'];
+$driver_payable = (isset($obj['driver_payable'])? $obj["driver_payable"] : 'TRUE');
 
-$trip = insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$clockperiod,$current_date);
+$trip = insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$clockperiod,$current_date,$driver_payable);
 print_r($trip['id']);
 }
 
@@ -45,8 +46,10 @@ $pax = $obj["pax"];
 $status = $obj["status"];
 $trip_date = $obj["trip_date"];
 $trip_id = (int)$obj['trip_id'];
+$driver_payable = (isset($obj['driver_payable'])? $obj["driver_payable"] : 'TRUE');
 
-$trip = update_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$trip_id);
+$order=update_orderdriver($orderid,$driverid);
+$trip = update_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$trip_id,$driver_payable);
 //print_r($trip['id']);
 }
 ?>

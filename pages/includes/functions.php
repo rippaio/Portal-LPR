@@ -108,10 +108,10 @@
 		}
 	}
 
-	function tripcost($zone_id,$item){
+	function tripcost($zone_id,$item,$additems){
 		global $connection;
 
-		$query = "SELECT SUM(amount) FROM lpr_rates WHERE item IN ('$item') AND zone_id=$zone_id" ;
+		$query = "SELECT SUM(amount) FROM lpr_rates WHERE (item  ='$item' AND zone_id=$zone_id) OR item IN ('$additems') ";
 		error_log("Trip cost\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result_rate = mysqli_query($connection, $query);
 		confirm_query($result_rate);
@@ -122,10 +122,10 @@
 		}
 	}
 
-	function tripcost_outzone($zone_id,$zone_id2,$item){
+	function tripcost_outzone($zone_id,$item,$additems){
 		global $connection;
 
-		$query = "SELECT SUM(amount) FROM lpr_rates WHERE item IN ('$item') AND (zone_id=$zone_id OR zone_id=$zone_id2)" ;
+		$query = "SELECT SUM(amount) FROM lpr_rates WHERE (item IN ('$item') AND zone_id IN ($zone_id)) OR item IN ('$additems')" ;
 		error_log("Trip ot cost\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result_rate = mysqli_query($connection, $query);
 		confirm_query($result_rate);
@@ -139,8 +139,8 @@
 	function createorder($client_id,$school_id,$o_startdate,$o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip){
 
 		global $connection;
-		$query = "INSERT INTO lpr_order(client_id, school_id, o_startdate, o_enddate, o_status, o_ampickloc, o_ampicktime, o_amdroploc, o_amdroptime, o_pmdroploc, o_pmpicktime, o_days, o_fd, o_ra, o_wc, o_as, driver_id, o_icomment, o_dcomment, o_billable, o_reqby, o_payable, o_tip) ";
-		$query .= "VALUES ($client_id,  $school_id, '$o_startdate', '$o_enddate', '$o_status', '$o_ampickloc', '$o_ampicktime', '$o_amdroploc', '$o_amdroptime',  '$o_pmdroploc', '$o_pmpicktime', '$o_days', '$o_fd',  '$o_ra', '$o_wc', '$o_as', $driver_id, '$o_icomment', '$o_dcomment', $o_billable, $o_reqby, $o_payable, $o_tip) ";
+		$query = "INSERT INTO lpr_order(client_id, school_id, o_startdate, o_enddate, o_status, o_ampickloc, o_ampicktime, o_amdroploc, o_amdroptime, o_pmpickloc, o_pmdroploc, o_pmpicktime, o_days, o_fd, o_ra, o_wc, o_as, driver_id, o_icomment, o_dcomment, o_billable, o_reqby, o_payable, o_tip) ";
+		$query .= "VALUES ($client_id,  $school_id, '$o_startdate', '$o_enddate', '$o_status', '$o_ampickloc', '$o_ampicktime', '$o_amdroploc', '$o_amdroptime', '$o_pmpickloc', '$o_pmdroploc', '$o_pmpicktime', '$o_days', '$o_fd',  '$o_ra', '$o_wc', '$o_as', $driver_id, '$o_icomment', '$o_dcomment', $o_billable, $o_reqby, $o_payable, $o_tip) ";
 		error_log("Insert order\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result = mysqli_query($connection, $query);
 		
@@ -231,6 +231,18 @@
 		return $result_client;
 	}
 
+	function update_orderdriver($orderid,$driverid)
+	{
+		global $connection;
+		$query  = "UPDATE lpr_order SET ";
+		$query .= "driver_id= $driverid ";
+		$query .= "WHERE o_id = $orderid ";
+		//echo $query;
+		$result = mysqli_query($connection, $query);
+		
+		confirm_query($result);
+	}
+
 
 	/**  Functions by Girish For Manifest */
 	function insert_driver($driver_fname,$driver_mname,$driver_lname,$driver_street,$driver_address,$driver_city,$driver_zip,$driver_contact_no,$driver_ssn,$driver_dl_no,$driver_state,$driver_emg_contact,	$driver_commision,$driver_dname,$dl_hiredate,$dl_termdate,$dl_carnumber,$dl_comments,$e_contact_name,$e_contact_reltion,$dl_state,$country){
@@ -272,12 +284,12 @@ function update_driver($driver_fname,$driver_mname,$driver_lname,$driver_street,
     redirect_to("drivers.php");
 }
 
-function  insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$clockperiod,$current_date){
+function  insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$clockperiod,$current_date,$driver_payable){
     global $connection;
     $trip_city=trim($city);
     $query  = "INSERT INTO lpr_triplog ";
-    $query.="(`triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_city`, `triplog_time`, `triplog_pickloc`, `triplog_picktime`, `triplog_droptime`, `triplog_pax`, `triplog_status`, `triplog_date`, triplog_clock, triplog_date_updated ) ";
-    $query.="VALUES ('$orderid', '$clientid', '$schoolid', '$driverid', '$s_id', '$trip_city', '$time', '$pickloc', '$picktime', '$droptime', '$pax', '$status', '$trip_date', '$clockperiod', '$current_date')";
+    $query.="(`triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_city`, `triplog_time`, `triplog_pickloc`, `triplog_picktime`, `triplog_droptime`, `triplog_pax`, `triplog_status`, `triplog_date`, triplog_clock, triplog_date_updated, triplog_driver_payable ) ";
+    $query.="VALUES ('$orderid', '$clientid', '$schoolid', '$driverid', '$s_id', '$trip_city', '$time', '$pickloc', '$picktime', '$droptime', '$pax', '$status', '$trip_date', '$clockperiod', '$current_date', '$driver_payable')";
      error_log("\nInside insert_trip" . $query , 3, "C:/xampp/apache/logs/error.log");
     $result_id = mysqli_query($connection, $query);
     confirm_query($result_id);
@@ -293,11 +305,11 @@ function  insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$
 		}
 }
 
-function update_trip($orderid, $clientid, $schoolid, $driverid, $s_id, $city, $time, $pickloc, $picktime, $droptime, $pax, $status, $trip_date,$trip_id){
+function update_trip($orderid, $clientid, $schoolid, $driverid, $s_id, $city, $time, $pickloc, $picktime, $droptime, $pax, $status, $trip_date,$trip_id,$driver_payable){
     global $connection;
     $city=trim($city);
     $query  = "UPDATE lpr_triplog SET ";
-    $query.="triplog_client_id=$clientid,triplog_school_id=$schoolid,triplog_driver_id=$driverid,triplog_studentid=$s_id,triplog_city='$city',triplog_time='$time',triplog_pickloc='$pickloc',triplog_picktime='$picktime',triplog_droptime='$droptime',triplog_pax='$pax',triplog_status='$status',triplog_o_id=$orderid ";
+    $query.="triplog_client_id=$clientid,triplog_school_id=$schoolid,triplog_driver_id=$driverid,triplog_studentid=$s_id,triplog_city='$city',triplog_time='$time',triplog_pickloc='$pickloc',triplog_picktime='$picktime',triplog_droptime='$droptime',triplog_pax='$pax',triplog_status='$status',triplog_o_id=$orderid , triplog_driver_payable='$driver_payable' ";
     $query .= "WHERE triplog_o_id = $orderid and triplog_date='$trip_date' and triplog_tripid=$trip_id";
     $result_id = mysqli_query($connection, $query);
     error_log("\nInside query" . $query , 3, "C:/xampp/apache/logs/error.log");
@@ -329,7 +341,7 @@ function get_studentname($s_id){
 
 function get_drivername($d_id){
     global $connection;
-    $query = "SELECT driver_fname FROM lpr_driver where driver_id=$d_id";
+    $query = "SELECT CONCAT(driver_fname,' ',driver_lname) as driver_name FROM lpr_driver where driver_id=$d_id";
     $result_drivername = mysqli_query($connection, $query);
     confirm_query($result_drivername);
     if($result = mysqli_fetch_assoc($result_drivername)) {
@@ -339,5 +351,96 @@ function get_drivername($d_id){
     }
 
 }
+
+//Changeorder
+
+function changeorderstatus($o_id,$status){
+	global $connection;
+    $query = "UPDATE lpr_order SET o_status = '$status' WHERE o_id = $o_id";
+    $result = mysqli_query($connection, $query);
+    error_log("\nInside changeorderstatus" . $query , 3, "C:/xampp/apache/logs/error.log");
+    confirm_query($result);
+    return $result;
+}
+
+	function updateorder($o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip,$o_id){
+
+		global $connection;
+		$query = "UPDATE lpr_order SET o_enddate='$o_enddate', o_status='$o_status', o_ampickloc='$o_ampickloc', o_ampicktime='$o_ampicktime', o_amdroploc='$o_amdroploc', o_amdroptime='$o_amdroptime',o_pmpickloc='$o_pmpickloc', o_pmdroploc='$o_pmdroploc', o_pmpicktime='$o_pmpicktime', o_days='$o_days', o_fd='$o_fd', o_ra='$o_ra', o_wc='$o_wc', o_as='$o_as', driver_id=$driver_id, o_icomment='$o_icomment', o_dcomment='$o_dcomment', o_billable=$o_billable, o_reqby=$o_reqby, o_payable=$o_payable, o_tip= $o_tip WHERE o_id = $o_id";
+		error_log("Insert order\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		$result = mysqli_query($connection, $query);
+		
+		confirm_query($result);
+		$query_id = "SELECT LAST_INSERT_ID() AS o_id ";
+		$result_id = mysqli_query($connection, $query_id);
+		confirm_query($result_id);
+		if($result_oid = mysqli_fetch_assoc($result_id)) {
+			return $result_oid;
+		} else {
+			return null;
+		}
+		//redirect_to("schooldata.php");
+	}
+	function updatestudnet($o_id, $s_fname, $s_lname, $s_grade, $s_gender, $s_pfname, $s_plname, $s_phone, $s_altphone, $s_street, $s_address, $s_city, $s_state, $s_zip, $s_country)
+	{
+		global $connection;
+
+		if (is_array($s_fname)){
+			for ($i=0; $i < sizeof($s_fname); $i++) {
+
+			$fname = $s_fname[$i];
+			$lname = $s_lname[$i];
+			$grade = $s_grade[$i];
+			$gender = $s_gender[$i];
+
+			$query = "UPDATE lpr_student SET s_fname='$fname', s_lname='$lname', s_grade='$grade', s_gender='$gender', s_pfname='$s_pfname', s_plname='$s_plname', s_phone='$s_phone', s_altphone='$s_altphone', s_street='$s_street', s_address='$s_address', s_city='$s_city', s_state='$s_state', s_zip='$s_zip', s_country='$s_country' WHERE o_id = $o_id";
+			error_log("Insert student\n" . $query.sizeof($s_fname) , 3, "C:/xampp/apache/logs/error.log");
+			$result = mysqli_query($connection, $query);
+			
+			confirm_query($result);
+			}
+		}
+		else{
+
+			$query = "UPDATE lpr_student SET s_fname='$s_fname', s_lname='$s_lname', s_grade='$s_grade', s_gender='$s_gender', s_pfname='$s_pfname', s_plname='$s_plname', s_phone='$s_phone', s_altphone='$s_altphone', s_street='$s_street', s_address='$s_address', s_city='$s_city', s_state='$s_state', s_zip='$s_zip', s_country='$s_country' WHERE o_id = $o_id";
+			error_log("Insert student\n" . $query.sizeof($s_fname) , 3, "C:/xampp/apache/logs/error.log");
+			$result = mysqli_query($connection, $query);
+			
+			confirm_query($result);
+		}
+		
+	}
+
+
+	function updatetbill_outzone($o_id,$billsplit,$billsplitvalue)
+	{
+		global $connection;
+		$j = 0;
+		for ($i=0; $i < sizeof($billsplitvalue); $i++) {
+			if ((int)$billsplitvalue[$i] > 0) {
+			 
+			$client_id = (int)$billsplit[$j];
+			$amount = (int)$billsplitvalue[$i];
+			$query = "UPDATE lpr_billing SET client_id=$client_id, amount=$amount WHERE o_id = $o_id";
+			error_log("Insert bill\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+			$result = mysqli_query($connection, $query);
+			
+			confirm_query($result);
+			$j = $j + 1;	
+			}
+		} 
+	}
+
+	function updatebill_inzone($o_id,$o_billable,$o_reqby)
+	{
+		global $connection;
+		$query = "UPDATE lpr_billing SET client_id=$o_reqby, amount=$o_billable WHERE o_id = $o_id ";
+		error_log("Insert bill\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		$result = mysqli_query($connection, $query);
+		
+		confirm_query($result);
+
+
+	}
 
 ?>

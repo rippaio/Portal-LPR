@@ -15,18 +15,23 @@ if(isset($_POST["dateValue"])){
 $timestamp = strtotime($daterequired);
 $day = date('l', $timestamp);
 $query ="select * from  
-(select * from lpr_triplog where triplog_date='$daterequired' and triplog_clock='$clck')t1
-RIGHT outer join 
-(select * from ((select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.driver_fname,t1.o_ampicktime as picktime,t1.o_ampickloc as pickloc,t1.o_amdroptime as droptime,t2.pax,'AM' as clockperiod, t1.o_days from ( 
-select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_driver.driver_id, lpr_school.school_city,lpr_order.o_ampicktime as time,lpr_student.s_fname,lpr_driver.driver_fname,lpr_order.o_ampicktime,lpr_order.o_ampickloc,lpr_order.o_amdroptime, lpr_order.o_days from 
-lpr_order,lpr_driver,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and lpr_order.driver_id=lpr_driver.driver_id and  lpr_order.o_startdate <='$daterequired' and lpr_order.o_enddate >='$daterequired' group by lpr_order.o_id) t1 
-left join (select lpr_student.o_id,COUNT(lpr_student.s_id) as pax from lpr_student group BY lpr_student.o_id)t2 
-on t1.o_id=t2.o_id)
-UNION 
-(select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.driver_fname,t1.picktime,t1.droploc,t1.droptime,t2.pax,'PM' as clockperiod, t1.o_days from (select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_driver.driver_id, lpr_school.school_city,lpr_order.o_pmpicktime as time,lpr_student.s_fname,lpr_driver.driver_fname,lpr_order.o_pmpicktime as picktime,lpr_order.o_pmdroploc as droploc,'NA' as droptime,lpr_order.o_days from 
-lpr_order,lpr_driver,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and lpr_order.driver_id=lpr_driver.driver_id and lpr_order.o_startdate <='$daterequired' and lpr_order.o_enddate >='$daterequired' group by lpr_order.o_id) t1 
-left join (select lpr_student.o_id,COUNT(lpr_student.s_id) as pax from lpr_student group BY lpr_student.o_id)t2 
-on t1.o_id=t2.o_id)) temp where temp.clockperiod='$clck' and o_days like '%$day%') t2 on t1.triplog_o_id=t2.o_id  ORDER BY time";
+ (select * from lpr_triplog where triplog_date='$daterequired' and triplog_clock='$clck')R1
+  RIGHT outer join
+ (select * from ( 
+       (select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.o_ampicktime as picktime,t1.o_ampickloc as pickloc,t1.o_amdroptime as droptime,'AM' as clockperiod, t1.o_days,t1.o_startdate,t1.o_enddate from ( 
+           select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_ampicktime as time,lpr_student.s_fname,lpr_order.o_ampicktime,lpr_order.o_ampickloc,lpr_order.o_amdroptime, lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
+           lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id  group by lpr_order.o_id)t1 )
+        UNION 
+       (select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.picktime,t1.pickloc,t1.droptime,'PM' as clockperiod, t1.o_days,t1.o_startdate,t1.o_enddate  from 
+          (select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_pmpicktime as time,lpr_student.s_fname,lpr_order.o_pmpicktime as picktime,lpr_order.o_pmpickloc as pickloc,'NA' as droptime,lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
+           lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id group by lpr_order.o_id)t1))R
+  )R2  on  R1.triplog_o_id=R2.o_id
+  left join
+ (select lpr_student.o_id,COUNT(lpr_student.s_id) as pax from lpr_student group BY lpr_student.o_id)R3   
+  on R2.o_id=R3.o_id 
+  left join (select CONCAT(driver_fname,' ',driver_lname) as driver_name,driver_id from lpr_driver)R4
+  on R2.driver_id=R4.driver_id
+  where clockperiod='$clck' and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%'  ORDER BY time";
 
 //error_log("\nManifest" . $query , 3, "C:/xampp/apache/logs/error.log");
 $result_triporder = mysqli_query($connection, $query);
@@ -105,7 +110,7 @@ include("./includes/nav.php");
                                                 </td>
                                                 <td class="col-xs-1" headers ="time"><?php echo $subject_tripdata["triplog_time"]; ?></td>
                                                 <td class="col-xs-1"><?php echo $subject_tripdata["s_fname"]; ?></td>
-                                                <td class="col-xs-1" headers ="dname"><?php echo $drivername["driver_fname"]; ?></td>
+                                                <td class="col-xs-1" headers ="dname"><?php echo $drivername["driver_name"]; ?></td>
                                                 <td class="col-xs-1" headers ="pickloc"><?php echo $subject_tripdata["triplog_pickloc"]; ?></td>
 
 
@@ -144,6 +149,8 @@ include("./includes/nav.php");
                                                         <button type="button" class="btn btn-primary">Cancelled</button> 
                                                     <?php } if($subject_tripdata['triplog_status'] == 'noshow'){ ?>
                                                         <button type="button" class="btn btn-danger">No Show</button> 
+                                                    <?php } if($subject_tripdata['triplog_status'] == 'none'){ ?>
+                                                        <button type="button" class="btn btn-warning">Pending</button> 
                                                       <?php } ?>
                                                 </td>
                                                 <td class="col-xs-1">
@@ -180,7 +187,7 @@ include("./includes/nav.php");
                                                 </td>
                                                 <td class="col-xs-1" headers ="time"><?php echo $subject_tripdata["time"]; ?></td>
                                                 <td class="col-xs-1"><?php echo $subject_tripdata["s_fname"]; ?></td>
-                                                <td class="col-xs-1" headers ="dname"><?php echo $subject_tripdata["driver_fname"]; ?></td>
+                                                <td class="col-xs-1" headers ="dname"><?php echo $subject_tripdata["driver_name"]; ?></td>
                                                 <td class="col-xs-1" headers ="pickloc"><?php echo $subject_tripdata["pickloc"]; ?></td>
                                                 <td class="col-xs-1" headers ="picktime" ><span><?php echo $subject_tripdata["picktime"]; ?></span>
                                                     <span class="input-group-clock" style="color: #bc2328;"
@@ -229,6 +236,9 @@ include("./includes/nav.php");
 
             </div>
             <!-- /.col-lg-12 -->
+            <!-- <div id="dialog-confirm" title="Empty the recycle bin?">
+              <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+            </div> -->
         </div>
         <!-- /.row -->
     </div>

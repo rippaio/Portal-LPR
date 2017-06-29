@@ -55,7 +55,7 @@ confirm_query($result_client);
                                                 <option>Elementary</option>
                                                 <option>Preschool</option>
                                                 <option>Middle</option>
-                                                <option>Upper</option>
+                                                <option>High</option>
                                                 <option>Special</option>
                                                 <option>Alternative</option>
                                             </select>
@@ -141,7 +141,7 @@ confirm_query($result_client);
                                             <div class="form-group">
                                                 <label>Pickup Time</label>
                                                 <div class="input-group clockpicker">
-                                                    <input type="text" class="form-control clockformat" name="o_ampicktime" value="18:00" required>
+                                                    <input type="text" class="form-control clockformat" name="o_ampicktime" value="8:00" required>
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
@@ -154,7 +154,7 @@ confirm_query($result_client);
                                             <div class="form-group">
                                                 <label>Drop Time</label>
                                                 <div class="input-group clockpicker">
-                                                    <input type="text" class="form-control clockformat" name="o_amdroptime" value="18:00" required>
+                                                    <input type="text" class="form-control clockformat" name="o_amdroptime" value="16:00" required>
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
@@ -190,7 +190,7 @@ confirm_query($result_client);
                                             <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter Street" name="street" required>
                                           </div>
                                           <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Addresss line 2" name="address" required>
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Addresss line 2" name="address" value="">
                                           </div>
                                           <div class="form-group">
                                             <input type="text" class="form-control" id="exampleInputEmail3" placeholder="City" name="city" required>
@@ -199,7 +199,7 @@ confirm_query($result_client);
                                             <input type="text" class="form-control" id="exampleInputEmail3" placeholder="State / Province / Region" name="state" value="VA" required>
                                           </div>
                                           <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Postal / Zip Code" name="zipcode" required>
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Postal / Zip Code" name="zipcode" value="">
                                           </div>
                                           <div class="form-group">
                                             <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Country" name="country" value="United States" required>
@@ -221,7 +221,7 @@ confirm_query($result_client);
                                         </div>
                                         <div class="form-group">
                                             <label>Alternate Phone</label>
-                                            <input class="form-control" placeholder="Enter Phone" name="altphone" required>
+                                            <input class="form-control" placeholder="Enter Phone" name="altphone">
                                         </div>
                                         <div class="form-group">
                                             <label>Add-ons</label>
@@ -233,11 +233,6 @@ confirm_query($result_client);
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" name="o_ra" class="aocheckbox" value="ridealong">Ride Along
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="o_wc" class="aocheckbox" value="wheelchair">Wheel Chair
                                                 </label>
                                             </div>
                                             <div class="checkbox">
@@ -288,6 +283,11 @@ confirm_query($result_client);
                                                         <input type="radio" data-value="outzone" value="outzone" name="billingradio">Out Zone</input>
                                                     </label>
                                                 </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="o_wc" class="wccheckbox" value="wheelchair">Wheel Chair
+                                                    </label>
+                                                </div>
                                                 </div>
                                                 <div class="splitcheckbox box">
                                                 <label>
@@ -303,7 +303,7 @@ confirm_query($result_client);
                                                     <div class="checkbox">
                                                         <label>
                                                             <input type="checkbox" name="billsplit" value="<?php echo $subject_client["client_id"]; ?>"><?php echo $subject_client["client_name"]; ?>
-                                                            <input type="text" name="billsplitvalue" >
+                                                            <input type="text" name="billsplitvalue" disabled>
                                                         </label>
                                                     </div>
                                                 <?php
@@ -323,7 +323,7 @@ confirm_query($result_client);
                                         </div>
                                         <div class="form-group">
                                             <label>Driver</label>
-                                            <input class="form-control typeahead" placeholder="" required>
+                                            <input class="form-control typeahead" placeholder="">
                                             <input class="form-control" name="driver_id" type="hidden" placeholder="">
                                         </div>
                                         
