@@ -2,11 +2,18 @@
   include("./includes/db_connection.php");
   include("./includes/functions.php"); 
 ?>
-<?php 
+<?php
 $query_client  = "SELECT * FROM lpr_client";
 $result_client = mysqli_query($connection, $query_client);
 confirm_query($result_client);
+
+$query_zone= "Select * from lpr_zones";
+$result_zone = mysqli_query($connection, $query_zone);
+confirm_query($result_zone);
 ?>
+
+
+
 <?php
   include("./includes/htmlheader.php");
   include("./includes/nav.php"); 
@@ -16,6 +23,61 @@ confirm_query($result_client);
             <div class="container-fluid">
                 <div class="row">
                 <h1 class="page-header">School Data</h1>
+                    <div class="col-lg-4">
+                        <!-- <h1 class="page-header">School Data</h1> -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Add Zones
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Zone</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        // 3. Use returned data (if any)
+                                        while($subject_zone = mysqli_fetch_assoc($result_zone)) {
+                                            // output data from each row
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $subject_zone["zone_loc"]; ?></td>
+                                                <td><a  id="editZone" data-zoneId="<?php echo $subject_zone['zone_id']; ?>  " data-zoneLoc="<?php echo $subject_zone["zone_loc"]; ?>" class="size2" style="color: #5cb85c;margin: auto;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                                <td><span class="size2" style="color: red;margin: auto;"><i class="fa fa-times-circle" aria-hidden="true"></i></span></td>
+                                            </tr>
+                                            <?php
+                                        }
+                                        ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <div class="form-group">
+                            <button  class="btn btn-primary btn-lg btn-block " id="add_zone">Add Zone</button>
+                        </div>
+                        <!-- /.panel -->
+                        <div class="form-group" id="zone_toggle" style="display:none">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                  <label for="zone_loc">Zone</label>
+                                    <input type="hidden" class="form-control" id="a_zoneid" value="" ><br>
+                                    <input type="text" class="form-control" id="zone_loc" value="" ><br>
+                                    <button  class="btn btn-primary btn-block" id="zone_save">Save</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                     <div class="col-lg-4">
                         <!-- <h1 class="page-header">School Data</h1> -->
                         <div class="panel panel-default">
@@ -141,25 +203,6 @@ confirm_query($result_client);
 							</div>
                         <div class="form-group">
                             <a href="addschool.html" class="btn btn-primary btn-lg btn-block" role="button">Add School</a>
-                        </div>
-                            <!-- /.panel -->
-
-                    </div>
-                    <div class="col-lg-4">
-                        <!-- <h1 class="page-header">School Data</h1> -->
-                        <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    All Rows
-                                </div>
-                                <!-- /.panel-heading -->
-                                <div class="panel-body">
-                                                                  	    
-                                
-                                </div>
-                                <!-- /.panel-body -->
-                            </div>
-                        <div class="form-group">
-                            <a href="addevent.html" class="btn btn-primary btn-lg btn-block" role="button">Add Data</a>
                         </div>
                             <!-- /.panel -->
 

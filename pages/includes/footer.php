@@ -73,6 +73,9 @@
         $(function(){
             $("#to").datepicker({ dateFormat: 'yy-mm-dd' });
             $("#manifestdate").datepicker({ dateFormat: 'yy-mm-dd' });
+		   $("#addtripdate").datepicker({ dateFormat: 'yy-mm-dd' });
+            $("#fstartdate").datepicker({ dateFormat: 'yy-mm-dd' });
+            $("#fenddate").datepicker({ dateFormat: 'yy-mm-dd' });
             $("#from").datepicker({ dateFormat: 'yy-mm-dd' }).bind("change",function(){
                 var minValue = $(this).val();
                 minValue = $.datepicker.parseDate("yy-mm-dd", minValue);
