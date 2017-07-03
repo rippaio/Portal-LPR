@@ -782,18 +782,6 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
 
 //Change order
 
-// $('.ostatus').click(function(element){
-// 	var ele = element.target;
-// 	var par_ele = $(ele).parent();
-// 	if ($(ele).text() == "Active" ) {
-// 		$(par_ele).children().remove();
-// 		$(par_ele).append('<button type="button" class="btn btn-danger ostatus">Completed</button>');
-// 	}
-// 	else{
-// 		$(par_ele).children().remove();
-// 		$(par_ele).append('<button type="button" class="btn btn-success ostatus">Active</button>');
-// 	}
-// });
 
 function changestatus(a){
 		var ele = a;
@@ -813,6 +801,31 @@ function changestatus(a){
 	}
 
 }
+
+//Calendar
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,basicWeek,basicDay'
+            },
+
+            events: [
+            {
+                title: 'Event1',
+                start: '2017-07-01',
+                end: ''
+            },
+            {
+                title: 'Event2',
+                start: '2017-07-05'
+            }
+        ]
+
+
+
+        });
 
 function changestatus_ajax(oid,status){
 

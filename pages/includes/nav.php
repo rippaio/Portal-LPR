@@ -80,12 +80,12 @@
                                 <li>
                                     <a href="schooldata.php">Schools</a>
                                 </li>
-                                <!-- <li>
+                                <li>
                                     <a href="#">Rates</a>
                                 </li>
                                 <li>
                                     <a href="calendar.php">Calendar</a>
-                                </li> -->
+                                </li>
                                 <li>
                                     <a href="drivers.php">Drivers</a>
                                 </li>

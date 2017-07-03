@@ -45,32 +45,7 @@ include("./includes/nav.php");
 </div>
 
 
-<script type="text/javascript">
 
-    // page is now ready, initialize the calendar...
-
-    $('#calendar').fullCalendar({
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'month,basicWeek,basicDay'
-        },
-
-        events: [
-            {
-                title: 'Event1',
-                start: '2017-01-01'
-            },
-            {
-                title: 'Event2',
-                start: '2017-01-05'
-            }
-        ]
-
-
-
-    });
-</script>
 
 
 

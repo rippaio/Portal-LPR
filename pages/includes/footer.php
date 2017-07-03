@@ -3,8 +3,8 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <!-- <script src="../vendor/jquery/jquery.min.js"></script> -->
-    <script src="../vendor/jquery-1.12.4.js"></script>
+<!--     <script src="../vendor/jquery/jquery.min.js"></script> -->
+    <script src="../vendor/jquery-3.2.1.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -23,7 +23,9 @@
     <script type="text/javascript" src="../dist/js/bootstrapValidator.js"></script>
     <script src="./src/bootstrap-switch.js"></script>
 
-      
+    <script src="./src/moment.min.js"></script>
+    <script src="./src/fullcalendar.js"></script>
+
 
 
     <script src="../dist/js/functions.js"></script>
@@ -95,6 +97,8 @@
         // $( ".typeahead" ).autocomplete({
         //     source: aTags
         // });
+
+
 
         </script>
 

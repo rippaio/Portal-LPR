@@ -443,4 +443,15 @@ function changeorderstatus($o_id,$status){
 
 	}
 
+	//Calendar
+
+	function insert_event($title, $startdate, $enddate, $client_id){
+		global $connection;
+		$query = "INSERT INTO lpr_dates(title,startdate,enddate,client_id) VALUES ('$title', '$startdate', '$enddate', $client_id) ";
+		//error_log("Insert event\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		$result = mysqli_query($connection, $query);
+		
+		confirm_query($result);
+	}
+
 ?>
