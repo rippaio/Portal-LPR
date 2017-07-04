@@ -27,7 +27,7 @@ confirm_query($result_zone);
                         <!-- <h1 class="page-header">School Data</h1> -->
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Add Zones
+                                Zones
                             </div>
                             <!-- /.panel-heading -->
                             <div class="panel-body">
@@ -37,7 +37,6 @@ confirm_query($result_zone);
                                         <tr>
                                             <th>Zone</th>
                                             <th>Edit</th>
-                                            <th>Delete</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -47,9 +46,9 @@ confirm_query($result_zone);
                                             // output data from each row
                                             ?>
                                             <tr>
-                                                <td><?php echo $subject_zone["zone_loc"]; ?></td>
-                                                <td><a  id="editZone" data-zoneId="<?php echo $subject_zone['zone_id']; ?>  " data-zoneLoc="<?php echo $subject_zone["zone_loc"]; ?>" class="size2" style="color: #5cb85c;margin: auto;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                                                <td><span class="size2" style="color: red;margin: auto;"><i class="fa fa-times-circle" aria-hidden="true"></i></span></td>
+                                                <td headers="zone"><span><?php echo $subject_zone["zone_loc"]; ?></span></td>
+                                                <td><a href="#" onclick="editZone(event)" id="editZone"  class="size2" style="color: #5cb85c;margin: auto;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                                <input type="hidden" value="<?php echo $subject_zone['zone_id']; ?>" class="c_zoneId">
                                             </tr>
                                             <?php
                                         }
@@ -70,9 +69,9 @@ confirm_query($result_zone);
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                   <label for="zone_loc">Zone</label>
-                                    <input type="hidden" class="form-control" id="a_zoneid" value="" ><br>
-                                    <input type="text" class="form-control" id="zone_loc" value="" ><br>
+                                    <input type="text" class="form-control" id="zone_loc" value="" required><br>
                                     <button  class="btn btn-primary btn-block" id="zone_save">Save</button>
+                                    <input type="hidden" class="form-control" id="c_zoneId" value="" >
                                 </div>
                             </div>
                         </div>

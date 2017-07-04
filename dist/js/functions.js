@@ -1245,43 +1245,77 @@ function cash_modal(){
     alert('Data Updated Successfully');
 }
 
-$('#zone_save').on('click',function(){
-        var zone= $('#zone_loc').val();
-        var sdata = {};
-        sdata["zoneloc"] = zone;
-        $.ajax({
+$('#zone_save').on('click',function() {
+    var zone = $('#zone_loc').val();
+
+    if(zone==null ||  zone==""){
+    	alert("Please enter the Zone");
+    	return false;
+	}
+
+    var sdata = {};
+    sdata["zoneloc"] = zone;
+    toPerform=$('#zone_save').text();
+    if (toPerform=='Save') {
+      $.ajax({
+        url: 'ajax/zone_ajax.php',
+        type: 'post',
+        data: {myData: sdata},
+        success: function (data) {
+
+            location.reload();
+
+        },
+        error: function (xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+       }); // end ajax call
+    }
+
+    if (toPerform=='Update') {
+        var zoneid = $('#c_zoneId').val();
+        sdata["zoneid"] = zoneid;
+    	$.ajax({
             url: 'ajax/zone_ajax.php',
             type: 'post',
-            data: {myData:sdata},
-            success: function(data) {
+            data: {updateZone: sdata},
+            success: function (data) {
 
                 location.reload();
 
             },
-            error: function(xhr, desc, err) {
+            error: function (xhr, desc, err) {
                 console.log(xhr);
                 console.log("Details: " + desc + "\nError:" + err);
             }
         }); // end ajax call
+	}
 
-    }
+ }
 );
 
 
 $('#add_zone').on('click',function(){
+    $('#zone_save').text('Save');
+    $('#zone_loc') .val("");
+    $('#c_zoneId') .val("");
     $('#zone_toggle').toggle();
 
 });
 
-$('#editZone').on('click',function(){
-    $('#a_zoneid').text('Hi');
-    $('#zone_loc') .text('HI');
-    //         $('#zone_toggle').toggle();
-    //       console.log($(this).getAttribute('data-zoneId'));
-//        $('#a_zoneid').text($(this).data("zoneId"));
-//        $('#zone_loc') .text($(this).data("zoneLoc"));
+function editZone(event){
+    ele = event.target;
+    var id = $(ele).closest('td');
+    var zone = $(id).siblings("[headers='zone']").children('span:first').text();
+    var zoneid= $(id).parents('tr').find('.c_zoneId').val();
+    $('#zone_loc') .val(zone);
+    $('#c_zoneId').val(zoneid);
+    $('#zone_save').text('Update');
+    $('#zone_toggle').toggle();
 
-});
+
+}
 
 
 
@@ -1305,3 +1339,36 @@ function  add_rates(){
     }); // end ajax call
     location.reload();
 }
+
+
+$("[name='rate-checkbox']").bootstrapSwitch();
+$("[name='rate-checkbox']").on('switchChange.bootstrapSwitch', function (event, state) {
+    log(event.target+"with"+state);
+    ele = event.target;
+    var id = $(ele).closest('td');
+    var sdata = {};
+
+    if (state == false) {
+        var rate = $(id).siblings("[headers='rate']").children('span:first').text();
+        $(id).parents('tr').find('td').eq(2).replaceWith('<td class="col-xs-3" headers="rate"><input class="form-control rateValue" placeholder="'+rate+'" value="'+rate+'"></td>');
+    }
+
+    if (state == true){
+    	var rate= $(id).siblings("[headers='rate']").find('input').val()
+        $(id).parents('tr').find('td').eq(2).replaceWith('<td class="col-xs-3" headers="rate"><span>'+rate+'</span></td>');
+        sdata['rateid'] = $(id).siblings('input').data('rateid');
+        sdata['rate']=rate;
+        $.ajax({
+            url: 'ajax/rates_ajax.php',
+            type: 'post',
+            data: {r_ChangeData:sdata},
+            success: function(data) {
+            },
+            error: function(xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+            }
+            });
+    }
+
+});

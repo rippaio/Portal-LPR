@@ -3,10 +3,9 @@ include("./includes/db_connection.php");
 include("./includes/functions.php");
 ?>
 <?php
-$query_rate  = "SELECT lpr_zones.zone_id,amount,item,zone_loc FROM lpr_rates,lpr_zones where lpr_rates.zone_id=lpr_zones.zone_id order by zone_id  ";
+$query_rate  = "SELECT lpr_rates.rate_id,lpr_zones.zone_id,amount,item,zone_loc FROM lpr_rates left join lpr_zones on  lpr_rates.zone_id=lpr_zones.zone_id order by item desc";
 $result_rate = mysqli_query($connection, $query_rate);
 confirm_query($result_rate);
-
 $query_zone="select * from lpr_zones";
 $result_zone = mysqli_query($connection, $query_zone);
 confirm_query($result_zone);
@@ -19,7 +18,6 @@ include("./includes/nav.php");
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
-
             <!--Start Modal  -->
             <div class="modal fade" id="r_myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <form method="post" enctype="multipart/form-data">
@@ -31,7 +29,6 @@ include("./includes/nav.php");
                                 </button>
                                 <h4 class="modal-title" id="myModalLabel">Filters</h4>
                             </div>
-
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Zone</label>
@@ -48,7 +45,6 @@ include("./includes/nav.php");
                                         ?>
                                     </select>
                                 </div>
-
                                 <div class="form-group">
                                     <label>Item</label>
                                     <input class="form-control" placeholder="" name="r_items" id="r_items" value="wesfasd" type="text" required>
@@ -57,8 +53,6 @@ include("./includes/nav.php");
                                     <label>Amount</label>
                                     <input class="form-control" placeholder="" name="r_amount" id="r_amount" type="number" step="any" required>
                                 </div>
-
-
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -70,8 +64,7 @@ include("./includes/nav.php");
             </div>
             <!--End Modal  -->
 
-
-            <h1 class="page-header">Rates</h1>
+            <h1 class="page-header" style="padding-left:20px">Rates</h1>
             <div class="col-lg-12">
                 <!-- <h1 class="page-header">School Data</h1> -->
                 <div class="panel panel-default">
@@ -84,9 +77,10 @@ include("./includes/nav.php");
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Zone</th>
-                                    <th>item</th>
-                                    <th>amount</th>
+                                    <th class="col-xs-3">Zone</th>
+                                    <th class="col-xs-3">item</th>
+                                    <th class="col-xs-3">amount</th>
+                                    <th class="col-xs-3">Edit</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -96,9 +90,11 @@ include("./includes/nav.php");
                                     // output data from each row
                                     ?>
                                     <tr>
-                                        <td><?php echo $subject_rate["zone_loc"]; ?></td>
-                                        <td><?php echo $subject_rate["item"]; ?></td>
-                                        <td><?php echo $subject_rate["amount"]; ?></td>
+                                        <td class="col-xs-3"><?php echo $subject_rate["zone_loc"]; ?></td>
+                                        <td class="col-xs-3"><?php echo $subject_rate["item"]; ?></td>
+                                        <td class="col-xs-3"  headers ="rate"><span><?php echo $subject_rate["amount"]; ?></span></td>
+                                        <td class="col-xs-3"><input type="checkbox" name="rate-checkbox" data-on-text="Edit" data-off-text="Save" checked></td>
+                                        <input type="hidden" data-rateid="<?php echo $subject_rate['rate_id']; ?>">
                                     </tr>
                                     <?php
                                 }
@@ -111,9 +107,7 @@ include("./includes/nav.php");
                     </div>
                     <!-- /.panel-body -->
                 </div>
-                <div class="form-group">
-                    <button  class="btn btn-primary btn-lg btn-block " id="add_rates" data-toggle="modal" data-target="#r_myModal">Add Rates</button>
-                </div>
+
                 <!-- /.panel -->
 
 

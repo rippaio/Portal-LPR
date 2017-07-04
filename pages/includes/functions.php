@@ -99,7 +99,6 @@
 
 		$query_client  = "SELECT * FROM lpr_school WHERE school_id = $school_id" ;
 		$result_client = mysqli_query($connection, $query_client);
-		//error_log("Inside query\n" . $query_client , 3, "C:/xampp/apache/logs/error.log");
 		confirm_query($result_client);
 		if($result = mysqli_fetch_assoc($result_client)) {
 			return $result;
@@ -461,7 +460,7 @@ function changeorderstatus($o_id,$status){
 function  getDriverBill($driver_id,$start_date,$end_date){
     global $connection;
     $query = "(select triplog_date,o_payable,o_tip,CONCAT(s_lname,\" \",s_fname) s_name from lpr_triplog,lpr_order,lpr_student  WHERE
-     lpr_triplog.triplog_o_id=lpr_order.o_id and lpr_triplog.triplog_studentid=lpr_student.s_id and lpr_triplog.triplog_driver_id=$driver_id and triplog_date between '$start_date' and '$end_date' AND triplog_status in ('success'))
+     lpr_triplog.triplog_o_id=lpr_order.o_id and lpr_triplog.triplog_studentid=lpr_student.s_id and lpr_triplog.triplog_driver_id=$driver_id and triplog_date between '$start_date' and '$end_date' AND triplog_driver_payable in ('TRUE'))
     union
     (select ad_tripdate, ad_payable,ad_tip ,\"Additional Trip\" as s_name  from lpr_additnltrip where ad_driverid=$driver_id and ad_tripdate between '$start_date' and '$end_date')";
     error_log("\nDriver Billing query " . $query, 3, "C:/xampp/apache/logs/error.log");
@@ -492,8 +491,8 @@ function insert_additnlTrip($driverid,$ad_payable,$ad_tip,$ad_tripdate){
 function  getCashAdvance($driver_id,$start_date,$end_date){
     global $connection;
     $query="select coalesce(t1.debit,0)-coalesce(t2.credit,0) as cashAdvance from
-(SELECT sum(c_payable) as debit from lpr_cashadvance where c_driverid=$driver_id and c_type='debit' and c_date between '$start_date' and '$end_date')t1,
-(SELECT sum(c_payable) as credit from lpr_cashadvance where c_driverid=$driver_id and c_type='credit' and c_date between '$start_date' and '$end_date' )t2";
+(SELECT sum(c_payable) as debit from lpr_cashadvance where c_driverid=$driver_id and c_type='debit' )t1,
+(SELECT sum(c_payable) as credit from lpr_cashadvance where c_driverid=$driver_id and c_type='credit')t2";
     $result = mysqli_query($connection, $query);
     confirm_query($result);
     if($resultvalue = mysqli_fetch_assoc($result)) {
@@ -561,6 +560,21 @@ function insertRate($zoneid,$item,$amount){
     confirm_query($result);
 
 }
-	
+
+function updateRate($rateId,$rate){
+    global $connection;
+    $query  = "UPDATE lpr_rates SET ";
+    $query .= "amount =$rate WHERE rate_id = $rateId ";
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+}
+
+function updateZone($zone_loc,$zone_id){
+    global $connection;
+    $query  = "UPDATE lpr_zones SET ";
+    $query .= "zone_loc ='$zone_loc' WHERE zone_id = $zone_id ";
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+}
 	
 ?>
