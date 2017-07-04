@@ -447,11 +447,21 @@ function changeorderstatus($o_id,$status){
 
 	function insert_event($title, $startdate, $enddate, $client_id){
 		global $connection;
-		$query = "INSERT INTO lpr_dates(title,startdate,enddate,client_id) VALUES ('$title', '$startdate', '$enddate', $client_id) ";
-		//error_log("Insert event\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		$query = "INSERT INTO lpr_dates(title,startdate,enddate,client_id) VALUES ('$title', '$startdate', '$enddate', '$client_id') ";
+		error_log("Insert event\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result = mysqli_query($connection, $query);
 		
 		confirm_query($result);
+	}
+
+	function get_event(){
+		global $connection;
+		$query = "SELECT * FROM lpr_dates LEFT JOIN lpr_client ON lpr_dates.client_id LIKE lpr_client.client_id ";
+		error_log("Insert event\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		$result = mysqli_query($connection, $query);
+		
+		confirm_query($result);
+		return $result;
 	}
 
 ?>

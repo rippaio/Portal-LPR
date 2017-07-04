@@ -8,8 +8,8 @@ if(isset($_POST['addevent']))
     $title = $_POST['title'];
     $startdate = $_POST['startdate'];
     $enddate = $_POST['enddate'];
-    $client_id = (int)$_POST['ctypeSelect'];
-
+    $client_id = $_POST['ctypeSelect'];
+print_r("expression");
 insert_event($title, $startdate, $enddate, $client_id);
 }
 if(isset($_POST['updateclient']))
@@ -29,6 +29,7 @@ update_client($client_name, $client_abr, $client_street, $client_address, $clien
 } 
 $query_client  = "SELECT * FROM lpr_client";
 $result_client = mysqli_query($connection, $query_client);
+$result_client2 = mysqli_query($connection, $query_client);
 confirm_query($result_client);
 ?>
 <?php
@@ -45,7 +46,7 @@ include("./includes/nav.php");
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Add Event</h1>
-                        <form>
+                        <form method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Event Name</label>
                                 <input class="form-control" placeholder="Event Name" name="title">
@@ -55,6 +56,14 @@ include("./includes/nav.php");
                                 <label>Client</label>
                                     <select class="form-control" id="ctypeSelect" name="ctypeSelect" required>
                                     <?php
+                                    $client_ids = array();
+                                        while($subject_client = mysqli_fetch_assoc($result_client2)) {
+                                             array_push($client_ids, $subject_client["client_id"]);
+                                        }
+                                        // var_dump(trim(implode(', ', $client_ids)));
+                                        ?> 
+                                        <option value="<?php echo trim(implode(', ', $client_ids)); ?>">All Clients</option>
+                                        <?php
                                                 // 3. Use returned data (if any)
                                         while($subject_client = mysqli_fetch_assoc($result_client)) {
                                             // output data from each row
@@ -88,7 +97,7 @@ include("./includes/nav.php");
                     </div>
                     <!-- /.col-lg-12 -->
                     <div class="form-group">
-                            <a href="addevent.php" class="btn btn-primary btn-lg" name="addevent" role="button">Submit</a>
+                            <button type="submit" class="btn btn-primary btn-lg" name="addevent" role="button">Submit</button>
                     </div>
                     </form>
                 </div>

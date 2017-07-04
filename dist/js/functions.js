@@ -811,19 +811,13 @@ function changestatus(a){
                 right: 'month,basicWeek,basicDay'
             },
 
-            events: [
-            {
-                title: 'Event1',
-                start: '2017-07-01',
-                end: ''
-            },
-            {
-                title: 'Event2',
-                start: '2017-07-05'
+            events: {
+                url: 'ajax/calendar_ajax.php',
+                type: 'POST', // Send post data
+                error: function() {
+                    alert('There was an error while fetching events.');
+                }
             }
-        ]
-
-
 
         });
 
