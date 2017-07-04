@@ -81,7 +81,7 @@
                                     <a href="schooldata.php">Schools</a>
                                 </li>
                                 <li>
-                                    <a href="#">Rates</a>
+                                    <a href="rates.php">Rates</a>
                                 </li>
                                 <li>
                                     <a href="calendar.php">Calendar</a>

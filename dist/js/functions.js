@@ -1114,3 +1114,255 @@ $('.schools').click(function(){
 		  
 	  });
 });
+
+
+// Billing and rates
+
+$('#d_contractorsPay').change(function(){
+    var amount = $('#d_contractorsPay').val();
+    var payable=  +$('#d_payable').text();
+    var  total=   (amount*0.01)*payable;
+    $('#d_pay').text(total.toFixed(2));
+});
+
+function setDriverBill(){
+    var payable=  +$('#d_pay').text();
+    var tips=  +$('#d_tip').text();
+    var additions=  +$('#d_additions').val();
+    var pay=payable+tips+additions;
+    $('#d_contractorTotal').text(pay.toFixed(2));
+
+    var fueladvance = +$('.fuel_advance').val();
+    var tolls = +$('.d_tolls').val();
+    var lease = +$('.d_lease').text();
+    var cash_advance = +$('.cash_advance').val();
+    var others = +$('.d_others').val();
+    var totalSettlement=pay.toFixed(2)-(fueladvance+tolls+lease+cash_advance+others);
+    $('#d_finalCheck').text(totalSettlement.toFixed(2));
+
+}
+
+
+$('.d_leasepercentage').change(function(){
+    var leaspercntage = +$('.d_leasepercentage').val();
+    var bill=  +$('#d_payable').text();
+    var  payamount=   (bill*0.01)*leaspercntage;
+    $('.d_lease').text(payamount.toFixed(2));
+
+});
+
+function  printDriverBill(){
+    //    var divToPrint = document.getElementById('divToPrint');
+    var contractorName= $('#db_drivername').text();
+    var db_from=$('#db_from').val();
+    var db_to=$('#db_to').val();
+    var fueladvance = +$('.fuel_advance').val();
+    var tolls = +$('.d_tolls').val();
+    var lease = +$('.d_lease').text();
+    var cash_advance = +$('.cash_advance').val();
+    var others = +$('.d_others').val();
+    var totalDue= fueladvance+tolls+lease+cash_advance+others  ;
+
+
+    var todayTime = new Date();
+    var db_date= todayTime .getFullYear() + "-" + (todayTime .getMonth() + 1) + "-" + todayTime .getDate();
+
+    $('.db_contractor').text(contractorName);
+    $('.db_startdate').text(db_from);
+    $('.db_enddate').text(db_to);
+    $('.db_beforeDeductions').text(+$('#d_payable').text());
+    $('.db_contractorRate').text(+$('#d_contractorsPay').val());
+    $('.db_payable').text(+$('#d_pay').text());
+    $('.db_additionalFee').text(+$('#d_additions').val());
+    $('.db_tip').text(+$('#d_tip').text());
+    $('.db_totalBeforeDeductions').text(+$('#d_contractorTotal').text());
+    $('.db_fuelAdvance').text(+$('.fuel_advance').val());
+    $('.db_tollAdvance').text(+$('.d_tolls').val());
+    $('.db_leasePercentage').text(+$('.d_leasepercentage').val());
+    $('.db_lease').text(+$('.d_lease').text());
+    $('.db_commisionAdvance').text(+$('.cash_advance').val());
+    $('.db_other').text(+$('.d_others').val());
+    $('.db_totalDue').text(totalDue.toFixed(2));
+    $('.db_totalPayable').text(+$('#d_finalCheck').text());
+    $('.db_issuedDate').text(db_date);
+
+    window.print();
+
+}
+
+function printClientBill(){
+    // Date
+    var todayTime = new Date();
+    var cb_date= todayTime .getFullYear() + "-" + (todayTime .getMonth() + 1) + "-" + todayTime .getDate();
+    $('.cb_date').text(cb_date);
+
+    window.print();
+}
+
+
+function   updateCashAdvance() {
+    var cash_advance = +$('.cash_advance').val();
+    var driverid = $('#cashad_driverid').val();
+    var advance_initial = +$('#cashad_initial').val();
+    if (advance_initial - cash_advance >= 0){
+        updateCashAdvanceAjax(cash_advance, driverid);
+        $('.advance_result').text("Data Updated Sucessfully");
+    }else{
+        alert('Please check the Cash Advance Amount');
+    }
+
+
+}
+
+function  updateCashAdvanceAjax(cash_advance,driverid){
+    var sdata = {};
+    sdata["cashAdvance"] = cash_advance;
+    sdata["driver_id"] = driverid;
+    $.ajax({
+        url: 'ajax/driver_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            //log(data);
+            //location.reload();
+
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
+
+}
+
+function cash_modal(){
+    alert('Data Updated Successfully');
+}
+
+$('#zone_save').on('click',function() {
+    var zone = $('#zone_loc').val();
+
+    if(zone==null ||  zone==""){
+    	alert("Please enter the Zone");
+    	return false;
+	}
+
+    var sdata = {};
+    sdata["zoneloc"] = zone;
+    toPerform=$('#zone_save').text();
+    if (toPerform=='Save') {
+      $.ajax({
+        url: 'ajax/zone_ajax.php',
+        type: 'post',
+        data: {myData: sdata},
+        success: function (data) {
+
+            location.reload();
+
+        },
+        error: function (xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+       }); // end ajax call
+    }
+
+    if (toPerform=='Update') {
+        var zoneid = $('#c_zoneId').val();
+        sdata["zoneid"] = zoneid;
+    	$.ajax({
+            url: 'ajax/zone_ajax.php',
+            type: 'post',
+            data: {updateZone: sdata},
+            success: function (data) {
+
+                location.reload();
+
+            },
+            error: function (xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+            }
+        }); // end ajax call
+	}
+
+ }
+);
+
+
+$('#add_zone').on('click',function(){
+    $('#zone_save').text('Save');
+    $('#zone_loc') .val("");
+    $('#c_zoneId') .val("");
+    $('#zone_toggle').toggle();
+
+});
+
+function editZone(event){
+    ele = event.target;
+    var id = $(ele).closest('td');
+    var zone = $(id).siblings("[headers='zone']").children('span:first').text();
+    var zoneid= $(id).parents('tr').find('.c_zoneId').val();
+    $('#zone_loc') .val(zone);
+    $('#c_zoneId').val(zoneid);
+    $('#zone_save').text('Update');
+    $('#zone_toggle').toggle();
+
+
+}
+
+
+
+function  add_rates(){
+    var sdata = {};
+    sdata["zone"] = $('#r_zones').val();
+    sdata["item"]=$('#r_items').val();
+    sdata["amount"] =$('#r_amount').val()
+    $.ajax({
+        url: 'ajax/rates_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            //log(data);
+
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
+    location.reload();
+}
+
+
+$("[name='rate-checkbox']").bootstrapSwitch();
+$("[name='rate-checkbox']").on('switchChange.bootstrapSwitch', function (event, state) {
+    log(event.target+"with"+state);
+    ele = event.target;
+    var id = $(ele).closest('td');
+    var sdata = {};
+
+    if (state == false) {
+        var rate = $(id).siblings("[headers='rate']").children('span:first').text();
+        $(id).parents('tr').find('td').eq(2).replaceWith('<td class="col-xs-3" headers="rate"><input class="form-control rateValue" placeholder="'+rate+'" value="'+rate+'"></td>');
+    }
+
+    if (state == true){
+    	var rate= $(id).siblings("[headers='rate']").find('input').val()
+        $(id).parents('tr').find('td').eq(2).replaceWith('<td class="col-xs-3" headers="rate"><span>'+rate+'</span></td>');
+        sdata['rateid'] = $(id).siblings('input').data('rateid');
+        sdata['rate']=rate;
+        $.ajax({
+            url: 'ajax/rates_ajax.php',
+            type: 'post',
+            data: {r_ChangeData:sdata},
+            success: function(data) {
+            },
+            error: function(xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+            }
+            });
+    }
+
+});

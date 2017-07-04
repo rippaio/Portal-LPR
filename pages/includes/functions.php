@@ -99,7 +99,6 @@
 
 		$query_client  = "SELECT * FROM lpr_school WHERE school_id = $school_id" ;
 		$result_client = mysqli_query($connection, $query_client);
-		//error_log("Inside query\n" . $query_client , 3, "C:/xampp/apache/logs/error.log");
 		confirm_query($result_client);
 		if($result = mysqli_fetch_assoc($result_client)) {
 			return $result;
@@ -464,4 +463,129 @@ function changeorderstatus($o_id,$status){
 		return $result;
 	}
 
+
+	// Driver Billing rates and client billing
+
+
+
+function  getDriverBill($driver_id,$start_date,$end_date){
+    global $connection;
+    $query = "(select triplog_date,o_payable,o_tip,CONCAT(s_lname,\" \",s_fname) s_name from lpr_triplog,lpr_order,lpr_student  WHERE
+     lpr_triplog.triplog_o_id=lpr_order.o_id and lpr_triplog.triplog_studentid=lpr_student.s_id and lpr_triplog.triplog_driver_id=$driver_id and triplog_date between '$start_date' and '$end_date' AND triplog_driver_payable in ('TRUE'))
+    union
+    (select ad_tripdate, ad_payable,ad_tip ,\"Additional Trip\" as s_name  from lpr_additnltrip where ad_driverid=$driver_id and ad_tripdate between '$start_date' and '$end_date')";
+    error_log("\nDriver Billing query " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_bill = mysqli_query($connection, $query);
+    confirm_query($result_bill);
+    return $result_bill;
+
+//    select triplog_date,o_payable,o_tip,CONCAT(s_lname,\" \",s_fname) s_name from lpr_triplog,lpr_order,lpr_student  WHERE
+//lpr_triplog.triplog_o_id=lpr_order.o_id and lpr_triplog.triplog_studentid=lpr_student.s_id and lpr_triplog.triplog_driver_id=$driver_id and triplog_date between '$start_date' and '$end_date' AND triplog_status in ('success')
+}
+
+function insertCashAdvance($driver_id,$cash_advance,$type){
+    global $connection;
+    $query= "INSERT INTO lpr_cashadvance(`c_driverid`, `c_payable`, `c_Date`, `c_type`) VALUES ($driver_id,$cash_advance,CURRENT_DATE,'$type')";
+    error_log("\ninsert Driver cash Advance  " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+}
+
+function insert_additnlTrip($driverid,$ad_payable,$ad_tip,$ad_tripdate){
+    global $connection;
+    $query= "INSERT INTO lpr_additnltrip (ad_driverid, ad_payable, ad_tip, ad_tripdate) VALUES ($driverid,$ad_payable,$ad_tip,'$ad_tripdate')";
+    error_log("\ninsert Driver additnal trip  " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+}
+
+function  getCashAdvance($driver_id,$start_date,$end_date){
+    global $connection;
+    $query="select coalesce(t1.debit,0)-coalesce(t2.credit,0) as cashAdvance from
+(SELECT sum(c_payable) as debit from lpr_cashadvance where c_driverid=$driver_id and c_type='debit' )t1,
+(SELECT sum(c_payable) as credit from lpr_cashadvance where c_driverid=$driver_id and c_type='credit')t2";
+    $result = mysqli_query($connection, $query);
+    confirm_query($result);
+    if($resultvalue = mysqli_fetch_assoc($result)) {
+        return $resultvalue;
+    } else {
+        return 0;
+    }
+
+}
+
+function getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate){
+    global $connection;
+    $query="SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,o_billable,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school
+ WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and
+ triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate'";
+    if(!empty($cb_stypeSelect)){
+        $query .=" and school_type='$cb_stypeSelect'";
+    }
+    if(!empty($cb_sSelect)){
+        $query .=" and lpr_school.school_id=$cb_sSelect";
+    }
+    if(!empty($cb_sname)){
+        $query .=" and s_fname='$cb_sname'";
+    }
+    $result = mysqli_query($connection, $query);
+    error_log("\nClient Billing Query " . $query, 3, "C:/xampp/apache/logs/error.log");
+    confirm_query($result);
+    return $result;
+}
+
+function getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate){
+    global $connection;
+    $query="select count(triplog_o_id) as tripcount ,sum(o_billable)as totalbillable,client_name,client_street,client_address,client_city,client_state,client_zip from (SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,o_billable,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,client_street,client_address,client_city,client_state,client_zip,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school
+ WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and
+ triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate'";
+    if(!empty($cb_stypeSelect)){
+        $query .=" and school_type='$cb_stypeSelect'";
+    }
+    if(!empty($cb_sSelect)){
+        $query .=" and lpr_school.school_id=$cb_sSelect";
+    }
+    if(!empty($cb_sname)){
+        $query .=" and s_fname='$cb_sname'";
+    }
+    $query.=")t1";
+    $result = mysqli_query($connection, $query);
+    error_log("\nClient Billing Payment Query " . $query, 3, "C:/xampp/apache/logs/error.log");
+    confirm_query($result);
+    return $result;
+}
+
+function addZone($zone_loc){
+    global $connection;
+    $query= "INSERT INTO lpr_zones(zone_loc) VALUES ('$zone_loc')";
+    error_log("\ninsert Zones " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result = mysqli_query($connection, $query);
+    confirm_query($result);
+}
+
+function insertRate($zoneid,$item,$amount){
+    global $connection;
+    $query= "INSERT INTO lpr_rates( zone_id, amount, item) VALUES ($zoneid,$amount,'$item')";
+    error_log("\ninsert rates " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result = mysqli_query($connection, $query);
+    confirm_query($result);
+
+}
+
+function updateRate($rateId,$rate){
+    global $connection;
+    $query  = "UPDATE lpr_rates SET ";
+    $query .= "amount =$rate WHERE rate_id = $rateId ";
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+}
+
+function updateZone($zone_loc,$zone_id){
+    global $connection;
+    $query  = "UPDATE lpr_zones SET ";
+    $query .= "zone_loc ='$zone_loc' WHERE zone_id = $zone_id ";
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+}
+	
 ?>

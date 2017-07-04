@@ -2,33 +2,273 @@
 include("./includes/db_connection.php");
 include("./includes/functions.php");
 ?>
+
+<?php
+$query_client  = "SELECT * FROM lpr_client";
+$result_client = mysqli_query($connection, $query_client);
+$totaltrips="";
+$totalpayable="";
+confirm_query($result_client);
+?>
+<?php
+//error_log("\nStudent Billing Query " . $_GET['cd_ctypeSelect'], 3, "C:/xampp/apache/logs/error.log");
+//var_dump(isset($_POST['cb_ctypeSelect']));
+if(isset($_POST['cb_ctypeSelect'])) {
+$cb_client=$_POST['cb_ctypeSelect'];
+$cb_stypeSelect=$_POST['cb_stypeSelect'];
+$cb_sSelect=$_POST['cb_sSelect'];
+$cb_startdate=$_POST['cb_startdate'];
+$cb_enddate=$_POST['cb_enddate'];
+$cb_sname=$_POST['cb_sname'];
+
+$cb_details= getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
+$cb_forPrint=getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
+$cb_payment=getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
+while ($c_pay = mysqli_fetch_assoc($cb_payment)) {
+    $totaltrips = $c_pay['tripcount'];
+    $totalpayable =$c_pay['totalbillable'];
+    $client_name=$c_pay['client_name'];
+    $client_street=$c_pay['client_street'];
+    $client_address=$c_pay['client_address'];
+    $client_city=$c_pay['client_city'];
+    $client_state=$c_pay['client_state'];
+    $client_zip=$c_pay['client_zip'];
+}
+}
+?>
 <?php
 include("./includes/htmlheader.php");
 include("./includes/nav.php");
 ?>
 
+<style type="text/css">
+    ul.ui-autocomplete {
+        z-index: 1100;
+    }
+    .ui-datepicker { position: relative; z-index: 10000 !important; }
+
+    .toprint
+    { display: none; }
+
+    /*.table-fixed thead {*/
+        /*width: 97%;*/
+    /*}*/
+    /*.table-fixed tbody {*/
+        /*height: 200px;*/
+        /*overflow-y: auto;*/
+        /*width: 100%;*/
+    /*}*/
+    /*.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {*/
+        /*display: block;*/
+    /*}*/
+    /*.table-fixed tbody td, .table-fixed thead > tr> th {*/
+        /*float: left;*/
+        /*border-bottom-width: 0;*/
+    /*}*/
+
+
+</style>
+
+<style type="text/css" media="print">
+
+    .dontprint
+    { display: none; }
+    .toprint
+    { display: inline;  }
+    .to4Columns {
+        -webkit-column-count: 4; /* Chrome, Safari, Opera */
+        -moz-column-count: 4; /* Firefox */
+        column-count: 4;
+
+    }
+    .to3Columns {
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+        -webkit-column-fill: balance; /* Chrome, Safari, Opera */
+        -moz-column-fill: balance; /* Firefox */
+        column-fill: balance;
+    }
+    .to2Columns {
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
+    }
+
+
+    .gap {
+        -webkit-column-gap: 10px; /* Chrome, Safari, Opera */
+        -moz-column-gap: 10px; /* Firefox */
+        column-gap: 10px;
+    }
+    .gap2 {
+        -webkit-column-gap: 30px; /* Chrome, Safari, Opera */
+        -moz-column-gap: 30px; /* Firefox */
+        column-gap: 30px;
+    }
+    @page {
+        size: auto;   /* auto is the initial value */
+        margin:0;
+
+    /* this affects the margin in the printer settings */
+    }
+
+    /*body { margin: 20mm 25mm 20mm 25mm; }*/
+
+    table { page-break-inside:auto }
+    tr    { page-break-inside:avoid; page-break-after:auto }
+    thead { display:table-header-group }
+    tfoot { display:table-footer-group }
+    /*.print:last-child {*/
+        /*page-break-after: auto;*/
+    /*}*/
+
+    table, th, td {
+        border: 1px solid black;
+    }
 
 
 
-<div id="page-wrapper">
+
+</style>
+
+<?php
+if(isset($_POST['cb_ctypeSelect'])) {
+?>
+<div class="toprint" style="padding-left: 100px">
+    <div id="page-wrapper">
+        <br><br>
+        <div class="container-fluid">
+            <div class="to2Columns" >
+                <div style="page-break-inside:avoid;">
+                         <b>LPR Ground Transportation</b><br>
+                         <b> 3455 Azalea Garden Rd<br>
+                             VA 23513
+                         </b>
+                </div>
+
+                <div style="page-break-inside:avoid;padding-top: 5px;float: right">
+                    <b>
+                        <span style="padding-left:40px">INVOICE
+                        </span>
+                    </b>
+                 <table>
+                 <thead>
+                      <tr style="width: 100px">
+                          <th style="width:10px;padding-left:20px" > <span>Date</span></th>
+                          <th style="width:10px;padding-left:10px;padding-right:20px"> <span >Invoice</span></th>
+                      </tr>
+                 </thead>
+                  <tbody>
+                      <tr>
+                          <td style="width:100px;padding-left:10px;padding-right:20px"> <span class="cb_date">_______</span></td>
+                          <td style="width:100px;padding-left:10px;padding-right:20px"><span>______  <span></td>
+                      </tr>
+                  </tbody>
+                 </table>
+                </div>
+
+            </div>
+            <br><br>
+            <div>
+                <table width="400">
+                    <thead>
+                    <tr>
+                        <th style="padding-left:20px;text-align: center"> <span>Bill T0</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td style="padding-left:10px;padding-right:20px">
+                            <span class="cb_client"><?php echo $client_name; ?></span><br>
+                            <span><?php echo $client_address; ?></span>
+                            <span><?php echo $client_street; ?></span><br>
+                            <span><?php echo $client_city; ?>,</span>
+                            <span><?php echo $client_state; ?>,</span>
+                            <span><?php echo $client_zip; ?></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <br><br>
+            <div>
+                <table >
+<!--                    <col width="400">-->
+<!--                    <col width="200">-->
+                    <thead>
+                    <tr>
+                        <th style="padding-left:20px;text-align: center" class="col-xs-8"> <span>Description</span></th>
+                        <th style="padding-left:20px;text-align: center" class="col-xs-4"> <span>Amount</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    // Use returned data (if any)
+                    // Use returned data (if any)
+                    while ($cbill = mysqli_fetch_assoc($cb_forPrint)) {
+
+                        $originalDate = $cbill['triplog_date'];
+                        $newDate = date("F j, Y", strtotime($originalDate));
+                    ?>
+
+                    <tr>
+                        <td style="padding-left:10px;padding-right:20px" class="col-xs-8">
+                            <span><?php echo $newDate; ?>-</span>
+                            <span><?php echo $cbill["s_name"]; ?></span>
+                            <span><?php echo $cbill["pickloc"]; ?>&nbsp;&nbsp; to</span>
+                            <span><?php echo  $cbill["droploc"];?></span>
+                        </td>
+                        <td style="padding-left:10px;padding-right:20px" class="col-xs-4">
+                            <span><?php echo $cbill["o_billable"]; ?></span>
+
+
+                        </td>
+                    </tr>
+
+
+                    <?php }?>
+                    <tr style="height:40px">
+                        <td style="padding-left:20px"> It's been pleasure working with you!</td>
+                        <td style="padding-left:20px">Total:<span> &nbsp;&nbsp;<?php echo $totalpayable; ?> </span></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+<?php
+}
+?>
+
+
+<div id="page-wrapper" class="dontprint">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Client Billing</h1>
                 <div class="btn-group form-group">
 
-                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#cb_myModal">
                         Filters
                     </button>
 
 
-                    <button type="button" class="btn btn-primary btn-lg">
+                    <button type="button" class="btn btn-primary btn-lg" onclick="printClientBill();">
                         Print
                     </button>
 
                 </div>
                 <!--Start Modal  -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal fade" id="cb_myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <form method="post" enctype="multipart/form-data" action="studentbilling.php">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -41,62 +281,58 @@ include("./includes/nav.php");
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Client</label>
-                                    <select class="form-control">
-                                        <option>Norfolk Public Schools (NPS)</option>
-                                        <option>Norfolk Public Schools Special Education (NSPED)</option>
-                                        <option>Norfolk Department of Human Services (NDHS)</option>
-                                        <option>Portsmouth Public Schools (PPS)</option>
-                                        <option>Portsmouth Public Schools Special Education (PSPED)</option>
-                                        <option>Chesapeake Public Schools (CPS)</option>
-                                        <option>Chesapeake Public Schools Special Education (CSPED)</option>
-                                        <option>Hampton Public Schools (HPS)</option>
-                                        <option>Suffolk Public Schools (SPS)</option>
-                                        <option>Isle of Wight Public Schools (IWPS)</option>
-                                        <option>Southampton County Public Schools (SCPS)</option>
+                                    <select class="form-control" id="ctypeSelect" name="cb_ctypeSelect" required>
+                                        <option value="">Select</option>
+                                        <?php
+                                        // 3. Use returned data (if any)
+                                        while($subject_client = mysqli_fetch_assoc($result_client)) {
+                                            // output data from each row
+                                            ?>
+                                            <option data-zone_id="<?php echo $subject_client["zone_id"]; ?>" value="<?php echo $subject_client["client_id"]; ?>"><?php echo $subject_client["client_name"]; ?></option>
+                                            <?php
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>School-Type</label>
-                                    <select class="form-control">
-                                        <option>All</option>
-                                        <option>Elementary School</option>
-                                        <option>Middle School</option>
-                                        <option>High School</option>
-                                        <option>Other</option>
+                                    <select class="form-control" id="stypeSelect" name="cb_stypeSelect">
+                                        <option value="">Select</option>
+                                        <option>Elementary</option>
+                                        <option>Preschool</option>
+                                        <option>Middle</option>
+                                        <option>High</option>
+                                        <option>Special</option>
+                                        <option>Alternative</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>School-Name</label>
-                                    <select class="form-control">
-                                        <option>NPS</option>
-                                        <option>Chesapeake</option>
-                                        <option>School-3</option>
-                                        <option>School-4</option>
-                                        <option>School-5</option>
+                                    <select class="form-control" id="sSelect" name="cb_sSelect">
+                                        <option value="">Select</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Student</label>
-                                    <input class="form-control typeahead" placeholder="">
+                                    <input class="form-control typeahead" placeholder="" name="cb_sname">
                                 </div>
 
                                 <label>Start Date</label>
-                                <div class="input-group date">
-
-                                    <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                <div class="input-group">
+                                    <input type="text" name="cb_startdate" class="form-control date" id="from" required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                 </div>
                                 <label>End Date</label>
-                                <div class="input-group date">
-
-                                    <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                                <div class="input-group">
+                                    <input type="text" name="cb_enddate" class="form-control date" id="to" required><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <!--End Modal  -->
                 <div class="panel panel-default">
@@ -105,74 +341,38 @@ include("./includes/nav.php");
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                        <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-fixed">
                                 <thead>
                                 <tr>
-                                    <th>Date</th>
-                                    <th>Student Name</th>
-                                    <th>Driver Name</th>
-                                    <th>Pick Up Time</th>
-                                    <th>Pick Up Loc</th>
-                                    <th>Drop off Loc</th>
-                                    <th>Rate</th>
-                                    <th>Amount</th>
+                                    <th  class="col-xs-1">Date</th>
+                                    <th  class="col-xs-2">Student Name</th>
+                                    <th  class="col-xs-2">Driver Name</th>
+                                    <th  class="col-xs-2">Pick Up Time</th>
+                                    <th class="col-xs-2">Pick Up Loc</th>
+                                    <th  class="col-xs-2">Drop off Loc</th>
+                                    <th  class="col-xs-1">Amount</th>
                                 </tr>
+
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>08/07/2016</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>9:30 AM</td>
-                                    <td>1049 2nd Street</td>
-                                    <td>DCH</td>
-                                    <td>0</td>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <td>08/07/2016</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>9:30 AM</td>
-                                    <td>1049 2nd Street</td>
-                                    <td>DCH</td>
-                                    <td>0</td>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <td>08/07/2016</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>9:30 AM</td>
-                                    <td>1049 2nd Street</td>
-                                    <td>DCH</td>
-                                    <td>0</td>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <td>08/07/2016</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>9:30 AM</td>
-                                    <td>1049 2nd Street</td>
-                                    <td>DCH</td>
-                                    <td>0</td>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <td>08/07/2016</td>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>9:30 AM</td>
-                                    <td>1049 2nd Street</td>
-                                    <td>DCH</td>
-                                    <td>0</td>
-                                    <td>3</td>
-                                </tr>
+                                <?php
+                                // Use returned data (if any)
+                                if(isset($_POST['cb_ctypeSelect'])) {
+                                    // Use returned data (if any)
+                                    while ($cbill = mysqli_fetch_assoc($cb_details)) {
+                                        ?>
+                               <tr>
+                                <td class="col-xs-1"><?php echo $cbill["triplog_date"]; ?></td>
+                                <td class="col-xs-2"><?php echo $cbill["s_name"]; ?></td>
+                                <td class="col-xs-2"><?php echo $cbill["d_name"]; ?></td>
+                                <td class="col-xs-2"><?php echo $cbill["triplog_time"]; ?></td>
+                                <td class="col-xs-2"><?php echo $cbill["pickloc"]; ?></td>
+                                <td class="col-xs-2"><?php echo $cbill["droploc"]; ?></td>
+                                <td class="col-xs-1"><?php echo $cbill["o_billable"]; ?></td>
+                               </tr>
+                              <?php }  } ?>
                                 </tbody>
                             </table>
-                        </div>
                         <!-- /.table-responsive -->
                     </div>
                     <!-- /.panel-body -->
@@ -183,7 +383,7 @@ include("./includes/nav.php");
 
                     <div class="form-group">
                         <label>Total Trips</label>
-                        <input class="form-control" placeholder="450">
+                        <input class="form-control"  value="<?php echo $totaltrips; ?>">
                         <p class="help-block"></p>
                     </div>
                     <!-- <div class="form-group">
@@ -205,7 +405,7 @@ include("./includes/nav.php");
                     </div> -->
                     <div class="form-group">
                         <label>Total Payable</label>
-                        <input class="form-control" placeholder="007">
+                        <input class="form-control" value="<?php echo $totalpayable; ?>">
                     </div>
 
                 </div>
@@ -221,7 +421,6 @@ include("./includes/nav.php");
     </div>
     <!-- /.container-fluid -->
 </div>
-
 
 
 
