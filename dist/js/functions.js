@@ -336,7 +336,7 @@ function matchsum(billsplit,billsplitvalue,bill,id) {
 
 	for (i=0; i < billsplitvalue.length; i++) {
 		if (parseInt(billsplitvalue[i]) > 0) { 
-			amount = amount + parseInt(billsplitvalue[i]);
+			amount = amount + parseFloat(billsplitvalue[i]);
 		}
 	}
     

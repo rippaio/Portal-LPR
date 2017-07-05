@@ -195,7 +195,7 @@
 			if ((int)$billsplitvalue[$i] > 0) {
 			 
 			$client_id = (int)$billsplit[$j];
-			$amount = (int)$billsplitvalue[$i];
+			$amount = (float)$billsplitvalue[$i];
 			$query = "INSERT INTO lpr_billing(o_id, client_id, amount) VALUES ($o_id,$client_id,$amount) ";
 			error_log("Insert bill\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 			$result = mysqli_query($connection, $query);
@@ -414,13 +414,20 @@ function changeorderstatus($o_id,$status){
 	function updatetbill_outzone($o_id,$billsplit,$billsplitvalue)
 	{
 		global $connection;
+
+		$query_del = "DELETE FROM `lpr_billing` WHERE o_id = $o_id";
+		error_log("Insert bill\n" . $query_del , 3, "C:/xampp/apache/logs/error.log");
+		$result_del = mysqli_query($connection, $query_del);
+		
+		confirm_query($result_del);
+
 		$j = 0;
 		for ($i=0; $i < sizeof($billsplitvalue); $i++) {
 			if ((int)$billsplitvalue[$i] > 0) {
 			 
 			$client_id = (int)$billsplit[$j];
-			$amount = (int)$billsplitvalue[$i];
-			$query = "UPDATE lpr_billing SET client_id=$client_id, amount=$amount WHERE o_id = $o_id";
+			$amount = (float)$billsplitvalue[$i];
+			$query = "INSERT INTO lpr_billing(o_id, client_id, amount) VALUES ($o_id,$client_id,$amount)" ;
 			error_log("Insert bill\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 			$result = mysqli_query($connection, $query);
 			
