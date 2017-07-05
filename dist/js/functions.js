@@ -340,7 +340,7 @@ function matchsum(billsplit,billsplitvalue,bill,id) {
 		}
 	}
     
-	if(amount == parseInt(bill)){
+	if(amount == parseFloat(bill)){
 		$( '#'+id ).parent().siblings('.help-block').html("");
 	return true;
 	}
@@ -352,7 +352,7 @@ function matchsum(billsplit,billsplitvalue,bill,id) {
 
 function matchtotal(bill,payable,id) {
 
-	if(parseInt(payable) > parseInt(bill)){
+	if(parseFloat(payable) > parseFloat(bill)){
 		$( 'input[name='+id+']').parent().siblings('.help-block').html("More than billed amount");
 		return false;
 	}
@@ -1475,7 +1475,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#elementary .elemList li').remove();
                     for (i = 0; i < schoolObjForElementary.length; i++) {
-                        $('#elementary .elemList').append('<li class="list-group-item"><p class="elemItem">' + schoolObjForElementary[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#elementary .elemList').append('<li class="list-group-item"><p class="elemItem">' + schoolObjForElementary[i].school_name + '</p></li>')
                     }
                 }
 
@@ -1503,7 +1503,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#middle .middleList li').remove();
                     for (i = 0; i < schoolObjForMiddle.length; i++) {
-                        $('#middle .middleList').append('<li class="list-group-item"><p class="middleItem">' + schoolObjForMiddle[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#middle .middleList').append('<li class="list-group-item"><p class="middleItem">' + schoolObjForMiddle[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1531,7 +1531,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#high .highList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#high .highList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#high .highList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1559,7 +1559,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#alternative .alternativeList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#alternative .alternativeList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#alternative .alternativeList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1589,7 +1589,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#preschool .preschoolList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#preschool .preschoolList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#preschool .preschoolList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1619,7 +1619,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#special .specialList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#special .specialList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#special .specialList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1650,7 +1650,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#pilot .pilotList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#pilot .pilotList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#pilot .pilotList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);

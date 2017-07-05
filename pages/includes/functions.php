@@ -625,5 +625,15 @@ function dr_changestatus($d_id,$status){
 
 }
 
+function inserNewSchool($sc_name,$sc_ctype,$sc_abr,$sc_cnumber,$sc_cname,$sc_stype,$sc_steet,$sc_addr,$sc_city,$sc_state,$sc_zip,$sc_country){
+    global $connection;
+    $query ="INSERT INTO lpr_school(`client_id`, `school_name`, `school_abr`, `school_street`, `school_address`, `school_city`, `school_state`, `school_zip`, `school_country`, `school_contact_name`, `school_contact_no`, `school_type`) 
+             VALUES ($sc_ctype,'$sc_name','$sc_abr','$sc_steet','$sc_addr','$sc_city','$sc_state',$sc_zip,'$sc_country','$sc_cname','$sc_cnumber','$sc_stype')";
+    $result_id = mysqli_query($connection, $query);
+//        //echo $query;
+//        //error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+    confirm_query($result_id);
+    redirect_to("schooldata.php");
+}
 
 ?>
