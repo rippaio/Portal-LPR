@@ -949,14 +949,6 @@ $(document).ready(function() {
                                 message: 'Please Enter numbers'
                             },
                         }
-                    },
-                    dlnumber: {
-                        validators: {
-                            regexp: {
-                                regexp: /^[0-9]*$/,
-                                message: 'Please Enter numbers'
-                            },
-                        }
                     }
 //                    commision: {
 //                        validators: {
@@ -995,131 +987,131 @@ $( function() {
 	
   } );
 
-var firstClicked = false;
-
-$('.schools').click(function(){
-		if(!firstClicked){
-			firstClicked = true;
-			/******** Elementary School Data **********/
-			var sdata = {};
-			sdata['mode'] = "typedropdown";
-			sdata['client_id'] = $('.schools').attr('value');
-			sdata['school_type'] = "elementary";
-			
-			//ajax call to find schools data according to the client
-			$.ajax({
-				url: 'ajax/neworder_ajax.php',
-				type: 'post',
-				data: {myData:sdata},
-				success: function(data) {
-					var schoolObjForElementary = $.parseJSON(data);
-
-					if(firstClicked){
-						 $('#elementary .elemList li').remove();
-						for (i = 0; i < schoolObjForElementary.length; i++){
-							$('#elementary .elemList').append('<li class="list-group-item"><p class="elemItem">'+schoolObjForElementary[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
-						}
-					}
-
-				  
-				},
-				error: function(xhr, desc, err) {
-				  console.log(xhr);
-				  console.log("Details: " + desc + "\nError:" + err);
-				}
-			  }); // end ajax call
-			  
-			  /******** Middle School Data **********/
-			var sdata = {};
-			sdata['mode'] = "typedropdown";
-			sdata['client_id'] = $('.schools').attr('value');
-			sdata['school_type'] = "middle";
-			//ajax call to find schools data according to the client
-			$.ajax({
-				url: 'ajax/neworder_ajax.php',
-				type: 'post',
-				data: {myData:sdata},
-				success: function(data) {
-					//console.log(data);
-					var schoolObjForMiddle = $.parseJSON(data);
-					if(firstClicked){
-						for (i = 0; i < schoolObjForMiddle.length; i++){
-							$('#middle .middleList').append('<li class="list-group-item"><p class="middleItem">'+schoolObjForMiddle[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
-						}
-					}
-					//console.log(schoolObjForElementary);
-				  
-				},
-				error: function(xhr, desc, err) {
-				  console.log(xhr);
-				  console.log("Details: " + desc + "\nError:" + err);
-				}
-			  }); // end ajax call
-			  
-			   /******** High School Data **********/
-			var sdata = {};
-			sdata['mode'] = "typedropdown";
-			sdata['client_id'] = $('.schools').attr('value');
-			sdata['school_type'] = "high";
-			//ajax call to find schools data according to the client
-			$.ajax({
-				url: 'ajax/neworder_ajax.php',
-				type: 'post',
-				data: {myData:sdata},
-				success: function(data) {
-					//console.log(data);
-					var schoolObjForHigh = $.parseJSON(data);
-					if(firstClicked){
-						for (i = 0; i < schoolObjForHigh.length; i++){
-							$('#high .highList').append('<li class="list-group-item"><p class="highItem">'+schoolObjForHigh[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
-						}
-					}
-					//console.log(schoolObjForElementary);
-				  
-				},
-				error: function(xhr, desc, err) {
-				  console.log(xhr);
-				  console.log("Details: " + desc + "\nError:" + err);
-				}
-			  }); // end ajax call
-			  
-			  /******** Other School Data **********/
-			var sdata = {};
-			sdata['mode'] = "typedropdown";
-			sdata['client_id'] = $('.schools').attr('value');
-			sdata['school_type'] = "other";
-			//ajax call to find schools data according to the client
-			$.ajax({
-				url: 'ajax/neworder_ajax.php',
-				type: 'post',
-				data: {myData:sdata},
-				success: function(data) {
-					var schoolObjForOther = $.parseJSON(data);
-					if(schoolObjForOther.length != 0){	
-						if(firstClicked){
-							for (i = 0; i < schoolObjForOther.length; i++){
-								$('#other .otherList').append('<li class="list-group-item"><p class="otherItem">'+schoolObjForOther[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;" ><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
-							}
-						}
-					}else{
-						$("#accordion").find('h3').filter(':contains(Other)').hide();
-						$( ".other" ).hide();
-					}
-				},
-				error: function(xhr, desc, err) {
-				  console.log(xhr);
-				  console.log("Details: " + desc + "\nError:" + err);
-				}
-			  }); // end ajax call
-			  
-			  
-	}
-	
-	  $( ".elementary" ).button().on( "click", function() {
-		  
-		  
-	  });
-});
+// var firstClicked = false;
+//
+// $('.schools').click(function(){
+// 		if(!firstClicked){
+// 			firstClicked = true;
+// 			/******** Elementary School Data **********/
+// 			var sdata = {};
+// 			sdata['mode'] = "typedropdown";
+// 			sdata['client_id'] = $('.schools').attr('value');
+// 			sdata['school_type'] = "elementary";
+//
+// 			//ajax call to find schools data according to the client
+// 			$.ajax({
+// 				url: 'ajax/neworder_ajax.php',
+// 				type: 'post',
+// 				data: {myData:sdata},
+// 				success: function(data) {
+// 					var schoolObjForElementary = $.parseJSON(data);
+//
+// 					if(firstClicked){
+// 						 $('#elementary .elemList li').remove();
+// 						for (i = 0; i < schoolObjForElementary.length; i++){
+// 							$('#elementary .elemList').append('<li class="list-group-item"><p class="elemItem">'+schoolObjForElementary[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+// 						}
+// 					}
+//
+//
+// 				},
+// 				error: function(xhr, desc, err) {
+// 				  console.log(xhr);
+// 				  console.log("Details: " + desc + "\nError:" + err);
+// 				}
+// 			  }); // end ajax call
+//
+// 			  /******** Middle School Data **********/
+// 			var sdata = {};
+// 			sdata['mode'] = "typedropdown";
+// 			sdata['client_id'] = $('.schools').attr('value');
+// 			sdata['school_type'] = "middle";
+// 			//ajax call to find schools data according to the client
+// 			$.ajax({
+// 				url: 'ajax/neworder_ajax.php',
+// 				type: 'post',
+// 				data: {myData:sdata},
+// 				success: function(data) {
+// 					//console.log(data);
+// 					var schoolObjForMiddle = $.parseJSON(data);
+// 					if(firstClicked){
+// 						for (i = 0; i < schoolObjForMiddle.length; i++){
+// 							$('#middle .middleList').append('<li class="list-group-item"><p class="middleItem">'+schoolObjForMiddle[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+// 						}
+// 					}
+// 					//console.log(schoolObjForElementary);
+//
+// 				},
+// 				error: function(xhr, desc, err) {
+// 				  console.log(xhr);
+// 				  console.log("Details: " + desc + "\nError:" + err);
+// 				}
+// 			  }); // end ajax call
+//
+// 			   /******** High School Data **********/
+// 			var sdata = {};
+// 			sdata['mode'] = "typedropdown";
+// 			sdata['client_id'] = $('.schools').attr('value');
+// 			sdata['school_type'] = "high";
+// 			//ajax call to find schools data according to the client
+// 			$.ajax({
+// 				url: 'ajax/neworder_ajax.php',
+// 				type: 'post',
+// 				data: {myData:sdata},
+// 				success: function(data) {
+// 					//console.log(data);
+// 					var schoolObjForHigh = $.parseJSON(data);
+// 					if(firstClicked){
+// 						for (i = 0; i < schoolObjForHigh.length; i++){
+// 							$('#high .highList').append('<li class="list-group-item"><p class="highItem">'+schoolObjForHigh[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+// 						}
+// 					}
+// 					//console.log(schoolObjForElementary);
+//
+// 				},
+// 				error: function(xhr, desc, err) {
+// 				  console.log(xhr);
+// 				  console.log("Details: " + desc + "\nError:" + err);
+// 				}
+// 			  }); // end ajax call
+//
+// 			  /******** Other School Data **********/
+// 			var sdata = {};
+// 			sdata['mode'] = "typedropdown";
+// 			sdata['client_id'] = $('.schools').attr('value');
+// 			sdata['school_type'] = "other";
+// 			//ajax call to find schools data according to the client
+// 			$.ajax({
+// 				url: 'ajax/neworder_ajax.php',
+// 				type: 'post',
+// 				data: {myData:sdata},
+// 				success: function(data) {
+// 					var schoolObjForOther = $.parseJSON(data);
+// 					if(schoolObjForOther.length != 0){
+// 						if(firstClicked){
+// 							for (i = 0; i < schoolObjForOther.length; i++){
+// 								$('#other .otherList').append('<li class="list-group-item"><p class="otherItem">'+schoolObjForOther[i].school_name+'<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;" ><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+// 							}
+// 						}
+// 					}else{
+// 						$("#accordion").find('h3').filter(':contains(Other)').hide();
+// 						$( ".other" ).hide();
+// 					}
+// 				},
+// 				error: function(xhr, desc, err) {
+// 				  console.log(xhr);
+// 				  console.log("Details: " + desc + "\nError:" + err);
+// 				}
+// 			  }); // end ajax call
+//
+//
+// 	}
+//
+// 	  $( ".elementary" ).button().on( "click", function() {
+//
+//
+// 	  });
+// });
 
 
 // Billing and rates
@@ -1371,4 +1363,400 @@ $("[name='rate-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
             });
     }
 
+});
+
+function dr_changestatus(th){
+    var ele = th;
+    var par_ele = $(ele).parent();
+    var id = $(ele).closest('td');
+    var did = $(id).siblings('input').data('driverid');
+    if ($(ele).text() == "Active" ) {
+        $(par_ele).children().remove();
+        $(par_ele).append('<button type="button" class="btn btn-danger dstatus" onclick="dr_changestatus(this)">Inactive</button>');
+        dr_changestatus_ajax(did,"inactive");
+    }
+    else{
+        $(par_ele).children().remove();
+        $(par_ele).append('<button type="button" class="btn btn-success dstatus" onclick="dr_changestatus(this)">Active</button>');
+        dr_changestatus_ajax(did,"active");
+    }
+}
+
+function dr_changestatus_ajax(did,status){
+
+    var sdata = {};
+    sdata["mode"] = "dr_changestatus";
+    sdata["d_id"] = did;
+    sdata["status"] = status;
+    $.ajax({
+        url: 'ajax/drChange_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            //log(data);
+            //location.reload();
+
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
+}
+
+//School by asmita
+
+function log(val){
+    console.log(val);
+}
+
+$( function() {
+
+    $( "#accordion" ).accordion({
+        active: false,
+        collapsible: true
+    });
+
+
+
+} );
+
+$('#stypeSelect').change(function(){
+    //log("inside click");
+    var sdata = {};
+    sdata['mode'] = "typedropdown";
+    sdata['client_id'] = $('#ctypeSelect').val();
+    sdata['school_type'] = $('#stypeSelect').val().toLowerCase();
+    $.ajax({
+        url: 'ajax/neworder_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            var schoolObj = $.parseJSON(data);
+            append_schools(schoolObj);
+            //log(schoolObj);
+
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
+
+});
+
+
+function show_schoolData(th) {
+    var firstClicked = false;
+    var ele = th;
+    var id = $(ele).closest('td');
+    var cid = $(id).siblings('input').data('clientid');
+    if (!firstClicked) {
+        firstClicked = true;
+        /******** Elementary School Data **********/
+        var sdata = {};
+        sdata['mode'] = "typedropdown";
+        sdata['client_id'] = cid;
+        sdata['school_type'] = "elementary";
+        //ajax call to find schools data according to the client
+        $.ajax({
+            url: 'ajax/neworder_ajax.php',
+            type: 'post',
+            data: {myData: sdata},
+            success: function (data) {
+                var schoolObjForElementary = $.parseJSON(data);
+                if (firstClicked) {
+                    $('#elementary .elemList li').remove();
+                    for (i = 0; i < schoolObjForElementary.length; i++) {
+                        $('#elementary .elemList').append('<li class="list-group-item"><p class="elemItem">' + schoolObjForElementary[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                    }
+                }
+
+
+            },
+            error: function (xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+            }
+        }); // end ajax call
+
+        /******** Middle School Data **********/
+        var sdata = {};
+        sdata['mode'] = "typedropdown";
+        sdata['client_id'] =cid;
+        sdata['school_type'] = "middle";
+        //ajax call to find schools data according to the client
+        $.ajax({
+            url: 'ajax/neworder_ajax.php',
+            type: 'post',
+            data: {myData: sdata},
+            success: function (data) {
+                //console.log(data);
+                var schoolObjForMiddle = $.parseJSON(data);
+                if (firstClicked) {
+                    $('#middle .middleList li').remove();
+                    for (i = 0; i < schoolObjForMiddle.length; i++) {
+                        $('#middle .middleList').append('<li class="list-group-item"><p class="middleItem">' + schoolObjForMiddle[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                    }
+                }
+                //console.log(schoolObjForElementary);
+
+            },
+            error: function (xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+            }
+        }); // end ajax call
+
+        /******** High School Data **********/
+        var sdata = {};
+        sdata['mode'] = "typedropdown";
+        sdata['client_id'] =cid;
+        sdata['school_type'] = "high";
+        //ajax call to find schools data according to the client
+        $.ajax({
+            url: 'ajax/neworder_ajax.php',
+            type: 'post',
+            data: {myData: sdata},
+            success: function (data) {
+                //console.log(data);
+                var schoolObjForHigh = $.parseJSON(data);
+                if (firstClicked) {
+                    $('#high .highList li').remove();
+                    for (i = 0; i < schoolObjForHigh.length; i++) {
+                        $('#high .highList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                    }
+                }
+                //console.log(schoolObjForElementary);
+
+            },
+            error: function (xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+            }
+        }); // end ajax call
+
+        /******** alternative School Data **********/
+        var sdata = {};
+        sdata['mode'] = "typedropdown";
+        sdata['client_id'] =cid;
+        sdata['school_type'] = "alternative";
+        //ajax call to find schools data according to the client
+        $.ajax({
+            url: 'ajax/neworder_ajax.php',
+            type: 'post',
+            data: {myData: sdata},
+            success: function (data) {
+                //console.log(data);
+                var schoolObjForHigh = $.parseJSON(data);
+                if (firstClicked) {
+                    $('#alternative .alternativeList li').remove();
+                    for (i = 0; i < schoolObjForHigh.length; i++) {
+                        $('#alternative .alternativeList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                    }
+                }
+                //console.log(schoolObjForElementary);
+
+            },
+            error: function (xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+            }
+        }); // end ajax call
+
+        /******** alternative School Data **********/
+
+        /******** preschool School Data **********/
+        var sdata = {};
+        sdata['mode'] = "typedropdown";
+        sdata['client_id'] =cid;
+        sdata['school_type'] = "preschool";
+        //ajax call to find schools data according to the client
+        $.ajax({
+            url: 'ajax/neworder_ajax.php',
+            type: 'post',
+            data: {myData: sdata},
+            success: function (data) {
+                //console.log(data);
+                var schoolObjForHigh = $.parseJSON(data);
+                if (firstClicked) {
+                    $('#preschool .preschoolList li').remove();
+                    for (i = 0; i < schoolObjForHigh.length; i++) {
+                        $('#preschool .preschoolList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                    }
+                }
+                //console.log(schoolObjForElementary);
+
+            },
+            error: function (xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+            }
+        }); // end ajax call
+
+        /******** preschool School Data **********/
+
+        /******** special School Data **********/
+        var sdata = {};
+        sdata['mode'] = "typedropdown";
+        sdata['client_id'] =cid;
+        sdata['school_type'] = "special";
+        //ajax call to find schools data according to the client
+        $.ajax({
+            url: 'ajax/neworder_ajax.php',
+            type: 'post',
+            data: {myData: sdata},
+            success: function (data) {
+                //console.log(data);
+                var schoolObjForHigh = $.parseJSON(data);
+                if (firstClicked) {
+                    $('#special .specialList li').remove();
+                    for (i = 0; i < schoolObjForHigh.length; i++) {
+                        $('#special .specialList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                    }
+                }
+                //console.log(schoolObjForElementary);
+
+            },
+            error: function (xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+            }
+        }); // end ajax call
+
+        /******** special School Data **********/
+
+
+        /******** pilot School Data **********/
+        var sdata = {};
+        sdata['mode'] = "typedropdown";
+        sdata['client_id'] =cid;
+        sdata['school_type'] = "pilot";
+        //ajax call to find schools data according to the client
+        $.ajax({
+            url: 'ajax/neworder_ajax.php',
+            type: 'post',
+            data: {myData: sdata},
+            success: function (data) {
+                //console.log(data);
+                var schoolObjForHigh = $.parseJSON(data);
+                if (firstClicked) {
+                    $('#pilot .pilotList li').remove();
+                    for (i = 0; i < schoolObjForHigh.length; i++) {
+                        $('#pilot .pilotList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                    }
+                }
+                //console.log(schoolObjForElementary);
+
+            },
+            error: function (xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+            }
+        }); // end ajax call
+
+        /******** pilot School Data **********/
+
+        // var sdata = {};
+        // sdata['mode'] = "typedropdown";
+        // sdata['client_id'] = cid;
+        // sdata['school_type'] = "other";
+        // //ajax call to find schools data according to the client
+        // $.ajax({
+        //     url: 'ajax/neworder_ajax.php',
+        //     type: 'post',
+        //     data: {myData: sdata},
+        //     success: function (data) {
+        //         var schoolObjForOther = $.parseJSON(data);
+        //         if (schoolObjForOther.length != 0) {
+        //             if (firstClicked) {
+        //                 $('#other .otherList li').remove();
+        //                 for (i = 0; i < schoolObjForOther.length; i++) {
+        //                     $('#other .otherList').append('<li class="list-group-item"><p class="otherItem">' + schoolObjForOther[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;" ><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+        //                 }
+        //             }
+        //         } else {
+        //             $("#accordion").find('h3').filter(':contains(Other)').hide();
+        //             $(".other").hide();
+        //         }
+        //     },
+        //     error: function (xhr, desc, err) {
+        //         console.log(xhr);
+        //         console.log("Details: " + desc + "\nError:" + err);
+        //     }
+        // }); // end ajax call
+    }
+
+    $(".elementary").button().on("click", function () {
+
+
+    });
+}
+
+function append_schools(myObj) {
+    $("#sSelect").children().remove();
+    $("#sSelect").append('<option value="0">'+"Select"+'</option>');
+    for (var i = 0; i < myObj.length; i++) {
+        $("#sSelect").append('<option value='+myObj[i].school_id+'>'+myObj[i].school_name+'</option>');
+    }
+
+}
+
+
+$('#sSelect').change(function(){
+    //log("inside click");
+    var sdata = {};
+    sdata['mode'] = "schooldropdown";
+    sdata['school_id'] = $('#sSelect').val();
+    $.ajax({
+        url: 'ajax/neworder_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            var schoolObj = $.parseJSON(data);
+            fillLocation(schoolObj);
+            log(schoolObj);
+
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
+
+});
+
+function fillLocation(data){
+    $('#amDropLoc').val(data.school_street+","+data.school_address+","+data.school_city);
+    $('#pmDropLoc').val(data.school_street+","+data.school_address+","+data.school_city);
+}
+
+$('#billtext').on('focus', function(){
+    tripcost();
+});
+function tripcost() {
+    var sdata = {};
+    sdata['mode'] = "tripcost";
+    sdata['addons'] = $('.aocheckbox:checked').map(function() {
+        return this.value;
+    }).get().join("','");
+    sdata['client_id'] = $('#ctypeSelect').val();
+    sdata['type'] = $('input[name="billingradio"]:checked').val();
+
+    $.ajax({
+        url: 'ajax/neworder_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            $('#billtext').val(data);
+            log(data);
+
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
+}
+$('#stypeSelect').change(function(){
 });

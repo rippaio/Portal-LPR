@@ -248,7 +248,7 @@
         global $connection;
         $query  = "INSERT INTO lpr_driver ";
         $query .="(driver_fname,driver_mname,driver_lname,driver_street,driver_address,driver_city,driver_zip,driver_contact_no,driver_ssn,driver_dl_no,driver_state,driver_emg_contact,driver_commision,driver_dname,driver_hiredate,driver_termdate,driver_carnumber,comments,driver_emg_cname,driver_emgcontact_relationship,driver_dl_state,driver_country) ";
-        $query.="VALUES ('$driver_fname','$driver_mname','$driver_lname','$driver_street','$driver_address','$driver_city','$driver_zip','$driver_contact_no',$driver_ssn,$driver_dl_no,'$driver_state','$driver_emg_contact',$driver_commision,'$driver_dname','$dl_hiredate','$dl_termdate','$dl_carnumber','$dl_comments','$e_contact_name','$e_contact_reltion','$dl_state','$country')";
+        $query.="VALUES ('$driver_fname','$driver_mname','$driver_lname','$driver_street','$driver_address','$driver_city','$driver_zip','$driver_contact_no',$driver_ssn,'$driver_dl_no','$driver_state','$driver_emg_contact',$driver_commision,'$driver_dname','$dl_hiredate','$dl_termdate','$dl_carnumber','$dl_comments','$e_contact_name','$e_contact_reltion','$dl_state','$country')";
         $result_id = mysqli_query($connection, $query);
 //        //echo $query;
 //        //error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
@@ -274,7 +274,7 @@ function select_driver($driver_id){
 function update_driver($driver_fname,$driver_mname,$driver_lname,$driver_street,$driver_address,$driver_city,$driver_zip,$driver_contact_no,$driver_ssn,$driver_dl_no,$driver_state,$driver_emg_contact,$driver_commision,$driver_dname,$dl_hiredate,$dl_termdate,$dl_carnumber,$dl_comments,$e_contact_name,$e_contact_reltion,$dl_state,$country,$driver_id){
     global $connection;
     $query  = "UPDATE lpr_driver SET ";
-    $query.="driver_fname='$driver_fname',driver_mname='$driver_mname',driver_lname='$driver_lname',driver_street='$driver_street',driver_address='$driver_address',driver_city='$driver_city',driver_zip='$driver_zip',driver_contact_no='$driver_contact_no',driver_ssn=$driver_ssn,driver_dl_no=$driver_dl_no,driver_state='$driver_state',driver_emg_contact='$driver_emg_contact',driver_commision=$driver_commision,driver_dname='$driver_dname',";
+    $query.="driver_fname='$driver_fname',driver_mname='$driver_mname',driver_lname='$driver_lname',driver_street='$driver_street',driver_address='$driver_address',driver_city='$driver_city',driver_zip='$driver_zip',driver_contact_no='$driver_contact_no',driver_ssn=$driver_ssn,driver_dl_no='$driver_dl_no',driver_state='$driver_state',driver_emg_contact='$driver_emg_contact',driver_commision=$driver_commision,driver_dname='$driver_dname',";
     $query.="driver_hiredate='$dl_hiredate',driver_termdate='$dl_termdate',driver_carnumber='$dl_carnumber',comments='$dl_comments',driver_emg_cname='$e_contact_name',driver_emgcontact_relationship='$e_contact_reltion',driver_dl_state='$dl_state',driver_country='$country'";
     $query .= "WHERE driver_id = $driver_id ";
     $result_id = mysqli_query($connection, $query);
@@ -505,9 +505,12 @@ function  getCashAdvance($driver_id,$start_date,$end_date){
 
 function getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate){
     global $connection;
-    $query="SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,o_billable,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school
- WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and
- triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate'";
+//    $query="SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,o_billable,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school
+// WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and
+// triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate' and triplog_client_payable in ('TRUE')";
+    $query="SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,lpr_billing.amount as o_billable,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school,lpr_billing
+ WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and lpr_billing.o_id=triplog_o_id and lpr_billing.client_id=$cb_client and
+ triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate' and triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active')";
     if(!empty($cb_stypeSelect)){
         $query .=" and school_type='$cb_stypeSelect'";
     }
@@ -525,9 +528,9 @@ function getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_sta
 
 function getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate){
     global $connection;
-    $query="select count(triplog_o_id) as tripcount ,sum(o_billable)as totalbillable,client_name,client_street,client_address,client_city,client_state,client_zip from (SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,o_billable,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,client_street,client_address,client_city,client_state,client_zip,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school
- WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and
- triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate'";
+    $query="select count(triplog_o_id) as tripcount ,sum(amount)as totalbillable,client_name,client_street,client_address,client_city,client_state,client_zip from (SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,lpr_billing.amount,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,client_street,client_address,client_city,client_state,client_zip,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school,lpr_billing
+ WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and lpr_billing.o_id=triplog_o_id and lpr_billing.client_id=$cb_client and
+ triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate' and triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active')";
     if(!empty($cb_stypeSelect)){
         $query .=" and school_type='$cb_stypeSelect'";
     }
@@ -576,5 +579,16 @@ function updateZone($zone_loc,$zone_id){
     $result_id = mysqli_query($connection, $query);
     confirm_query($result_id);
 }
-	
+
+//driver_status change
+function dr_changestatus($d_id,$status){
+    global $connection;
+    $query = "UPDATE lpr_driver SET driver_status = '$status' WHERE driver_id = $d_id";
+    $result = mysqli_query($connection, $query);
+    error_log("\nInside  driver changestatus" . $query , 3, "C:/xampp/apache/logs/error.log");
+    confirm_query($result);
+
+}
+
+
 ?>

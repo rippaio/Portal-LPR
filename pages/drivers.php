@@ -137,14 +137,19 @@ if(isset($_POST['additnl_driverid'])) {
                                     ?>
                                     <tr>
                                         <td class="col-xs-1"><?php echo ++$counter; ?></td>
-                                        <td class="col-xs-2"><?php echo $subject_client["driver_fname"]; ?></td>
+                                        <td class="col-xs-2"><?php echo $subject_client["driver_fname"]; ?>-<?php echo $subject_client["driver_lname"]; ?></td>
                                         <td class="col-xs-2"><?php echo $subject_client["driver_contact_no"]; ?></td>
                                         <td class="col-xs-2"><?php echo $subject_client["driver_city"]; ?></td>
                                         <td class="col-xs-2"><?php echo $subject_client["driver_commision"]; ?></td>
                                         <td class="col-xs-1"><a href="<?php echo 'adddriver.php?driver_id=' . $subject_client['driver_id']; ?>" class="size2" style="color: #5cb85c;margin: inherit;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                                        <td class="col-xs-1"><button type="button" class="btn btn-success">Active</button></td>
+                                        <?php if ($subject_client["driver_status"] == "active") { ?>
+                                            <td class="col-xs-1"><button type="button" class="btn btn-success dstatus " onclick="dr_changestatus(this);">Active</button></td>
+                                        <?php } else {?>
+                                            <td class="col-xs-1"><button type="button" class="btn btn-danger dstatus" onclick="dr_changestatus(this);">Inactive</button></td>
+                                        <?php } ?>
                                         <td class="col-xs-1"> <a href="<?php echo 'adddrivertrip.php?driver_id=' . $subject_client['driver_id'].'&drivername='.$subject_client["driver_fname"]; ?>" class="btn btn-warning " role="button">Add Trip</a></td>
-                                    </tr>
+                                       <input type="hidden" data-driverid="<?php echo  $subject_client['driver_id']; ?>">
+                                     </tr>
 
                                         <?php
                                     }
