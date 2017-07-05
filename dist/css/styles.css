@@ -22,3 +22,7 @@
 .pad {
     padding-left: 25%;
 }
+
+.hidebox{
+        display: none;
+}   

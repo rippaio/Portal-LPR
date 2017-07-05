@@ -320,7 +320,7 @@ $result_billing = mysqli_query($connection, $query_billing);
                                                         //array_merge($outzone,($subject_billing["client_id"]=>$subject_billing["amount"]);
                                                             $outzone = array_push_assoc($outzone, $subject_billing["client_id"], $subject_billing["amount"]);
                                                     }
-                                                    var_dump($outzone);
+                                                    //var_dump($outzone);
                                                     while($subject_client = mysqli_fetch_assoc($result_client3)) {
                                                     // output data from each row
                                                 ?>
@@ -345,6 +345,9 @@ $result_billing = mysqli_query($connection, $query_billing);
                                             <input type="text" id="billtext" name="o_billable" class="form-control" value="<?php echo $subject["o_billable"]; ?>" required><span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
                                             </div>
                                             <p class="help-block"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <a class="btn btn-primary" name="calculate_bill">Calculate</a>
                                         </div>
                                         <div class="form-group">
                                             <label>Driver</label>

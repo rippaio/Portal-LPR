@@ -222,7 +222,7 @@
 	function driverdetails()
 	{
 		global $connection;
-		$query = "SELECT driver_id AS value,CONCAT(driver_fname,' ', driver_lname) AS label FROM `lpr_driver` ";
+		$query = "SELECT driver_id AS value,CASE WHEN driver_dname = ' ' THEN CONCAT(driver_fname,' ', driver_lname) ELSE CONCAT(driver_fname,' ', driver_lname,'(',driver_dname,')') END AS label FROM `lpr_driver` ";
 		//error_log("Insert bill\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result_client = mysqli_query($connection, $query);
 		
@@ -283,12 +283,12 @@ function update_driver($driver_fname,$driver_mname,$driver_lname,$driver_street,
     redirect_to("drivers.php");
 }
 
-function  insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$clockperiod,$current_date,$driver_payable){
+function  insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$clockperiod,$current_date,$driver_payable,$client_payable){
     global $connection;
     $trip_city=trim($city);
     $query  = "INSERT INTO lpr_triplog ";
-    $query.="(`triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_city`, `triplog_time`, `triplog_pickloc`, `triplog_picktime`, `triplog_droptime`, `triplog_pax`, `triplog_status`, `triplog_date`, triplog_clock, triplog_date_updated, triplog_driver_payable ) ";
-    $query.="VALUES ('$orderid', '$clientid', '$schoolid', '$driverid', '$s_id', '$trip_city', '$time', '$pickloc', '$picktime', '$droptime', '$pax', '$status', '$trip_date', '$clockperiod', '$current_date', '$driver_payable')";
+    $query.="(`triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_city`, `triplog_time`, `triplog_pickloc`, `triplog_picktime`, `triplog_droptime`, `triplog_pax`, `triplog_status`, `triplog_date`, triplog_clock, triplog_date_updated, triplog_driver_payable, triplog_client_payable ) ";
+    $query.="VALUES ('$orderid', '$clientid', '$schoolid', '$driverid', '$s_id', '$trip_city', '$time', '$pickloc', '$picktime', '$droptime', '$pax', '$status', '$trip_date', '$clockperiod', '$current_date', '$driver_payable', '$client_payable')";
      error_log("\nInside insert_trip" . $query , 3, "C:/xampp/apache/logs/error.log");
     $result_id = mysqli_query($connection, $query);
     confirm_query($result_id);
@@ -304,11 +304,11 @@ function  insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$
 		}
 }
 
-function update_trip($orderid, $clientid, $schoolid, $driverid, $s_id, $city, $time, $pickloc, $picktime, $droptime, $pax, $status, $trip_date,$trip_id,$driver_payable){
+function update_trip($orderid, $clientid, $schoolid, $driverid, $s_id, $city, $time, $pickloc, $picktime, $droptime, $pax, $status, $trip_date,$trip_id,$driver_payable,$client_payable){
     global $connection;
     $city=trim($city);
     $query  = "UPDATE lpr_triplog SET ";
-    $query.="triplog_client_id=$clientid,triplog_school_id=$schoolid,triplog_driver_id=$driverid,triplog_studentid=$s_id,triplog_city='$city',triplog_time='$time',triplog_pickloc='$pickloc',triplog_picktime='$picktime',triplog_droptime='$droptime',triplog_pax='$pax',triplog_status='$status',triplog_o_id=$orderid , triplog_driver_payable='$driver_payable' ";
+    $query.="triplog_client_id=$clientid,triplog_school_id=$schoolid,triplog_driver_id=$driverid,triplog_studentid=$s_id,triplog_city='$city',triplog_time='$time',triplog_pickloc='$pickloc',triplog_picktime='$picktime',triplog_droptime='$droptime',triplog_pax='$pax',triplog_status='$status',triplog_o_id=$orderid , triplog_driver_payable='$driver_payable' , triplog_client_payable = '$client_payable'";
     $query .= "WHERE triplog_o_id = $orderid and triplog_date='$trip_date' and triplog_tripid=$trip_id";
     $result_id = mysqli_query($connection, $query);
     error_log("\nInside query" . $query , 3, "C:/xampp/apache/logs/error.log");
