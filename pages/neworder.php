@@ -134,14 +134,20 @@ confirm_query($result_client);
                                             </div>
                                         </div>
                                         <h4>AM Trip</h4>
+                                        <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="amcheck" value="am" checked>AM Trip
+                                                </label>
+                                        </div>
+                                        <div name="amdiv">
                                             <div class="form-group">
                                                 <label>Pickup Location</label>
-                                                <input class="form-control" name="o_ampickloc" placeholder="Enter Location" required>
+                                                <input class="form-control" name="o_ampickloc" placeholder="Enter Location" >
                                             </div>
                                             <div class="form-group">
                                                 <label>Pickup Time</label>
                                                 <div class="input-group clockpicker">
-                                                    <input type="text" class="form-control clockformat" name="o_ampicktime" value="8:00" required>
+                                                    <input type="text" class="form-control clockformat" name="o_ampicktime" value="8:00" >
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
@@ -149,26 +155,33 @@ confirm_query($result_client);
                                             </div>
                                             <div class="form-group">
                                                 <label>Drop Location</label>
-                                                <input class="form-control" id="amDropLoc" name="o_amdroploc" placeholder="Enter Location" required>
+                                                <input class="form-control" id="amDropLoc" name="o_amdroploc" placeholder="Enter Location" >
                                             </div>
                                             <div class="form-group">
                                                 <label>Drop Time</label>
                                                 <div class="input-group clockpicker">
-                                                    <input type="text" class="form-control clockformat" name="o_amdroptime" value="16:00" required>
+                                                    <input type="text" class="form-control clockformat" name="o_amdroptime" value="16:00" >
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
                                                 </div>
                                             </div>
+                                        </div>
                                             <h4>PM Trip</h4>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="pmcheck" value="pm" checked>PM Trip
+                                                </label>
+                                            </div>
+                                            <div name="pmdiv">
                                             <div class="form-group">
                                                 <label>Pickup Location</label>
-                                                <input class="form-control" id="pmDropLoc" name="o_pmpickloc" placeholder="Enter Location" required>
+                                                <input class="form-control" id="pmDropLoc" name="o_pmpickloc" placeholder="Enter Location" >
                                             </div>
                                             <div class="form-group">
                                                 <label>Pickup Time</label>
                                                 <div class="input-group clockpicker">
-                                                    <input type="text" class="form-control clockformat" name="o_pmpicktime" value="18:00" required>
+                                                    <input type="text" class="form-control clockformat" name="o_pmpicktime" value="18:00" >
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
@@ -176,9 +189,9 @@ confirm_query($result_client);
                                             </div>
                                             <div class="form-group">
                                                 <label>Drop Location</label>
-                                                <input class="form-control" placeholder="Enter Location" name="o_pmdroploc" required>
+                                                <input class="form-control" placeholder="Enter Location" name="o_pmdroploc">
                                             </div>
-                                        
+                                            </div>
                                     
                                     </div>    
                                 
@@ -320,6 +333,9 @@ confirm_query($result_client);
                                             <input type="text" id="billtext" name="o_billable" class="form-control" required><span class="input-group-addon"><i class="glyphicon glyphicon-usd"></i></span>
                                             </div>
                                             <p class="help-block"></p>
+                                        </div>
+                                        <div class="form-group">
+                                            <a class="btn btn-primary" name="calculate_bill">Calculate</a>
                                         </div>
                                         <div class="form-group">
                                             <label>Driver</label>

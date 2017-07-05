@@ -31,7 +31,7 @@ include("./includes/nav.php");
                     <!-- /.panel-body -->
                 </div>
                 <div class="form-group">
-                    <a href="addevent.html" class="btn btn-primary btn-lg btn-block" role="button">Add Event</a>
+                    <a href="addevent.php" class="btn btn-primary btn-lg btn-block" role="button">Add Event</a>
                 </div>
                 <!-- /.panel -->
 

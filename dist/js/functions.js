@@ -81,13 +81,14 @@ function fillLocation(data){
     }
 });
 
-$('.aocheckbox').click(function(){
-	verifytrip();
-});
-$('input[name="billsplit"]').click(function(){
-	verifytrip();
-});
-$('input[name="o_wc"]').click(function(){
+// $('.aocheckbox').click(function(){
+// 	verifytrip();
+// });
+// $('input[name="billsplit"]').click(function(){
+// 	verifytrip();
+// });
+$('a[name="calculate_bill"]').click(function(){
+    log("clicked");
 	verifytrip();
 });
 // $('#billtext').on('focus', function(){
@@ -233,7 +234,7 @@ $( "#updateorder" ).submit(function( event ) {
         success: function(data) {
             //$('#billtext').val(data);
             log(data);
-            alert("Order created! Please proceed to manifest");
+            alert("Order updated! Please proceed to manifest");
           
         },
         error: function(xhr, desc, err) {
@@ -314,6 +315,17 @@ $('input[name="o_pmdroploc"]').on('focus', function(){
 		this.value = $('input[name="street"]').val() +","+ $('input[name="address"]').val() +","+ $('input[name="city"]').val() +","+ $('input[name="zipcode"]').val();
 	}
 });
+
+$('input[name="amcheck"]').click(function(){
+
+                $("[name='amdiv']").toggle();
+            
+        });
+$('input[name="pmcheck"]').click(function(){
+
+                $("[name='pmdiv']").toggle();
+            
+        });
 
 // Validations
 
@@ -616,8 +628,9 @@ $('.cancel').click(function(element){
 			    } else {
 			        sdata['driver_payable'] = "FALSE";
 			    }
-			    sdata['client_payable'] = "FALSE"
+			    
     		}
+            else{sdata['client_payable'] = "FALSE";}
 
     }    
 
@@ -811,19 +824,13 @@ function changestatus(a){
                 right: 'month,basicWeek,basicDay'
             },
 
-            events: [
-            {
-                title: 'Event1',
-                start: '2017-07-01',
-                end: ''
-            },
-            {
-                title: 'Event2',
-                start: '2017-07-05'
+            events: {
+                url: 'ajax/calendar_ajax.php',
+                type: 'POST', // Send post data
+                error: function() {
+                    alert('There was an error while fetching events.');
+                }
             }
-        ]
-
-
 
         });
 
