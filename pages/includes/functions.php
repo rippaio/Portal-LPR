@@ -470,10 +470,10 @@ function changeorderstatus($o_id,$status){
 
 function  getDriverBill($driver_id,$start_date,$end_date){
     global $connection;
-    $query = "(select triplog_date,o_payable,o_tip,CONCAT(s_lname,\" \",s_fname) s_name from lpr_triplog,lpr_order,lpr_student  WHERE
+    $query = "(select triplog_date,o_payable,o_tip,CONCAT(s_lname,\" \",s_fname) s_name,triplog_clock from lpr_triplog,lpr_order,lpr_student  WHERE
      lpr_triplog.triplog_o_id=lpr_order.o_id and lpr_triplog.triplog_studentid=lpr_student.s_id and lpr_triplog.triplog_driver_id=$driver_id and triplog_date between '$start_date' and '$end_date' AND triplog_driver_payable in ('TRUE'))
     union
-    (select ad_tripdate, ad_payable,ad_tip ,\"Additional Trip\" as s_name  from lpr_additnltrip where ad_driverid=$driver_id and ad_tripdate between '$start_date' and '$end_date')";
+    (select ad_tripdate, ad_payable,ad_tip ,\"Additional Trip\" as s_name,'NA' as triplog_clock  from lpr_additnltrip where ad_driverid=$driver_id and ad_tripdate between '$start_date' and '$end_date')";
     error_log("\nDriver Billing query " . $query, 3, "C:/xampp/apache/logs/error.log");
     $result_bill = mysqli_query($connection, $query);
     confirm_query($result_bill);
@@ -519,9 +519,15 @@ function getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_sta
 //    $query="SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,o_billable,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school
 // WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and
 // triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate' and triplog_client_payable in ('TRUE')";
-    $query="SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,lpr_billing.amount as o_billable,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school,lpr_billing
- WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and lpr_billing.o_id=triplog_o_id and lpr_billing.client_id=$cb_client and
- triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate' and triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active')";
+    $query=" SELECT `triplog_o_id`, lpr_billing.client_id as triplog_client_id, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,lpr_billing.amount as o_billable,
+ CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc,
+ CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc 
+ FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school,lpr_billing
+ WHERE
+ triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id
+ and lpr_billing.o_id=triplog_o_id and lpr_billing.client_id=$cb_client and lpr_client.client_id=lpr_billing.client_id and
+ triplog_school_id=lpr_school.school_id and triplog_date between '$cb_startdate' and '$cb_enddate' and
+ triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active')";
     if(!empty($cb_stypeSelect)){
         $query .=" and school_type='$cb_stypeSelect'";
     }
@@ -539,9 +545,20 @@ function getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_sta
 
 function getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate){
     global $connection;
-    $query="select count(triplog_o_id) as tripcount ,sum(amount)as totalbillable,client_name,client_street,client_address,client_city,client_state,client_zip from (SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,lpr_billing.amount,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,client_street,client_address,client_city,client_state,client_zip,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school,lpr_billing
- WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and lpr_billing.o_id=triplog_o_id and lpr_billing.client_id=$cb_client and
- triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate' and triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active')";
+//    $query="select count(triplog_o_id) as tripcount ,sum(amount)as totalbillable,client_name,client_street,client_address,client_city,client_state,client_zip from (SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,lpr_billing.amount,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,client_street,client_address,client_city,client_state,client_zip,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school,lpr_billing
+// WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and lpr_billing.o_id=triplog_o_id and lpr_billing.client_id=$cb_client and
+// triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate' and triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active')";
+    $query="select count(triplog_o_id) as tripcount ,sum(o_billable)as totalbillable,client_name,client_street,client_address,client_city,client_state,client_zip from
+ ( SELECT `triplog_o_id`, lpr_billing.client_id as triplog_client_id, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,lpr_billing.amount as o_billable,
+ CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,client_street,client_address,client_city,client_state,client_zip,CONCAT(s_lname,' ',s_fname) as s_name,school_name,
+ CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc,
+ CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc 
+ FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school,lpr_billing
+ WHERE
+ triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id
+ and lpr_billing.o_id=triplog_o_id and lpr_billing.client_id=$cb_client and lpr_client.client_id=lpr_billing.client_id and
+ triplog_school_id=lpr_school.school_id and triplog_date between '$cb_startdate' and '$cb_enddate' and
+ triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active')";
     if(!empty($cb_stypeSelect)){
         $query .=" and school_type='$cb_stypeSelect'";
     }
