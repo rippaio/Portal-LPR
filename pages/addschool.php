@@ -93,6 +93,7 @@ include("./includes/nav.php");
                     </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="exampleInputEmail3" name="sc_address" placeholder="Addresss line 2">
+
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="exampleInputEmail3" name="sc_city"  placeholder="City" required>
@@ -101,10 +102,12 @@ include("./includes/nav.php");
                     <input type="text" class="form-control" id="exampleInputEmail3" name="sc_state" placeholder="State / Province / Region" required>
                 </div>
                 <div class="form-group">
+
                     <input type="text" class="form-control" id="exampleInputEmail3" name="sc_zip" type="number" placeholder="Postal / Zip Code" >
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" id="exampleInputEmail3" name="sc_country" placeholder="Country" value="United States">
+
                 </div>
 
                     <div class="form-group">

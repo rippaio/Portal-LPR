@@ -20,11 +20,11 @@ $query ="select * from
  (select * from ( 
        (select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.o_ampicktime as picktime,t1.o_ampickloc as pickloc,t1.o_amdroptime as droptime,'AM' as clockperiod, t1.o_days,t1.o_startdate,t1.o_enddate from ( 
            select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_ampicktime as time,lpr_student.s_fname,lpr_order.o_ampicktime,lpr_order.o_ampickloc,lpr_order.o_amdroptime, lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
-           lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id  group by lpr_order.o_id)t1 )
+           lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and o_ampickloc not like 'null' group by lpr_order.o_id)t1 )
         UNION 
        (select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.picktime,t1.pickloc,t1.droptime,'PM' as clockperiod, t1.o_days,t1.o_startdate,t1.o_enddate  from 
           (select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_pmpicktime as time,lpr_student.s_fname,lpr_order.o_pmpicktime as picktime,lpr_order.o_pmpickloc as pickloc,'NA' as droptime,lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
-           lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id group by lpr_order.o_id)t1))R
+           lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and o_pmdroploc not like 'null' group by lpr_order.o_id)t1))R
   )R2  on  R1.triplog_o_id=R2.o_id
   left join
  (select lpr_student.o_id,COUNT(lpr_student.s_id) as pax from lpr_student group BY lpr_student.o_id)R3   
@@ -33,7 +33,7 @@ $query ="select * from
   on R2.driver_id=R4.driver_id
   where clockperiod='$clck' and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%'  ORDER BY time";
 
-//error_log("\nManifest" . $query , 3, "C:/xampp/apache/logs/error.log");
+error_log("\nManifest" . $query , 3, "C:/xampp/apache/logs/error.log");
 $result_triporder = mysqli_query($connection, $query);
 
 confirm_query($result_triporder);
