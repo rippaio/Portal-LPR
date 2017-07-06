@@ -333,7 +333,7 @@ include("./includes/nav.php");
 
                     <div class="form-group">
                             <label>Total Billing</label>
-                            <p style="height:40px;"><span id="d_payable"><?php echo $driver_payable; ?></span>$</p>
+                            <p style="height:40px;">$<span id="d_payable"><?php echo $driver_payable; ?></span></p>
                     </div>
                     <div class="form-group">
                         <select id="d_contractorsPay">
@@ -341,17 +341,17 @@ include("./includes/nav.php");
                             <option value="10">10%</option>
                             <option value="15">15%</option>
                             <option value="20">20%</option>
-                            <option value="25">25%</option>
+                            <option value="25" selected>25%</option>
                             <option value="30">30%</option>
                             <option value="35">35%</option>
                             <option value="40">40%</option>
                         </select>
                         <label>Pay To Contractors</label>
-                        <p><span id="d_pay"><?php echo $driver_payable*0.05; ?></span>$</p>
+                        <p>$<span id="d_pay"><?php echo $driver_payable*0.25; ?></span></p>
                     </div>
                     <div class="form-group">
                         <label>Tips</label>
-                    <p style="height:25px;"> <span  id="d_tip"><?php echo $driver_tip; ?></span>$</p>
+                    <p style="height:25px;">$<span  id="d_tip"><?php echo $driver_tip; ?></span></p>
                     </div>
                     <div class="form-group">
                         <label>Additions</label>
@@ -360,7 +360,7 @@ include("./includes/nav.php");
                     </div>
                     <div class="form-group">
                         <label style="height:30px;">Contactors Total</label>
-                        <p> <span id="d_contractorTotal"><?php echo $driver_payable*0.05+$driver_tip; ?></span>$</p>
+                        <p> $<span id="d_contractorTotal"><?php echo $driver_payable*0.25+$driver_tip; ?></span></p>
                     </div>
 
                 </div>
@@ -387,7 +387,7 @@ include("./includes/nav.php");
                             <option value="40">40%</option>
                         </select>
                         <label>Lease</label>
-                        <p><span class="d_lease">0</span>$</p>
+                        <p>$<span class="d_lease">0</span></p>
                     </div>
 
                         <div class="form-group">
@@ -408,7 +408,7 @@ include("./includes/nav.php");
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label>Total Settlement Check</label><br>
-                        <p style="display:inline-block;padding-right: 140px"><span id="d_finalCheck"><?php echo $driver_payable*0.05+$driver_tip-$advance ?></span>$</p>
+                        <p style="display:inline-block;padding-right: 140px">$<span id="d_finalCheck"><?php echo $driver_payable*0.05+$driver_tip-$advance ?></span></p>
                         <button type="button" class="btn btn-primary" style="display: inline-block" onclick="setDriverBill()">
                             Calculate
                         </button>

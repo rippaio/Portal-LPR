@@ -66,8 +66,8 @@ $('#sSelect').change(function(){
 });
 
 function fillLocation(data){
-	$('#amDropLoc').val(data.school_street+","+data.school_address+","+data.school_city);
-	$('#pmDropLoc').val(data.school_street+","+data.school_address+","+data.school_city);
+	$('#amDropLoc').val(data.school_street+" "+data.school_address+" "+data.school_city);
+	$('#pmDropLoc').val(data.school_street+" "+data.school_address+" "+data.school_city);
 }
 
  $('input[name="billsplit"]').change(function(element) {
@@ -307,12 +307,12 @@ function getdrivers() {
 
 $('input[name="o_ampickloc"]').on('focus', function(){
 	if (this.value == ""||this.value == undefined) {
-		this.value = $('input[name="street"]').val() +","+ $('input[name="address"]').val() +","+ $('input[name="city"]').val() +","+ $('input[name="zipcode"]').val();
+		this.value = $('input[name="street"]').val() +" "+ $('input[name="address"]').val() +" "+ $('input[name="city"]').val() +" "+ $('input[name="zipcode"]').val();
 	}
 });
 $('input[name="o_pmdroploc"]').on('focus', function(){
 	if (this.value == ""||this.value == undefined) {
-		this.value = $('input[name="street"]').val() +","+ $('input[name="address"]').val() +","+ $('input[name="city"]').val() +","+ $('input[name="zipcode"]').val();
+		this.value = $('input[name="street"]').val() +" "+ $('input[name="address"]').val() +" "+ $('input[name="city"]').val() +" "+ $('input[name="zipcode"]').val();
 	}
 });
 
@@ -340,7 +340,7 @@ function matchsum(billsplit,billsplitvalue,bill,id) {
 		}
 	}
     
-	if(amount == parseInt(bill)){
+	if(amount == parseFloat(bill)){
 		$( '#'+id ).parent().siblings('.help-block').html("");
 	return true;
 	}
@@ -352,7 +352,7 @@ function matchsum(billsplit,billsplitvalue,bill,id) {
 
 function matchtotal(bill,payable,id) {
 
-	if(parseInt(payable) > parseInt(bill)){
+	if(parseFloat(payable) > parseFloat(bill)){
 		$( 'input[name='+id+']').parent().siblings('.help-block').html("More than billed amount");
 		return false;
 	}
@@ -418,6 +418,7 @@ function color_row(i) {
 	var a = $("tr")[i+1];
 	if ($(a).children('input').attr('data-updated') == "false"){
 		$(a).css('background-color','Red');
+		$(a).css('color','white');
 	}
 	
 }
@@ -615,43 +616,52 @@ $('.cancel').click(function(element){
     sdata['current_date'] = getday();
     sdata['trip_date'] = $(id).siblings('input').data('trip_date');
 
-    
 
-    if (getday() == $("[name='o_startdate']").val()) {
-    	log((timeToSeconds(sdata['time'])-timeToSeconds(gettime())));
+    // if (getday() == $("[name='o_startdate']").val()) {
+    // 	log((timeToSeconds(sdata['time'])-timeToSeconds(gettime())));
 
-    		log(timeToSeconds(sdata['time'])+","+sdata['time']+","+timeToSeconds(gettime())+","+gettime());
-    		if((timeToSeconds(sdata['time'])-timeToSeconds(gettime()))<7200 && ((timeToSeconds(sdata['time'])-timeToSeconds(gettime())))>0){
-    			var resp = confirm("Is driver payable?");
-			    if (resp == true) {
-			        sdata['driver_payable'] = "TRUE";
-			    } else {
-			        sdata['driver_payable'] = "FALSE";
-			    }
+    // 		log(timeToSeconds(sdata['time'])+","+sdata['time']+","+timeToSeconds(gettime())+","+gettime());
+    // 		if((timeToSeconds(sdata['time'])-timeToSeconds(gettime()))<7200 && ((timeToSeconds(sdata['time'])-timeToSeconds(gettime())))>0){
+    // 			var resp = confirm("Is driver payable?");
+			 //    if (resp == true) {
+			 //        sdata['driver_payable'] = "TRUE";
+			 //    } else {
+			 //        sdata['driver_payable'] = "FALSE";
+			 //    }
 			    
-    		}
-            else{sdata['client_payable'] = "FALSE";}
+    // 		}
+    //         else{sdata['client_payable'] = "FALSE";}
 
-    }    
+    // }    
 
+confirmBox("Are you sure", testdialog(result){
+    if (callback) {
+        // do something if user pressed yes
+    } 
+    else {
+        // do something if user pressed no
+    }
+});
 
+function testdialog() {
+    // var result="";
+    $( "#dialog-confirm" ).dialog({
+      resizable: false,
+      height: "auto",
+      width: 400,
+      modal: true,
+      buttons: {
+        "Yes": function() {
+          result= true;
+        },
+        "No": function() {
+          result= false;
+        }
+      }
+    });
+    return result;
+}
 
-  //   $( function() {
-  //   $( "#dialog-confirm" ).dialog({
-  //     resizable: false,
-  //     height: "auto",
-  //     width: 400,
-  //     modal: true,
-  //     buttons: {
-  //       "Delete all items": function() {
-  //         $( this ).dialog( "close" );
-  //       },
-  //       Cancel: function() {
-  //         $( this ).dialog( "close" );
-  //       }
-  //     }
-  //   });
-  // } );
 
 	if ($(id).siblings('input').data('updated') == false){
 		sdata['mode'] = "insert_trip";
@@ -1475,7 +1485,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#elementary .elemList li').remove();
                     for (i = 0; i < schoolObjForElementary.length; i++) {
-                        $('#elementary .elemList').append('<li class="list-group-item"><p class="elemItem">' + schoolObjForElementary[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#elementary .elemList').append('<li class="list-group-item"><p class="elemItem">' + schoolObjForElementary[i].school_name + '</p></li>')
                     }
                 }
 
@@ -1503,7 +1513,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#middle .middleList li').remove();
                     for (i = 0; i < schoolObjForMiddle.length; i++) {
-                        $('#middle .middleList').append('<li class="list-group-item"><p class="middleItem">' + schoolObjForMiddle[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#middle .middleList').append('<li class="list-group-item"><p class="middleItem">' + schoolObjForMiddle[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1531,7 +1541,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#high .highList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#high .highList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#high .highList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1559,7 +1569,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#alternative .alternativeList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#alternative .alternativeList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#alternative .alternativeList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1589,7 +1599,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#preschool .preschoolList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#preschool .preschoolList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#preschool .preschoolList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1619,7 +1629,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#special .specialList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#special .specialList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#special .specialList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1650,7 +1660,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#pilot .pilotList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#pilot .pilotList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.html"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
+                        $('#pilot .pilotList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);

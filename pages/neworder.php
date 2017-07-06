@@ -34,7 +34,7 @@ confirm_query($result_client);
                                 <form role="form-inline" id="createorder">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                        <label>Client</label>
+                                        <label>School System</label>
                                             <select class="form-control" id="ctypeSelect" name="ctypeSelect" required>
                                             <option value="">Select</option>
                                              <?php
@@ -80,7 +80,7 @@ confirm_query($result_client);
                                             </div>
                                             <div class="form-group">
                                                 <label>Grade</label>
-                                                <input class="form-control" name="s_grade" placeholder="Enter Grade" required>
+                                                <input class="form-control" name="s_grade" placeholder="Enter Grade">
                                             </div>
                                             <div class="form-group">
                                                 <label>Gender</label>
@@ -105,6 +105,25 @@ confirm_query($result_client);
                                         <div class="form-group">
                                         <button type="button" id ="addstudent" class="btn btn-primary">Add Student</button>
                                         </div>
+										 <div class="form-group">
+                                            <label class="control-label" for="inputSuccess">Residing Address</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter Street" name="street" required>
+                                          </div>
+                                          <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Addresss line 2" name="address" value="">
+                                          </div>
+                                          <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="City" name="city" required>
+                                          </div>
+                                          <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="State / Province / Region" name="state" value="VA" required>
+                                          </div>
+                                          <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Postal / Zip Code" name="zipcode" value="">
+                                          </div>
+                                          <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Country" name="country" value="United States" required>
+                                          </div>
                                         <div class="form-group">
                                             <label>Days Needed</label>
                                             <div class="checkbox">
@@ -198,25 +217,7 @@ confirm_query($result_client);
                                 
                                     <!-- /.col-lg-6 (nested) -->
                                     <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="control-label" for="inputSuccess">Residing Address</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter Street" name="street" required>
-                                          </div>
-                                          <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Addresss line 2" name="address" value="">
-                                          </div>
-                                          <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="City" name="city" required>
-                                          </div>
-                                          <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="State / Province / Region" name="state" value="VA" required>
-                                          </div>
-                                          <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Postal / Zip Code" name="zipcode" value="">
-                                          </div>
-                                          <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Country" name="country" value="United States" required>
-                                          </div>
+                                       
                                           <h4>Parent Details</h4>
                                           <div class="form-group">
                                             <label>First Name</label>

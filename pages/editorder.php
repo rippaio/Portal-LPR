@@ -51,7 +51,7 @@ $result_billing = mysqli_query($connection, $query_billing);
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                         <input class="form-control" name="o_id" type="hidden" value="<?php echo $o_id; ?>">
-                                        <label>Client</label>
+                                        <label>School System</label>
                                             <select class="form-control" id="ctypeSelect" name="ctypeSelect" required disabled>
                                             <!-- <option value="">Select</option> -->
                                              <?php
@@ -96,7 +96,7 @@ $result_billing = mysqli_query($connection, $query_billing);
                                             </div>
                                             <div class="form-group">
                                                 <label>Grade</label>
-                                                <input class="form-control" name="s_grade" placeholder="Enter Grade" value="<?php echo $subject_student["s_grade"]; ?>" required>
+                                                <input class="form-control" name="s_grade" placeholder="Enter Grade" value="<?php echo $subject_student["s_grade"]; ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label>Gender</label>
@@ -124,6 +124,25 @@ $result_billing = mysqli_query($connection, $query_billing);
                                         <div class="form-group">
                                         <button type="button" id ="addstudent" class="btn btn-primary">Add Student</button>
                                         </div>
+										<div class="form-group">
+                                            <label class="control-label" for="inputSuccess">Residing Address</label>
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter Street" name="street" value="<?php echo $subject["s_street"]; ?>" required>
+                                          </div>
+                                          <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Addresss line 2" name="address" value="<?php echo $subject["s_address"]; ?>">
+                                          </div>
+                                          <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="City" name="city" value="<?php echo $subject["s_city"]; ?>" required>
+                                          </div>
+                                          <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="State / Province / Region" name="state" value="<?php echo $subject["s_state"]; ?>" required>
+                                          </div>
+                                          <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Postal / Zip Code" name="zipcode" value="<?php echo $subject["s_zip"]; ?>">
+                                          </div>
+                                          <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Country" name="country" value="<?php echo $subject["s_country"]; ?>" required>
+                                          </div>
                                         <div class="form-group">
                                         <label>Days Needed</label>
                                         <?php $days_needed = explode(",", $subject["o_days"]);
@@ -191,25 +210,7 @@ $result_billing = mysqli_query($connection, $query_billing);
                                 
                                     <!-- /.col-lg-6 (nested) -->
                                     <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label class="control-label" for="inputSuccess">Residing Address</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Enter Street" name="street" value="<?php echo $subject["s_street"]; ?>" required>
-                                          </div>
-                                          <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Addresss line 2" name="address" value="<?php echo $subject["s_address"]; ?>">
-                                          </div>
-                                          <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="City" name="city" value="<?php echo $subject["s_city"]; ?>" required>
-                                          </div>
-                                          <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="State / Province / Region" name="state" value="<?php echo $subject["s_state"]; ?>" required>
-                                          </div>
-                                          <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Postal / Zip Code" name="zipcode" value="<?php echo $subject["s_zip"]; ?>">
-                                          </div>
-                                          <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Country" name="country" value="<?php echo $subject["s_country"]; ?>" required>
-                                          </div>
+                                        
                                           <h4>Parent Details</h4>
                                           <div class="form-group">
                                             <label>First Name</label>

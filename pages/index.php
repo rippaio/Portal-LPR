@@ -1,7 +1,22 @@
 <?php
-  include("./includes/functions.php");
-  include("./includes/htmlheader.php");
-  include("./includes/nav.php");  
+include("./includes/db_connection.php");
+include("./includes/functions.php");
+?>
+<?php
+
+$query  = "SELECT count(*) FROM lpr_student";
+$result = mysqli_query($connection, $query);
+confirm_query($result);
+if($result_students = mysqli_fetch_assoc($result)) {
+        return $result_students;
+    } else {
+        return null;
+    }
+var_dump($result_students);
+?>
+<?php
+include("./includes/htmlheader.php");
+include("./includes/nav.php");
 ?>
 
         <!-- Page Content -->
