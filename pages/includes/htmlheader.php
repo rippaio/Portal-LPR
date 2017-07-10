@@ -19,6 +19,7 @@
 
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="../dist/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="../dist/css/styles.css" rel="stylesheet">
 
     <!-- Custom Fonts -->

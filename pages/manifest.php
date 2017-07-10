@@ -75,7 +75,7 @@ include("./includes/nav.php");
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table id="manifest" class="table table-striped">
+                            <table id="manifest" class="table table-striped dataTab">
                                 <thead>
                                 <tr>
                                     <th>City</th>
