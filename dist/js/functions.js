@@ -1720,3 +1720,4 @@ function show_schoolData(th) {
 
     });
 }
+
