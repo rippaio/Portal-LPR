@@ -385,6 +385,11 @@ function changeorderstatus($o_id,$status){
 		global $connection;
 
 		if (is_array($s_fname)){
+
+			$query_del = "DELETE FROM `lpr_student` WHERE o_id = $o_id";
+			error_log("Insert bill\n" . $query_del , 3, "C:/xampp/apache/logs/error.log");
+			$result_del = mysqli_query($connection, $query_del);
+			
 			for ($i=0; $i < sizeof($s_fname); $i++) {
 
 			$fname = $s_fname[$i];
@@ -392,7 +397,8 @@ function changeorderstatus($o_id,$status){
 			$grade = $s_grade[$i];
 			$gender = $s_gender[$i];
 
-			$query = "UPDATE lpr_student SET s_fname='$fname', s_lname='$lname', s_grade='$grade', s_gender='$gender', s_pfname='$s_pfname', s_plname='$s_plname', s_phone='$s_phone', s_altphone='$s_altphone', s_street='$s_street', s_address='$s_address', s_city='$s_city', s_state='$s_state', s_zip='$s_zip', s_country='$s_country' WHERE o_id = $o_id";
+			$query = "INSERT INTO lpr_student(o_id, s_fname, s_lname, s_grade, s_gender, s_pfname, s_plname, s_phone, s_altphone, s_street, s_address, s_city, s_state, s_zip, s_country) ";
+			$query .= "VALUES ($o_id, '$fname', '$lname', '$grade', '$gender', '$s_pfname', '$s_plname', '$s_phone',  '$s_altphone', '$s_street', '$s_address', '$s_city',  '$s_state', '$s_zip', '$s_country') ";
 			error_log("Insert student\n" . $query.sizeof($s_fname) , 3, "C:/xampp/apache/logs/error.log");
 			$result = mysqli_query($connection, $query);
 			

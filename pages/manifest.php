@@ -236,8 +236,8 @@ include("./includes/nav.php");
 
             </div>
             <!-- /.col-lg-12 -->
-            <div id="dialog-confirm" title="Empty the recycle bin?">
-            </div>
+            <div id="dialog-confirm" title="Is driver payable?"></div>
+            <div id="dialog-confirm2" title="Is client billable?"></div>
         </div>
         <!-- /.row -->
     </div>

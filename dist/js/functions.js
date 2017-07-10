@@ -617,96 +617,107 @@ $('.cancel').click(function(element){
     sdata['trip_date'] = $(id).siblings('input').data('trip_date');
 
 
-    // if (getday() == $("[name='o_startdate']").val()) {
-    // 	log((timeToSeconds(sdata['time'])-timeToSeconds(gettime())));
+    if (getday() == $("[name='o_startdate']").val()) {
+    	log((timeToSeconds(sdata['time'])-timeToSeconds(gettime())));
 
-    // 		log(timeToSeconds(sdata['time'])+","+sdata['time']+","+timeToSeconds(gettime())+","+gettime());
-    // 		if((timeToSeconds(sdata['time'])-timeToSeconds(gettime()))<7200 && ((timeToSeconds(sdata['time'])-timeToSeconds(gettime())))>0){
-    // 			var resp = confirm("Is driver payable?");
-			 //    if (resp == true) {
-			 //        sdata['driver_payable'] = "TRUE";
-			 //    } else {
-			 //        sdata['driver_payable'] = "FALSE";
-			 //    }
+    		log(timeToSeconds(sdata['time'])+","+sdata['time']+","+timeToSeconds(gettime())+","+gettime());
+    		if((timeToSeconds(sdata['time'])-timeToSeconds(gettime()))<7200 && ((timeToSeconds(sdata['time'])-timeToSeconds(gettime())))>0){
+    			
+                $( "#dialog-confirm" ).dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                    "Yes": function() {
+                       sdata['driver_payable'] = "TRUE";
+                       continue_cancel(id,sdata);
+                    },
+                    "No": function() {
+                      sdata['driver_payable'] = "FALSE";
+                      continue_cancel(id,sdata);
+                    }
+                    }
+                });
 			    
-    // 		}
-    //         else{sdata['client_payable'] = "FALSE";}
+    		}
+            else{
+                $( "#dialog-confirm2" ).dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                    "Yes": function() {
+                       continue_cancel(id,sdata);
+                    },
+                    "No": function() {
+                       sdata['client_payable'] = "FALSE";
+                      continue_cancel(id,sdata);
+                    }
+                    }
+                });}
 
-    // }    
+    }    
 
-confirmBox("Are you sure", testdialog(result){
-    if (callback) {
-        // do something if user pressed yes
-    } 
-    else {
-        // do something if user pressed no
-    }
-});
+
 
 function testdialog() {
+    var resp = confirm("Is driver payable?");
+                if (resp == true) {
+                    sdata['driver_payable'] = "TRUE";
+                } else {
+                    sdata['driver_payable'] = "FALSE";
+                }
     // var result="";
-    $( "#dialog-confirm" ).dialog({
-      resizable: false,
-      height: "auto",
-      width: 400,
-      modal: true,
-      buttons: {
-        "Yes": function() {
-          result= true;
-        },
-        "No": function() {
-          result= false;
-        }
-      }
-    });
+    
     return result;
 }
-
-
-	if ($(id).siblings('input').data('updated') == false){
-		sdata['mode'] = "insert_trip";
-	    sdata['status'] = "cancel";
-	    log(sdata['mode']);
-	    $.ajax({
-	        url: 'ajax/manifest_ajax.php',
-	        type: 'post',
-	        data: {myData:sdata},
-	        success: function(data) {
-	            log(data);
-	        	$(id).siblings('input').attr('data-trip_id',data);
-	        	$(id).siblings('input').attr('data-updated',"true");
-	        	location.reload();  
-	        },
-	        error: function(xhr, desc, err) {
-	          console.log(xhr);
-	          console.log("Details: " + desc + "\nError:" + err);
-	        }
-	      }); // end ajax call
-		}
-
-	if ($(id).siblings('input').data('updated') == true){
-	    sdata['mode'] = "update_trip";
-	    sdata['trip_id'] = $(id).siblings('input').data('trip_id');
-	    sdata['status'] = "cancel";
-	    log(sdata['mode']+sdata['trip_id']);
-	    $.ajax({
-	        url: 'ajax/manifest_ajax.php',
-	        type: 'post',
-	        data: {myData:sdata},
-	        success: function(data) {
-	            log(data);
-	            location.reload();
-	          
-	        },
-	        error: function(xhr, desc, err) {
-	          console.log(xhr);
-	          console.log("Details: " + desc + "\nError:" + err);
-	        }
-	      }); // end ajax call
-    }
-
 });
 
+function continue_cancel(id,sdata){
+    if ($(id).siblings('input').data('updated') == false){
+        sdata['mode'] = "insert_trip";
+        sdata['status'] = "cancel";
+        log(sdata['mode']);
+        $.ajax({
+            url: 'ajax/manifest_ajax.php',
+            type: 'post',
+            data: {myData:sdata},
+            success: function(data) {
+                log(data);
+                $(id).siblings('input').attr('data-trip_id',data);
+                $(id).siblings('input').attr('data-updated',"true");
+                location.reload();  
+            },
+            error: function(xhr, desc, err) {
+              console.log(xhr);
+              console.log("Details: " + desc + "\nError:" + err);
+            }
+          }); // end ajax call
+        }
+
+    if ($(id).siblings('input').data('updated') == true){
+        sdata['mode'] = "update_trip";
+        sdata['trip_id'] = $(id).siblings('input').data('trip_id');
+        sdata['status'] = "cancel";
+        log(sdata['mode']+sdata['trip_id']);
+        $.ajax({
+            url: 'ajax/manifest_ajax.php',
+            type: 'post',
+            data: {myData:sdata},
+            success: function(data) {
+                log(data);
+                location.reload();
+              
+            },
+            error: function(xhr, desc, err) {
+              console.log(xhr);
+              console.log("Details: " + desc + "\nError:" + err);
+            }
+          }); // end ajax call
+    }
+}
 $("[name='bill-checkbox']").bootstrapSwitch();
 $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, state) {
 	log(event.target+"with"+state);
