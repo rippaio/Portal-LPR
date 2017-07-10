@@ -1,6 +1,9 @@
 function log(val){
 	console.log(val);
 }
+
+$('.dataTab').DataTable();
+
 $('#ctypeSelect').change(function(){
 	var client = $('#ctypeSelect').val();
 	$('input[name="optradio"]').filter(function (index){
@@ -658,6 +661,11 @@ $('.cancel').click(function(element){
                     }
                 });}
 
+    }
+    else{
+        sdata['driver_payable'] = "FALSE";
+        sdata['client_payable'] = "FALSE";
+        continue_cancel(id,sdata);
     }    
 
 

@@ -16,7 +16,7 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
 
-    
+    <script src="../dist/js/jquery.dataTables.min.js"></script>
     <script src="./src/clockpicker.js"></script>
     <script src="../vendor/jquery-ui-1.12.1/jquery-ui.js"></script>
     <!-- <script src="../vendor/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script> -->
