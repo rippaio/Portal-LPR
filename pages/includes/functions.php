@@ -488,10 +488,10 @@ function changeorderstatus($o_id,$status){
 
 function  getDriverBill($driver_id,$start_date,$end_date){
     global $connection;
-    $query = "(select triplog_date,o_payable,o_tip,CONCAT(s_lname,\" \",s_fname) s_name,triplog_clock from lpr_triplog,lpr_order,lpr_student  WHERE
+    $query = "(select triplog_date,o_payable,o_tip,CONCAT(s_lname,\" \",s_fname) s_name,triplog_clock, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc,CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc  from lpr_triplog,lpr_order,lpr_student  WHERE
      lpr_triplog.triplog_o_id=lpr_order.o_id and lpr_triplog.triplog_studentid=lpr_student.s_id and lpr_triplog.triplog_driver_id=$driver_id and triplog_date between '$start_date' and '$end_date' AND triplog_driver_payable in ('TRUE'))
     union
-    (select ad_tripdate, ad_payable,ad_tip ,\"Additional Trip\" as s_name,'NA' as triplog_clock  from lpr_additnltrip where ad_driverid=$driver_id and ad_tripdate between '$start_date' and '$end_date')";
+    (select ad_tripdate, ad_payable,ad_tip ,\"Additional Trip\" as s_name,'NA' as triplog_clock,'NA' as pickloc,'NA' as droploc  from lpr_additnltrip where ad_driverid=$driver_id and ad_tripdate between '$start_date' and '$end_date')";
     error_log("\nDriver Billing query " . $query, 3, "C:/xampp/apache/logs/error.log");
     $result_bill = mysqli_query($connection, $query);
     confirm_query($result_bill);
@@ -636,13 +636,36 @@ function dr_changestatus($d_id,$status){
 
 }
 
-function inserNewSchool($sc_name,$sc_ctype,$sc_abr,$sc_cnumber,$sc_cname,$sc_stype,$sc_steet,$sc_addr,$sc_city,$sc_state,$sc_zip,$sc_country){
+function inserNewSchool($sc_name,$sc_ctype,$sc_abr,$sc_cnumber,$sc_cname,$sc_stype,$sc_steet,$sc_city,$sc_state,$sc_zip,$sc_country,$sc_address){
     global $connection;
-    $query ="INSERT INTO lpr_school(`client_id`, `school_name`, `school_abr`, `school_street`, `school_address`, `school_city`, `school_state`, `school_zip`, `school_country`, `school_contact_name`, `school_contact_no`, `school_type`) 
-             VALUES ($sc_ctype,'$sc_name','$sc_abr','$sc_steet','$sc_addr','$sc_city','$sc_state',$sc_zip,'$sc_country','$sc_cname','$sc_cnumber','$sc_stype')";
+    $query ="INSERT INTO lpr_school(`client_id`, `school_name`, `school_abr`, `school_street`,`school_city`, `school_state`, `school_zip`, `school_country`, `school_contact_name`, `school_contact_no`, `school_type`,`school_address`) 
+             VALUES ($sc_ctype,'$sc_name','$sc_abr','$sc_steet','$sc_city','$sc_state',$sc_zip,'$sc_country','$sc_cname','$sc_cnumber','$sc_stype','$sc_address')";
     $result_id = mysqli_query($connection, $query);
 //        //echo $query;
-//        //error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+   error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+    confirm_query($result_id);
+    redirect_to("schooldata.php");
+}
+
+function getSchoolData($schoolid){
+    global $connection;
+    $query = "select * from lpr_school where school_id=$schoolid";
+    $result = mysqli_query($connection, $query);
+    confirm_query($result);
+    if($results = mysqli_fetch_assoc($result)) {
+        return $results;
+    } else {
+        return null;
+    }
+}
+
+function updateSchool($sc_id,$sc_name,$sc_ctype,$sc_abr,$sc_cnumber,$sc_cname,$sc_stype,$sc_steet,$sc_city,$sc_state,$sc_zip,$sc_country,$sc_address){
+    global $connection;
+    $query ="UPDATE `lpr_school` SET `client_id`=$sc_ctype,`school_name`='$sc_name',`school_abr`='$sc_abr',`school_street`='$sc_steet',`school_city`='$sc_city',`school_state`='$sc_state',
+           `school_zip`=$sc_zip,`school_country`='$sc_country',`school_contact_name`='$sc_cname',`school_contact_no`='$sc_cnumber',`school_type`='$sc_stype',school_address='$sc_address' WHERE school_id=$sc_id";
+    $result_id = mysqli_query($connection, $query);
+//        //echo $query;
+  error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
     confirm_query($result_id);
     redirect_to("schooldata.php");
 }

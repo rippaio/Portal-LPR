@@ -36,21 +36,21 @@ if(isset($_POST['additnl_driverid'])) {
     }
     .ui-datepicker { position: relative; z-index: 10000 !important; }
 
-    .table-fixed thead {
-        width: 97%;
-    }
-    .table-fixed tbody {
-        height: 500px;
-        overflow-y: auto;
-        width: 100%;
-    }
-    .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
-        display: block;
-    }
-    .table-fixed tbody td, .table-fixed thead > tr> th {
-        float: left;
-        border-bottom-width: 0;
-    }
+    /*.table-fixed thead {*/
+        /*width: 97%;*/
+    /*}*/
+    /*.table-fixed tbody {*/
+        /*height: 500px;*/
+        /*overflow-y: auto;*/
+        /*width: 100%;*/
+    /*}*/
+    /*.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {*/
+        /*display: block;*/
+    /*}*/
+    /*.table-fixed tbody td, .table-fixed thead > tr> th {*/
+        /*float: left;*/
+        /*border-bottom-width: 0;*/
+    /*}*/
 
 
 
@@ -111,12 +111,12 @@ if(isset($_POST['additnl_driverid'])) {
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        All Rows
+                        Drivers Data
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-
-                            <table class="table table-fixed">
+                        <div class="table-responsive">
+                            <table class="table table-striped dataTab">
                                 <thead>
                                 <tr>
                                     <th class="col-xs-1">#</th>
@@ -126,6 +126,7 @@ if(isset($_POST['additnl_driverid'])) {
                                     <th class="col-xs-2">Commision</th>
                                     <th class="col-xs-1" style="text-align:left; padding-left: 45px;">Edit</th>
                                     <th class="col-xs-1" style="padding-left: 45px">State</th>
+                                    <th class="col-xs-1" style="padding-left: 30px">Trip</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -157,7 +158,7 @@ if(isset($_POST['additnl_driverid'])) {
 
                                 </tbody>
                             </table>
-
+                        </div>
                         <!-- /.table-responsive -->
                     </div>
                     <!-- /.panel-body -->

@@ -28,6 +28,7 @@ if(isset($_POST['driver_id'])) {
 //}
 
   $driverBill=getDriverBill($driver_id,$start_date,$end_date);
+  $d_print=getDriverBill($driver_id,$start_date,$end_date);
   $cashAdvanceDetails= getCashAdvance($driver_id,$start_date,$end_date);
   $advance=$cashAdvanceDetails['cashAdvance'];
 
@@ -87,9 +88,22 @@ include("./includes/nav.php");
     }
     @page {
         size: auto;   /* auto is the initial value */
-        margin: 0;  /* this affects the margin in the printer settings */
+        margin: 0.5cm;  /* this affects the margin in the printer settings */
     }
 
+    /*body { margin: 20mm 25mm 20mm 25mm; }*/
+
+    table { page-break-inside:auto }
+    tr    { page-break-inside:avoid; page-break-after:auto }
+    thead { display:table-header-group }
+    tfoot { display:table-footer-group }
+    /*.print:last-child {*/
+    /*page-break-after: auto;*/
+    /*}*/
+
+    table, th, td {
+        border: 1px solid black;
+    }
 
 
 </style>
@@ -209,14 +223,57 @@ include("./includes/nav.php");
 
 
         </div>
+        <br><br>
+        <table >
+            <!--                    <col width="400">-->
+            <!--                    <col width="200">-->
+            <thead>
+            <tr>
+                <th style="padding-left:20px;text-align: center" class="col-xs-8"> <span>Description</span></th>
+                <th style="padding-left:20px;text-align: center" class="col-xs-2"> <span>Amount</span></th>
+                <th style="padding-left:20px;text-align: center" class="col-xs-2"> <span>Tip</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            // Use returned data (if any)
+            // Use returned data (if any)
+            if(isset($_POST['driver_id'])) {
+            while ($cbill = mysqli_fetch_assoc($d_print)) {
+
+                $originalDate = $cbill['triplog_date'];
+                $newDate = date("F j, Y", strtotime($originalDate));
+                ?>
+
+                <tr>
+                    <td style="padding-left:10px;padding-right:20px" class="col-xs-8">
+                        <span><?php echo $newDate; ?>-</span>
+                        <span><?php echo $cbill["s_name"]; ?></span>
+                        <span><?php echo $cbill["pickloc"]; ?>&nbsp;&nbsp; to</span>
+                        <span><?php echo  $cbill["droploc"];?></span>
+                    </td>
+                    <td style="text-align: right" class="col-xs-2">
+                        $<span ><?php echo $cbill["o_payable"]; ?></span>
+                    </td>
+                    <td style="text-align: right" class="col-xs-2">
+                        $<span ><?php echo $cbill["o_tip"]; ?></span>
+                    </td>
+                </tr>
+            <?php }}?>
+            <tr style="height:40px">
+                <td style="padding-left:20px"  class="col-xs-8"> It's been pleasure working with you!</td>
+                <td style="padding-right:20px;text-align: center" colspan="2">Total:&nbsp;&nbsp;<span class="db_totalPayable"> </span></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
 <!-- Page Content -->
-<div id="page-wrapper">
+<div id="page-wrapper" class="dontprint">
     <div class="container-fluid">
 
-        <div class="row dontprint" >
+        <div class="row" >
             <div class="col-lg-12">
                 <h1 class="page-header">Contractors Settlement Record</h1>
                 <div class="btn-group form-group">
@@ -283,7 +340,7 @@ include("./includes/nav.php");
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-fixed">
+                            <table class="table table-fixed dataTab">
                                 <thead>
                                 <tr>
                                     <th class="col-xs-1">Date</th>

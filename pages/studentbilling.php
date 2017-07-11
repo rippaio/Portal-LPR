@@ -8,6 +8,7 @@ $query_client  = "SELECT * FROM lpr_client";
 $result_client = mysqli_query($connection, $query_client);
 $totaltrips="";
 $totalpayable="";
+$client_name="";
 confirm_query($result_client);
 ?>
 <?php
@@ -26,7 +27,7 @@ $cb_forPrint=getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb
 $cb_payment=getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
 while ($c_pay = mysqli_fetch_assoc($cb_payment)) {
     $totaltrips = $c_pay['tripcount'];
-    $totalpayable =$c_pay['totalbillable'];
+    $totalpayable =round($c_pay['totalbillable'],2);
     $client_name=$c_pay['client_name'];
     $client_street=$c_pay['client_street'];
     $client_address=$c_pay['client_address'];
@@ -53,11 +54,11 @@ include("./includes/nav.php");
 </style>
 
 <style type="text/css" media="print">
-
     .dontprint
     { display: none; }
     .toprint
-    { display: inline;  }
+    { display: inline;
+    }
     .to4Columns {
         -webkit-column-count: 4; /* Chrome, Safari, Opera */
         -moz-column-count: 4; /* Firefox */
@@ -91,10 +92,13 @@ include("./includes/nav.php");
     }
     @page {
         size: auto;   /* auto is the initial value */
-        margin:0;
-
-    /* this affects the margin in the printer settings */
+        margin:.5cm;
+        /* this affects the margin in the printer settings */
     }
+
+
+
+
 
     /*body { margin: 20mm 25mm 20mm 25mm; }*/
 
@@ -114,11 +118,18 @@ include("./includes/nav.php");
 
 
 </style>
+<style>
+    @media print {
+        html, body {
+            height: 99%;
+        }
+    }
+</style>
 
 <?php
 if(isset($_POST['cb_ctypeSelect'])) {
 ?>
-<div class="toprint" style="padding-left: 100px">
+<div class="toprint" style="padding-left: 100px;height: auto;page-break-after: avoid">
     <div id="page-wrapper">
         <br><br>
         <div class="container-fluid">
@@ -203,18 +214,16 @@ if(isset($_POST['cb_ctypeSelect'])) {
                             <span><?php echo $cbill["pickloc"]; ?>&nbsp;&nbsp; to</span>
                             <span><?php echo  $cbill["droploc"];?></span>
                         </td>
-                        <td style="padding-left:10px;padding-right:20px" class="col-xs-4">
-                            <span><?php echo $cbill["o_billable"]; ?></span>
+                        <td style="text-align: right" class="col-xs-4">
+                            $<span ><?php echo $cbill["o_billable"]; ?></span>
 
 
                         </td>
                     </tr>
-
-
                     <?php }?>
                     <tr style="height:40px">
                         <td style="padding-left:20px"> It's been pleasure working with you!</td>
-                        <td style="padding-left:20px">Total:<span> &nbsp;&nbsp;<?php echo $totalpayable; ?> </span></td>
+                        <td style="padding-right:20px;text-align: right">Total:<span> &nbsp;&nbsp;$<?php echo $totalpayable; ?> </span></td>
                     </tr>
                     </tbody>
                 </table>
@@ -231,8 +240,8 @@ if(isset($_POST['cb_ctypeSelect'])) {
 }
 ?>
 
-
-<div id="page-wrapper" class="dontprint">
+<div class="dontprint">
+<div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -320,11 +329,16 @@ if(isset($_POST['cb_ctypeSelect'])) {
                 <!--End Modal  -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Trips
+                        <div style="display: inline-block">
+                            <h4>  Trips:</h4>
+                        </div>
+                        <div style="display: inline-block;padding-left: 10px" >
+                            <h4><?php echo $client_name; ?>  </h4>
+                        </div>
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
-                            <table class="table table-fixed">
+                            <table class="table table-fixed dataTab">
                                 <thead>
                                 <tr>
                                     <th  class="col-xs-1">Date</th>
@@ -353,6 +367,7 @@ if(isset($_POST['cb_ctypeSelect'])) {
                                 <td class="col-xs-2"><?php echo $cbill["droploc"]; ?></td>
                                 <td class="col-xs-1"><?php echo $cbill["o_billable"]; ?></td>
                                </tr>
+
                               <?php }  } ?>
                                 </tbody>
                             </table>
@@ -404,26 +419,7 @@ if(isset($_POST['cb_ctypeSelect'])) {
     </div>
     <!-- /.container-fluid -->
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 <?php
 require_once("./includes/footer.php");
