@@ -33,7 +33,7 @@ $query ="select * from
   on R2.driver_id=R4.driver_id
   where clockperiod='$clck' and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%'  ORDER BY time";
 
-error_log("\nManifest" . $query , 3, "C:/xampp/apache/logs/error.log");
+//error_log("\nManifest" . $query , 3, "C:/xampp/apache/logs/error.log");
 $result_triporder = mysqli_query($connection, $query);
 
 confirm_query($result_triporder);
@@ -236,8 +236,17 @@ include("./includes/nav.php");
 
             </div>
             <!-- /.col-lg-12 -->
-            <div id="dialog-confirm" title="Is driver payable?"></div>
-            <div id="dialog-confirm2" title="Is client billable?"></div>
+            <div id="dialog-confirm" title="Is driver payable?">
+                <div>
+
+            <div id="dialog-confirm2" title="Is client billable?" class="ui-helper-hidden">
+                <div class="checkbox">
+              <label><input type="checkbox" name="check_driver" value="">Driver Payable</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="check_client" value="">Client Billable</label>
+            </div>
+            </div>
         </div>
         <!-- /.row -->
     </div>
