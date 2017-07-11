@@ -645,21 +645,10 @@ $('.cancel').click(function(element){
 			    
     		}
             else{
-                $( "#dialog-confirm2" ).dialog({
-                    resizable: false,
-                    height: "auto",
-                    width: 400,
-                    modal: true,
-                    buttons: {
-                    "Yes": function() {
-                       continue_cancel(id,sdata);
-                    },
-                    "No": function() {
-                       sdata['client_payable'] = "FALSE";
-                      continue_cancel(id,sdata);
-                    }
-                    }
-                });}
+                sdata['driver_payable'] = "FALSE";
+                sdata['client_payable'] = "FALSE";
+                continue_cancel(id,sdata);
+                }
 
     }
     else{
@@ -726,6 +715,25 @@ function continue_cancel(id,sdata){
           }); // end ajax call
     }
 }
+function continue_edit(sdata){
+
+$.ajax({
+            url: 'ajax/manifest_ajax.php',
+            type: 'post',
+            data: {myData:sdata},
+            success: function(data) {
+                //log(data);
+                location.reload();
+              
+            },
+            error: function(xhr, desc, err) {
+              console.log(xhr);
+              console.log("Details: " + desc + "\nError:" + err);
+            }
+          }); // end ajax call
+
+}
+
 $("[name='bill-checkbox']").bootstrapSwitch();
 $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, state) {
 	log(event.target+"with"+state);
@@ -784,23 +792,57 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
 		    sdata['trip_id'] = $(id).siblings('input').data('trip_id');
 		    sdata['status'] = $(id).siblings('input').data('trip_status');;
 		    log(sdata['mode']+sdata['trip_id']);
-		    $.ajax({
-		        url: 'ajax/manifest_ajax.php',
-		        type: 'post',
-		        data: {myData:sdata},
-		        success: function(data) {
-		            //log(data);
-		            location.reload();
-		          
-		        },
-		        error: function(xhr, desc, err) {
-		          console.log(xhr);
-		          console.log("Details: " + desc + "\nError:" + err);
-		        }
-		      }); // end ajax call
-	    }
+        if (sdata['status']== 'cancel') {
+        
+            if(getday() == $("[name='o_startdate']").val() && (timeToSeconds(sdata['time'])-timeToSeconds(sdata['picktime']))<7200 && (timeToSeconds(sdata['time'])-timeToSeconds(sdata['picktime']))>0){
+                
+                $( "#dialog-confirm" ).dialog({
+                    resizable: false,
+                    height: "auto",
+                    width: 400,
+                    modal: true,
+                    buttons: {
+                    "Yes": function() {
+                       sdata['driver_payable'] = "TRUE";
+                       continue_edit(sdata);
+                    },
+                    "No": function() {
+                      sdata['driver_payable'] = "FALSE";
+                      continue_edit(sdata);
+                    }
+                    }
+                });
+                
+                }
+                else{
+                    $( "#dialog-confirm2" ).dialog({
+                        resizable: false,
+                        height: "auto",
+                        width: 400,
+                        modal: true,
+                        buttons: {
+                        "Ok": function() {
+                        if ($('input[name="check_driver"]').is(":checked")==true) {
+                            sdata['driver_payable'] = "TRUE";
+                        }
+                        else {sdata['driver_payable'] = "FALSE";}
 
-	}
+                       if ($('input[name="check_client"]').is(":checked")==true) {
+                            sdata['client_payable'] = "TRUE";
+                        }
+                        else {sdata['client_payable'] = "FALSE";}
+                       continue_edit(sdata);
+                    }
+                        }
+                    });}
+
+        }
+        else{
+            continue_edit(sdata);
+        }
+	    }
+    }
+
 	if (state == false){
 		var picktime = $(id).siblings("[headers='picktime']").children('span:first').text();
    		var droptime = $(id).siblings("[headers='droptime']").children('span:first').text();
