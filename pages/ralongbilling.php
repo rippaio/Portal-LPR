@@ -12,6 +12,7 @@ $ra_id=$_POST['ra_id'];
 $startdate=$_POST['ra_startdate'];
 $end_date=$_POST['ra_enddate'];
 $tripdata= getRaData($ra_id,$startdate,$end_date);
+    $tripdata_print=getRaData($ra_id,$startdate,$end_date);
 }
 ?>
 
@@ -113,7 +114,7 @@ include("./includes/nav.php");
                             </thead>
                             <tbody>
                             <tr>
-                                <td style="width:100px;padding-left:10px;padding-right:20px"> <span class="cb_date">_______</span></td>
+                                <td style="width:100px;padding-left:10px;padding-right:20px"> <span class="ra_date">_______</span></td>
                                 <td style="width:100px;padding-left:10px;padding-right:20px"><span>______  <span></td>
                             </tr>
                             </tbody>
@@ -123,76 +124,65 @@ include("./includes/nav.php");
                 </div>
                 <br><br>
                 <div>
-                    <table width="400">
-                        <thead>
-                        <tr>
-                            <th style="padding-left:20px;text-align: center"> <span>Bill T0</span></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td style="padding-left:10px;padding-right:20px">
-                                <span class="cb_client"><?php echo $client_name; ?></span><br>
-                                <span><?php echo $client_address; ?></span>
-                                <span><?php echo $client_street; ?></span><br>
-                                <span><?php echo $client_city; ?>,</span>
-                                <span><?php echo $client_state; ?>,</span>
-                                <span><?php echo $client_zip; ?></span>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                   <span>Payable to</span>
+                                <span class="cb_client"><?php echo $ra_name; ?></span><br>
+
+
+                </div>
+                <div>
+                    <span>Total Trips:</span>
+                    <span id="ra_Trips">0</span><br>
+
+
+                </div>
+                <div>
+                    <span>Amount per Ride Along:</span>
+                    $<span id="r_amount">0</span>
+
 
                 </div>
                 <br><br>
                 <div>
-                    <table >
+                    <table>
                         <!--                    <col width="400">-->
                         <!--                    <col width="200">-->
                         <thead>
                         <tr>
-                            <th style="padding-left:20px;text-align: center" class="col-xs-8"> <span>Description</span></th>
-                            <th style="padding-left:20px;text-align: center" class="col-xs-4"> <span>Amount</span></th>
+                            <th style="padding-left:20px;text-align: center" class="col-xs-6"> <span>Ride along Description</span></th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
                         // Use returned data (if any)
                         // Use returned data (if any)
-                        while ($cbill = mysqli_fetch_assoc($cb_forPrint)) {
+                       if(isset($_POST['submit_ra'])) {
+                           while ($bill = mysqli_fetch_assoc($tripdata_print)) {
 
-                            $originalDate = $cbill['triplog_date'];
-                            $newDate = date("F j, Y", strtotime($originalDate));
-                            ?>
+                               $originalDate = $bill['triplog_date'];
+                               $newDate = date("F j, Y", strtotime($originalDate));
+                               ?>
 
-                            <tr>
-                                <td style="padding-left:10px;padding-right:20px" class="col-xs-8">
-                                    <span><?php echo $newDate; ?>-</span>
-                                    <span><?php echo $cbill["s_name"]; ?></span>
-                                    <span><?php echo date ('H:i',strtotime($cbill["triplog_picktime"]))  ?>&nbsp;</span>
-                                    <?php if($cbill['triplog_clock']=='AM') {?>
-                                        <span>res to</span>
-                                        <span><?php echo  $cbill["school_abr"];?></span>
-                                    <?php } ?>
-                                    <?php if($cbill['triplog_clock']=='PM') {?>
-                                        <span><?php echo  $cbill["school_abr"];?></span>
-                                        <span>to res</span>
-                                    <?php } ?>
-                                </td>
-                                <td style="text-align: right" class="col-xs-4">
-                                    $<span ><?php echo $cbill["o_billable"]; ?></span>
+                               <tr>
+                                   <td style="padding-left:10px;padding-right:20px" class="col-xs-6">
+                                       <span><?php echo $newDate; ?>-</span>
+                                       with
+                                       <span><?php echo $bill["s_fname"]; ?>
+                                           &nbsp; &nbsp;<?php echo $bill["s_lname"]; ?></span>
+                                       and driver
+                                       <span><?php echo $bill["driver_fname"]; ?>
+                                           &nbsp; &nbsp;<?php echo $bill["driver_lname"]; ?>&nbsp;</span>
+                                   </td>
+                               </tr>
+                           <?php }
+                       }?>
 
-
-                                </td>
-                            </tr>
-                        <?php }?>
-                        <tr style="height:40px">
-                            <td style="padding-left:20px"> It's been pleasure working with you!</td>
-                            <td style="padding-right:20px;text-align: right">Total:<span> &nbsp;&nbsp;$<?php echo $totalpayable; ?> </span></td>
-                        </tr>
                         </tbody>
                     </table>
-
+                    <br>
+                    <div>
+                   <span> It's been pleasure working with you!</span><br>
+                  <b>  Total:&nbsp;&nbsp;$<span id="ra_pay">0</span></b>
+                    </div>
                 </div>
 
 
@@ -311,26 +301,9 @@ include("./includes/nav.php");
                                 <label>Amount Per Trip</label>
                                 <input class="form-control" type="number" step="any" id="ra_amount"  placeholder=""  value="">
                             </div>
-                            <!-- <div class="form-group">
-                                <label>Taxable Pay</label>
-                                <input class="form-control" placeholder="34">
-                                <p class="help-block"></p>
-                            </div>
-                            <div class="form-group">
-                                <label>Tips</label>
-                                <input class="form-control" placeholder="67">
-                            </div>
-                            <div class="form-group">
-                                <label>Total taxable</label>
-                                <input class="form-control" placeholder="50">
-                            </div>
-                            <div class="form-group">
-                                <label>Total Cash</label>
-                                <input class="form-control" placeholder="00">
-                            </div> -->
                             <div class="form-group">
                                 <label>Total Payable</label>
-                                <input class="form-control" id="ra_total"  placeholder=""  value="" disabled>
+                                <input class="form-control" id="ra_total"  placeholder=""  value="" >
                             </div>
                             <button type="button" class="btn btn-primary" onclick="setRideAlongBill()">
                                 Calculate

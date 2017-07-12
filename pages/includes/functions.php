@@ -682,10 +682,11 @@ function updateSchool($sc_id,$sc_name,$sc_ctype,$sc_abr,$sc_cnumber,$sc_cname,$s
 
 function getRaData($ra_id,$startdate,$end_date){
     global $connection;
-    $query="SELECT *  FROM lpr_triplog join (SELECT triplog_date,triplog_driver_id FROM lpr_triplog WHERE triplog_o_id IN (SELECT lpr_order.o_id FROM lpr_order WHERE ra_id = $ra_id)) as t1
+    $query="SELECT DISTINCT *  FROM lpr_triplog join (SELECT triplog_date,triplog_driver_id FROM lpr_triplog WHERE triplog_o_id IN (SELECT lpr_order.o_id FROM lpr_order WHERE ra_id = $ra_id)) as t1
 ON lpr_triplog.triplog_date = t1.triplog_date AND lpr_triplog.triplog_driver_id = t1.triplog_driver_id
 join lpr_driver on lpr_driver.driver_id=lpr_triplog.triplog_driver_id
 join lpr_student on lpr_student.s_id=lpr_triplog.triplog_studentid and lpr_triplog.triplog_date between '$startdate' and '$end_date'";
+    error_log("Inside RA query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
     $result = mysqli_query($connection, $query);
     confirm_query($result);
         return $result;

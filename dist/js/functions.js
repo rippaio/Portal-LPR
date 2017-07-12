@@ -1335,6 +1335,12 @@ function printClientBill(){
 }
 
 function printRABill(){
+    var todayTime = new Date();
+    var cb_date= todayTime .getFullYear() + "-" + (todayTime .getMonth() + 1) + "-" + todayTime .getDate();
+    $('.ra_date').text(cb_date);
+    $('#r_amount').text($('#ra_amount').val());
+    $('#ra_pay').text($('#ra_total').val());
+    $('#ra_Trips').text($('#ratotal_trips').val());
     window.print();
 }
 
