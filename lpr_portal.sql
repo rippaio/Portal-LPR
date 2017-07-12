@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2017 at 10:16 PM
+-- Generation Time: Jul 12, 2017 at 06:29 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.0.16
 
@@ -21,6 +21,33 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `lpr_portal` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `lpr_portal`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lpr_additnltrip`
+--
+
+CREATE TABLE `lpr_additnltrip` (
+  `ad_tripid` int(11) NOT NULL,
+  `ad_driverid` int(11) NOT NULL,
+  `ad_payable` float NOT NULL,
+  `ad_tip` float NOT NULL,
+  `ad_tripdate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lpr_additnltrip`
+--
+
+INSERT INTO `lpr_additnltrip` (`ad_tripid`, `ad_driverid`, `ad_payable`, `ad_tip`, `ad_tripdate`) VALUES
+(3, 1, 8, 6, '2017-06-22'),
+(4, 1, 11, 1, '2017-06-23'),
+(5, 1, 11, 1, '2017-06-01'),
+(6, 1, 1, 1, '2017-07-01'),
+(7, 1, 6, 6, '2017-07-13'),
+(8, 1, 4, 4, '2017-07-03'),
+(9, 1, 1, 1234, '2017-07-01');
 
 -- --------------------------------------------------------
 
@@ -59,7 +86,29 @@ INSERT INTO `lpr_billing` (`o_id`, `client_id`, `share`, `amount`) VALUES
 (22, 3, 0, 5),
 (22, 8, 0, 46),
 (23, 3, 0, 46),
-(23, 6, 0, 5);
+(23, 6, 0, 5),
+(27, 4, 0, 74),
+(28, 4, 0, 74),
+(29, 4, 0, 74),
+(30, 4, 0, 74),
+(31, 4, 0, 74),
+(33, 1, 0, 48.42),
+(32, 2, 0, 49),
+(32, 3, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lpr_cashadvance`
+--
+
+CREATE TABLE `lpr_cashadvance` (
+  `c_advanceid` int(11) NOT NULL,
+  `c_driverid` int(11) NOT NULL,
+  `c_payable` float NOT NULL,
+  `c_Date` date NOT NULL,
+  `c_type` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -93,6 +142,31 @@ INSERT INTO `lpr_client` (`client_id`, `client_abr`, `client_name`, `client_stre
 (5, 'HPS', 'Hampton City Schools', 'Franklin Street', 'One', 'Hampton', 'VA', 23669, 'USA', '', 5),
 (6, 'NNPS', 'Newport News Public Schools', 'Warwick Boulevard', '12465', 'Newport News', 'VA', 23606, 'USA', '', 1),
 (7, 'VBPS', 'Virginia Beach City Public Schools', 'George Mason Drive', '2512', 'Virginia Beach', 'VA', 23456, 'USA', '', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lpr_dates`
+--
+
+CREATE TABLE `lpr_dates` (
+  `dates_id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `startdate` date NOT NULL,
+  `enddate` date DEFAULT NULL,
+  `client_id` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lpr_dates`
+--
+
+INSERT INTO `lpr_dates` (`dates_id`, `title`, `startdate`, `enddate`, `client_id`) VALUES
+(1, 'Discussion 2', '2017-07-03', '0000-00-00', '1'),
+(2, 'Module 3', '2017-07-04', '0000-00-00', '1, 2, 3, 4, 5, 6, 7'),
+(3, 'Some Event', '2017-07-06', '0000-00-00', '3'),
+(4, 'Random', '2017-07-10', '0000-00-00', '4'),
+(5, 'xyz', '2017-07-09', '2017-07-14', '6');
 
 -- --------------------------------------------------------
 
@@ -270,40 +344,31 @@ CREATE TABLE `lpr_order` (
   `o_ra` varchar(10) NOT NULL,
   `o_wc` varchar(10) NOT NULL,
   `o_as` varchar(10) NOT NULL,
-  `driver_id` int(10) NOT NULL,
+  `driver_id` int(10) DEFAULT NULL,
   `o_icomment` varchar(100) NOT NULL,
   `o_dcomment` varchar(100) NOT NULL,
   `o_billable` float NOT NULL,
   `o_reqby` int(11) NOT NULL,
   `o_payable` float NOT NULL,
-  `o_tip` float NOT NULL
+  `o_tip` float NOT NULL,
+  `ra_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lpr_order`
 --
 
-INSERT INTO `lpr_order` (`o_id`, `client_id`, `school_id`, `o_startdate`, `o_enddate`, `o_status`, `o_ampickloc`, `o_ampicktime`, `o_amdroploc`, `o_amdroptime`, `o_pmpickloc`, `o_pmdroploc`, `o_pmpicktime`, `o_days`, `o_fd`, `o_ra`, `o_wc`, `o_as`, `driver_id`, `o_icomment`, `o_dcomment`, `o_billable`, `o_reqby`, `o_payable`, `o_tip`) VALUES
-(1, 3, 3, '2017-05-25', '2017-05-31', 'active', '33', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '33', '18:00:00', 'Monday', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 1, '333', '333', 55, 3, 3, 3),
-(2, 3, 3, '2017-05-25', '2017-05-31', 'active', '33', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '33', '18:00:00', 'Monday', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 1, '333', '333', 55, 3, 3, 3),
-(3, 3, 3, '2017-05-30', '2017-05-31', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '3', '18:00:00', 'Monday,Tuesday', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 1, '33', '33', 55, 3, 3, 3333),
-(4, 3, 3, '2017-05-30', '2017-05-31', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '3', '18:00:00', 'Monday,Tuesday', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 1, '33', '33', 55, 3, 3, 3333),
-(5, 3, 3, '2017-05-29', '2017-05-30', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4', '18:00:00', 'Monday,Tuesday', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 1, '444', '444', 55, 3, 40, 4),
-(6, 3, 3, '2017-05-30', '2017-05-31', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', 'rr', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'TRUE', 'FALSE', 1, 'rrr', 'rrr', 80, 3, 55, 5),
-(7, 3, 3, '2017-05-30', '2017-05-31', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', 'rr', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'TRUE', 'FALSE', 1, 'rrr', 'rrr', 80, 3, 55, 5),
-(8, 3, 3, '2017-05-30', '2017-05-31', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', 'rr', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'TRUE', 'FALSE', 1, 'rrr', 'rrr', 80, 3, 55, 5),
-(9, 3, 3, '2017-05-30', '2017-05-31', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', 'rr', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'TRUE', 'FALSE', 1, 'rrr', 'rrr', 80, 3, 55, 5),
-(10, 3, 3, '2017-05-30', '2017-05-31', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', 'rr', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'TRUE', 'FALSE', 1, 'rrr', 'rrr', 80, 3, 55, 5),
-(11, 3, 3, '2017-05-30', '2017-05-31', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', 'rr', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'TRUE', 'FALSE', 1, 'rrr', 'rrr', 80, 3, 55, 5),
-(12, 3, 3, '2017-06-01', '2017-06-02', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', 'rrrrr', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 1, 'ssss', 'sssss', 49, 6, 40, 4),
-(13, 3, 3, '2017-06-01', '2017-06-28', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4444', NULL, 'Monday,Tuesday,Wednesday,Thursday,Friday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 1, '', '', 51, 6, 3, 3),
-(17, 3, 3, '2017-06-01', '2017-06-02', 'active', '', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '', '18:00:00', 'Monday,Tuesday,Wednesday', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 1, '', '', 49, 6, 0, 0),
-(18, 3, 3, '2017-06-02', '2017-06-03', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4444', '18:00:00', 'Monday,Tuesday,Thursday,Friday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 1, '', '', 51, 6, 40, 4),
-(19, 3, 3, '2017-06-02', '2017-06-03', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4444', '18:00:00', 'Monday,Tuesday,Thursday,Friday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 1, '', '', 51, 6, 40, 4),
-(20, 3, 3, '2017-06-02', '2017-06-03', 'active', '48th street, 1055w,Apt 13,Norfolk,23508', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4444', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 2, '', '', 51, 8, 8, 0),
-(21, 3, 3, '2017-06-02', '2017-06-03', 'active', '48th street, 1055w,Apt 13,Norfolk,23508', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4444', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 2, '', '', 51, 8, 50, 0),
-(22, 3, 3, '2017-06-02', '2017-06-03', 'active', '48th street, 1055w,Apt 13,Norfolk,23508', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4444', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 2, '', '', 51, 8, 50, 0),
-(23, 3, 3, '2017-06-03', '2017-06-06', 'active', '48th street, 1055w,Apt 13,Norfolk,23508', '12:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '48th street, 1055w,Apt 13,Norfolk,23508', '18:00:00', 'Monday,Tuesday,Wednesday,Thursday,Friday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 2, '', '', 51, 6, 50, 4);
+INSERT INTO `lpr_order` (`o_id`, `client_id`, `school_id`, `o_startdate`, `o_enddate`, `o_status`, `o_ampickloc`, `o_ampicktime`, `o_amdroploc`, `o_amdroptime`, `o_pmpickloc`, `o_pmdroploc`, `o_pmpicktime`, `o_days`, `o_fd`, `o_ra`, `o_wc`, `o_as`, `driver_id`, `o_icomment`, `o_dcomment`, `o_billable`, `o_reqby`, `o_payable`, `o_tip`, `ra_id`) VALUES
+(13, 3, 3, '2017-06-01', '2017-06-28', 'active', 'NEW', '17:00:00', 'NEW', '18:00:00', 'OLD', '4444', NULL, 'Monday,Tuesday,Wednesday,Thursday,Friday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 1, '', '', 51, 6, 3, 3, NULL),
+(17, 3, 3, '2017-06-01', '2017-06-02', 'inactive', '', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '', '18:00:00', 'Monday,Tuesday,Wednesday', 'FALSE', 'FALSE', 'FALSE', 'FALSE', 1, '', '', 49, 6, 0, 0, NULL),
+(18, 3, 3, '2017-06-02', '2017-06-03', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4444', '18:00:00', 'Monday,Tuesday,Thursday,Friday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 1, '', '', 51, 6, 40, 4, NULL),
+(19, 3, 3, '2017-06-02', '2017-06-03', 'active', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4444', '18:00:00', 'Monday,Tuesday,Thursday,Friday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 1, '', '', 51, 6, 40, 4, NULL),
+(20, 3, 3, '2017-06-02', '2017-06-03', 'active', '48th street, 1055w,Apt 13,Norfolk,23508', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4444', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 2, '', '', 51, 8, 8, 0, NULL),
+(21, 3, 3, '2017-06-02', '2017-06-03', 'active', '48th street, 1055w,Apt 13,Norfolk,23508', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4444', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 2, '', '', 51, 8, 50, 0, NULL),
+(22, 3, 3, '2017-06-02', '2017-06-03', 'active', '48th street, 1055w,Apt 13,Norfolk,23508', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '4444', '18:00:00', 'Monday,Tuesday,Wednesday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 2, '', '', 51, 8, 50, 0, NULL),
+(23, 3, 3, '2017-06-03', '2017-06-06', 'active', '48th street, 1055w,Apt 13,Norfolk,23508', '12:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:00:00', '', '48th street, 1055w,Apt 13,Norfolk,23508', '18:00:00', 'Monday,Tuesday,Wednesday,Thursday,Friday', 'TRUE', 'TRUE', 'FALSE', 'FALSE', 2, '', '', 51, 6, 50, 4, NULL),
+(32, 4, 131, '2017-07-03', '2017-07-12', 'active', 'Channasandra,202,Bangalore,560067', '08:00:00', 'Driver Lane,4270,Suffolk', '16:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', 'NULL', '00:00:00', 'Monday,Tuesday,Wednesday,Thursday,Friday', 'TRUE', 'FALSE', 'FALSE', 'FALSE', 1, '', '', 49, 4, 40, 4, 1),
+(33, 1, 13, '2017-07-01', '2017-07-03', 'active', '48th street, 1055w,Apt 13,Norfolk,23508', '08:00:00', 'Curlew Drive,6045,Norfolk', '16:00:00', 'Curlew Drive,6045,Norfolk', 'NULL', '18:00:00', 'Monday', 'FALSE', 'TRUE', 'FALSE', 'FALSE', NULL, '', '', 48.42, 1, 40, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -313,8 +378,8 @@ INSERT INTO `lpr_order` (`o_id`, `client_id`, `school_id`, `o_startdate`, `o_end
 
 CREATE TABLE `lpr_rates` (
   `rate_id` int(11) NOT NULL,
-  `zone_id` int(11) NOT NULL,
-  `amount` float NOT NULL,
+  `zone_id` int(11) DEFAULT NULL,
+  `amount` decimal(10,2) NOT NULL,
   `item` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -323,24 +388,53 @@ CREATE TABLE `lpr_rates` (
 --
 
 INSERT INTO `lpr_rates` (`rate_id`, `zone_id`, `amount`, `item`) VALUES
-(8, 1, 17.5, 'outzone'),
-(9, 2, 20.5, 'outzone'),
-(10, 3, 24.5, 'outzone'),
-(11, 4, 24.5, 'outzone'),
-(12, 5, 56.5, 'outzone'),
-(13, 6, 56.5, 'outzone'),
-(14, 1, 5, 'wheelchair'),
-(15, 2, 5, 'wheelchair'),
-(16, 3, 5, 'wheelchair'),
-(17, 4, 5, 'wheelchair'),
-(18, 5, 5, 'wheelchair'),
-(19, 6, 5, 'wheelchair'),
-(20, 1, 28.42, 'inzone'),
-(21, 2, 38, 'inzone'),
-(22, 3, 42, 'inzone'),
-(23, 4, 42, 'inzone'),
-(24, 5, 74, 'inzone'),
-(25, 6, 74, 'inzone');
+(8, 1, '17.50', 'outzone'),
+(9, 2, '20.50', 'outzone'),
+(10, 3, '24.50', 'outzone'),
+(11, 4, '24.50', 'outzone'),
+(12, 5, '56.50', 'outzone'),
+(13, 6, '56.50', 'outzone'),
+(14, 1, '15.00', 'wheelchair-out'),
+(15, 2, '20.00', 'wheelchair-out'),
+(16, 3, '25.00', 'wheelchair-out'),
+(17, 4, '30.00', 'wheelchair-out'),
+(18, 5, '35.00', 'wheelchair-out'),
+(19, 6, '40.00', 'wheelchair-out'),
+(20, 1, '28.42', 'inzone'),
+(21, 2, '38.00', 'inzone'),
+(22, 3, '42.00', 'inzone'),
+(23, 4, '42.00', 'inzone'),
+(24, 5, '74.00', 'inzone'),
+(25, 6, '74.00', 'inzone'),
+(26, 1, '15.00', 'wheelchair-in'),
+(27, 2, '20.00', 'wheelchair-in'),
+(28, 3, '25.00', 'wheelchair-in'),
+(29, 4, '30.00', 'wheelchair-in'),
+(30, 5, '35.00', 'wheelchair-in'),
+(31, 6, '40.00', 'wheelchair-in'),
+(37, NULL, '20.00', 'ridealong');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lpr_ridealong`
+--
+
+CREATE TABLE `lpr_ridealong` (
+  `id` int(11) NOT NULL,
+  `ra_fname` varchar(20) DEFAULT NULL,
+  `ra_lname` varchar(20) DEFAULT NULL,
+  `address` varchar(50) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lpr_ridealong`
+--
+
+INSERT INTO `lpr_ridealong` (`id`, `ra_fname`, `ra_lname`, `address`, `phone`) VALUES
+(1, 'Ram', 'Vajrapu', '1055', '123456789'),
+(2, 'Girish', 'Reddy', '1049', '123456789');
 
 -- --------------------------------------------------------
 
@@ -375,7 +469,7 @@ INSERT INTO `lpr_school` (`school_id`, `client_id`, `school_name`, `school_abr`,
 (4, 1, 'Bay View Elementary School', 'BAV', 'Bay View Blvd', '1434', 'Norfolk', 'VA', 23503, 'US', 'Dr. Valerie A. Walton', '7575313030', 'elementary'),
 (5, 1, 'Berkley/Campostella Early Childhood Education Center', 'BCE', 'Cypress Street', '1530', 'Norfolk', 'VA', 23523, 'US', 'Dr. Doreatha White', '7574943870', 'elementary'),
 (6, 1, 'Blair Middle School', 'BMS', 'Spotswood Avenue', '730', 'Norfolk', 'VA', 23517, 'US', 'Dr. Mark Makovec', '7576282400', 'middle'),
-(7, 1, 'Booker T. Washington High School', 'BTW', 'Park Avenue', '1111', 'Norfolk', 'VA', 23504, 'US', 'Dr. Margie G. Stallings', '7576283575', 'upper'),
+(7, 1, 'Booker T. Washington High School', 'BTW', 'Park Avenue', '1111', 'Norfolk', 'VA', 23504, 'US', 'Dr. Margie G. Stallings', '7576283575', 'high'),
 (8, 1, 'Camp Allen Elementary School', 'CAE', 'C Street', '501', 'Norfolk', 'VA', 23505, 'US', 'Ms. Deena Johnson Copeland', '7574514170', 'elementary'),
 (9, 1, 'Camp Young', 'YNG', 'Deepwater Drive', '145', 'Chesapeake', 'VA', 23322, 'US', 'Dr. Veronica E. Haynes', '7575474245', 'alternative'),
 (10, 1, 'Chesterfield Academy', 'CHS', 'Westminster Avenue', '2915', 'Norfolk', 'VA', 23504, 'US', 'Dr. Lawrence C. Taylor', '7576282544', 'alternative'),
@@ -385,12 +479,12 @@ INSERT INTO `lpr_school` (`school_id`, `client_id`, `school_name`, `school_abr`,
 (14, 1, 'Fairlawn Elementary School', 'FRL', 'Wade Street', '1132', 'Norfolk', 'VA', 23502, 'US', 'Mrs. T. Michele Logan', '7578923260', 'elementary'),
 (15, 1, 'Ghent Elementary School', 'GHE', 'Shirley Avenue', '200', 'Norfolk', 'VA', 23517, 'US', 'Dr. Thomas McAnulty', '7576282565', 'elementary'),
 (16, 1, 'Granby Elementary School', 'GRE', 'Newport Avenue', '7101', 'Norfolk', 'VA', 23505, 'US', 'Mrs. Kathy Verhappen', '7574514150', 'elementary'),
-(17, 1, 'Granby High School', 'GRH', 'Granby Street', '7101', 'Norfolk', 'VA', 23505, 'US', 'Dr. Lynnell Gibson', '7574514110', 'upper'),
+(17, 1, 'Granby High School', 'GRH', 'Granby Street', '7101', 'Norfolk', 'VA', 23505, 'US', 'Dr. Lynnell Gibson', '7574514110', 'high'),
 (18, 1, 'Hospital School Program at CHKD', 'HSP', 'Gresham Drive', '400/5th floor', 'Norfolk', 'VA', 23507, 'US', 'Ms. Janice Teagle', '7576687061', 'alternative'),
 (19, 1, 'Ingleside Elementary School', 'ING', 'Ingleside Drive', '976', 'Norfolk', 'VA', 23502, 'US', 'Dr. Alana Balthazar', '7578923270', 'elementary'),
 (20, 1, 'Jacox Elementary School', 'JCX', 'Marshall Avenue', '1300', 'Norfolk', 'VA', 23504, 'US', 'Dr. Rohan Cumberbatch-Smith', '7576282433', 'elementary'),
 (21, 1, 'James Monroe Elementary School', 'JME', 'West 29th Street', '520', 'Norfolk', 'VA', 23508, 'US', 'Mrs. Celeste M. Jones', '7576283500', 'elementary'),
-(22, 1, 'Lake Taylor High School', 'LTH', 'Kempsville Road', '1384', 'Norfolk', 'VA', 23502, 'US', 'Mrs. Latesha Wade-Jenkins', '7578923200', 'upper'),
+(22, 1, 'Lake Taylor High School', 'LTH', 'Kempsville Road', '1384', 'Norfolk', 'VA', 23502, 'US', 'Mrs. Latesha Wade-Jenkins', '7578923200', 'high'),
 (23, 1, 'Lake Taylor Middle School', 'LTM', 'Kempsville Road', '1380', 'Norfolk', 'VA', 23502, 'US', 'Dr. Kirk', '7578923230', 'middle'),
 (24, 1, 'Larchmont Elementary School', 'LRC', 'Bolling Avenue', '1145', 'Norfolk', 'VA', 23508, 'US', 'Mr. Dennis Fifer', '7574514180', 'elementary'),
 (25, 1, 'Larrymore Elementary School', 'LRY', 'Halprin Drive', '7600', 'Norfolk', 'VA', 23518, 'US', 'Mr. David W. Faircloth', '7575313070', 'elementary'),
@@ -399,12 +493,12 @@ INSERT INTO `lpr_school` (`school_id`, `client_id`, `school_name`, `school_abr`,
 (28, 1, 'Little Creek Elementary School - Nancy', 'LCN', 'Nancy Drive', '7901', 'Norfolk', 'VA', 23518, 'US', 'Ms. Carolyn D. Harper', '7575313080', 'elementary'),
 (29, 1, 'Madison Alternative Center', 'MAC', 'Bowdens Ferry Road', '3700', 'Norfolk', 'VA', 23508, 'US', 'Dr. Sandra Fortner', '7576283417', 'alternative'),
 (30, 1, 'Mary Calcott Elementary School', 'CAL', 'Westmont Avenue', '137', 'Norfolk', 'VA', 23503, 'US', 'Mrs. Danielle Y. McIntyre', '7575313039', 'elementary'),
-(31, 1, 'Maury High School', 'MHS', 'Shirley Avenue', '322', 'Norfolk', 'VA', 23517, 'US', 'Ms. Karen Berg', '7576283344', 'upper'),
+(31, 1, 'Maury High School', 'MHS', 'Shirley Avenue', '322', 'Norfolk', 'VA', 23517, 'US', 'Ms. Karen Berg', '7576283344', 'high'),
 (32, 1, 'Norfolk Educational Transition Academy', 'NET', 'Security Lane', '1260', 'Norfolk', 'VA', 23502, 'US', 'Mr. Gus Guardino', '7578923310', 'alternative'),
-(33, 1, 'Norfolk Technical Center', 'NTC', 'North Military Highway', '1330', 'Norfolk', 'VA', 23502, 'US', 'Mr. Kevin Monroe', '7578923300', 'upper'),
+(33, 1, 'Norfolk Technical Center', 'NTC', 'North Military Highway', '1330', 'Norfolk', 'VA', 23502, 'US', 'Mr. Kevin Monroe', '7578923300', 'high'),
 (34, 1, 'Northside Middle School', 'NMS', 'Granby Street', '8720', 'Norfolk', 'VA', 23503, 'US', 'Mr. Richard Fraley', '7575313150', 'middle'),
 (35, 1, 'Norview Elementary School', 'NRE', 'Chesapeake Blvd', '6401', 'Norfolk', 'VA', 23513, 'US', 'Ms. Kathryn Caple', '7578524660', 'elementary'),
-(36, 1, 'Norview High School', 'NRH', 'Chesapeake Blvd', '6501', 'Norfolk', 'VA', 23513, 'US', 'Dr. Marjorie Stealey', '7578524500', 'upper'),
+(36, 1, 'Norview High School', 'NRH', 'Chesapeake Blvd', '6501', 'Norfolk', 'VA', 23513, 'US', 'Dr. Marjorie Stealey', '7578524500', 'high'),
 (37, 1, 'Norview Middle School', 'NRM', 'Sewells Point Road', '6325', 'Norfolk', 'VA', 23513, 'US', 'Mr. Walter Brower, Jr.', '7578524600', 'middle'),
 (38, 1, 'Ocean View Elementary School', 'OVE', 'Mason Creek Road', '9501', 'Norfolk', 'VA', 23503, 'US', 'Dr. James Peterson', '7575313105', 'elementary'),
 (39, 1, 'Oceanair Elementary School', 'OCN', 'Dudley Avenue', '600', 'Norfolk', 'VA', 23503, 'US', 'Ms. Lenthia Willie-Clark', '7575313095', 'elementary'),
@@ -423,9 +517,9 @@ INSERT INTO `lpr_school` (`school_id`, `client_id`, `school_name`, `school_abr`,
 (52, 1, 'W.H. Taylor Elementary School', 'WHT', 'West Princess Anne Road', '1122', 'Norfolk', 'VA', 23507, 'US', 'Ms. Charlene Felition', '7576282525', 'elementary'),
 (53, 1, 'Willard Elementary School', 'WIL', 'Willow Wood Drive', '1511', 'Norfolk', 'VA', 23509, 'US', 'Mrs. Julie Honeycutt', '7576282721', 'elementary'),
 (54, 1, 'Willoughby Elementary School', 'WLB', 'Fourth View Street', '9500', 'Norfolk', 'VA', 23508, 'US', 'Mrs. June Lightfoot', '7575313127', 'elementary'),
-(55, 2, 'Churchland High School', 'CHS', 'Cedar Lane', '4301', 'Portsmouth', 'VA', 23703, 'US', 'Mr. Shawn L. Millaci', '7576862500', 'upper'),
-(56, 2, 'I.C. Norcom High School', 'NOR', 'London Blvd', '1801', 'Portsmouth', 'VA', 23704, 'US', 'Dr. Laguna O. Foster', '7573935442', 'upper'),
-(57, 2, 'Woodrow Wilson High School', 'WWH', 'Elmhurst Lane', '1401', 'Portsmouth', 'VA', 23701, 'US', 'Mr. Timothy E. Johnson', '7574652907', 'upper'),
+(55, 2, 'Churchland High School', 'CHS', 'Cedar Lane', '4301', 'Portsmouth', 'VA', 23703, 'US', 'Mr. Shawn L. Millaci', '7576862500', 'high'),
+(56, 2, 'I.C. Norcom High School', 'NOR', 'London Blvd', '1801', 'Portsmouth', 'VA', 23704, 'US', 'Dr. Laguna O. Foster', '7573935442', 'high'),
+(57, 2, 'Woodrow Wilson High School', 'WWH', 'Elmhurst Lane', '1401', 'Portsmouth', 'VA', 23701, 'US', 'Mr. Timothy E. Johnson', '7574652907', 'high'),
 (58, 2, 'Churchland Middle School', 'CMS', 'River Shore Road', '4051', 'Portsmouth', 'VA', 23703, 'US', 'Ms. Barbara R. Kimzey', '7576862512', 'middle'),
 (59, 2, 'Cradock Middle School', 'CRD', 'Alden Avenue', '21', 'Portsmouth', 'VA', 23702, 'US', 'Ms. Sonya C. Harrell', '7573938788', 'middle'),
 (60, 2, 'W.E. Waters Middle School', 'WEW', 'Roosevelt Blvd', '600', 'Portsmouth', 'VA', 23701, 'US', 'Ms. Alice Graham', '7575582813', 'middle'),
@@ -485,18 +579,18 @@ INSERT INTO `lpr_school` (`school_id`, `client_id`, `school_name`, `school_abr`,
 (114, 6, 'Huntington Middle School', 'HUN', 'Orcutt Avenue', '3401', 'Newport News', 'VA', 23607, 'US', 'Ms. Courtney Mompoint', '7579286846', 'middle'),
 (115, 6, 'Passage Middle School', 'PAS', 'Atkinson Way', '400', 'Newport News', 'VA', 23608, 'US', 'Ms. Janelle Spitz', '7578867600', 'middle'),
 (116, 6, 'Booker T. Washington Middle School', 'BTW', 'Chestnut Avenue', '3700', 'Newport News', 'VA', 23607, 'US', 'Dr. Sean Callender', '7579286860', 'middle'),
-(117, 6, 'An Achievable Dream High School', 'ADH', 'Marshall Avenue', '5720', 'Newport News', 'VA', 23605, 'US', 'Ms. Marylin Sinclair-White', '7572837820', 'upper'),
-(118, 6, 'Denbigh High School', 'DHS', 'Denbigh Blvd', '259', 'Newport News', 'VA', 23608, 'US', 'Dr. Eleanor Blowe', '7578867700', 'upper'),
-(119, 6, 'Heritage High School', 'HER', 'Marshall Avenue', '5800', 'Newport News', 'VA', 23605, 'US', 'Ms. Shameka Gerald', '7579286100', 'upper'),
-(120, 6, 'Menchville High School', 'MEN', 'Menchville Road', '275', 'Newport News', 'VA', 23602, 'US', 'Mr. Robert Surry', '7578867722', 'upper'),
-(121, 6, 'Warwick High School', 'WAR', 'Copeland Lane', '51', 'Newport News', 'VA', 23601, 'US', 'Mr. Anthony Frazier', '7575914700', 'upper'),
-(122, 6, 'Woodside High School', 'WOD', 'Woodside Lane', '13450', 'Newport News', 'VA', 23608, 'US', 'Mr. Jonathan Hochman', '7578867530', 'upper'),
-(123, 6, 'Aviation Academy', 'AVI', 'Bland Blvd', '902-B', 'Newport News', 'VA', 23602, 'US', 'Dr. Aaron Smith', '7578862745', 'upper'),
-(124, 6, 'Enterprise Academy', 'ENT', 'Diligence Drive', '813/Suite 110', 'Newport News', 'VA', 23606, 'US', 'Dr. Darwin Mills', '7575914971', 'upper'),
-(125, 6, 'New Horizons Regional Education Center - Hampton', 'NHH', 'Butler Farm Road', '520', 'Newport News', 'VA', 23666, 'US', 'Mr. Dewey Ray', '7577661100', 'upper'),
-(126, 6, 'New Horizons Regional Education Center - Newport News', 'NHN', 'Woodside Lane', '13400', 'Newport News', 'VA', 23608, 'US', 'Mr. Bruce Schaffer', '7578744444', 'upper'),
-(127, 6, 'Point Option', 'OPT', 'Diligence Drive', '813/Suite 100', 'Newport News', 'VA', 23606, 'US', 'Mr. Michael Bonfiglio', '7575917408', 'upper'),
-(128, 6, 'Telecommunications Center', 'TCC', 'Minton Drive', '4', 'Newport News', 'VA', 23606, 'US', 'Mr. Ray Price', '7575914687', 'upper'),
+(117, 6, 'An Achievable Dream High School', 'ADH', 'Marshall Avenue', '5720', 'Newport News', 'VA', 23605, 'US', 'Ms. Marylin Sinclair-White', '7572837820', 'high'),
+(118, 6, 'Denbigh High School', 'DHS', 'Denbigh Blvd', '259', 'Newport News', 'VA', 23608, 'US', 'Dr. Eleanor Blowe', '7578867700', 'high'),
+(119, 6, 'Heritage High School', 'HER', 'Marshall Avenue', '5800', 'Newport News', 'VA', 23605, 'US', 'Ms. Shameka Gerald', '7579286100', 'high'),
+(120, 6, 'Menchville High School', 'MEN', 'Menchville Road', '275', 'Newport News', 'VA', 23602, 'US', 'Mr. Robert Surry', '7578867722', 'high'),
+(121, 6, 'Warwick High School', 'WAR', 'Copeland Lane', '51', 'Newport News', 'VA', 23601, 'US', 'Mr. Anthony Frazier', '7575914700', 'high'),
+(122, 6, 'Woodside High School', 'WOD', 'Woodside Lane', '13450', 'Newport News', 'VA', 23608, 'US', 'Mr. Jonathan Hochman', '7578867530', 'high'),
+(123, 6, 'Aviation Academy', 'AVI', 'Bland Blvd', '902-B', 'Newport News', 'VA', 23602, 'US', 'Dr. Aaron Smith', '7578862745', 'high'),
+(124, 6, 'Enterprise Academy', 'ENT', 'Diligence Drive', '813/Suite 110', 'Newport News', 'VA', 23606, 'US', 'Dr. Darwin Mills', '7575914971', 'high'),
+(125, 6, 'New Horizons Regional Education Center - Hampton', 'NHH', 'Butler Farm Road', '520', 'Newport News', 'VA', 23666, 'US', 'Mr. Dewey Ray', '7577661100', 'high'),
+(126, 6, 'New Horizons Regional Education Center - Newport News', 'NHN', 'Woodside Lane', '13400', 'Newport News', 'VA', 23608, 'US', 'Mr. Bruce Schaffer', '7578744444', 'high'),
+(127, 6, 'Point Option', 'OPT', 'Diligence Drive', '813/Suite 100', 'Newport News', 'VA', 23606, 'US', 'Mr. Michael Bonfiglio', '7575917408', 'high'),
+(128, 6, 'Telecommunications Center', 'TCC', 'Minton Drive', '4', 'Newport News', 'VA', 23606, 'US', 'Mr. Ray Price', '7575914687', 'high'),
 (129, 4, 'Booker T. Washington Elementary School', 'BTW', 'Walnut Street', '204', 'Suffolk', 'VA', 23434, 'US', 'Ms.Lori Mounie', '7579346226', 'elementary'),
 (130, 4, 'Creekside Elementary School', 'CRK', 'Bennett\'s Creek Park Road', '1000', 'Suffolk', 'VA', 23434, 'US', 'Ms. Katrina Rountree', '7579234251', 'elementary'),
 (131, 4, 'Driver Elementary School', 'DRV', 'Driver Lane', '4270', 'Suffolk', 'VA', 23435, 'US', 'Ms. Melodie Griffin', '7579234106', 'elementary'),
@@ -514,9 +608,9 @@ INSERT INTO `lpr_school` (`school_id`, `client_id`, `school_name`, `school_abr`,
 (143, 4, 'King\'s Fork Middle School', 'KFM', 'King\'s Fork Road', '350', 'Suffolk', 'VA', 23434, 'US', 'Ms. Jennifer Presson', '7579235246', 'middle'),
 (144, 4, 'The Pruden Center', 'PRU', 'Pruden Blvd', '4169', 'Suffolk', 'VA', 23434, 'US', 'Mr. Andre Skinner', '7579255651', 'special'),
 (145, 4, 'Turlington Woods', 'TUR', 'Turlington Road', '629', 'Suffolk', 'VA', 23434, 'US', 'Mr. Kinsel Bynum', '7579346215', 'special'),
-(146, 4, 'King\'s Fork High School', 'KNG', 'King\'s Fork Road', '351', 'Suffolk', 'VA', 23434, 'US', 'Dr. Ron Leigh', '7579235240', 'upper'),
-(147, 4, 'Lakeland High School', 'LAK', 'Kenyon Road', '214', 'Suffolk', 'VA', 23434, 'US', 'Mr. Douglas Wagoner', '7579255790', 'upper'),
-(148, 4, 'Nansemond River High School', 'NRH', 'Nansemond Parkway', '3301', 'Suffolk', 'VA', 23434, 'US', 'Mr. Daniel O\'Leary', '7579234101', 'upper'),
+(146, 4, 'King\'s Fork High School', 'KNG', 'King\'s Fork Road', '351', 'Suffolk', 'VA', 23434, 'US', 'Dr. Ron Leigh', '7579235240', 'high'),
+(147, 4, 'Lakeland High School', 'LAK', 'Kenyon Road', '214', 'Suffolk', 'VA', 23434, 'US', 'Mr. Douglas Wagoner', '7579255790', 'high'),
+(148, 4, 'Nansemond River High School', 'NRH', 'Nansemond Parkway', '3301', 'Suffolk', 'VA', 23434, 'US', 'Mr. Daniel O\'Leary', '7579234101', 'high'),
 (149, 5, 'Aberdeen Elementary School', 'ABE', 'Aberdeen Road', '1424', 'Hampton', 'VA', 23666, 'US', 'Ms. Karla Young', '7578254624', 'elementary'),
 (150, 5, 'Andrews PreK-8 School', 'AND', 'Victoria Blvd', '3120', 'Hampton', 'VA', 23661, 'US', 'Mr. Jeffrey Blowe', '7572683333', 'alternative'),
 (151, 5, 'Armstrong Elementary School', 'ARM', 'Matoaka Road', '3401', 'Hampton', 'VA', 23661, 'US', 'Ms. Millicent Rogers', '7577271067', 'elementary'),
@@ -542,10 +636,10 @@ INSERT INTO `lpr_school` (`school_id`, `client_id`, `school_name`, `school_abr`,
 (171, 5, 'Jones Middle School', 'JON', 'Nickerson Blvd', '1819', 'Hampton', 'VA', 23663, 'US', 'Dr. Daniel Bowling', '7578507900', 'middle'),
 (172, 5, 'Lindsay Middle School', 'LIN', 'Briarfield Road', '1636', 'Hampton', 'VA', 23661, 'US', 'Ms. Chevese Thomas', '7578254560', 'middle'),
 (173, 5, 'Syms Middle School', 'SYM', 'Fox Hill Road', '170', 'Hampton', 'VA', 23669, 'US', 'Mr. Michael Blount, Jr.', '7578505050', 'middle'),
-(174, 5, 'Bethel High School', 'BET', 'Big Bethel Road', '1067', 'Hampton', 'VA', 23666, 'US', 'Mr. Ralph Sanders', '7578254400', 'upper'),
-(175, 5, 'Hampton High School', 'HAM', 'West Queen Street', '1491', 'Hampton', 'VA', 23669, 'US', 'Mr. Kevin Davis', '7578254430', 'upper'),
-(176, 5, 'Kecoughtan High School', 'KEC', 'Woodland Road', '522', 'Hampton', 'VA', 23669, 'US', 'Mr. Jeffrey Mordica', '7578505000', 'upper'),
-(177, 5, 'Phoebus High School', 'PHE', 'Ireland Street', '100', 'Hampton', 'VA', 23663, 'US', 'Mr. Mark Hudson', '7577271000', 'upper'),
+(174, 5, 'Bethel High School', 'BET', 'Big Bethel Road', '1067', 'Hampton', 'VA', 23666, 'US', 'Mr. Ralph Sanders', '7578254400', 'high'),
+(175, 5, 'Hampton High School', 'HAM', 'West Queen Street', '1491', 'Hampton', 'VA', 23669, 'US', 'Mr. Kevin Davis', '7578254430', 'high'),
+(176, 5, 'Kecoughtan High School', 'KEC', 'Woodland Road', '522', 'Hampton', 'VA', 23669, 'US', 'Mr. Jeffrey Mordica', '7578505000', 'high'),
+(177, 5, 'Phoebus High School', 'PHE', 'Ireland Street', '100', 'Hampton', 'VA', 23663, 'US', 'Mr. Mark Hudson', '7577271000', 'high'),
 (178, 5, 'Bridgeport Academy', 'BPA', 'Briarfield Road', '1646', 'Hampton', 'VA', 23669, 'US', 'Ms. Angelina Lipford', '7577271225', 'special'),
 (179, 5, 'Motion Early Childhood Center', 'MOT', 'Old Buckroe Road', '339', 'Hampton', 'VA', 23663, 'US', 'Ms. Joanne Drew', '7577271061', 'special'),
 (180, 5, 'Spratley Gifted Center', 'SPR', 'Woodland Road', '339', 'Hampton', 'VA', 23669, 'US', 'Dr. Kenneth Crum', '7578505032', 'special'),
@@ -574,26 +668,26 @@ INSERT INTO `lpr_school` (`school_id`, `client_id`, `school_name`, `school_abr`,
 (203, 3, 'Chesapeake Alternative School', 'CAS', 'Providence Road', '605', 'Chesapeake', 'VA', 23325, 'US', 'Dr. Penny K. Schultz', '7575787046', 'alternative'),
 (204, 3, 'Chesapeake Center for Science and Technology', 'CST', 'Cedar Road', '1617', 'Chesapeake', 'VA', 23322, 'US', 'Dr. Shonda Pittman-Windham', '7575470134', 'alternative'),
 (205, 3, 'Crestwood Middle School', 'CWM', 'Great Bridge Blvd', '1420', 'Chesapeake', 'VA', 23320, 'US', 'Mr. Michael R. Ward', '7574947560', 'middle'),
-(206, 3, 'Deep Creek High School', 'DCH', 'Margaret Booker Drive', '2900', 'Chesapeake', 'VA', 23323, 'US', 'Mrs. J. Page Bagley', '7575585302', 'upper'),
+(206, 3, 'Deep Creek High School', 'DCH', 'Margaret Booker Drive', '2900', 'Chesapeake', 'VA', 23323, 'US', 'Mrs. J. Page Bagley', '7575585302', 'high'),
 (207, 3, 'Deep Creek Middle School', 'DCM', 'Deal Drive', '1955', 'Chesapeake', 'VA', 23323, 'US', 'Dr. Muriel P.Barefield', '7575585321', 'middle'),
-(208, 3, 'Grassfield High School', 'GFH', 'Grizzly Trail', '2007', 'Chesapeake', 'VA', 23323, 'US', 'Mr. Michael N. Perez', '7575584749', 'upper'),
-(209, 3, 'Great Bridge High School', 'GBH', 'West Hanbury Road', '301', 'Chesapeake', 'VA', 23322, 'US', 'Mr. Jeffrey Johnson', '7574825191', 'upper'),
+(208, 3, 'Grassfield High School', 'GFH', 'Grizzly Trail', '2007', 'Chesapeake', 'VA', 23323, 'US', 'Mr. Michael N. Perez', '7575584749', 'high'),
+(209, 3, 'Great Bridge High School', 'GBH', 'West Hanbury Road', '301', 'Chesapeake', 'VA', 23322, 'US', 'Mr. Jeffrey Johnson', '7574825191', 'high'),
 (210, 3, 'Great Bridge Middle School', 'GBM', 'South Battlefield Blvd', '441', 'Chesapeake', 'VA', 23322, 'US', 'Mr. Craig K. Mills', '7574825128', 'middle'),
 (211, 3, 'Green Rum Middle', 'GRM', 'Greenbrier Parkway', '1016', 'Chesapeake', 'VA', 23320, 'US', 'Dr. Michael J. Mustain', '7575485309', 'middle'),
 (212, 3, 'Hickory Elementary School', 'HES', 'Benefit Road', '109', 'Chesapeake', 'VA', 23322, 'US', 'Mrs. Kim Pinello', '7574217080', 'elementary'),
-(213, 3, 'Hickory High School', 'HHS', 'Hawk Blvd', '1996', 'Chesapeake', 'VA', 23322, 'US', 'Ms. Amber N. Dortch', '7574214295', 'upper'),
+(213, 3, 'Hickory High School', 'HHS', 'Hawk Blvd', '1996', 'Chesapeake', 'VA', 23322, 'US', 'Ms. Amber N. Dortch', '7574214295', 'high'),
 (214, 3, 'Hickory Middle School', 'HMS', 'Hawk Blvd', '1997', 'Chesapeake', 'VA', 23322, 'US', 'Dr. Deborah T. Hutchens', '7574210468', 'middle'),
 (215, 3, 'Hugo Owens Middle School', 'OMS', 'Horseback Run', '1997', 'Chesapeake', 'VA', 23323, 'US', 'Mrs. Alaina C. Britt', '7575585382', 'middle'),
-(216, 3, 'Indian River High School', 'IRH', 'Braves Trail', '1969', 'Chesapeake', 'VA', 23325, 'US', 'Mrs. Naomi R. Dunbar', '7575787000', 'upper'),
+(216, 3, 'Indian River High School', 'IRH', 'Braves Trail', '1969', 'Chesapeake', 'VA', 23325, 'US', 'Mrs. Naomi R. Dunbar', '7575787000', 'high'),
 (217, 3, 'Indian River Middle School', 'IRM', 'Old Greenbrier Road', '2300', 'Chesapeake', 'VA', 23325, 'US', 'Ms. Terre J. Werts', '7575787030', 'middle'),
 (218, 3, 'Jolliff Middle School', 'JMS', 'Jolliff Road', '1021', 'Chesapeake', 'VA', 23321, 'US', 'Mr. Quentin E. Hicks', '7574651646', 'middle'),
-(219, 3, 'Oscar Smith High School', 'OSH', 'Tiger Drive', '1994', 'Chesapeake', 'VA', 23320, 'US', 'Mr. Paul A. Joseph', '7575480696', 'upper'),
+(219, 3, 'Oscar Smith High School', 'OSH', 'Tiger Drive', '1994', 'Chesapeake', 'VA', 23320, 'US', 'Mr. Paul A. Joseph', '7575480696', 'high'),
 (220, 3, 'Oscar Smith Middle School', 'OSM', 'Rodgers Street', '2500', 'Chesapeake', 'VA', 23324, 'US', 'Mrs. Judith C. Thurston', '7574947590', 'middle'),
 (221, 3, 'Sparrow Road Intermediate', 'SRI', 'Sparrow Road', '1605', 'Chesapeake', 'VA', 23321, 'US', 'Ms. Sharon L. Popson', '7575787050', 'middle'),
 (222, 3, 'Thurgood Marshall Elementary', 'TME', 'Border Road', '2706', 'Chesapeake', 'VA', 23324, 'US', 'Mrs. Karen Y. Lopez', '7574947515', 'elementary'),
 (223, 3, 'Treakle Elementary School', 'TES', 'Gomerton Road', '2500', 'Chesapeake', 'VA', 23323, 'US', 'Mrs. Shelia J. Johnson', '7575585361', 'elementary'),
 (224, 3, 'Truitt Intermediate School', 'TIS', 'Holly Avenue', '1100', 'Chesapeake', 'VA', 23324, 'US', 'Mrs. Kimberly G. Lowden', '7574948014', 'middle'),
-(225, 3, 'Western Branch High School', 'WBH', 'Bruin Place', '1968', 'Chesapeake', 'VA', 23321, 'US', 'Dr. Thomas A. Whitley', '7576387904', 'upper'),
+(225, 3, 'Western Branch High School', 'WBH', 'Bruin Place', '1968', 'Chesapeake', 'VA', 23321, 'US', 'Dr. Thomas A. Whitley', '7576387904', 'high'),
 (226, 3, 'Western Branch Intermediate', 'WBI', 'Terry Drive', '4013', 'Chesapeake', 'VA', 23321, 'US', 'Ms. Jataune N. Jones', '7576387941', 'middle'),
 (227, 3, 'Western Branch Middle School', 'WBM', 'Hawksley Drive', '4201', 'Chesapeake', 'VA', 23321, 'US', 'Dr. Kambar Khoshaba', '7576387920', 'middle'),
 (228, 3, 'Western Branch Primary', 'WBP', 'Terry Drive', '4122', 'Chesapeake', 'VA', 23321, 'US', 'Mrs. Gayle J. Bartlett', '7576387951', 'elementary'),
@@ -732,7 +826,14 @@ INSERT INTO `lpr_student` (`s_id`, `o_id`, `s_fname`, `s_lname`, `s_grade`, `s_g
 (16, 22, 'Ram', 'Vajrapu', '4', '4', 'Ram', 'Vajrapu', '7578371205', '7578371205', '48th street, 1055w', 'Apt 13', 'Norfolk', 'VA', '23508', 'United States'),
 (17, 22, 'rrrr', 'rrr', 'rr', 'rrr', 'Ram', 'Vajrapu', '7578371205', '7578371205', '48th street, 1055w', 'Apt 13', 'Norfolk', 'VA', '23508', 'United States'),
 (18, 23, 'Ram', 'Vajrapu', '4', '4', 'Ram', 'Vajrapu', '7578371205', '7578371205', '48th street, 1055w', 'Apt 13', 'Norfolk', 'VA', '23508', 'United States'),
-(19, 23, 'ds', 'sd', 'sd', 'sd', 'Ram', 'Vajrapu', '7578371205', '7578371205', '48th street, 1055w', 'Apt 13', 'Norfolk', 'VA', '23508', 'United States');
+(19, 23, 'ds', 'sd', 'sd', 'sd', 'Ram', 'Vajrapu', '7578371205', '7578371205', '48th street, 1055w', 'Apt 13', 'Norfolk', 'VA', '23508', 'United States'),
+(20, 27, 'santhosh', 'kumar', '4', '4', 'santhosh', 'kumar', '+918067247278', '+918067247278', 'ITPL', 'BANGALORE', 'BANGALORE', 'KARNATAKA', '560066', 'India'),
+(21, 28, 'Ram', 'Manoj', '4', '4', 'Ram', 'Vajrapu', '7578371205', '7578371205', 'Channasandra', '202', 'Bangalore', 'Karnataka', '560067', 'India'),
+(22, 29, 'Ram', 'Manoj', '4', '4', 'Ram', 'Vajrapu', '7578371205', '7578371205', 'Channasandra', '202', 'Bangalore', 'Karnataka', '560067', 'India'),
+(23, 30, 'Ram', 'Manoj', '4', '4', 'Ram', 'Vajrapu', '7578371205', '7578371205', 'Channasandra', '202', 'Bangalore', 'Karnataka', '560067', 'India'),
+(24, 31, 'Ram', 'Manoj', '4', '4', 'Ram', 'Vajrapu', '7578371205', '7578371205', 'Channasandra', '202', 'Bangalore', 'Karnataka', '560067', 'India'),
+(25, 32, 'Ram', 'Manoj', '4', '4', 'Ram', 'Vajrapu', '7578371205', '7578371205', 'Channasandra', '202', 'Bangalore', 'Karnataka', '560067', 'India'),
+(26, 33, 'Ram', 'Vajrapu', '4', '4', 'Ram', 'Vajrapu', '7578371205', '7578371205', '48th street, 1055w', 'Apt 13', 'Norfolk', 'VA', '23508', 'United States');
 
 -- --------------------------------------------------------
 
@@ -756,31 +857,41 @@ CREATE TABLE `lpr_triplog` (
   `triplog_status` varchar(20) DEFAULT NULL,
   `triplog_date` date DEFAULT NULL,
   `triplog_clock` varchar(10) DEFAULT NULL,
-  `triplog_date_updated` date DEFAULT NULL
+  `triplog_date_updated` date DEFAULT NULL,
+  `triplog_driver_payable` varchar(5) NOT NULL DEFAULT 'TRUE',
+  `triplog_client_payable` varchar(10) NOT NULL DEFAULT 'TRUE'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lpr_triplog`
 --
 
-INSERT INTO `lpr_triplog` (`triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`, `triplog_tripid`, `triplog_city`, `triplog_time`, `triplog_pickloc`, `triplog_picktime`, `triplog_droptime`, `triplog_pax`, `triplog_status`, `triplog_date`, `triplog_clock`, `triplog_date_updated`) VALUES
-(1, 3, 1, 1, 1, 47, '                                                  ', '18:00:00', 'pm drop loc', '18:00:06', '00:00:00', '2', 'Cancel', '2017-06-02', 'AM', NULL),
-(2, 3, 1, 1, 3, 48, '                                                  ', '19:00:00', 'pmdropploc1', '19:00:00', '00:00:00', '1', 'Cancel', '2017-06-02', 'PM', NULL),
-(12, 3, 3, 1, 8, 55, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '22:53:06', '00:00:00', '1', '', '2017-06-02', 'AM', NULL),
-(12, 3, 3, 1, 8, 56, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '22:55:54', '00:00:00', '1', 'success', '2017-06-02', 'PM', NULL),
-(19, 3, 3, 1, 12, 70, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '03:40:35', '22:37:34', '2', 'noshow', '2017-06-03', 'AM', NULL),
-(22, 3, 3, 2, 16, 73, 'fdsfsfsdf', '18:00:00', '48th street, 1055w,Apt 13,Norfolk,23508', '04:25:53', '00:00:00', '2', 'success', '2017-06-03', 'PM', NULL),
-(13, 3, 3, 1, 9, 74, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '23:48:02', '23:47:26', '1', 'cancel', '2017-06-03', 'AM', NULL),
-(23, 3, 3, 2, 18, 79, 'fdsfsfsdf', '12:00:00', '48th street, 1055w,Apt 13,Norfolk,23508', '12:51:29', '20:06:43', '2', 'success', '2017-06-03', 'PM', NULL),
-(20, 3, 3, 2, 14, 88, 'fdsfsfsdf', '18:00:00', '4444', '20:07:06', '20:09:34', '1', 'success', '2017-06-03', 'PM', NULL),
-(23, 3, 3, 2, 18, 94, 'fdsfsfsdf', '12:00:00', '48th street, 1055w,Apt 13,Norfolk,23508', '23:50:07', '23:46:47', '2', 'noshow', '2017-06-03', 'AM', NULL),
-(18, 3, 3, 1, 11, 95, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '23:47:01', '23:47:05', '1', 'success', '2017-06-03', 'AM', NULL),
-(21, 3, 3, 2, 15, 96, 'fdsfsfsdf', '18:00:00', '48th street, 1055w,Apt 13,Norfolk,23508', '23:49:11', '23:49:48', '1', 'success', '2017-06-03', 'AM', NULL),
-(23, 3, 3, 2, 18, 98, 'fdsfsfsdf', '12:00:00', '48th street, 1055w,Apt 13,Norfolk,23508', '18:30:00', '09:00:00', '2', 'success', '2017-06-04', 'AM', NULL),
-(13, 3, 3, 1, 9, 103, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:30:00', '09:00:00', '1', 'success', '2017-06-01', 'AM', '2017-06-04'),
-(13, 3, 3, 1, 9, 104, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '03:02:40', '03:02:34', '1', 'cancel', '2017-06-08', 'AM', '2017-06-04'),
-(13, 3, 3, 2, 9, 105, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:30:00', '18:55:00', '1', 'success', '2017-06-09', 'AM', '2017-06-04'),
-(13, 3, 3, 1, 9, 106, 'fdsfsfsdf', '18:00:00', '4444', '11:53:30', '00:00:00', '1', 'noshow', '2017-06-09', 'PM', '2017-06-04');
+INSERT INTO `lpr_triplog` (`triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`, `triplog_tripid`, `triplog_city`, `triplog_time`, `triplog_pickloc`, `triplog_picktime`, `triplog_droptime`, `triplog_pax`, `triplog_status`, `triplog_date`, `triplog_clock`, `triplog_date_updated`, `triplog_driver_payable`, `triplog_client_payable`) VALUES
+(1, 3, 1, 1, 1, 47, '                                                  ', '18:00:00', 'pm drop loc', '18:00:06', '00:00:00', '2', 'Cancel', '2017-06-02', 'AM', NULL, 'TRUE', 'TRUE'),
+(2, 3, 1, 1, 3, 48, '                                                  ', '19:00:00', 'pmdropploc1', '19:00:00', '00:00:00', '1', 'Cancel', '2017-06-02', 'PM', NULL, 'TRUE', 'TRUE'),
+(12, 3, 3, 1, 8, 55, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '22:53:06', '00:00:00', '1', '', '2017-06-02', 'AM', NULL, 'TRUE', 'TRUE'),
+(12, 3, 3, 1, 8, 56, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '22:55:54', '00:00:00', '1', 'success', '2017-06-02', 'PM', NULL, 'TRUE', 'TRUE'),
+(19, 3, 3, 1, 12, 70, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '03:40:35', '22:37:34', '2', 'noshow', '2017-06-03', 'AM', NULL, 'TRUE', 'TRUE'),
+(22, 3, 3, 2, 16, 73, 'fdsfsfsdf', '18:00:00', '48th street, 1055w,Apt 13,Norfolk,23508', '04:25:53', '00:00:00', '2', 'success', '2017-06-03', 'PM', NULL, 'TRUE', 'TRUE'),
+(13, 3, 3, 1, 9, 74, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '23:48:02', '23:47:26', '1', 'cancel', '2017-06-03', 'AM', NULL, 'TRUE', 'TRUE'),
+(23, 3, 3, 2, 18, 79, 'fdsfsfsdf', '12:00:00', '48th street, 1055w,Apt 13,Norfolk,23508', '12:51:29', '20:06:43', '2', 'success', '2017-06-03', 'PM', NULL, 'TRUE', 'TRUE'),
+(20, 3, 3, 2, 14, 88, 'fdsfsfsdf', '18:00:00', '4444', '20:07:06', '20:09:34', '1', 'success', '2017-06-03', 'PM', NULL, 'TRUE', 'TRUE'),
+(23, 3, 3, 2, 18, 94, 'fdsfsfsdf', '12:00:00', '48th street, 1055w,Apt 13,Norfolk,23508', '23:50:07', '23:46:47', '2', 'noshow', '2017-06-03', 'AM', NULL, 'TRUE', 'TRUE'),
+(18, 3, 3, 1, 11, 95, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '23:47:01', '23:47:05', '1', 'success', '2017-06-03', 'AM', NULL, 'TRUE', 'TRUE'),
+(21, 3, 3, 2, 15, 96, 'fdsfsfsdf', '18:00:00', '48th street, 1055w,Apt 13,Norfolk,23508', '23:49:11', '23:49:48', '1', 'success', '2017-06-03', 'AM', NULL, 'TRUE', 'TRUE'),
+(23, 3, 3, 2, 18, 98, 'fdsfsfsdf', '12:00:00', '48th street, 1055w,Apt 13,Norfolk,23508', '18:30:00', '09:00:00', '2', 'success', '2017-06-04', 'AM', NULL, 'TRUE', 'TRUE'),
+(13, 3, 3, 1, 9, 103, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:30:00', '09:00:00', '1', 'success', '2017-06-01', 'AM', '2017-06-04', 'TRUE', 'TRUE'),
+(13, 3, 3, 1, 9, 104, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '03:02:40', '03:02:34', '1', 'cancel', '2017-06-08', 'AM', '2017-06-04', 'TRUE', 'TRUE'),
+(13, 3, 3, 2, 9, 105, 'fdsfsfsdf', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '18:30:00', '18:55:00', '1', 'success', '2017-06-09', 'AM', '2017-06-04', 'TRUE', 'TRUE'),
+(13, 3, 3, 1, 9, 106, 'fdsfsfsdf', '18:00:00', '4444', '11:53:30', '00:00:00', '1', 'noshow', '2017-06-09', 'PM', '2017-06-04', 'TRUE', 'TRUE'),
+(13, 3, 3, 1, 9, 107, 'Norfolk', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '09:00:00', '09:00:00', '1', 'success', '2017-06-14', 'AM', '2017-06-14', 'TRUE', 'TRUE'),
+(13, 3, 3, 1, 9, 113, 'Norfolk', '18:00:00', 'adfdf,adsfdsfdsf,fdsfsfsdf', '06:30:00', '18:55:00', '1', 'none', '2017-06-15', 'AM', '2017-06-15', 'TRUE', 'TRUE'),
+(27, 4, 131, 32, 20, 131, 'Suffolk', '08:00:00', 'ITPL,BANGALORE,BANGALORE,560066', '15:41:30', '15:41:23', '1', 'cancel', '2017-06-21', 'AM', '2017-06-21', 'TRUE', 'TRUE'),
+(27, 4, 131, 32, 20, 134, 'Suffolk', '08:00:00', 'ITPL,BANGALORE,BANGALORE,560066', '15:56:07', '16:00:00', '1', 'cancel', '2017-06-22', 'AM', '2017-06-22', 'TRUE', 'TRUE'),
+(27, 4, 131, 32, 20, 135, 'Suffolk', '08:00:00', 'ITPL,BANGALORE,BANGALORE,560066', '20:17:46', '16:00:00', '1', 'cancel', '2017-07-04', 'AM', '2017-07-04', 'TRUE', 'FALSE'),
+(32, 4, 131, 1, 25, 140, 'Suffolk', '08:00:00', 'Channasandra,202,Bangalore,560067', '17:14:14', '17:05:48', '1', 'cancel', '2017-07-06', 'AM', '2017-07-06', 'TRUE', 'TRUE'),
+(32, 4, 131, 1, 25, 141, 'Suffolk', '08:00:00', 'Channasandra,202,Bangalore,560067', '07:35:00', '16:00:00', '1', 'cancel', '2017-07-11', 'AM', '2017-07-10', 'FALSE', 'TRUE'),
+(32, 4, 131, 1, 25, 142, 'Suffolk', '08:00:00', 'Channasandra,202,Bangalore,560067', '07:35:00', '16:00:00', '1', 'cancel', '2017-07-10', 'AM', '2017-07-10', 'TRUE', 'TRUE');
 
 -- --------------------------------------------------------
 
@@ -824,6 +935,12 @@ ALTER TABLE `lpr_client`
   ADD KEY `zone_id` (`zone_id`);
 
 --
+-- Indexes for table `lpr_dates`
+--
+ALTER TABLE `lpr_dates`
+  ADD PRIMARY KEY (`dates_id`);
+
+--
 -- Indexes for table `lpr_driver`
 --
 ALTER TABLE `lpr_driver`
@@ -837,7 +954,8 @@ ALTER TABLE `lpr_order`
   ADD KEY `client_id` (`client_id`),
   ADD KEY `school_id` (`school_id`),
   ADD KEY `driver_id` (`driver_id`),
-  ADD KEY `o_reqby` (`o_reqby`);
+  ADD KEY `o_reqby` (`o_reqby`),
+  ADD KEY `ra_id` (`ra_id`);
 
 --
 -- Indexes for table `lpr_rates`
@@ -845,6 +963,12 @@ ALTER TABLE `lpr_order`
 ALTER TABLE `lpr_rates`
   ADD PRIMARY KEY (`rate_id`),
   ADD KEY `zone_id` (`zone_id`);
+
+--
+-- Indexes for table `lpr_ridealong`
+--
+ALTER TABLE `lpr_ridealong`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `lpr_school`
@@ -887,6 +1011,11 @@ ALTER TABLE `lpr_zones`
 ALTER TABLE `lpr_client`
   MODIFY `client_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
+-- AUTO_INCREMENT for table `lpr_dates`
+--
+ALTER TABLE `lpr_dates`
+  MODIFY `dates_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
 -- AUTO_INCREMENT for table `lpr_driver`
 --
 ALTER TABLE `lpr_driver`
@@ -895,12 +1024,17 @@ ALTER TABLE `lpr_driver`
 -- AUTO_INCREMENT for table `lpr_order`
 --
 ALTER TABLE `lpr_order`
-  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `lpr_rates`
 --
 ALTER TABLE `lpr_rates`
-  MODIFY `rate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `rate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+--
+-- AUTO_INCREMENT for table `lpr_ridealong`
+--
+ALTER TABLE `lpr_ridealong`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `lpr_school`
 --
@@ -910,12 +1044,12 @@ ALTER TABLE `lpr_school`
 -- AUTO_INCREMENT for table `lpr_student`
 --
 ALTER TABLE `lpr_student`
-  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `lpr_triplog`
 --
 ALTER TABLE `lpr_triplog`
-  MODIFY `triplog_tripid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `triplog_tripid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 --
 -- AUTO_INCREMENT for table `lpr_zones`
 --
@@ -945,7 +1079,8 @@ ALTER TABLE `lpr_order`
   ADD CONSTRAINT `lpr_order_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `lpr_client` (`client_id`),
   ADD CONSTRAINT `lpr_order_ibfk_2` FOREIGN KEY (`school_id`) REFERENCES `lpr_school` (`school_id`),
   ADD CONSTRAINT `lpr_order_ibfk_3` FOREIGN KEY (`driver_id`) REFERENCES `lpr_driver` (`driver_id`),
-  ADD CONSTRAINT `lpr_order_ibfk_4` FOREIGN KEY (`o_reqby`) REFERENCES `lpr_client` (`client_id`);
+  ADD CONSTRAINT `lpr_order_ibfk_4` FOREIGN KEY (`o_reqby`) REFERENCES `lpr_client` (`client_id`),
+  ADD CONSTRAINT `lpr_order_ibfk_5` FOREIGN KEY (`ra_id`) REFERENCES `lpr_ridealong` (`id`);
 
 --
 -- Constraints for table `lpr_rates`
