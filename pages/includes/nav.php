@@ -72,6 +72,9 @@
                                 <li>
                                     <a href="driverbilling.php">Drivers</a>
                                 </li>
+                                <li>
+                                    <a href="ralongbilling.php">Ride Along</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
