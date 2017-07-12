@@ -4,15 +4,44 @@ include("./includes/functions.php");
 ?>
 <?php
 
-$query  = "SELECT count(*) FROM lpr_student";
+$query  = "SELECT count(*) AS students FROM lpr_student ";
 $result = mysqli_query($connection, $query);
+error_log("\nIndex" . $query , 3, "C:/xampp/apache/logs/error.log");
 confirm_query($result);
 if($result_students = mysqli_fetch_assoc($result)) {
-        return $result_students;
+        $studentcount=$result_students;
     } else {
-        return null;
+        $studentcount= 0;
     }
-var_dump($result_students);
+
+$query  = "SELECT count(*) AS drivers FROM lpr_driver ";
+$result = mysqli_query($connection, $query);
+error_log("\nIndex" . $query , 3, "C:/xampp/apache/logs/error.log");
+confirm_query($result);
+if($result_driver = mysqli_fetch_assoc($result)) {
+        $drivercount=$result_driver;
+    } else {
+        $drivercount= 0;
+    }
+
+$query  = "SELECT count(*) AS trips FROM `lpr_triplog` WHERE triplog_date-CURRENT_DATE < 8 ";
+$result = mysqli_query($connection, $query);
+error_log("\nIndex" . $query , 3, "C:/xampp/apache/logs/error.log");
+confirm_query($result);
+if($result_trips = mysqli_fetch_assoc($result)) {
+        $tripcount=$result_trips;
+    } else {
+        $tripcount= 0;
+    }
+$query  = "SELECT count(*) AS ctrips FROM `lpr_triplog` WHERE triplog_date-CURRENT_DATE < 8 AND triplog_status = 'cancel' ";
+$result = mysqli_query($connection, $query);
+error_log("\nIndex" . $query , 3, "C:/xampp/apache/logs/error.log");
+confirm_query($result);
+if($result_ctrips = mysqli_fetch_assoc($result)) {
+        $ctripcount=$result_ctrips;
+    } else {
+        $ctripcount= 0;
+    }
 ?>
 <?php
 include("./includes/htmlheader.php");
@@ -38,12 +67,12 @@ include("./includes/nav.php");
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
+                                    <div class="huge"><?php echo $studentcount["students"]; ?></div>
                                     <div>Students</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="changeorder.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -60,12 +89,12 @@ include("./includes/nav.php");
                                     <i class="fa fa-tasks fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
+                                    <div class="huge"><?php echo $drivercount["drivers"]; ?></div>
                                     <div>Drivers</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="drivers.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -82,12 +111,12 @@ include("./includes/nav.php");
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
+                                    <div class="huge"><?php echo $tripcount["trips"]; ?></div>
                                     <div>Rides</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="manifest.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -104,12 +133,12 @@ include("./includes/nav.php");
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
+                                    <div class="huge"><?php echo $ctripcount["ctrips"]; ?></div>
                                     <div>Cancellations</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="manifest.php">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
