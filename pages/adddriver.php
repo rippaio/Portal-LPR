@@ -188,11 +188,15 @@ include("./includes/nav.php");
                     <div class="form-group row">
                         <div class="col-md-6">
                             <label>Hire Date</label>
-                            <input class="form-control" placeholder="Enter Hire Date Format:yyyy-mm-dd" name="hiredate" value="<?php echo $dl_hiredate; ?>">
+                            <div class="input-group">
+                                <input type="text" name="hiredate" class="form-control" id="from" value="<?php echo $dl_hiredate; ?>"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label>Term Date</label>
-                            <input class="form-control" placeholder="Term Date Format:yyyy-mm-dd" name="termdate"  value="<?php echo $dl_termdate; ?>">
+                            <div class="input-group">
+                                <input type="text" name="termdate" class="form-control" id="to" value="<?php echo $dl_termdate; ?>" ><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">

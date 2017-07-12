@@ -74,7 +74,7 @@ include("./includes/nav.php");
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped ">
                                 <thead>
                                 <tr>
                                     <th class="col-xs-3">Zone</th>

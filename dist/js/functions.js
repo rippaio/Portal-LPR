@@ -1307,6 +1307,7 @@ function  printDriverBill(){
     $('.db_other').text(+$('.d_others').val());
     $('.db_totalDue').text(totalDue.toFixed(2));
     $('.db_totalPayable').text(+$('#d_finalCheck').text());
+    $('.db_totalPrint').text(+$('#d_finalCheck').text());
     $('.db_issuedDate').text(db_date);
 
     window.print();
@@ -1593,7 +1594,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#elementary .elemList li').remove();
                     for (i = 0; i < schoolObjForElementary.length; i++) {
-                        $('#elementary .elemList').append('<li class="list-group-item"><p class="elemItem">' + schoolObjForElementary[i].school_name + '</p></li>')
+                        $('#elementary .elemList').append('<li class="list-group-item"><p class="elemItem">' + schoolObjForElementary[i].school_name + '<a href="addschool.php?schoolid='+schoolObjForElementary[i].school_id+'"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
                     }
                 }
 
@@ -1621,7 +1622,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#middle .middleList li').remove();
                     for (i = 0; i < schoolObjForMiddle.length; i++) {
-                        $('#middle .middleList').append('<li class="list-group-item"><p class="middleItem">' + schoolObjForMiddle[i].school_name + '</p></li>')
+                        $('#middle .middleList').append('<li class="list-group-item"><p class="middleItem">' + schoolObjForMiddle[i].school_name + '<a href="addschool.php?schoolid='+schoolObjForMiddle[i].school_id+'"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1649,7 +1650,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#high .highList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#high .highList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
+                        $('#high .highList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.php?schoolid='+schoolObjForHigh[i].school_id+'"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1677,7 +1678,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#alternative .alternativeList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#alternative .alternativeList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
+                        $('#alternative .alternativeList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.php?schoolid='+schoolObjForHigh[i].school_id+'"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1707,7 +1708,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#preschool .preschoolList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#preschool .preschoolList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
+                        $('#preschool .preschoolList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.php?schoolid='+schoolObjForHigh[i].school_id+'"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1737,7 +1738,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#special .specialList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#special .specialList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
+                        $('#special .specialList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.php?schoolid='+schoolObjForHigh[i].school_id+'"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1768,7 +1769,7 @@ function show_schoolData(th) {
                 if (firstClicked) {
                     $('#pilot .pilotList li').remove();
                     for (i = 0; i < schoolObjForHigh.length; i++) {
-                        $('#pilot .pilotList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '</p></li>')
+                        $('#pilot .pilotList').append('<li class="list-group-item"><p class="highItem">' + schoolObjForHigh[i].school_name + '<a href="addschool.php?schoolid='+schoolObjForHigh[i].school_id+'"><span class="size2 pull-right" style="color: #68ca1b;"><i class="fa fa-pencil-square-o size2" aria-hidden="true"></i></span></a></p></li>')
                     }
                 }
                 //console.log(schoolObjForElementary);
@@ -1803,6 +1804,7 @@ function show_schoolData(th) {
         //         } else {
         //             $("#accordion").find('h3').filter(':contains(Other)').hide();
         //             $(".other").hide();
+        //             $(".other").hide();
         //         }
         //     },
         //     error: function (xhr, desc, err) {
@@ -1817,3 +1819,4 @@ function show_schoolData(th) {
 
     });
 }
+
