@@ -137,7 +137,7 @@ if(isset($_POST['cb_ctypeSelect'])) {
                 <div style="page-break-inside:avoid;">
                          <b>LPR Ground Transportation</b><br>
                          <b> 3455 Azalea Garden Rd<br>
-                             VA 23513
+                             Norfolk,VA 23513
                          </b>
                 </div>
 
@@ -211,8 +211,15 @@ if(isset($_POST['cb_ctypeSelect'])) {
                         <td style="padding-left:10px;padding-right:20px" class="col-xs-8">
                             <span><?php echo $newDate; ?>-</span>
                             <span><?php echo $cbill["s_name"]; ?></span>
-                            <span><?php echo $cbill["pickloc"]; ?>&nbsp;&nbsp; to</span>
-                            <span><?php echo  $cbill["droploc"];?></span>
+                            <span><?php echo date ('H:i',strtotime($cbill["triplog_picktime"]))  ?>&nbsp;</span>
+                            <?php if($cbill['triplog_clock']=='AM') {?>
+                                <span>res to</span>
+                                <span><?php echo  $cbill["school_abr"];?></span>
+                            <?php } ?>
+                            <?php if($cbill['triplog_clock']=='PM') {?>
+                                <span><?php echo  $cbill["school_abr"];?></span>
+                                <span>to res</span>
+                            <?php } ?>
                         </td>
                         <td style="text-align: right" class="col-xs-4">
                             $<span ><?php echo $cbill["o_billable"]; ?></span>
