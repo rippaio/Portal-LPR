@@ -4,7 +4,7 @@
 ?>
 <?php
 $o_id = (int)$_GET["oid"];
-$query  = "SELECT * FROM `lpr_order` LEFT JOIN lpr_client ON lpr_order.client_id = lpr_client.client_id LEFT JOIN lpr_school ON lpr_order.school_id = lpr_school.school_id LEFT JOIN lpr_student ON lpr_order.o_id = lpr_student.o_id LEFT JOIN lpr_driver ON lpr_order.driver_id = lpr_driver.driver_id LEFT JOIN (SELECT lpr_billing.o_id,count(lpr_billing.o_id) as zones ,SUM(lpr_billing.amount) as clientbill from lpr_billing GROUP by lpr_billing.o_id) AS bill ON lpr_order.o_id = bill.o_id WHERE lpr_order.o_id=$o_id GROUP by lpr_order.o_id ";
+$query  = "SELECT * FROM `lpr_order` LEFT JOIN lpr_client ON lpr_order.client_id = lpr_client.client_id LEFT JOIN lpr_school ON lpr_order.school_id = lpr_school.school_id LEFT JOIN lpr_student ON lpr_order.o_id = lpr_student.o_id LEFT JOIN lpr_driver ON lpr_order.driver_id = lpr_driver.driver_id LEFT JOIN lpr_ridealong ON ra_id=lpr_ridealong.id LEFT JOIN (SELECT lpr_billing.o_id,count(lpr_billing.o_id) as zones ,SUM(lpr_billing.amount) as clientbill from lpr_billing GROUP by lpr_billing.o_id) AS bill ON lpr_order.o_id = bill.o_id WHERE lpr_order.o_id=$o_id GROUP by lpr_order.o_id ";
 $result = mysqli_query($connection, $query);
 // $result_client2 = mysqli_query($connection, $query_client);
 // $result_client3 = mysqli_query($connection, $query_client);
@@ -247,6 +247,13 @@ $result_billing = mysqli_query($connection, $query_billing);
                                                 <label>
                                                     <input type="checkbox" name="o_as" class="aocheckbox" value="addnlstop" <?php echo($subject["o_as"]=="TRUE"? 'checked' : ''); ?> >Additional Stop
                                                 </label>
+                                            </div>
+                                            <div name="ridealongdiv" <?php echo($subject["o_ra"]=="TRUE"? '' : 'class="hidebox"'); ?> >
+                                            <div class="form-group">
+                                                <label>Ride Along</label>
+                                                <input class="form-control typeahead_ra" name="o_ridealong_text" value="<?php echo($subject["o_ra"]=="TRUE"? $subject["ra_fname"] .' '.$subject["ra_lname"] : ''); ?>">
+                                                <input class="form-control" name="ra_id" type="hidden" value="<?php echo($subject["o_ra"]=="TRUE"? $subject["id"] : ''); ?>">
+                                            </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="exampleTextarea">Internal Comment</label>

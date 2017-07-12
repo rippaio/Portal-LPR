@@ -84,8 +84,8 @@ $o_billable = (float)$obj["o_billable"];
 $o_reqby = (int)$obj["optradio"];
 $o_payable = (float)$obj["o_payable"];
 $o_tip = (float)$obj["o_tip"];
-
-$order = createorder($client_id,$school_id,$o_startdate,$o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip);
+$ra_id = ((int)$obj["ra_id"]==0? 'NULL' : (int)$obj["ra_id"]) ;
+$order = createorder($client_id,$school_id,$o_startdate,$o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip,$ra_id);
 
 
 $o_id = $order['o_id'];

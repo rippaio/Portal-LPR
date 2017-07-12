@@ -135,11 +135,11 @@
 		}
 	}
 
-	function createorder($client_id,$school_id,$o_startdate,$o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip){
+	function createorder($client_id,$school_id,$o_startdate,$o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip,$ra_id){
 
 		global $connection;
-		$query = "INSERT INTO lpr_order(client_id, school_id, o_startdate, o_enddate, o_status, o_ampickloc, o_ampicktime, o_amdroploc, o_amdroptime, o_pmpickloc, o_pmdroploc, o_pmpicktime, o_days, o_fd, o_ra, o_wc, o_as, driver_id, o_icomment, o_dcomment, o_billable, o_reqby, o_payable, o_tip) ";
-		$query .= "VALUES ($client_id,  $school_id, '$o_startdate', '$o_enddate', '$o_status', '$o_ampickloc', '$o_ampicktime', '$o_amdroploc', '$o_amdroptime', '$o_pmpickloc', '$o_pmdroploc', '$o_pmpicktime', '$o_days', '$o_fd',  '$o_ra', '$o_wc', '$o_as', $driver_id, '$o_icomment', '$o_dcomment', $o_billable, $o_reqby, $o_payable, $o_tip) ";
+		$query = "INSERT INTO lpr_order(client_id, school_id, o_startdate, o_enddate, o_status, o_ampickloc, o_ampicktime, o_amdroploc, o_amdroptime, o_pmpickloc, o_pmdroploc, o_pmpicktime, o_days, o_fd, o_ra, o_wc, o_as, driver_id, o_icomment, o_dcomment, o_billable, o_reqby, o_payable, o_tip, ra_id) ";
+		$query .= "VALUES ($client_id,  $school_id, '$o_startdate', '$o_enddate', '$o_status', '$o_ampickloc', '$o_ampicktime', '$o_amdroploc', '$o_amdroptime', '$o_pmpickloc', '$o_pmdroploc', '$o_pmpicktime', '$o_days', '$o_fd',  '$o_ra', '$o_wc', '$o_as', $driver_id, '$o_icomment', '$o_dcomment', $o_billable, $o_reqby, $o_payable, $o_tip, $ra_id) ";
 		error_log("Insert order\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result = mysqli_query($connection, $query);
 		
@@ -372,10 +372,10 @@ function changeorderstatus($o_id,$status){
     return $result;
 }
 
-	function updateorder($o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip,$o_id){
+	function updateorder($o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip,$o_id,$ra_id){
 
 		global $connection;
-		$query = "UPDATE lpr_order SET o_enddate='$o_enddate', o_status='$o_status', o_ampickloc='$o_ampickloc', o_ampicktime='$o_ampicktime', o_amdroploc='$o_amdroploc', o_amdroptime='$o_amdroptime',o_pmpickloc='$o_pmpickloc', o_pmdroploc='$o_pmdroploc', o_pmpicktime='$o_pmpicktime', o_days='$o_days', o_fd='$o_fd', o_ra='$o_ra', o_wc='$o_wc', o_as='$o_as', driver_id=$driver_id, o_icomment='$o_icomment', o_dcomment='$o_dcomment', o_billable=$o_billable, o_reqby=$o_reqby, o_payable=$o_payable, o_tip= $o_tip WHERE o_id = $o_id";
+		$query = "UPDATE lpr_order SET o_enddate='$o_enddate', o_status='$o_status', o_ampickloc='$o_ampickloc', o_ampicktime='$o_ampicktime', o_amdroploc='$o_amdroploc', o_amdroptime='$o_amdroptime',o_pmpickloc='$o_pmpickloc', o_pmdroploc='$o_pmdroploc', o_pmpicktime='$o_pmpicktime', o_days='$o_days', o_fd='$o_fd', o_ra='$o_ra', o_wc='$o_wc', o_as='$o_as', driver_id=$driver_id, o_icomment='$o_icomment', o_dcomment='$o_dcomment', o_billable=$o_billable, o_reqby=$o_reqby, o_payable=$o_payable, o_tip= $o_tip, ra_id=$ra_id WHERE o_id = $o_id";
 		error_log("Insert order\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result = mysqli_query($connection, $query);
 		
