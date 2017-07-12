@@ -555,7 +555,7 @@ function getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_sta
  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id
  and lpr_billing.o_id=triplog_o_id and lpr_billing.client_id=$cb_client and lpr_client.client_id=lpr_billing.client_id and
  triplog_school_id=lpr_school.school_id and triplog_date between '$cb_startdate' and '$cb_enddate' and
- triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active')";
+ triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active') and lpr_billing.amount  not in ('0')";
     if(!empty($cb_stypeSelect)){
         $query .=" and school_type='$cb_stypeSelect'";
     }
@@ -586,7 +586,7 @@ function getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb
  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id
  and lpr_billing.o_id=triplog_o_id and lpr_billing.client_id=$cb_client and lpr_client.client_id=lpr_billing.client_id and
  triplog_school_id=lpr_school.school_id and triplog_date between '$cb_startdate' and '$cb_enddate' and
- triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active')";
+ triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active') and lpr_billing.amount  not in ('0')";
     if(!empty($cb_stypeSelect)){
         $query .=" and school_type='$cb_stypeSelect'";
     }

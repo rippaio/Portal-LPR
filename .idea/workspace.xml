@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96326416-5915-4291-9f64-22fb087de77c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/functions.js" afterPath="$PROJECT_DIR$/dist/js/functions.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/includes/functions.php" afterPath="$PROJECT_DIR$/pages/includes/functions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/ralongbilling.php" afterPath="$PROJECT_DIR$/pages/ralongbilling.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -125,8 +122,8 @@
       <file leaf-file-name="driverbilling.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/driverbilling.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-612">
-              <caret line="58" column="37" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="108" selection-end-column="8" />
+            <state relative-caret-position="782">
+              <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -138,8 +135,8 @@
       <file leaf-file-name="studentbilling.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/studentbilling.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3060">
-              <caret line="154" column="25" lean-forward="true" selection-start-line="154" selection-start-column="25" selection-end-line="154" selection-end-column="25" />
+            <state relative-caret-position="408">
+              <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
               <folding>
                 <marker date="1499893712847" expanded="true" signature="112:136" ph="SELECT * FRO... lpr_client" />
               </folding>
@@ -181,68 +178,70 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/includes/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="654">
-              <caret line="684" column="28" lean-forward="false" selection-start-line="684" selection-start-column="28" selection-end-line="684" selection-end-column="28" />
+            <state relative-caret-position="161">
+              <caret line="560" column="5" lean-forward="true" selection-start-line="560" selection-start-column="5" selection-end-line="560" selection-end-column="5" />
               <folding>
-                <marker date="1499897797206" expanded="true" signature="979:1001" ph="INSERT INTO lpr_client... " />
-                <marker date="1499897797206" expanded="true" signature="1819:1862" ph="SELECT * FRO... lpr_client" />
-                <marker date="1499897797206" expanded="true" signature="2302:2323" ph="UPDATE lpr_c... " />
-                <marker date="1499897797206" expanded="true" signature="2931:3085" ph="SELECT * FRO... lpr_client" />
-                <marker date="1499897797206" expanded="true" signature="3377:3420" ph="SELECT * FRO... lpr_school" />
-                <marker date="1499897797206" expanded="true" signature="3716:3818" ph="SELECT SUM(a... lpr_rates" />
-                <marker date="1499897797206" expanded="true" signature="4174:4336" ph="SELECT SUM(a... lpr_rates" />
-                <marker date="1499897797206" expanded="true" signature="4249:4309" ph="select zone_... lpr_client" />
-                <marker date="1499897797206" expanded="true" signature="4928:5212" ph="INSERT INTO lpr_order... " />
-                <marker date="1499897797206" expanded="true" signature="6393:6556" ph="INSERT INTO lpr_student... " />
-                <marker date="1499897797206" expanded="true" signature="6970:7133" ph="INSERT INTO lpr_student... " />
-                <marker date="1499897797206" expanded="true" signature="7823:7905" ph="INSERT INTO lpr_billing... " />
-                <marker date="1499897797206" expanded="true" signature="8190:8274" ph="INSERT INTO lpr_billing... " />
-                <marker date="1499897797206" expanded="true" signature="8501:8695" ph="SELECT drive... " />
-                <marker date="1499897797206" expanded="true" signature="8962:9045" ph="SELECT id AS... " />
-                <marker date="1499897797206" expanded="true" signature="9333:9353" ph="UPDATE lpr_o... " />
-                <marker date="1499897797206" expanded="true" signature="9962:9984" ph="INSERT INTO lpr_driver... " />
-                <marker date="1499897797206" expanded="true" signature="11059:11102" ph="SELECT * FRO... lpr_driver" />
-                <marker date="1499897797206" expanded="true" signature="11727:11748" ph="UPDATE lpr_d... " />
-                <marker date="1499897797206" expanded="true" signature="12978:13001" ph="INSERT INTO lpr_triplog... " />
-                <marker date="1499897797206" expanded="true" signature="14295:14317" ph="UPDATE lpr_t... " />
-                <marker date="1499897797206" expanded="true" signature="15102:15127" ph="SELECT * FRO... lpr_triplog" />
-                <marker date="1499897797206" expanded="true" signature="15322:15365" ph="SELECT s_fna... lpr_student" />
-                <marker date="1499897797206" expanded="true" signature="15671:15763" ph="SELECT CONCA... lpr_driver" />
-                <marker date="1499897797206" expanded="true" signature="16090:16145" ph="UPDATE lpr_o... " />
-                <marker date="1499897797206" expanded="true" signature="16638:17159" ph="UPDATE lpr_o... " />
-                <marker date="1499897797206" expanded="true" signature="17145:17159" ph="UPDATE lpr_o... " />
-                <marker date="1499897797206" expanded="true" signature="17848:17887" ph="DELETE FROM " />
-                <marker date="1499897797206" expanded="true" signature="18200:18363" ph="INSERT INTO lpr_student... " />
-                <marker date="1499897797206" expanded="true" signature="18777:19108" ph="UPDATE lpr_s... " />
-                <marker date="1499897797206" expanded="true" signature="19411:19450" ph="DELETE FROM " />
-                <marker date="1499897797206" expanded="true" signature="19827:19909" ph="INSERT INTO lpr_billing... " />
-                <marker date="1499897797206" expanded="true" signature="20199:20238" ph="DELETE FROM " />
-                <marker date="1499897797206" expanded="true" signature="20397:20481" ph="INSERT INTO lpr_billing... " />
-                <marker date="1499897797206" expanded="true" signature="20757:20871" ph="INSERT INTO lpr_dates... " />
-                <marker date="1499897797206" expanded="true" signature="21090:21183" ph="SELECT * FRO... lpr_dates" />
-                <marker date="1499897797206" expanded="true" signature="23079:23208" ph="INSERT INTO lpr_cashadvance... " />
-                <marker date="1499897797206" expanded="true" signature="23502:23630" ph="INSERT INTO lpr_additnltrip... " />
-                <marker date="1499897797206" expanded="true" signature="23911:24190" ph="select coale... sum" />
-                <marker date="1499897797206" expanded="true" signature="23982:24080" ph="SELECT sum(c... lpr_cashadvance" />
-                <marker date="1499897797206" expanded="true" signature="24087:24187" ph="SELECT sum(c... lpr_cashadvance" />
-                <marker date="1499897797206" expanded="true" signature="25396:26433" ph="SELECT `trip... lpr_triplog" />
-                <marker date="1499897797206" expanded="true" signature="28240:29501" ph="select count... triplog_o_id" />
-                <marker date="1499897797206" expanded="true" signature="28398:29501" ph="SELECT `trip... lpr_triplog" />
-                <marker date="1499897797206" expanded="true" signature="30050:30102" ph="INSERT INTO lpr_zones... " />
-                <marker date="1499897797206" expanded="true" signature="30346:30424" ph="INSERT INTO lpr_rates... " />
-                <marker date="1499897797206" expanded="true" signature="30663:30683" ph="UPDATE lpr_r... " />
-                <marker date="1499897797206" expanded="true" signature="30909:30929" ph="UPDATE lpr_z... " />
-                <marker date="1499897797206" expanded="true" signature="31186:31252" ph="UPDATE lpr_d... " />
-                <marker date="1499897797206" expanded="true" signature="31619:32001" ph="INSERT INTO lpr_school... " />
-                <marker date="1499897797206" expanded="true" signature="32302:32326" ph="select * fro... lpr_school" />
-                <marker date="1499897797206" expanded="true" signature="32302:32343" ph="select * fro... lpr_school" />
-                <marker date="1499897797206" expanded="true" signature="32737:33114" ph="INSERT INTO lpr_school... " />
-                <marker date="1499897797206" expanded="true" signature="33432:33923" ph="SELECT DISTI... lpr_triplog" />
-                <marker date="1499897797206" expanded="true" signature="33474:33610" ph="SELECT tripl... lpr_triplog" />
-                <marker date="1499897797206" expanded="true" signature="33552:33603" ph="SELECT lpr_o... lpr_order" />
+                <marker date="1499900651602" expanded="true" signature="979:1001" ph="INSERT INTO lpr_client... " />
+                <marker date="1499900651602" expanded="true" signature="1819:1862" ph="SELECT * FRO... lpr_client" />
+                <marker date="1499900651602" expanded="true" signature="2302:2323" ph="UPDATE lpr_c... " />
+                <marker date="1499900651602" expanded="true" signature="2931:3085" ph="SELECT * FRO... lpr_client" />
+                <marker date="1499900651602" expanded="true" signature="3377:3420" ph="SELECT * FRO... lpr_school" />
+                <marker date="1499900651602" expanded="true" signature="3716:3818" ph="SELECT SUM(a... lpr_rates" />
+                <marker date="1499900651602" expanded="true" signature="4174:4336" ph="SELECT SUM(a... lpr_rates" />
+                <marker date="1499900651602" expanded="true" signature="4249:4309" ph="select zone_... lpr_client" />
+                <marker date="1499900651602" expanded="true" signature="4928:5212" ph="INSERT INTO lpr_order... " />
+                <marker date="1499900651602" expanded="true" signature="6393:6556" ph="INSERT INTO lpr_student... " />
+                <marker date="1499900651602" expanded="true" signature="6970:7133" ph="INSERT INTO lpr_student... " />
+                <marker date="1499900651602" expanded="true" signature="7823:7905" ph="INSERT INTO lpr_billing... " />
+                <marker date="1499900651602" expanded="true" signature="8190:8274" ph="INSERT INTO lpr_billing... " />
+                <marker date="1499900651602" expanded="true" signature="8501:8695" ph="SELECT drive... " />
+                <marker date="1499900651602" expanded="true" signature="8962:9045" ph="SELECT id AS... " />
+                <marker date="1499900651602" expanded="true" signature="9333:9353" ph="UPDATE lpr_o... " />
+                <marker date="1499900651602" expanded="true" signature="9962:9984" ph="INSERT INTO lpr_driver... " />
+                <marker date="1499900651602" expanded="true" signature="11059:11102" ph="SELECT * FRO... lpr_driver" />
+                <marker date="1499900651602" expanded="true" signature="11727:11748" ph="UPDATE lpr_d... " />
+                <marker date="1499900651602" expanded="true" signature="12978:13001" ph="INSERT INTO lpr_triplog... " />
+                <marker date="1499900651602" expanded="true" signature="14295:14317" ph="UPDATE lpr_t... " />
+                <marker date="1499900651602" expanded="true" signature="15102:15127" ph="SELECT * FRO... lpr_triplog" />
+                <marker date="1499900651602" expanded="true" signature="15322:15365" ph="SELECT s_fna... lpr_student" />
+                <marker date="1499900651602" expanded="true" signature="15671:15763" ph="SELECT CONCA... lpr_driver" />
+                <marker date="1499900651602" expanded="true" signature="16090:16145" ph="UPDATE lpr_o... " />
+                <marker date="1499900651602" expanded="true" signature="16638:17159" ph="UPDATE lpr_o... " />
+                <marker date="1499900651602" expanded="true" signature="17145:17159" ph="UPDATE lpr_o... " />
+                <marker date="1499900651602" expanded="true" signature="17848:17887" ph="DELETE FROM " />
+                <marker date="1499900651602" expanded="true" signature="18200:18363" ph="INSERT INTO lpr_student... " />
+                <marker date="1499900651602" expanded="true" signature="18777:19108" ph="UPDATE lpr_s... " />
+                <marker date="1499900651602" expanded="true" signature="19411:19450" ph="DELETE FROM " />
+                <marker date="1499900651602" expanded="true" signature="19827:19909" ph="INSERT INTO lpr_billing... " />
+                <marker date="1499900651602" expanded="true" signature="20199:20238" ph="DELETE FROM " />
+                <marker date="1499900651602" expanded="true" signature="20397:20481" ph="INSERT INTO lpr_billing... " />
+                <marker date="1499900651602" expanded="true" signature="20757:20871" ph="INSERT INTO lpr_dates... " />
+                <marker date="1499900651602" expanded="true" signature="21090:21183" ph="SELECT * FRO... lpr_dates" />
+                <marker date="1499900651602" expanded="true" signature="23079:23208" ph="INSERT INTO lpr_cashadvance... " />
+                <marker date="1499900651602" expanded="true" signature="23502:23630" ph="INSERT INTO lpr_additnltrip... " />
+                <marker date="1499900651602" expanded="true" signature="23911:24190" ph="select coale... sum" />
+                <marker date="1499900651602" expanded="true" signature="23982:24080" ph="SELECT sum(c... lpr_cashadvance" />
+                <marker date="1499900651602" expanded="true" signature="24087:24187" ph="SELECT sum(c... lpr_cashadvance" />
+                <marker date="1499900651602" expanded="true" signature="25396:26433" ph="SELECT `trip... lpr_triplog" />
+                <marker date="1499900651602" expanded="true" signature="25396:26470" ph="SELECT `trip... lpr_triplog" />
+                <marker date="1499900651602" expanded="true" signature="28277:29538" ph="select count... triplog_o_id" />
+                <marker date="1499900651602" expanded="true" signature="28277:29575" ph="select count... triplog_o_id" />
+                <marker date="1499900651602" expanded="true" signature="28435:29538" ph="SELECT `trip... lpr_triplog" />
+                <marker date="1499900651602" expanded="true" signature="30124:30176" ph="INSERT INTO lpr_zones... " />
+                <marker date="1499900651602" expanded="true" signature="30420:30498" ph="INSERT INTO lpr_rates... " />
+                <marker date="1499900651602" expanded="true" signature="30737:30757" ph="UPDATE lpr_r... " />
+                <marker date="1499900651602" expanded="true" signature="30983:31003" ph="UPDATE lpr_z... " />
+                <marker date="1499900651602" expanded="true" signature="31260:31326" ph="UPDATE lpr_d... " />
+                <marker date="1499900651602" expanded="true" signature="31693:32075" ph="INSERT INTO lpr_school... " />
+                <marker date="1499900651602" expanded="true" signature="32376:32400" ph="select * fro... lpr_school" />
+                <marker date="1499900651602" expanded="true" signature="32376:32417" ph="select * fro... lpr_school" />
+                <marker date="1499900651602" expanded="true" signature="32811:33188" ph="INSERT INTO lpr_school... " />
+                <marker date="1499900651602" expanded="true" signature="33506:33997" ph="SELECT DISTI... lpr_triplog" />
+                <marker date="1499900651602" expanded="true" signature="33548:33684" ph="SELECT tripl... lpr_triplog" />
+                <marker date="1499900651602" expanded="true" signature="33626:33677" ph="SELECT lpr_o... lpr_order" />
               </folding>
             </state>
           </provider>
@@ -267,7 +266,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ralongbilling.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ralongbilling.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/ralongbilling.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="612">
@@ -324,8 +323,8 @@
       <find>d_prin</find>
       <find>dont</find>
       <find>page</find>
-      <find>cal</find>
       <find>typeahead_ra</find>
+      <find>cal</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -354,9 +353,9 @@
         <option value="$PROJECT_DIR$/pages/includes/nav.php" />
         <option value="$PROJECT_DIR$/pages/studentbilling.php" />
         <option value="$PROJECT_DIR$/pages/driverbilling.php" />
-        <option value="$PROJECT_DIR$/pages/includes/functions.php" />
         <option value="$PROJECT_DIR$/dist/js/functions.js" />
         <option value="$PROJECT_DIR$/pages/ralongbilling.php" />
+        <option value="$PROJECT_DIR$/pages/includes/functions.php" />
       </list>
     </option>
   </component>
@@ -593,12 +592,12 @@
       <updated>1499102994613</updated>
       <workItem from="1499102996306" duration="6321000" />
       <workItem from="1499118437311" duration="32411000" />
-      <workItem from="1499796916542" duration="21925000" />
+      <workItem from="1499796916542" duration="22714000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78497000" />
+    <option name="totallyTimeSpent" value="79286000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -679,62 +678,64 @@
         <state relative-caret-position="713">
           <caret line="640" column="31" lean-forward="false" selection-start-line="640" selection-start-column="31" selection-end-line="640" selection-end-column="31" />
           <folding>
-            <marker date="1499897797206" expanded="true" signature="979:1001" ph="INSERT INTO lpr_client... " />
-            <marker date="1499897797206" expanded="true" signature="1819:1862" ph="SELECT * FRO... lpr_client" />
-            <marker date="1499897797206" expanded="true" signature="2302:2323" ph="UPDATE lpr_c... " />
-            <marker date="1499897797206" expanded="true" signature="2931:3085" ph="SELECT * FRO... lpr_client" />
-            <marker date="1499897797206" expanded="true" signature="3377:3420" ph="SELECT * FRO... lpr_school" />
-            <marker date="1499897797206" expanded="true" signature="3716:3818" ph="SELECT SUM(a... lpr_rates" />
-            <marker date="1499897797206" expanded="true" signature="4174:4336" ph="SELECT SUM(a... lpr_rates" />
-            <marker date="1499897797206" expanded="true" signature="4249:4309" ph="select zone_... lpr_client" />
-            <marker date="1499897797206" expanded="true" signature="4928:5212" ph="INSERT INTO lpr_order... " />
-            <marker date="1499897797206" expanded="true" signature="6393:6556" ph="INSERT INTO lpr_student... " />
-            <marker date="1499897797206" expanded="true" signature="6970:7133" ph="INSERT INTO lpr_student... " />
-            <marker date="1499897797206" expanded="true" signature="7823:7905" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="8190:8274" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="8501:8695" ph="SELECT drive... " />
-            <marker date="1499897797206" expanded="true" signature="8962:9045" ph="SELECT id AS... " />
-            <marker date="1499897797206" expanded="true" signature="9333:9353" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="9962:9984" ph="INSERT INTO lpr_driver... " />
-            <marker date="1499897797206" expanded="true" signature="11059:11102" ph="SELECT * FRO... lpr_driver" />
-            <marker date="1499897797206" expanded="true" signature="11727:11748" ph="UPDATE lpr_d... " />
-            <marker date="1499897797206" expanded="true" signature="12978:13001" ph="INSERT INTO lpr_triplog... " />
-            <marker date="1499897797206" expanded="true" signature="14295:14317" ph="UPDATE lpr_t... " />
-            <marker date="1499897797206" expanded="true" signature="15102:15127" ph="SELECT * FRO... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="15322:15365" ph="SELECT s_fna... lpr_student" />
-            <marker date="1499897797206" expanded="true" signature="15671:15763" ph="SELECT CONCA... lpr_driver" />
-            <marker date="1499897797206" expanded="true" signature="16090:16145" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="16638:17159" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="17145:17159" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="17848:17887" ph="DELETE FROM " />
-            <marker date="1499897797206" expanded="true" signature="18200:18363" ph="INSERT INTO lpr_student... " />
-            <marker date="1499897797206" expanded="true" signature="18777:19108" ph="UPDATE lpr_s... " />
-            <marker date="1499897797206" expanded="true" signature="19411:19450" ph="DELETE FROM " />
-            <marker date="1499897797206" expanded="true" signature="19827:19909" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="20199:20238" ph="DELETE FROM " />
-            <marker date="1499897797206" expanded="true" signature="20397:20481" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="20757:20871" ph="INSERT INTO lpr_dates... " />
-            <marker date="1499897797206" expanded="true" signature="21090:21183" ph="SELECT * FRO... lpr_dates" />
-            <marker date="1499897797206" expanded="true" signature="23079:23208" ph="INSERT INTO lpr_cashadvance... " />
-            <marker date="1499897797206" expanded="true" signature="23502:23630" ph="INSERT INTO lpr_additnltrip... " />
-            <marker date="1499897797206" expanded="true" signature="23911:24190" ph="select coale... sum" />
-            <marker date="1499897797206" expanded="true" signature="23982:24080" ph="SELECT sum(c... lpr_cashadvance" />
-            <marker date="1499897797206" expanded="true" signature="24087:24187" ph="SELECT sum(c... lpr_cashadvance" />
-            <marker date="1499897797206" expanded="true" signature="25396:26433" ph="SELECT `trip... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="28240:29501" ph="select count... triplog_o_id" />
-            <marker date="1499897797206" expanded="true" signature="28398:29501" ph="SELECT `trip... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="30050:30102" ph="INSERT INTO lpr_zones... " />
-            <marker date="1499897797206" expanded="true" signature="30346:30424" ph="INSERT INTO lpr_rates... " />
-            <marker date="1499897797206" expanded="true" signature="30663:30683" ph="UPDATE lpr_r... " />
-            <marker date="1499897797206" expanded="true" signature="30909:30929" ph="UPDATE lpr_z... " />
-            <marker date="1499897797206" expanded="true" signature="31186:31252" ph="UPDATE lpr_d... " />
-            <marker date="1499897797206" expanded="true" signature="31619:32001" ph="INSERT INTO lpr_school... " />
-            <marker date="1499897797206" expanded="true" signature="32302:32326" ph="select * fro... lpr_school" />
-            <marker date="1499897797206" expanded="true" signature="32302:32343" ph="select * fro... lpr_school" />
-            <marker date="1499897797206" expanded="true" signature="32737:33114" ph="INSERT INTO lpr_school... " />
-            <marker date="1499897797206" expanded="true" signature="33432:33923" ph="SELECT DISTI... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="33474:33610" ph="SELECT tripl... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="33552:33603" ph="SELECT lpr_o... lpr_order" />
+            <marker date="1499900651602" expanded="true" signature="979:1001" ph="INSERT INTO lpr_client... " />
+            <marker date="1499900651602" expanded="true" signature="1819:1862" ph="SELECT * FRO... lpr_client" />
+            <marker date="1499900651602" expanded="true" signature="2302:2323" ph="UPDATE lpr_c... " />
+            <marker date="1499900651602" expanded="true" signature="2931:3085" ph="SELECT * FRO... lpr_client" />
+            <marker date="1499900651602" expanded="true" signature="3377:3420" ph="SELECT * FRO... lpr_school" />
+            <marker date="1499900651602" expanded="true" signature="3716:3818" ph="SELECT SUM(a... lpr_rates" />
+            <marker date="1499900651602" expanded="true" signature="4174:4336" ph="SELECT SUM(a... lpr_rates" />
+            <marker date="1499900651602" expanded="true" signature="4249:4309" ph="select zone_... lpr_client" />
+            <marker date="1499900651602" expanded="true" signature="4928:5212" ph="INSERT INTO lpr_order... " />
+            <marker date="1499900651602" expanded="true" signature="6393:6556" ph="INSERT INTO lpr_student... " />
+            <marker date="1499900651602" expanded="true" signature="6970:7133" ph="INSERT INTO lpr_student... " />
+            <marker date="1499900651602" expanded="true" signature="7823:7905" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="8190:8274" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="8501:8695" ph="SELECT drive... " />
+            <marker date="1499900651602" expanded="true" signature="8962:9045" ph="SELECT id AS... " />
+            <marker date="1499900651602" expanded="true" signature="9333:9353" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="9962:9984" ph="INSERT INTO lpr_driver... " />
+            <marker date="1499900651602" expanded="true" signature="11059:11102" ph="SELECT * FRO... lpr_driver" />
+            <marker date="1499900651602" expanded="true" signature="11727:11748" ph="UPDATE lpr_d... " />
+            <marker date="1499900651602" expanded="true" signature="12978:13001" ph="INSERT INTO lpr_triplog... " />
+            <marker date="1499900651602" expanded="true" signature="14295:14317" ph="UPDATE lpr_t... " />
+            <marker date="1499900651602" expanded="true" signature="15102:15127" ph="SELECT * FRO... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="15322:15365" ph="SELECT s_fna... lpr_student" />
+            <marker date="1499900651602" expanded="true" signature="15671:15763" ph="SELECT CONCA... lpr_driver" />
+            <marker date="1499900651602" expanded="true" signature="16090:16145" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="16638:17159" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="17145:17159" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="17848:17887" ph="DELETE FROM " />
+            <marker date="1499900651602" expanded="true" signature="18200:18363" ph="INSERT INTO lpr_student... " />
+            <marker date="1499900651602" expanded="true" signature="18777:19108" ph="UPDATE lpr_s... " />
+            <marker date="1499900651602" expanded="true" signature="19411:19450" ph="DELETE FROM " />
+            <marker date="1499900651602" expanded="true" signature="19827:19909" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="20199:20238" ph="DELETE FROM " />
+            <marker date="1499900651602" expanded="true" signature="20397:20481" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="20757:20871" ph="INSERT INTO lpr_dates... " />
+            <marker date="1499900651602" expanded="true" signature="21090:21183" ph="SELECT * FRO... lpr_dates" />
+            <marker date="1499900651602" expanded="true" signature="23079:23208" ph="INSERT INTO lpr_cashadvance... " />
+            <marker date="1499900651602" expanded="true" signature="23502:23630" ph="INSERT INTO lpr_additnltrip... " />
+            <marker date="1499900651602" expanded="true" signature="23911:24190" ph="select coale... sum" />
+            <marker date="1499900651602" expanded="true" signature="23982:24080" ph="SELECT sum(c... lpr_cashadvance" />
+            <marker date="1499900651602" expanded="true" signature="24087:24187" ph="SELECT sum(c... lpr_cashadvance" />
+            <marker date="1499900651602" expanded="true" signature="25396:26433" ph="SELECT `trip... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="25396:26470" ph="SELECT `trip... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="28277:29538" ph="select count... triplog_o_id" />
+            <marker date="1499900651602" expanded="true" signature="28277:29575" ph="select count... triplog_o_id" />
+            <marker date="1499900651602" expanded="true" signature="28435:29538" ph="SELECT `trip... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="30124:30176" ph="INSERT INTO lpr_zones... " />
+            <marker date="1499900651602" expanded="true" signature="30420:30498" ph="INSERT INTO lpr_rates... " />
+            <marker date="1499900651602" expanded="true" signature="30737:30757" ph="UPDATE lpr_r... " />
+            <marker date="1499900651602" expanded="true" signature="30983:31003" ph="UPDATE lpr_z... " />
+            <marker date="1499900651602" expanded="true" signature="31260:31326" ph="UPDATE lpr_d... " />
+            <marker date="1499900651602" expanded="true" signature="31693:32075" ph="INSERT INTO lpr_school... " />
+            <marker date="1499900651602" expanded="true" signature="32376:32400" ph="select * fro... lpr_school" />
+            <marker date="1499900651602" expanded="true" signature="32376:32417" ph="select * fro... lpr_school" />
+            <marker date="1499900651602" expanded="true" signature="32811:33188" ph="INSERT INTO lpr_school... " />
+            <marker date="1499900651602" expanded="true" signature="33506:33997" ph="SELECT DISTI... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="33548:33684" ph="SELECT tripl... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="33626:33677" ph="SELECT lpr_o... lpr_order" />
           </folding>
         </state>
       </provider>
@@ -888,62 +889,64 @@
         <state relative-caret-position="9656">
           <caret line="568" column="30" lean-forward="false" selection-start-line="568" selection-start-column="30" selection-end-line="568" selection-end-column="30" />
           <folding>
-            <marker date="1499897797206" expanded="true" signature="979:1001" ph="INSERT INTO lpr_client... " />
-            <marker date="1499897797206" expanded="true" signature="1819:1862" ph="SELECT * FRO... lpr_client" />
-            <marker date="1499897797206" expanded="true" signature="2302:2323" ph="UPDATE lpr_c... " />
-            <marker date="1499897797206" expanded="true" signature="2931:3085" ph="SELECT * FRO... lpr_client" />
-            <marker date="1499897797206" expanded="true" signature="3377:3420" ph="SELECT * FRO... lpr_school" />
-            <marker date="1499897797206" expanded="true" signature="3716:3818" ph="SELECT SUM(a... lpr_rates" />
-            <marker date="1499897797206" expanded="true" signature="4174:4336" ph="SELECT SUM(a... lpr_rates" />
-            <marker date="1499897797206" expanded="true" signature="4249:4309" ph="select zone_... lpr_client" />
-            <marker date="1499897797206" expanded="true" signature="4928:5212" ph="INSERT INTO lpr_order... " />
-            <marker date="1499897797206" expanded="true" signature="6393:6556" ph="INSERT INTO lpr_student... " />
-            <marker date="1499897797206" expanded="true" signature="6970:7133" ph="INSERT INTO lpr_student... " />
-            <marker date="1499897797206" expanded="true" signature="7823:7905" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="8190:8274" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="8501:8695" ph="SELECT drive... " />
-            <marker date="1499897797206" expanded="true" signature="8962:9045" ph="SELECT id AS... " />
-            <marker date="1499897797206" expanded="true" signature="9333:9353" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="9962:9984" ph="INSERT INTO lpr_driver... " />
-            <marker date="1499897797206" expanded="true" signature="11059:11102" ph="SELECT * FRO... lpr_driver" />
-            <marker date="1499897797206" expanded="true" signature="11727:11748" ph="UPDATE lpr_d... " />
-            <marker date="1499897797206" expanded="true" signature="12978:13001" ph="INSERT INTO lpr_triplog... " />
-            <marker date="1499897797206" expanded="true" signature="14295:14317" ph="UPDATE lpr_t... " />
-            <marker date="1499897797206" expanded="true" signature="15102:15127" ph="SELECT * FRO... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="15322:15365" ph="SELECT s_fna... lpr_student" />
-            <marker date="1499897797206" expanded="true" signature="15671:15763" ph="SELECT CONCA... lpr_driver" />
-            <marker date="1499897797206" expanded="true" signature="16090:16145" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="16638:17159" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="17145:17159" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="17848:17887" ph="DELETE FROM " />
-            <marker date="1499897797206" expanded="true" signature="18200:18363" ph="INSERT INTO lpr_student... " />
-            <marker date="1499897797206" expanded="true" signature="18777:19108" ph="UPDATE lpr_s... " />
-            <marker date="1499897797206" expanded="true" signature="19411:19450" ph="DELETE FROM " />
-            <marker date="1499897797206" expanded="true" signature="19827:19909" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="20199:20238" ph="DELETE FROM " />
-            <marker date="1499897797206" expanded="true" signature="20397:20481" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="20757:20871" ph="INSERT INTO lpr_dates... " />
-            <marker date="1499897797206" expanded="true" signature="21090:21183" ph="SELECT * FRO... lpr_dates" />
-            <marker date="1499897797206" expanded="true" signature="23079:23208" ph="INSERT INTO lpr_cashadvance... " />
-            <marker date="1499897797206" expanded="true" signature="23502:23630" ph="INSERT INTO lpr_additnltrip... " />
-            <marker date="1499897797206" expanded="true" signature="23911:24190" ph="select coale... sum" />
-            <marker date="1499897797206" expanded="true" signature="23982:24080" ph="SELECT sum(c... lpr_cashadvance" />
-            <marker date="1499897797206" expanded="true" signature="24087:24187" ph="SELECT sum(c... lpr_cashadvance" />
-            <marker date="1499897797206" expanded="true" signature="25396:26433" ph="SELECT `trip... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="28240:29501" ph="select count... triplog_o_id" />
-            <marker date="1499897797206" expanded="true" signature="28398:29501" ph="SELECT `trip... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="30050:30102" ph="INSERT INTO lpr_zones... " />
-            <marker date="1499897797206" expanded="true" signature="30346:30424" ph="INSERT INTO lpr_rates... " />
-            <marker date="1499897797206" expanded="true" signature="30663:30683" ph="UPDATE lpr_r... " />
-            <marker date="1499897797206" expanded="true" signature="30909:30929" ph="UPDATE lpr_z... " />
-            <marker date="1499897797206" expanded="true" signature="31186:31252" ph="UPDATE lpr_d... " />
-            <marker date="1499897797206" expanded="true" signature="31619:32001" ph="INSERT INTO lpr_school... " />
-            <marker date="1499897797206" expanded="true" signature="32302:32326" ph="select * fro... lpr_school" />
-            <marker date="1499897797206" expanded="true" signature="32302:32343" ph="select * fro... lpr_school" />
-            <marker date="1499897797206" expanded="true" signature="32737:33114" ph="INSERT INTO lpr_school... " />
-            <marker date="1499897797206" expanded="true" signature="33432:33923" ph="SELECT DISTI... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="33474:33610" ph="SELECT tripl... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="33552:33603" ph="SELECT lpr_o... lpr_order" />
+            <marker date="1499900651602" expanded="true" signature="979:1001" ph="INSERT INTO lpr_client... " />
+            <marker date="1499900651602" expanded="true" signature="1819:1862" ph="SELECT * FRO... lpr_client" />
+            <marker date="1499900651602" expanded="true" signature="2302:2323" ph="UPDATE lpr_c... " />
+            <marker date="1499900651602" expanded="true" signature="2931:3085" ph="SELECT * FRO... lpr_client" />
+            <marker date="1499900651602" expanded="true" signature="3377:3420" ph="SELECT * FRO... lpr_school" />
+            <marker date="1499900651602" expanded="true" signature="3716:3818" ph="SELECT SUM(a... lpr_rates" />
+            <marker date="1499900651602" expanded="true" signature="4174:4336" ph="SELECT SUM(a... lpr_rates" />
+            <marker date="1499900651602" expanded="true" signature="4249:4309" ph="select zone_... lpr_client" />
+            <marker date="1499900651602" expanded="true" signature="4928:5212" ph="INSERT INTO lpr_order... " />
+            <marker date="1499900651602" expanded="true" signature="6393:6556" ph="INSERT INTO lpr_student... " />
+            <marker date="1499900651602" expanded="true" signature="6970:7133" ph="INSERT INTO lpr_student... " />
+            <marker date="1499900651602" expanded="true" signature="7823:7905" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="8190:8274" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="8501:8695" ph="SELECT drive... " />
+            <marker date="1499900651602" expanded="true" signature="8962:9045" ph="SELECT id AS... " />
+            <marker date="1499900651602" expanded="true" signature="9333:9353" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="9962:9984" ph="INSERT INTO lpr_driver... " />
+            <marker date="1499900651602" expanded="true" signature="11059:11102" ph="SELECT * FRO... lpr_driver" />
+            <marker date="1499900651602" expanded="true" signature="11727:11748" ph="UPDATE lpr_d... " />
+            <marker date="1499900651602" expanded="true" signature="12978:13001" ph="INSERT INTO lpr_triplog... " />
+            <marker date="1499900651602" expanded="true" signature="14295:14317" ph="UPDATE lpr_t... " />
+            <marker date="1499900651602" expanded="true" signature="15102:15127" ph="SELECT * FRO... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="15322:15365" ph="SELECT s_fna... lpr_student" />
+            <marker date="1499900651602" expanded="true" signature="15671:15763" ph="SELECT CONCA... lpr_driver" />
+            <marker date="1499900651602" expanded="true" signature="16090:16145" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="16638:17159" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="17145:17159" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="17848:17887" ph="DELETE FROM " />
+            <marker date="1499900651602" expanded="true" signature="18200:18363" ph="INSERT INTO lpr_student... " />
+            <marker date="1499900651602" expanded="true" signature="18777:19108" ph="UPDATE lpr_s... " />
+            <marker date="1499900651602" expanded="true" signature="19411:19450" ph="DELETE FROM " />
+            <marker date="1499900651602" expanded="true" signature="19827:19909" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="20199:20238" ph="DELETE FROM " />
+            <marker date="1499900651602" expanded="true" signature="20397:20481" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="20757:20871" ph="INSERT INTO lpr_dates... " />
+            <marker date="1499900651602" expanded="true" signature="21090:21183" ph="SELECT * FRO... lpr_dates" />
+            <marker date="1499900651602" expanded="true" signature="23079:23208" ph="INSERT INTO lpr_cashadvance... " />
+            <marker date="1499900651602" expanded="true" signature="23502:23630" ph="INSERT INTO lpr_additnltrip... " />
+            <marker date="1499900651602" expanded="true" signature="23911:24190" ph="select coale... sum" />
+            <marker date="1499900651602" expanded="true" signature="23982:24080" ph="SELECT sum(c... lpr_cashadvance" />
+            <marker date="1499900651602" expanded="true" signature="24087:24187" ph="SELECT sum(c... lpr_cashadvance" />
+            <marker date="1499900651602" expanded="true" signature="25396:26433" ph="SELECT `trip... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="25396:26470" ph="SELECT `trip... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="28277:29538" ph="select count... triplog_o_id" />
+            <marker date="1499900651602" expanded="true" signature="28277:29575" ph="select count... triplog_o_id" />
+            <marker date="1499900651602" expanded="true" signature="28435:29538" ph="SELECT `trip... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="30124:30176" ph="INSERT INTO lpr_zones... " />
+            <marker date="1499900651602" expanded="true" signature="30420:30498" ph="INSERT INTO lpr_rates... " />
+            <marker date="1499900651602" expanded="true" signature="30737:30757" ph="UPDATE lpr_r... " />
+            <marker date="1499900651602" expanded="true" signature="30983:31003" ph="UPDATE lpr_z... " />
+            <marker date="1499900651602" expanded="true" signature="31260:31326" ph="UPDATE lpr_d... " />
+            <marker date="1499900651602" expanded="true" signature="31693:32075" ph="INSERT INTO lpr_school... " />
+            <marker date="1499900651602" expanded="true" signature="32376:32400" ph="select * fro... lpr_school" />
+            <marker date="1499900651602" expanded="true" signature="32376:32417" ph="select * fro... lpr_school" />
+            <marker date="1499900651602" expanded="true" signature="32811:33188" ph="INSERT INTO lpr_school... " />
+            <marker date="1499900651602" expanded="true" signature="33506:33997" ph="SELECT DISTI... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="33548:33684" ph="SELECT tripl... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="33626:33677" ph="SELECT lpr_o... lpr_order" />
           </folding>
         </state>
       </provider>
@@ -1265,17 +1268,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/driverbilling.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-612">
-          <caret line="58" column="37" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="108" selection-end-column="8" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/js/functions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="661">
@@ -1289,81 +1281,6 @@
             <marker date="1499899064995" expanded="true" signature="57051:57066" ph="..." />
             <marker date="1499899064995" expanded="true" signature="58434:58449" ph="..." />
             <marker date="1499899064995" expanded="true" signature="59804:59819" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/studentbilling.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3060">
-          <caret line="154" column="25" lean-forward="true" selection-start-line="154" selection-start-column="25" selection-end-line="154" selection-end-column="25" />
-          <folding>
-            <marker date="1499893712847" expanded="true" signature="112:136" ph="SELECT * FRO... lpr_client" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/includes/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="684" column="28" lean-forward="false" selection-start-line="684" selection-start-column="28" selection-end-line="684" selection-end-column="28" />
-          <folding>
-            <marker date="1499897797206" expanded="true" signature="979:1001" ph="INSERT INTO lpr_client... " />
-            <marker date="1499897797206" expanded="true" signature="1819:1862" ph="SELECT * FRO... lpr_client" />
-            <marker date="1499897797206" expanded="true" signature="2302:2323" ph="UPDATE lpr_c... " />
-            <marker date="1499897797206" expanded="true" signature="2931:3085" ph="SELECT * FRO... lpr_client" />
-            <marker date="1499897797206" expanded="true" signature="3377:3420" ph="SELECT * FRO... lpr_school" />
-            <marker date="1499897797206" expanded="true" signature="3716:3818" ph="SELECT SUM(a... lpr_rates" />
-            <marker date="1499897797206" expanded="true" signature="4174:4336" ph="SELECT SUM(a... lpr_rates" />
-            <marker date="1499897797206" expanded="true" signature="4249:4309" ph="select zone_... lpr_client" />
-            <marker date="1499897797206" expanded="true" signature="4928:5212" ph="INSERT INTO lpr_order... " />
-            <marker date="1499897797206" expanded="true" signature="6393:6556" ph="INSERT INTO lpr_student... " />
-            <marker date="1499897797206" expanded="true" signature="6970:7133" ph="INSERT INTO lpr_student... " />
-            <marker date="1499897797206" expanded="true" signature="7823:7905" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="8190:8274" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="8501:8695" ph="SELECT drive... " />
-            <marker date="1499897797206" expanded="true" signature="8962:9045" ph="SELECT id AS... " />
-            <marker date="1499897797206" expanded="true" signature="9333:9353" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="9962:9984" ph="INSERT INTO lpr_driver... " />
-            <marker date="1499897797206" expanded="true" signature="11059:11102" ph="SELECT * FRO... lpr_driver" />
-            <marker date="1499897797206" expanded="true" signature="11727:11748" ph="UPDATE lpr_d... " />
-            <marker date="1499897797206" expanded="true" signature="12978:13001" ph="INSERT INTO lpr_triplog... " />
-            <marker date="1499897797206" expanded="true" signature="14295:14317" ph="UPDATE lpr_t... " />
-            <marker date="1499897797206" expanded="true" signature="15102:15127" ph="SELECT * FRO... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="15322:15365" ph="SELECT s_fna... lpr_student" />
-            <marker date="1499897797206" expanded="true" signature="15671:15763" ph="SELECT CONCA... lpr_driver" />
-            <marker date="1499897797206" expanded="true" signature="16090:16145" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="16638:17159" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="17145:17159" ph="UPDATE lpr_o... " />
-            <marker date="1499897797206" expanded="true" signature="17848:17887" ph="DELETE FROM " />
-            <marker date="1499897797206" expanded="true" signature="18200:18363" ph="INSERT INTO lpr_student... " />
-            <marker date="1499897797206" expanded="true" signature="18777:19108" ph="UPDATE lpr_s... " />
-            <marker date="1499897797206" expanded="true" signature="19411:19450" ph="DELETE FROM " />
-            <marker date="1499897797206" expanded="true" signature="19827:19909" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="20199:20238" ph="DELETE FROM " />
-            <marker date="1499897797206" expanded="true" signature="20397:20481" ph="INSERT INTO lpr_billing... " />
-            <marker date="1499897797206" expanded="true" signature="20757:20871" ph="INSERT INTO lpr_dates... " />
-            <marker date="1499897797206" expanded="true" signature="21090:21183" ph="SELECT * FRO... lpr_dates" />
-            <marker date="1499897797206" expanded="true" signature="23079:23208" ph="INSERT INTO lpr_cashadvance... " />
-            <marker date="1499897797206" expanded="true" signature="23502:23630" ph="INSERT INTO lpr_additnltrip... " />
-            <marker date="1499897797206" expanded="true" signature="23911:24190" ph="select coale... sum" />
-            <marker date="1499897797206" expanded="true" signature="23982:24080" ph="SELECT sum(c... lpr_cashadvance" />
-            <marker date="1499897797206" expanded="true" signature="24087:24187" ph="SELECT sum(c... lpr_cashadvance" />
-            <marker date="1499897797206" expanded="true" signature="25396:26433" ph="SELECT `trip... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="28240:29501" ph="select count... triplog_o_id" />
-            <marker date="1499897797206" expanded="true" signature="28398:29501" ph="SELECT `trip... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="30050:30102" ph="INSERT INTO lpr_zones... " />
-            <marker date="1499897797206" expanded="true" signature="30346:30424" ph="INSERT INTO lpr_rates... " />
-            <marker date="1499897797206" expanded="true" signature="30663:30683" ph="UPDATE lpr_r... " />
-            <marker date="1499897797206" expanded="true" signature="30909:30929" ph="UPDATE lpr_z... " />
-            <marker date="1499897797206" expanded="true" signature="31186:31252" ph="UPDATE lpr_d... " />
-            <marker date="1499897797206" expanded="true" signature="31619:32001" ph="INSERT INTO lpr_school... " />
-            <marker date="1499897797206" expanded="true" signature="32302:32326" ph="select * fro... lpr_school" />
-            <marker date="1499897797206" expanded="true" signature="32302:32343" ph="select * fro... lpr_school" />
-            <marker date="1499897797206" expanded="true" signature="32737:33114" ph="INSERT INTO lpr_school... " />
-            <marker date="1499897797206" expanded="true" signature="33432:33923" ph="SELECT DISTI... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="33474:33610" ph="SELECT tripl... lpr_triplog" />
-            <marker date="1499897797206" expanded="true" signature="33552:33603" ph="SELECT lpr_o... lpr_order" />
           </folding>
         </state>
       </provider>
@@ -1383,6 +1300,94 @@
             <element signature="e#12223#12229#0#HTML" expanded="true" />
             <element signature="e#12371#12377#0#HTML" expanded="true" />
             <element signature="e#12378#12384#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/driverbilling.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="107" column="0" lean-forward="true" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/studentbilling.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+          <folding>
+            <marker date="1499893712847" expanded="true" signature="112:136" ph="SELECT * FRO... lpr_client" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/includes/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="560" column="5" lean-forward="true" selection-start-line="560" selection-start-column="5" selection-end-line="560" selection-end-column="5" />
+          <folding>
+            <marker date="1499900651602" expanded="true" signature="979:1001" ph="INSERT INTO lpr_client... " />
+            <marker date="1499900651602" expanded="true" signature="1819:1862" ph="SELECT * FRO... lpr_client" />
+            <marker date="1499900651602" expanded="true" signature="2302:2323" ph="UPDATE lpr_c... " />
+            <marker date="1499900651602" expanded="true" signature="2931:3085" ph="SELECT * FRO... lpr_client" />
+            <marker date="1499900651602" expanded="true" signature="3377:3420" ph="SELECT * FRO... lpr_school" />
+            <marker date="1499900651602" expanded="true" signature="3716:3818" ph="SELECT SUM(a... lpr_rates" />
+            <marker date="1499900651602" expanded="true" signature="4174:4336" ph="SELECT SUM(a... lpr_rates" />
+            <marker date="1499900651602" expanded="true" signature="4249:4309" ph="select zone_... lpr_client" />
+            <marker date="1499900651602" expanded="true" signature="4928:5212" ph="INSERT INTO lpr_order... " />
+            <marker date="1499900651602" expanded="true" signature="6393:6556" ph="INSERT INTO lpr_student... " />
+            <marker date="1499900651602" expanded="true" signature="6970:7133" ph="INSERT INTO lpr_student... " />
+            <marker date="1499900651602" expanded="true" signature="7823:7905" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="8190:8274" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="8501:8695" ph="SELECT drive... " />
+            <marker date="1499900651602" expanded="true" signature="8962:9045" ph="SELECT id AS... " />
+            <marker date="1499900651602" expanded="true" signature="9333:9353" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="9962:9984" ph="INSERT INTO lpr_driver... " />
+            <marker date="1499900651602" expanded="true" signature="11059:11102" ph="SELECT * FRO... lpr_driver" />
+            <marker date="1499900651602" expanded="true" signature="11727:11748" ph="UPDATE lpr_d... " />
+            <marker date="1499900651602" expanded="true" signature="12978:13001" ph="INSERT INTO lpr_triplog... " />
+            <marker date="1499900651602" expanded="true" signature="14295:14317" ph="UPDATE lpr_t... " />
+            <marker date="1499900651602" expanded="true" signature="15102:15127" ph="SELECT * FRO... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="15322:15365" ph="SELECT s_fna... lpr_student" />
+            <marker date="1499900651602" expanded="true" signature="15671:15763" ph="SELECT CONCA... lpr_driver" />
+            <marker date="1499900651602" expanded="true" signature="16090:16145" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="16638:17159" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="17145:17159" ph="UPDATE lpr_o... " />
+            <marker date="1499900651602" expanded="true" signature="17848:17887" ph="DELETE FROM " />
+            <marker date="1499900651602" expanded="true" signature="18200:18363" ph="INSERT INTO lpr_student... " />
+            <marker date="1499900651602" expanded="true" signature="18777:19108" ph="UPDATE lpr_s... " />
+            <marker date="1499900651602" expanded="true" signature="19411:19450" ph="DELETE FROM " />
+            <marker date="1499900651602" expanded="true" signature="19827:19909" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="20199:20238" ph="DELETE FROM " />
+            <marker date="1499900651602" expanded="true" signature="20397:20481" ph="INSERT INTO lpr_billing... " />
+            <marker date="1499900651602" expanded="true" signature="20757:20871" ph="INSERT INTO lpr_dates... " />
+            <marker date="1499900651602" expanded="true" signature="21090:21183" ph="SELECT * FRO... lpr_dates" />
+            <marker date="1499900651602" expanded="true" signature="23079:23208" ph="INSERT INTO lpr_cashadvance... " />
+            <marker date="1499900651602" expanded="true" signature="23502:23630" ph="INSERT INTO lpr_additnltrip... " />
+            <marker date="1499900651602" expanded="true" signature="23911:24190" ph="select coale... sum" />
+            <marker date="1499900651602" expanded="true" signature="23982:24080" ph="SELECT sum(c... lpr_cashadvance" />
+            <marker date="1499900651602" expanded="true" signature="24087:24187" ph="SELECT sum(c... lpr_cashadvance" />
+            <marker date="1499900651602" expanded="true" signature="25396:26433" ph="SELECT `trip... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="25396:26470" ph="SELECT `trip... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="28277:29538" ph="select count... triplog_o_id" />
+            <marker date="1499900651602" expanded="true" signature="28277:29575" ph="select count... triplog_o_id" />
+            <marker date="1499900651602" expanded="true" signature="28435:29538" ph="SELECT `trip... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="30124:30176" ph="INSERT INTO lpr_zones... " />
+            <marker date="1499900651602" expanded="true" signature="30420:30498" ph="INSERT INTO lpr_rates... " />
+            <marker date="1499900651602" expanded="true" signature="30737:30757" ph="UPDATE lpr_r... " />
+            <marker date="1499900651602" expanded="true" signature="30983:31003" ph="UPDATE lpr_z... " />
+            <marker date="1499900651602" expanded="true" signature="31260:31326" ph="UPDATE lpr_d... " />
+            <marker date="1499900651602" expanded="true" signature="31693:32075" ph="INSERT INTO lpr_school... " />
+            <marker date="1499900651602" expanded="true" signature="32376:32400" ph="select * fro... lpr_school" />
+            <marker date="1499900651602" expanded="true" signature="32376:32417" ph="select * fro... lpr_school" />
+            <marker date="1499900651602" expanded="true" signature="32811:33188" ph="INSERT INTO lpr_school... " />
+            <marker date="1499900651602" expanded="true" signature="33506:33997" ph="SELECT DISTI... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="33548:33684" ph="SELECT tripl... lpr_triplog" />
+            <marker date="1499900651602" expanded="true" signature="33626:33677" ph="SELECT lpr_o... lpr_order" />
           </folding>
         </state>
       </provider>
