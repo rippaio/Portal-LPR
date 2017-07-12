@@ -229,6 +229,16 @@
 		confirm_query($result_client);
 		return $result_client;
 	}
+	function ridealongdetails()
+	{
+		global $connection;
+		$query = "SELECT id AS value, CONCAT(`ra_fname`,' ',`ra_lname`) as label FROM `lpr_ridealong`";
+		//error_log("Insert bill\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		$result_client = mysqli_query($connection, $query);
+		
+		confirm_query($result_client);
+		return $result_client;
+	}
 
 	function update_orderdriver($orderid,$driverid)
 	{
@@ -389,7 +399,7 @@ function changeorderstatus($o_id,$status){
 			$query_del = "DELETE FROM `lpr_student` WHERE o_id = $o_id";
 			error_log("Insert bill\n" . $query_del , 3, "C:/xampp/apache/logs/error.log");
 			$result_del = mysqli_query($connection, $query_del);
-			
+
 			for ($i=0; $i < sizeof($s_fname); $i++) {
 
 			$fname = $s_fname[$i];

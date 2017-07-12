@@ -254,6 +254,13 @@ confirm_query($result_client);
                                                     <input type="checkbox" name="o_as" class="aocheckbox" value="addnlstop">Additional Stop
                                                 </label>
                                             </div>
+                                            <div name="ridealongdiv" class="hidebox">
+                                            <div class="form-group">
+                                                <label>Ride Along</label>
+                                                <input class="form-control typeahead_ra" name="o_ridealong_text" placeholder="Enter Ride Along Name" >
+                                                <input class="form-control" name="ra_id" type="hidden" placeholder="">
+                                            </div>
+                                            </div>
                                             <div class="form-group">
                                                 <label for="exampleTextarea">Internal Comment</label>
                                                 <textarea class="form-control input-sm" name="icomment" rows="3" value=""></textarea>

@@ -32,6 +32,15 @@ while($result = mysqli_fetch_assoc($driver)) {
 }
 echo json_encode($return_dobj);
 }
+if ($obj["mode"]=="getridealongs") {
+
+$ra = ridealongdetails();
+$return_dobj = array();
+while($result = mysqli_fetch_assoc($ra)) {
+	array_push($return_dobj, $result);
+}
+echo json_encode($return_dobj);
+}
 if ($obj["mode"]=="tripcost") {
 
 $zone_id = (int)$obj["zone_id"];

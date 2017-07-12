@@ -270,6 +270,10 @@ $('.typeahead').click(function(){
 	getdrivers();
 });
 
+$('.typeahead_ra').click(function(){
+    getridealongs();
+});
+
 function getdrivers() {
 
 	var sdata = {};
@@ -308,6 +312,44 @@ function getdrivers() {
       }); // end ajax call
 }
 
+function getridealongs() {
+
+    var sdata = {};
+    sdata['mode'] = "getridealongs";
+    $.ajax({
+        url: 'ajax/neworder_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            var driverObj = $.parseJSON(data);
+            log(data);
+
+            $(".typeahead_ra").autocomplete({
+                source: driverObj,
+                focus: function(event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox
+                    $(this).val(ui.item.label);
+                },
+                select: function(event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox and hidden field
+                    $(this).val(ui.item.label);
+                    $('input[name="ra_id"]').val(ui.item.value);
+                    log(ui.item.value);
+                }
+            });
+          
+        },
+        error: function(xhr, desc, err) {
+          console.log(xhr);
+          console.log("Details: " + desc + "\nError:" + err);
+        }
+      }); // end ajax call
+}
+
 $('input[name="o_ampickloc"]').on('focus', function(){
 	if (this.value == ""||this.value == undefined) {
 		this.value = $('input[name="street"]').val() +" "+ $('input[name="address"]').val() +" "+ $('input[name="city"]').val() +" "+ $('input[name="zipcode"]').val();
@@ -327,6 +369,11 @@ $('input[name="amcheck"]').click(function(){
 $('input[name="pmcheck"]').click(function(){
 
                 $("[name='pmdiv']").toggle();
+            
+        });
+$('input[name="o_ra"]').click(function(){
+
+                $("[name='ridealongdiv']").toggle();
             
         });
 
