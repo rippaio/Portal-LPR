@@ -92,6 +92,9 @@
                                 <li>
                                     <a href="drivers.php">Drivers</a>
                                 </li>
+                                <li>
+                                    <a href="ridealong.php">Ride Along</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

@@ -695,4 +695,34 @@ join lpr_student on lpr_student.s_id=lpr_triplog.triplog_studentid and lpr_tripl
 }
 
 
+function insert_ra($first_name, $middle_name, $last_name, $contact_number, $address){
+    global $connection;
+    $query ="INSERT INTO `lpr_ridealong`(`ra_fname`, `ra_mname`, `ra_lname`, `address`, `phone`) VALUES ('$first_name','$middle_name','$last_name','$contact_number','$address')";
+    $result_id = mysqli_query($connection, $query);
+    error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+    confirm_query($result_id);
+    redirect_to("ridealong.php");
+}
+
+function update_ra($raid,$first_name, $middle_name, $last_name, $contact_number, $address){
+    global $connection;
+    $query ="UPDATE `lpr_ridealong` SET `ra_fname`='$first_name',`ra_mname`='$middle_name',`ra_lname`='$last_name',`address`='$address',`phone`='$contact_number' WHERE id=$raid";
+    $result_id = mysqli_query($connection, $query);
+    error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+    confirm_query($result_id);
+    redirect_to("ridealong.php");
+}
+
+function getRalongdata($ra_id){
+    global $connection;
+    $query_ra  = "SELECT * FROM lpr_ridealong where id=$ra_id";
+    $result_ra = mysqli_query($connection, $query_ra);
+    confirm_query($result_ra);
+    if($results = mysqli_fetch_assoc($result_ra)) {
+        return $results;
+    } else {
+        return null;
+    }
+}
+
 ?>
