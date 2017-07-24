@@ -1241,6 +1241,15 @@ $( function() {
 
 // Billing and rates
 
+
+function setRideAlongBill(){
+    var trips = $('#ratotal_trips').val();
+    var amount = $('#ra_amount').val();
+    var payable=trips*amount;
+    $('#ra_total').val(payable.toFixed(2));
+}
+
+
 $('#d_contractorsPay').change(function(){
     var amount = $('#d_contractorsPay').val();
     var payable=  +$('#d_payable').text();
@@ -1314,6 +1323,8 @@ function  printDriverBill(){
 
 }
 
+
+
 function printClientBill(){
     // Date
     var todayTime = new Date();
@@ -1323,6 +1334,15 @@ function printClientBill(){
     window.print();
 }
 
+function printRABill(){
+    var todayTime = new Date();
+    var cb_date= todayTime .getFullYear() + "-" + (todayTime .getMonth() + 1) + "-" + todayTime .getDate();
+    $('.ra_date').text(cb_date);
+    $('#r_amount').text($('#ra_amount').val());
+    $('#ra_pay').text($('#ra_total').val());
+    $('#ra_Trips').text($('#ratotal_trips').val());
+    window.print();
+}
 
 function   updateCashAdvance() {
     var cash_advance = +$('.cash_advance').val();

@@ -72,6 +72,9 @@
                                 <li>
                                     <a href="driverbilling.php">Drivers</a>
                                 </li>
+                                <li>
+                                    <a href="ralongbilling.php">Ride Along</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -88,6 +91,9 @@
                                 </li>
                                 <li>
                                     <a href="drivers.php">Drivers</a>
+                                </li>
+                                <li>
+                                    <a href="ridealong.php">Ride Along</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
