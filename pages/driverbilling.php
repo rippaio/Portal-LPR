@@ -474,6 +474,15 @@ include("./includes/nav.php");
                 </div>
             </div>
             <!-- /.col-lg-12 -->
+            <?php
+            if(isset($_POST['driver_id'])) { ?>
+                <div class="form-group hidebox">
+                    
+                    <button type="submit" class="btn btn-primary btn-lg" form="createorder" id="submitcreateorder">Save to Payroll</button>
+                    <input type="hidden" class="form-control" data-driver_id="<?php echo $driver_id; ?>" data-startdate="<?php echo $start_date; ?>" data-enddate="<?php echo $end_date; ?>" />
+                </div>
+
+            <?php }?>
         </div>
 
         <!-- /.row -->
