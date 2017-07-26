@@ -34,7 +34,7 @@ $result_billing = mysqli_query($connection, $query_billing);
         <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">New Order</h1>
+                        <h1 class="page-header">Edit Order</h1>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
@@ -43,7 +43,7 @@ $result_billing = mysqli_query($connection, $query_billing);
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            New Order
+                            Edit Order
                         </div>
                         <div class="panel-body">
                             <div class="row">
@@ -99,8 +99,15 @@ $result_billing = mysqli_query($connection, $query_billing);
                                                 <input class="form-control" name="s_grade" placeholder="Enter Grade" value="<?php echo $subject_student["s_grade"]; ?>">
                                             </div>
                                             <div class="form-group">
-                                                <label>Gender</label>
-                                                <input class="form-control" name="s_gender" placeholder="Enter Gender" value="<?php echo $subject_student["s_gender"]; ?>" required>
+                                            <label>Gender</label>
+                                                <select class="form-control" name="s_gender" required>
+                                                    <option value="">Select</option>
+                                                    <option value="Female" <?php echo($subject_student["s_gender"]=="Female"? 'selected' : ''); ?> >Female</option>
+                                                    <option value="Male" <?php echo($subject_student["s_gender"]=="Male"? 'selected' : ''); ?> >Male</option>
+                                                    <option value="Transgender" <?php echo($subject_student["s_gender"]=="Transgender"? 'selected' : ''); ?> >Transgender</option>
+                                                    <option value="Other"<?php echo($subject_student["s_gender"]=="Other"? 'selected' : ''); ?> >Other</option>
+                                                    <option value="Not Specified" <?php echo($subject_student["s_gender"]=="Not Specified"? 'selected' : ''); ?> >Not Specified</option>
+                                                </select>
                                             </div>
                                         <?php
                                                 }
@@ -122,7 +129,7 @@ $result_billing = mysqli_query($connection, $query_billing);
                                         
                                         </div>
                                         <div class="form-group">
-                                        <button type="button" id ="addstudent" class="btn btn-primary">Add Student</button>
+                                        <button type="button" id ="addstudent" class="btn btn-primary">Additional Student</button>
                                         </div>
 										<div class="form-group">
                                             <label class="control-label" for="inputSuccess">Residing Address</label>
@@ -378,6 +385,10 @@ $result_billing = mysqli_query($connection, $query_billing);
 
                                             </div>
                                         </div>
+
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary btn-lg" form="updateorder" id="submitcreateorder">Submit</button>
+                                        </div>
                                     
                                     </div>
                                     <!-- /.col-lg-6 (nested) -->
@@ -385,9 +396,7 @@ $result_billing = mysqli_query($connection, $query_billing);
                                 </form>
                             </div>
                             <!-- /.row (nested) -->
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg" form="updateorder" id="submitcreateorder">Submit</button>
-                            </div>
+                            
                         </div>
                         <!-- /.panel-body -->
                     </div>

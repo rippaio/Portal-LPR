@@ -82,9 +82,20 @@ confirm_query($result_client);
                                                 <label>Grade</label>
                                                 <input class="form-control" name="s_grade" placeholder="Enter Grade">
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label>Gender</label>
                                                 <input class="form-control" name="s_gender" placeholder="Enter Gender" required>
+                                            </div> -->
+                                            <div class="form-group">
+                                            <label>Gender</label>
+                                                <select class="form-control" name="s_gender" required>
+                                                    <option value="">Select</option>
+                                                    <option value="Female" >Female</option>
+                                                    <option value="Male" >Male</option>
+                                                    <option value="Transgender" >Transgender</option>
+                                                    <option value="Other">Other</option>
+                                                    <option value="Not Specified">Not Specified</option>
+                                                </select>
                                             </div>
                                             <div class="form-group" >
                                             <label>Start Date</label>
@@ -103,7 +114,7 @@ confirm_query($result_client);
                                         </span>
                                         </div>
                                         <div class="form-group">
-                                        <button type="button" id ="addstudent" class="btn btn-primary">Add Student</button>
+                                        <button type="button" id ="addstudent" class="btn btn-primary">Additional Student</button>
                                         </div>
 										 <div class="form-group">
                                             <label class="control-label" for="inputSuccess">Residing Address</label>
@@ -367,15 +378,17 @@ confirm_query($result_client);
                                             </div>
                                         </div>
                                     
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-lg" form="createorder" id="submitcreateorder">Submit</button>
+                                    </div>
                                     </div>
                                     <!-- /.col-lg-6 (nested) -->
+
                                     
                                 </form>
                             </div>
                             <!-- /.row (nested) -->
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-lg" form="createorder" id="submitcreateorder">Submit</button>
-                            </div>
+                            
                         </div>
                         <!-- /.panel-body -->
                     </div>

@@ -462,7 +462,21 @@ function five () {
     
 
 }
+function refresh () {
+    
+
+    if ($(location).attr('href').indexOf('manifest') >=0) {
+        //console.log("five");
+        location.reload();
+    }
+    
+
+    
+
+}
 setInterval(five, 5000);
+
+setInterval(refresh, 60000);
 
 function color_row(i) {
 	var a = $("tr")[i+1];
@@ -839,7 +853,7 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
 		    sdata['trip_id'] = $(id).siblings('input').data('trip_id');
 		    sdata['status'] = $(id).siblings('input').data('trip_status');;
 		    log(sdata['mode']+sdata['trip_id']);
-        if (sdata['status']== 'cancel') {
+        if (sdata['status'] == 'cancel') {
         
             if(getday() == $("[name='o_startdate']").val() && (timeToSeconds(sdata['time'])-timeToSeconds(sdata['picktime']))<7200 && (timeToSeconds(sdata['time'])-timeToSeconds(sdata['picktime']))>0){
                 
