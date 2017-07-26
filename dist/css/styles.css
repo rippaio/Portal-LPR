@@ -26,3 +26,19 @@
 .hidebox{
         display: none;
 }   
+table.dataTable thead th {
+  border-bottom: 0;
+}
+table.dataTable tfoot th {
+  border-top: 0;
+}
+table.dataTable thead td{
+	border-bottom: none;
+}
+table.dataTable tfoot td {
+	border-bottom: none;
+}
+
+table.dataTable.no-footer {
+	border-bottom: none;
+}

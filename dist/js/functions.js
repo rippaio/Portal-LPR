@@ -932,6 +932,27 @@ function changestatus(a){
 	}
 
 }
+//payroll
+function deletepay(a,id){
+    var sdata = {};
+    sdata['mode'] = "deletepayroll";
+    sdata['id'] = id;
+    log(sdata['mode']);
+    $.ajax({
+        url: 'ajax/manifest_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            $(a).parent('td').parent().remove();
+        },
+        error: function(xhr, desc, err) {
+          console.log(xhr);
+          console.log("Details: " + desc + "\nError:" + err);
+        }
+      }); // end ajax call
+    
+}
+
 
 //Calendar
 
@@ -1271,6 +1292,7 @@ function setDriverBill(){
     var others = +$('.d_others').val();
     var totalSettlement=pay.toFixed(2)-(fueladvance+tolls+lease+cash_advance+others);
     $('#d_finalCheck').text(totalSettlement.toFixed(2));
+    $('#savepl').removeClass("hidebox");
 
 }
 
@@ -1385,6 +1407,37 @@ function  updateCashAdvanceAjax(cash_advance,driverid){
 
 }
 
+$('#savepl_button').click(function(element){
+
+    var id = element.target;
+    var sdata = {};
+    
+    sdata['driver_id'] = $(id).siblings('input').data('driver_id');
+    sdata['startdate'] = $(id).siblings('input').data('startdate');
+    sdata['enddate'] = $(id).siblings('input').data('enddate');
+    sdata['amount'] = $('#d_finalCheck').text();
+
+        sdata['mode'] = "savepayroll";
+        log(sdata);
+        $.ajax({
+            url: 'ajax/manifest_ajax.php',
+            type: 'post',
+            data: {myData:sdata},
+            success: function(data) {
+                log(data);
+                $('#savepl_button').text('Saved');
+                $('#savepl_button').attr('disabled', true);
+              
+            },
+            error: function(xhr, desc, err) {
+              console.log(xhr);
+              console.log("Details: " + desc + "\nError:" + err);
+            }
+          }); // end ajax call
+
+
+
+});
 function cash_modal(){
     alert('Data Updated Successfully');
 }

@@ -294,6 +294,10 @@ include("./includes/nav.php");
                         Print
                     </button>
 
+                    <a href="payroll.php" type="button" class="btn btn-primary btn-lg">
+                        Payroll
+                    </a>
+
                 </div>
                 <!--Start Modal  -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -481,6 +485,22 @@ include("./includes/nav.php");
                 </div>
             </div>
             <!-- /.col-lg-12 -->
+            <?php
+            if(isset($_POST['driver_id']) && checkpayroll($driver_id,$start_date,$end_date)) { 
+                //error_log("\nSaving payroll  " . checkpayroll($driver_id,$start_date,$end_date), 3, "C:/xampp/apache/logs/error.log");
+                ?>
+                <div class="form-group hidebox" id="savepl">
+                    
+                    <button type="submit" class="btn btn-primary btn-lg"  id="savepl_button">Save to Payroll</button>
+                    <input type="hidden" class="form-control" data-driver_id="<?php echo $driver_id; ?>" data-startdate="<?php echo $start_date; ?>" data-enddate="<?php echo $end_date; ?>" />
+                </div>
+
+            <?php } else {?>
+                <div class="form-group hidebox" id="savepl">
+                    
+                    <button type="submit" class="btn btn-primary btn-lg"  disabled id="savepl_button">Saved</button>
+                </div>
+            <?php }?>
         </div>
 
         <!-- /.row -->

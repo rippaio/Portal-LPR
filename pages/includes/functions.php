@@ -44,7 +44,7 @@
 		$query .= "VALUES ('$client_name',  '$client_abr', '$client_street', '$client_address', '$client_city', '$client_state', $client_zip, '$client_country', '$client_contact', $client_zone) ";
 		//echo $query;
 		$result_id = mysqli_query($connection, $query);
-		//error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		error_log("\ninsert_client" . $query , 3, "C:/xampp/apache/logs/error.log");
 		confirm_query($result_id);
 		redirect_to("schooldata.php");
 		// if($result_id) {
@@ -541,6 +541,37 @@ function  getCashAdvance($driver_id,$start_date,$end_date){
     }
 
 }
+//payroll
+function savepayroll($driver_id,$amount,$startdate,$enddate){
+    global $connection;
+    $query= "INSERT INTO lpr_payroll (startdate, enddate, savedate, amount,driver_id) VALUES ('$startdate','$enddate',CURRENT_DATE,$amount,$driver_id)";
+    error_log("\nSaving payroll  " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+    return true;
+}
+
+function checkpayroll($driver_id,$startdate,$enddate){
+    global $connection;
+    $query= "SELECT * FROM `lpr_payroll` WHERE ('$startdate' BETWEEN startdate AND enddate) OR ('$enddate' BETWEEN startdate AND enddate) AND driver_id =$driver_id";
+    error_log("\nSaving payroll  " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+    if(mysqli_num_rows($result_id)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+function deletepayroll($id){
+    global $connection;
+    $query= "DELETE FROM lpr_payroll where pl_id=$id";
+    error_log("\ndelete payroll  " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+    return true;
+}
+
 
 function getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate){
     global $connection;
