@@ -76,12 +76,22 @@
 		   $("#addtripdate").datepicker({ dateFormat: 'yy-mm-dd' });
             $("#fstartdate").datepicker({ dateFormat: 'yy-mm-dd' });
             $("#fenddate").datepicker({ dateFormat: 'yy-mm-dd' });
+
             $("#from").datepicker({ dateFormat: 'yy-mm-dd' }).bind("change",function(){
                 var minValue = $(this).val();
                 minValue = $.datepicker.parseDate("yy-mm-dd", minValue);
                 minValue.setDate(minValue.getDate()+1);
                 $("#to").datepicker( "option", "minDate", minValue );
             })
+            $('.date-picker').datepicker( {
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'yy-mm',
+                onClose: function(dateText, inst) { 
+                    $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                }
+            });
         });
 
         $("#addstudent").click(function () {

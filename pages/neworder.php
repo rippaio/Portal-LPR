@@ -116,13 +116,13 @@ confirm_query($result_client);
                                             <input type="text" class="form-control" id="exampleInputEmail3" placeholder="City" name="city" required>
                                           </div>
                                           <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="State / Province / Region" name="state" value="VA" required>
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="State / Province / Region" name="state" value="VA">
                                           </div>
                                           <div class="form-group">
                                             <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Postal / Zip Code" name="zipcode" value="">
                                           </div>
                                           <div class="form-group">
-                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Country" name="country" value="United States" required>
+                                            <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Country" name="country" value="United States">
                                           </div>
                                         <div class="form-group">
                                             <label>Days Needed</label>

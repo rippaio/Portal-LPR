@@ -54,4 +54,21 @@ $order=update_orderdriver($orderid,$driverid);
 $trip = update_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$trip_id,$driver_payable,$client_payable);
 //print_r($trip['id']);
 }
+if ($obj["mode"]=="savepayroll") {
+
+
+$driver_id = (int)$obj["driver_id"];
+$amount = (float)$obj["amount"];
+$startdate = $obj["startdate"];
+$enddate = $obj["enddate"];
+
+$order=savepayroll($driver_id,$amount,$startdate,$enddate);
+print_r($order);
+}
+if ($obj["mode"]=="deletepayroll") {
+
+$id = (int)$obj["id"];
+
+$order=deletepayroll($id);
+}
 ?>
