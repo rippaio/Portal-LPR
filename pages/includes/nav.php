@@ -95,6 +95,9 @@
                                 <li>
                                     <a href="ridealong.php">Ride Along</a>
                                 </li>
+                                <li>
+                                    <a href="cashadvance.php">Advances</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

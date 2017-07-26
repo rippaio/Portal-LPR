@@ -67,7 +67,7 @@ if(isset($_POST['additnl_driverid'])) {
                      </div>
                     <div style="padding-right: 60px; float:right;display: inline">
                         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                            Cash Advance
+                            Advance
                         </button>
                     </div>
                 </div>
@@ -138,7 +138,8 @@ if(isset($_POST['additnl_driverid'])) {
                                     ?>
                                     <tr>
                                         <td class="col-xs-1"><?php echo ++$counter; ?></td>
-                                        <td class="col-xs-2"><?php echo $subject_client["driver_fname"]; ?>-<?php echo $subject_client["driver_lname"]; ?></td>
+                                        <td class="col-xs-2"><?php echo $subject_client["driver_fname"]; ?> <?php echo $subject_client["driver_lname"]; if(!empty($subject_client['driver_dname'])){ ?>
+                                                (<?php echo $subject_client['driver_dname']; ?>)<?php }?></td>
                                         <td class="col-xs-2"><?php echo $subject_client["driver_contact_no"]; ?></td>
                                         <td class="col-xs-2"><?php echo $subject_client["driver_city"]; ?></td>
                                         <td class="col-xs-2"><?php echo $subject_client["driver_commision"]; ?></td>

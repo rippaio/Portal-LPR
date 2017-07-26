@@ -102,20 +102,18 @@ include("./includes/nav.php");
 
                     <div style="page-break-inside:avoid;padding-top: 5px;float: right">
                         <b>
-                        <span style="padding-left:40px">INVOICE
+                        <span style="padding-left:20px">INVOICE
                         </span>
                         </b>
                         <table>
                             <thead>
                             <tr style="width: 100px">
                                 <th style="width:10px;padding-left:20px" > <span>Date</span></th>
-                                <th style="width:10px;padding-left:10px;padding-right:20px"> <span >Invoice</span></th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td style="width:100px;padding-left:10px;padding-right:20px"> <span class="ra_date">_______</span></td>
-                                <td style="width:100px;padding-left:10px;padding-right:20px"><span>______  <span></td>
                             </tr>
                             </tbody>
                         </table>
@@ -166,11 +164,9 @@ include("./includes/nav.php");
                                    <td style="padding-left:10px;padding-right:20px" class="col-xs-6">
                                        <span><?php echo $newDate; ?>-</span>
                                        with
-                                       <span><?php echo $bill["s_fname"]; ?>
-                                           &nbsp; &nbsp;<?php echo $bill["s_lname"]; ?></span>
+                                       <span><?php echo $bill["s_fname"]; ?> <?php echo $bill["s_lname"]; ?></span>
                                        and driver
-                                       <span><?php echo $bill["driver_fname"]; ?>
-                                           &nbsp; &nbsp;<?php echo $bill["driver_lname"]; ?>&nbsp;</span>
+                                       <span><?php echo $bill["driver_fname"]; ?> <?php echo $bill["driver_lname"]; ?>&nbsp;</span>
                                    </td>
                                </tr>
                            <?php }
@@ -299,7 +295,7 @@ include("./includes/nav.php");
                             </div>
                             <div class="form-group">
                                 <label>Amount Per Trip</label>
-                                <input class="form-control" type="number" step="any" id="ra_amount"  placeholder=""  value="">
+                                <input class="form-control" type="number" step="any" id="ra_amount"  placeholder=""  value="7">
                             </div>
                             <div class="form-group">
                                 <label>Total Payable</label>
