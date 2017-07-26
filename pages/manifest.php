@@ -239,7 +239,7 @@ include("./includes/nav.php");
             <div id="dialog-confirm" title="Is driver payable?">
                 <div>
 
-            <div id="dialog-confirm2" title="Is client billable?" class="ui-helper-hidden">
+            <div id="dialog-confirm2" title="Please select the preferences" class="ui-helper-hidden">
                 <div class="checkbox">
               <label><input type="checkbox" name="check_driver" value="">Driver Payable</label>
             </div>

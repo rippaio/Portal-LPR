@@ -17,7 +17,7 @@
   		$data = mysqli_real_escape_string($connection,$data);
   		return $data;
     }
-    function verify_input_login($data) {
+    function verify_in($data) {
 		global $connection;
   		$data = mysqli_real_escape_string($connection,$data);
   		return $data;
@@ -29,7 +29,7 @@
   		$data = htmlspecialchars_decode($data);
   		return $data;
     }
-    function verify_output_login($data) {
+    function verify_out($data) {
 
   		$data = stripcslashes($data);
   		return $data;

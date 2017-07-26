@@ -21,12 +21,12 @@ if ($obj["mode"]=="update") {
 $o_startdate = $obj["o_startdate"];
 $o_enddate = $obj["o_enddate"];
 $o_status = "active";
-$o_ampickloc = $obj["o_ampickloc"];
+$o_ampickloc = verify_in(trim($obj["o_ampickloc"])=='' ? 'NULL' : $obj["o_ampickloc"]);
 $o_ampicktime = $obj["o_ampicktime"];
-$o_amdroploc = $obj["o_amdroploc"];
+$o_amdroploc = verify_in($obj["o_amdroploc"]);
 $o_amdroptime = $obj["o_amdroptime"];
-$o_pmpickloc = $obj["o_pmpickloc"];
-$o_pmdroploc = $obj["o_pmdroploc"];
+$o_pmpickloc = verify_in($obj["o_pmpickloc"]);
+$o_pmdroploc = trim($obj["o_pmdroploc"])=='' ? 'NULL' : $obj["o_pmdroploc"];
 $o_pmpicktime = $obj["o_pmpicktime"];
 $o_days = $obj["o_days"];
 $o_fd = (isset($obj["o_fd"]) ? 'TRUE' : 'FALSE');
@@ -34,8 +34,8 @@ $o_ra = (isset($obj["o_ra"]) ? 'TRUE' : 'FALSE');
 $o_wc = (isset($obj["o_wc"]) ? 'TRUE' : 'FALSE');
 $o_as = (isset($obj["o_as"]) ? 'TRUE' : 'FALSE');
 $driver_id = ((int)$obj["driver_id"]==0? 'NULL' : (int)$obj["driver_id"]) ;
-$o_icomment = $obj["icomment"];
-$o_dcomment = $obj["dcomment"];
+$o_icomment = verify_in($obj["icomment"]);
+$o_dcomment = verify_in($obj["dcomment"]);
 $o_billable = (float)$obj["o_billable"];
 $o_reqby = (int)$obj["optradio"];
 $o_payable = (float)$obj["o_payable"];
@@ -47,20 +47,20 @@ $order = updateorder($o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroplo
 
 
 
-$s_fname = $obj['s_fname'];
-$s_lname = $obj['s_lname'];
-$s_grade = $obj['s_grade'];
-$s_gender = $obj['s_gender'];
-$s_pfname = $obj['pfname'];
-$s_plname = $obj['plname'];
-$s_phone = $obj['phone'];
-$s_altphone = $obj['altphone'];
-$s_street = $obj['street'];
-$s_address = $obj['address'];
-$s_city = $obj['city'];
-$s_state = $obj['state'];
-$s_zip = $obj['zipcode'];
-$s_country = $obj['country'];
+$s_fname = verify_in($obj['s_fname']);
+$s_lname = verify_in($obj['s_lname']);
+$s_grade = verify_in($obj['s_grade']);
+$s_gender = verify_in($obj['s_gender']);
+$s_pfname = verify_in($obj['pfname']);
+$s_plname = verify_in($obj['plname']);
+$s_phone = verify_in($obj['phone']);
+$s_altphone = verify_in($obj['altphone']);
+$s_street = verify_in($obj['street']);
+$s_address = verify_in($obj['address']);
+$s_city = verify_in($obj['city']);
+$s_state = verify_in($obj['state']);
+$s_zip = verify_in($obj['zipcode']);
+$s_country = verify_in($obj['country']);
 
 
 $student = updatestudnet($o_id, $s_fname, $s_lname, $s_grade, $s_gender, $s_pfname, $s_plname, $s_phone, $s_altphone, $s_street, $s_address, $s_city, $s_state, $s_zip, $s_country);
