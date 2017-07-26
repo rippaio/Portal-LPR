@@ -9,6 +9,7 @@ $result_client = mysqli_query($connection, $query_client);
 $totaltrips="";
 $totalpayable="";
 $client_name="";
+$invoice_number=0;
 confirm_query($result_client);
 ?>
 <?php
@@ -21,10 +22,12 @@ $cb_sSelect=$_POST['cb_sSelect'];
 $cb_startdate=$_POST['cb_startdate'];
 $cb_enddate=$_POST['cb_enddate'];
 $cb_sname=$_POST['cb_sname'];
-
 $cb_details= getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
 $cb_forPrint=getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
 $cb_payment=getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
+
+$invoice_number=getInvoiceNumber();
+
 while ($c_pay = mysqli_fetch_assoc($cb_payment)) {
     $totaltrips = $c_pay['tripcount'];
     $totalpayable =round($c_pay['totalbillable'],2);
@@ -156,7 +159,7 @@ if(isset($_POST['cb_ctypeSelect'])) {
                   <tbody>
                       <tr>
                           <td style="width:100px;padding-left:10px;padding-right:20px"> <span class="cb_date">_______</span></td>
-                          <td style="width:100px;padding-left:10px;padding-right:20px"><span>______  <span></td>
+                          <td style="width:100px;padding-left:10px;padding-right:20px"><span><?php echo $invoice_number; ?><span></td>
                       </tr>
                   </tbody>
                  </table>
@@ -211,7 +214,7 @@ if(isset($_POST['cb_ctypeSelect'])) {
                         <td style="padding-left:10px;padding-right:20px" class="col-xs-8">
                             <span><?php echo $newDate; ?>-</span>
                             <span><?php echo $cbill["s_name"]; ?></span>
-                            <span><?php echo date ('H:i',strtotime($cbill["triplog_picktime"]))  ?>&nbsp;</span>
+                            <span><?php echo date ('H:i',strtotime($cbill["triplog_time"]))  ?>&nbsp;</span>
                             <?php if($cbill['triplog_clock']=='AM') {?>
                                 <span>res to</span>
                                 <span><?php echo  $cbill["school_abr"];?></span>

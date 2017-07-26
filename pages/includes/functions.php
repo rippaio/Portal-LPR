@@ -498,7 +498,7 @@ function changeorderstatus($o_id,$status){
 
 function  getDriverBill($driver_id,$start_date,$end_date){
     global $connection;
-    $query = "(select triplog_date,o_payable,o_tip,CONCAT(s_lname,\" \",s_fname) s_name,triplog_clock, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc,CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc,triplog_picktime,lpr_school.school_abr from lpr_triplog,lpr_order,lpr_student,lpr_school  WHERE
+    $query = "(select triplog_date,o_payable,o_tip,CONCAT(s_lname,\" \",s_fname) s_name,triplog_clock, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc,CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc,triplog_time as triplog_picktime,lpr_school.school_abr from lpr_triplog,lpr_order,lpr_student,lpr_school  WHERE
      lpr_triplog.triplog_o_id=lpr_order.o_id and lpr_triplog.triplog_studentid=lpr_student.s_id and lpr_triplog.triplog_driver_id=$driver_id and triplog_date between '$start_date' and '$end_date' and lpr_school.school_id=lpr_triplog.triplog_school_id AND triplog_driver_payable in ('TRUE'))
     union
     (select ad_tripdate, ad_payable,ad_tip ,\"Additional Trip\" as s_name,'NA' as triplog_clock,'NA' as pickloc,'NA' as droploc,'NA' as triplog_picktime,'NA' as school_abr from lpr_additnltrip where ad_driverid=$driver_id and ad_tripdate between '$start_date' and '$end_date')";
@@ -634,6 +634,19 @@ function getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb
     return $result;
 }
 
+function getInvoiceNumber(){
+    global $connection;
+    $query= "INSERT INTO `lpr_invoice`(`invoice_date`) VALUES (CURRENT_DATE)";
+    error_log("\ninsert Invoice Number " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result = mysqli_query($connection, $query);
+    confirm_query($result);
+    $invoice=mysqli_insert_id($connection);
+    error_log("\nInvice  Number " . $invoice, 3, "C:/xampp/apache/logs/error.log");
+    return $invoice;
+}
+
+
+
 function addZone($zone_loc){
     global $connection;
     $query= "INSERT INTO lpr_zones(zone_loc) VALUES ('$zone_loc')";
@@ -755,5 +768,14 @@ function getRalongdata($ra_id){
         return null;
     }
 }
+
+
+function delete_catransaction($transactionid){
+    global $connection;
+    $query_ra  = "DELETE FROM `lpr_cashadvance` WHERE c_advanceid=$transactionid";
+    $result_ra = mysqli_query($connection, $query_ra);
+    confirm_query($result_ra);
+}
+
 
 ?>

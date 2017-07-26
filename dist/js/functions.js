@@ -1380,6 +1380,12 @@ function printRABill(){
     window.print();
 }
 
+function printSheet(){
+    window.print();
+}
+
+
+
 function   updateCashAdvance() {
     var cash_advance = +$('.cash_advance').val();
     var driverid = $('#cashad_driverid').val();
@@ -1907,3 +1913,29 @@ function show_schoolData(th) {
     });
 }
 
+function ca_delete(th){
+    var ele = th;
+    var par_ele = $(ele).parent();
+    var id = $(ele).closest('td');
+    var tid = $(id).siblings('input').data('transid');
+    ca_deleteadvance(tid);
+}
+
+function ca_deleteadvance(tid){
+
+    var sdata = {};
+    sdata["t_id"] = tid;
+    $.ajax({
+        url: 'ajax/ra_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            location.reload();
+
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
+}

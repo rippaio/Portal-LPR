@@ -80,7 +80,7 @@ if(isset($_POST['additnl_driverid'])) {
                                     <th class="col-xs-1">#</th>
                                     <th class="col-xs-4">Name</th>
                                     <th class="col-xs-4">Mobile Number</th>
-                                    <th class="col-xs-3" style="padding-left: 30px">Edit Trip</th>
+                                    <th class="col-xs-3" style="padding-left: 30px">Edit</th>
                                 </tr>
                                 </thead>
                                 <tbody>

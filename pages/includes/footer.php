@@ -28,7 +28,7 @@
 
 
 
-    <script src="../dist/js/functions.js"></script>
+    <script src="../dist/js/functions.js?v=2"></script>
 
 
     <script type="text/javascript">
