@@ -1384,6 +1384,9 @@ function printSheet(){
     window.print();
 }
 
+function printCheck(){
+      window.print();
+}
 
 
 function   updateCashAdvance() {
