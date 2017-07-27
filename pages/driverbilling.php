@@ -476,7 +476,7 @@ include("./includes/nav.php");
                 <div class="col-lg-4">
                     <div class="form-group">
                         <label>Total Settlement Check</label><br>
-                        <p style="display:inline-block;padding-right: 140px">$<span id="d_finalCheck"><?php echo $driver_payable*0.05+$driver_tip-$advance ?></span></p>
+                        <p style="display:inline-block;padding-right: 140px">$<span id="d_finalCheck"><?php echo $driver_payable*0.25+$driver_tip-$advance ?></span></p>
                         <button type="button" class="btn btn-primary" style="display: inline-block" onclick="setDriverBill()">
                             Calculate
                         </button>

@@ -17,11 +17,11 @@ include("./includes/nav.php");
 </style>
 <?php
 if(isset($_POST['driver_id'])&& !empty($_POST['driver_id'])) {
-   $driver_id= $_POST['driver_id'];
-   $start_date= $_POST['fstartdate'];
-   $end_date= $_POST['fenddate'];
+    $driver_id= $_POST['driver_id'];
+    $start_date= $_POST['fstartdate'];
+    $end_date= $_POST['fenddate'];
 
-  $query ="SELECT * FROM lpr_payroll LEFT JOIN lpr_driver ON lpr_payroll.driver_id=lpr_driver.driver_id WHERE '$start_date' <= startdate AND '$end_date' >=enddate AND lpr_driver.driver_id=$driver_id ";
+    $query ="SELECT * FROM lpr_payroll LEFT JOIN lpr_driver ON lpr_payroll.driver_id=lpr_driver.driver_id WHERE '$start_date' <= startdate AND '$end_date' >=enddate AND lpr_driver.driver_id=$driver_id ";
 
     error_log("\nChange Order" . $query , 3, "C:/xampp/apache/logs/error.log");
     $result = mysqli_query($connection, $query);
@@ -104,34 +104,37 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
 
 </style>
 
-<?php    while($sheets = mysqli_fetch_assoc($result_p)) {  ?>
-<div class="toprint" style="page-break-before: always;">
-<div id="page-wrapper">
+
+<?php  if(!empty($result_p)) { while($sheets = mysqli_fetch_assoc($result_p)) {  ?>
+    <div class="toprint" style="page-break-before: always;">
+        <div id="page-wrapper">
             <div class="container-fluid">
-               
-                  
-                 <div class="row" style="padding-top: 20px;padding-left: 20px">
+
+
+                <div class="row" style="padding-top: 20px;padding-left: 20px">
                     <div class="col-lg-12">
                         <h5><b><span>LPR OF VA LLC</span></b></h6>
-                        <h6><b><span>3455 AZALEA GARDEN ROAD</span></b>  <span></span></h5>
-                        <h6><b><span>NORFOLK,VA,23513</span></b></h5>
+                            <h6><b><span>3455 AZALEA GARDEN ROAD</span></b>  <span></span></h5>
+                        <h6><b><span>NORFOLK,VA,23513</span></b></h6>
                     </div>
                 </div>
-                 <div class="row" style="padding-top: 40px;padding-left: 50px">
+                <div class="row" style="padding-top: 30px;padding-left: 60px">
                     <div class="col-lg-12">
-                        <h5><b><span></span></b></h6>
+                        <h5 style="padding-left: 60px"><b><span><?php echo $sheets['driver_fname'];?></span> <span><?php echo $sheets['driver_lname'];?></span></b></h5>
                     </div>
                 </div>
 
-            
-           </div>
-</div>
+
+            </div>
+        </div>
+
+        <div style="page-break-after: always">
+
+
+        </div>
     </div>
 
-<?php  } ?>
-
-
-
+<?php  }} ?>
 
 
 <div id="page-wrapper" class="dontprint">
