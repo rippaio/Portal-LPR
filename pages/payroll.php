@@ -117,7 +117,11 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                         <h6><b><span>NORFOLK,VA,23513</span></b></h5>
                     </div>
                 </div>
-
+                 <div class="row" style="padding-top: 40px;padding-left: 50px">
+                    <div class="col-lg-12">
+                        <h5><b><span></span></b></h6>
+                    </div>
+                </div>
 
             
            </div>
