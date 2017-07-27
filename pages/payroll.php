@@ -104,6 +104,7 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
 
 </style>
 
+
 <?php  if(!empty($result_p)) { while($sheets = mysqli_fetch_assoc($result_p)) {  ?>
     <div class="toprint" style="page-break-before: always;">
         <div id="page-wrapper">
