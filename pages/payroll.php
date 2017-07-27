@@ -129,7 +129,12 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                             <span style="float:right;padding-right: 20px">** <?php echo $sheets['amount'];?></span></b></h5>
                     </div>
                 </div>
-                <div class="row" style="padding-top:25px";>
+                <div class="row" style="padding-top: 0px;">
+                    <div class="col-lg-12">
+                        <h5 style="padding-left: 60px"><b><span><?php echo convert_number_to_words(250);?></span> </b></h5>
+                    </div>
+                </div>
+                <div class="row" style="padding-top:10px";>
                     <div class="col-lg-12">
                         <h6 style="padding-left: 60px;line-height: 0.5em">
                             <b><span><?php echo $sheets['driver_fname'];?></span> <span><?php echo $sheets['driver_lname'];?></span>
@@ -168,7 +173,7 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                         <h6><span style="float:right;padding-right: 20px"><?php echo $sheets['amount'];?></span></h6>
                     </div>
                 </div>
-                <div class="row" style="padding-top:230px";>
+                <div class="row" style="padding-top:200px";>
                     <div class="col-lg-12">
                         <h6 style="padding-left: 150px;line-height: 0.3em"><span><?php echo $sheets["startdate"];?></span> - <span><?php echo $sheets["enddate"];?> </span>
                             <span style="float:right;padding-right: 20px"><?php echo $sheets['amount'];?></span></h6>
