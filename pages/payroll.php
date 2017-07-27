@@ -42,7 +42,80 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
     confirm_query($result);
 }
 ?>
-<div id="page-wrapper">
+
+<style type="text/css" media="print">
+    .dontprint
+    { display: none; }
+    .toprint
+    { display: inline; }
+    .to4Columns {
+        -webkit-column-count: 4; /* Chrome, Safari, Opera */
+        -moz-column-count: 4; /* Firefox */
+        column-count: 4;
+
+    }
+    .to3Columns {
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+        -webkit-column-fill: balance; /* Chrome, Safari, Opera */
+        -moz-column-fill: balance; /* Firefox */
+        column-fill: balance;
+    }
+    .to2Columns {
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
+    }
+
+
+    .gap {
+        -webkit-column-gap: 10px; /* Chrome, Safari, Opera */
+        -moz-column-gap: 10px; /* Firefox */
+        column-gap: 10px;
+    }
+    .gap2 {
+        -webkit-column-gap: 30px; /* Chrome, Safari, Opera */
+        -moz-column-gap: 30px; /* Firefox */
+        column-gap: 30px;
+    }
+    @page {
+        size: auto;   /* auto is the initial value */
+        margin: 0.5cm;  /* this affects the margin in the printer settings */
+    }
+
+    /*body { margin: 20mm 25mm 20mm 25mm; }*/
+
+    table { page-break-inside:auto }
+    tr    { page-break-inside:avoid; page-break-after:auto }
+    thead { display:table-header-group }
+    tfoot { display:table-footer-group }
+    /*.print:last-child {*/
+    /*page-break-after: auto;*/
+    /*}*/
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+
+</style>
+
+<div id="page-wrapper" class="toprint">
+            <div class="container-fluid">
+                <div class="row">
+
+
+
+                </div>
+            </div>
+</div>
+
+
+
+
+
+<div id="page-wrapper" class="dontprint">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -54,7 +127,7 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                                     </button>
 
 
-                                    <button type="button" class="btn btn-primary btn-lg">
+                                    <button type="button" class="btn btn-primary btn-lg" onclick="printDriverBill();">
                                         Print
                                     </button>
 
