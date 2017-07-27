@@ -553,7 +553,7 @@ function savepayroll($driver_id,$amount,$startdate,$enddate){
 
 function checkpayroll($driver_id,$startdate,$enddate){
     global $connection;
-    $query= "SELECT * FROM `lpr_payroll` WHERE ('$startdate' BETWEEN startdate AND enddate) OR ('$enddate' BETWEEN startdate AND enddate) AND driver_id =$driver_id";
+    $query= "SELECT * FROM `lpr_payroll` WHERE (('$startdate' BETWEEN startdate AND enddate) OR ('$enddate' BETWEEN startdate AND enddate)) AND driver_id =$driver_id";
     error_log("\nSaving payroll  " . $query, 3, "C:/xampp/apache/logs/error.log");
     $result_id = mysqli_query($connection, $query);
     confirm_query($result_id);

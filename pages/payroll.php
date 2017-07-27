@@ -110,16 +110,32 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
             <div class="container-fluid">
 
 
-                <div class="row" style="padding-top: 20px;padding-left: 20px">
+                <div class="row" style="padding-top: 5px;">
                     <div class="col-lg-12">
-                        <h5><b><span>LPR OF VA LLC</span></b></h6>
-                            <h6><b><span>3455 AZALEA GARDEN ROAD</span></b>  <span></span></h5>
-                        <h6><b><span>NORFOLK,VA,23513</span></b></h6>
+                        <h5 style="padding-left: 60px"><b><span>LPR OF VA LLC</span></b></h6>
+                            <h6 style="padding-left: 60px"><b><span>3455 AZALEA GARDEN ROAD</span></b>  <span></span></h5>
+                        <h6 style="padding-left: 60px"><b><span>NORFOLK,VA,23513</span><span style="float:right"><?php echo date("m/d/Y"); ?></span></b></h6>
                     </div>
                 </div>
-                <div class="row" style="padding-top: 30px;padding-left: 60px">
+                <div class="row" style="padding-top: 10px;padding-left: 60px">
                     <div class="col-lg-12">
-                        <h5 style="padding-left: 60px"><b><span><?php echo $sheets['driver_fname'];?></span> <span><?php echo $sheets['driver_lname'];?></span></b></h5>
+                        <h5 style="padding-left: 60px"><b><span><?php echo $sheets['driver_fname'];?></span> <span><?php echo $sheets['driver_lname'];?></span>
+                            <span style="float:right">** <?php echo $sheets['amount'];?></span></b></h5>
+                    </div>
+                </div>
+                <div class="row" style="padding-top:20px";>
+                    <div class="col-lg-12">
+                        <h5 style="padding-left: 60px;line-height: 0.5em">
+                            <b><span><?php echo $sheets['driver_fname'];?></span> <span><?php echo $sheets['driver_lname'];?></span>
+                        </h5>
+                        <h5 style="padding-left: 60px;line-height: 0.5em"><span><?php echo $sheets['driver_street'];?></span> <span><?php echo $sheets['driver_address'];?></span></h5>
+                        <h5 style="padding-left: 60px;line-height: 0.5em"><span><?php echo $sheets['driver_city'];?></span>,<span><?php echo $sheets['driver_state'];?></span>  <span><?php echo $sheets['driver_zip'];?></span></h5>
+                    </div>
+                </div>
+
+                <div class="row" style="padding-top:20px";>
+                    <div class="col-lg-12">
+                        <h5 style="padding-left: 100px;line-height: 0.5em"><span><?php echo $sheets["startdate"];?></span> - <span><?php echo $sheets["enddate"];?></span></h5>
                     </div>
                 </div>
 
