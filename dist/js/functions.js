@@ -1370,6 +1370,10 @@ function printClientBill(){
     window.print();
 }
 
+function printCheck(){
+    window.print();
+}
+
 function printRABill(){
     var todayTime = new Date();
     var cb_date= todayTime .getFullYear() + "-" + (todayTime .getMonth() + 1) + "-" + todayTime .getDate();

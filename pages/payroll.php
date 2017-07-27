@@ -17,14 +17,15 @@ include("./includes/nav.php");
 </style>
 <?php
 if(isset($_POST['driver_id'])&& !empty($_POST['driver_id'])) {
-   $driver_id= $_POST['driver_id'];
-   $start_date= $_POST['fstartdate'];
-   $end_date= $_POST['fenddate'];
+    $driver_id= $_POST['driver_id'];
+    $start_date= $_POST['fstartdate'];
+    $end_date= $_POST['fenddate'];
 
-  $query ="SELECT * FROM lpr_payroll LEFT JOIN lpr_driver ON lpr_payroll.driver_id=lpr_driver.driver_id WHERE '$start_date' <= startdate AND '$end_date' >=enddate AND lpr_driver.driver_id=$driver_id ";
+    $query ="SELECT * FROM lpr_payroll LEFT JOIN lpr_driver ON lpr_payroll.driver_id=lpr_driver.driver_id WHERE '$start_date' <= startdate AND '$end_date' >=enddate AND lpr_driver.driver_id=$driver_id ";
 
     error_log("\nChange Order" . $query , 3, "C:/xampp/apache/logs/error.log");
     $result = mysqli_query($connection, $query);
+    $result_p= mysqli_query($connection, $query);
 
     confirm_query($result);
 
@@ -38,11 +39,104 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
 
     error_log("\nChange Order" . $query , 3, "C:/xampp/apache/logs/error.log");
     $result = mysqli_query($connection, $query);
+    $result_p = mysqli_query($connection, $query);
+
 
     confirm_query($result);
 }
 ?>
-<div id="page-wrapper">
+
+<style type="text/css" media="print">
+    .dontprint
+    { display: none; }
+    .toprint
+    { display: inline; }
+    .to4Columns {
+        -webkit-column-count: 4; /* Chrome, Safari, Opera */
+        -moz-column-count: 4; /* Firefox */
+        column-count: 4;
+
+    }
+    .to3Columns {
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+        -webkit-column-fill: balance; /* Chrome, Safari, Opera */
+        -moz-column-fill: balance; /* Firefox */
+        column-fill: balance;
+    }
+    .to2Columns {
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
+    }
+
+
+    .gap {
+        -webkit-column-gap: 10px; /* Chrome, Safari, Opera */
+        -moz-column-gap: 10px; /* Firefox */
+        column-gap: 10px;
+    }
+    .gap2 {
+        -webkit-column-gap: 30px; /* Chrome, Safari, Opera */
+        -moz-column-gap: 30px; /* Firefox */
+        column-gap: 30px;
+    }
+    @page {
+        size: auto;   /* auto is the initial value */
+        margin: 0.5cm;  /* this affects the margin in the printer settings */
+    }
+
+    /*body { margin: 20mm 25mm 20mm 25mm; }*/
+
+    table { page-break-inside:auto }
+    tr    { page-break-inside:avoid; page-break-after:auto }
+    thead { display:table-header-group }
+    tfoot { display:table-footer-group }
+    /*.print:last-child {*/
+    /*page-break-after: auto;*/
+    /*}*/
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+
+</style>
+
+<?php  if(!empty($result_p)) { while($sheets = mysqli_fetch_assoc($result_p)) {  ?>
+    <div class="toprint" style="page-break-before: always;">
+        <div id="page-wrapper">
+            <div class="container-fluid">
+
+
+                <div class="row" style="padding-top: 20px;padding-left: 20px">
+                    <div class="col-lg-12">
+                        <h5><b><span>LPR OF VA LLC</span></b></h6>
+                            <h6><b><span>3455 AZALEA GARDEN ROAD</span></b>  <span></span></h5>
+                        <h6><b><span>NORFOLK,VA,23513</span></b></h6>
+                    </div>
+                </div>
+                <div class="row" style="padding-top: 30px;padding-left: 60px">
+                    <div class="col-lg-12">
+                        <h5 style="padding-left: 60px"><b><span><?php echo $sheets['driver_fname'];?></span> <span><?php echo $sheets['driver_lname'];?></span></b></h5>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div style="page-break-after: always">
+
+
+        </div>
+    </div>
+
+<?php  }} ?>
+
+
+<div id="page-wrapper" class="dontprint">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
@@ -54,7 +148,7 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                                     </button>
 
 
-                                    <button type="button" class="btn btn-primary btn-lg">
+                                    <button type="button" class="btn btn-primary btn-lg" onclick="printCheck();">
                                         Print
                                     </button>
 
