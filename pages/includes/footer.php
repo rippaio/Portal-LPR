@@ -25,6 +25,7 @@
 
     <script src="./src/moment.min.js"></script>
     <script src="./src/fullcalendar.js"></script>
+    <script src="../dist/js/bootstrap-formhelpers.min.js"></script>
 
 
 

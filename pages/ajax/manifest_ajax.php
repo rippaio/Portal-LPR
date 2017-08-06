@@ -27,6 +27,7 @@ $clockperiod = $obj['clockperiod'];
 $driver_payable = (isset($obj['driver_payable'])? $obj["driver_payable"] : 'TRUE');
 $client_payable = (isset($obj['client_payable'])? $obj["client_payable"] : 'TRUE');
 
+$order=update_orderdriver($orderid,$driverid);
 $trip = insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$clockperiod,$current_date,$driver_payable,$client_payable);
 print_r($trip['id']);
 }

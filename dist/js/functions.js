@@ -182,9 +182,9 @@ $( "#createorder" ).submit(function( event ) {
 				    return this.value;
 				}).get().join(",");
 	formData['mode'] = "insert";
-	formData['o_ampicktime'] = formData['o_ampicktime'] + ':00';
-	formData['o_amdroptime'] = formData['o_amdroptime'] + ':00';
-	formData['o_pmpicktime'] = formData['o_pmpicktime'] + ':00';
+	formData['o_ampicktime'] = $("[name='o_ampicktime']").val() + ':00';
+	formData['o_amdroptime'] = $("[name='o_amdroptime']").val() + ':00';
+	formData['o_pmpicktime'] = $("[name='o_pmpicktime']").val() + ':00';
 	event.preventDefault();
 	log(formData);
 

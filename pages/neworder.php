@@ -174,7 +174,7 @@ confirm_query($result_client);
                                                 <label>Pickup Location</label>
                                                 <input class="form-control" name="o_ampickloc" placeholder="Enter Location" >
                                             </div>
-                                            <div class="form-group">
+                                            <!-- <div class="form-group">
                                                 <label>Pickup Time</label>
                                                 <div class="input-group clockpicker">
                                                     <input type="text" class="form-control clockformat" name="o_ampicktime" value="8:00" >
@@ -182,6 +182,8 @@ confirm_query($result_client);
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
                                                 </div>
+                                            </div> -->
+                                            <div class="bfh-timepicker" name="o_ampicktime" data-time="08:00" data-align="right">
                                             </div>
                                             <div class="form-group">
                                                 <label>Drop Location</label>
@@ -189,13 +191,16 @@ confirm_query($result_client);
                                             </div>
                                             <div class="form-group">
                                                 <label>Drop Time</label>
-                                                <div class="input-group clockpicker">
+                                                <!-- <div class="input-group clockpicker">
                                                     <input type="text" class="form-control clockformat" name="o_amdroptime" value="16:00" >
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
+                                                </div> -->
+                                                <div class="bfh-timepicker" name="o_amdroptime" data-time="16:00" data-align="right">
                                                 </div>
                                             </div>
+
                                         </div>
                                             <h4>PM Trip</h4>
                                             <div class="checkbox">
@@ -210,11 +215,13 @@ confirm_query($result_client);
                                             </div>
                                             <div class="form-group">
                                                 <label>Pickup Time</label>
-                                                <div class="input-group clockpicker">
+                                                <!-- <div class="input-group clockpicker">
                                                     <input type="text" class="form-control clockformat" name="o_pmpicktime" value="18:00" >
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
+                                                </div> -->
+                                                <div class="bfh-timepicker" name="o_pmpicktime" data-time="18:00" data-align="right">
                                                 </div>
                                             </div>
                                             <div class="form-group">
