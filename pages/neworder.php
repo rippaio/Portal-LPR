@@ -174,17 +174,18 @@ confirm_query($result_client);
                                                 <label>Pickup Location</label>
                                                 <input class="form-control" name="o_ampickloc" placeholder="Enter Location" >
                                             </div>
-                                            <!-- <div class="form-group">
+                                            <div class="form-group">
                                                 <label>Pickup Time</label>
-                                                <div class="input-group clockpicker">
+                                                <!-- <div class="input-group clockpicker">
                                                     <input type="text" class="form-control clockformat" name="o_ampicktime" value="8:00" >
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
+                                                </div> -->
+                                                <div class="bfh-timepicker" name="o_ampicktime" data-time="08:00" data-align="right">
                                                 </div>
-                                            </div> -->
-                                            <div class="bfh-timepicker" name="o_ampicktime" data-time="08:00" data-align="right">
                                             </div>
+                                            
                                             <div class="form-group">
                                                 <label>Drop Location</label>
                                                 <input class="form-control" id="amDropLoc" name="o_amdroploc" placeholder="Enter Location" >
@@ -270,6 +271,16 @@ confirm_query($result_client);
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" name="o_as" class="aocheckbox" value="addnlstop">Additional Stop
+                                                </label>
+                                            </div>
+                                            <div class="checkbox" style="display: none;">
+                                                <label>
+                                                    <input type="checkbox" name="o_cs" class="aocheckbox" value="carseat" >Car Seat
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="o_bs" class="aocheckbox" value="boosterseat">Booster Seat
                                                 </label>
                                             </div>
                                             <div name="ridealongdiv" class="hidebox">

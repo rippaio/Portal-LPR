@@ -172,11 +172,13 @@ $result_billing = mysqli_query($connection, $query_billing);
                                             </div>
                                             <div class="form-group">
                                                 <label>Pickup Time</label>
-                                                <div class="input-group clockpicker">
+                                               <!--  <div class="input-group clockpicker">
                                                     <input type="text" class="form-control clockformat" name="o_ampicktime" value="<?php echo $subject["o_ampicktime"]; ?>" required>
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
+                                                </div> -->
+                                                <div class="bfh-timepicker" name="o_ampicktime" data-time="<?php echo substr($subject["o_ampicktime"], 0, 5); ?>" data-align="right">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -185,11 +187,13 @@ $result_billing = mysqli_query($connection, $query_billing);
                                             </div>
                                             <div class="form-group">
                                                 <label>Drop Time</label>
-                                                <div class="input-group clockpicker">
+                                                <!-- <div class="input-group clockpicker">
                                                     <input type="text" class="form-control clockformat" name="o_amdroptime" value="<?php echo $subject["o_amdroptime"]; ?>" required>
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
+                                                </div> -->
+                                                <div class="bfh-timepicker" name="o_amdroptime" data-time="<?php echo substr($subject["o_amdroptime"], 0, 5); ?>" data-align="right">
                                                 </div>
                                             </div>
                                             <h4>PM Trip</h4>
@@ -199,11 +203,13 @@ $result_billing = mysqli_query($connection, $query_billing);
                                             </div>
                                             <div class="form-group">
                                                 <label>Pickup Time</label>
-                                                <div class="input-group clockpicker">
+                                                <!-- <div class="input-group clockpicker">
                                                     <input type="text" class="form-control clockformat" name="o_pmpicktime" value="<?php echo $subject["o_pmpicktime"]; ?>" required>
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
+                                                </div> -->
+                                                <div class="bfh-timepicker" name="o_pmpicktime" data-time="<?php echo substr($subject["o_pmpicktime"], 0, 5); ?>" data-align="right">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -253,6 +259,16 @@ $result_billing = mysqli_query($connection, $query_billing);
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" name="o_as" class="aocheckbox" value="addnlstop" <?php echo($subject["o_as"]=="TRUE"? 'checked' : ''); ?> >Additional Stop
+                                                </label>
+                                            </div>
+                                            <div class="checkbox" style="display: none;">
+                                                <label>
+                                                    <input type="checkbox" name="o_cs" class="aocheckbox" value="carseat" <?php echo($subject["o_cs"]=="TRUE"? 'checked' : ''); ?> >Car Seat
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="o_bs" class="aocheckbox" value="boosterseat" <?php echo($subject["o_bs"]=="TRUE"? 'checked' : ''); ?> >Booster Seat
                                                 </label>
                                             </div>
                                             <div name="ridealongdiv" <?php echo($subject["o_ra"]=="TRUE"? '' : 'class="hidebox"'); ?> >

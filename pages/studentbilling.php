@@ -316,7 +316,8 @@ if(isset($_POST['cb_ctypeSelect'])) {
                                 </div>
                                 <div class="form-group">
                                     <label>Student</label>
-                                    <input class="form-control typeahead" placeholder="" name="cb_sname">
+                                    <input class="form-control typeahead_student" placeholder="">
+                                    <input class="form-control" name="stu_id" type="hidden" placeholder="">
                                 </div>
 
                                 <label>Start Date</label>
