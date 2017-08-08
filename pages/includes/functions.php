@@ -537,7 +537,7 @@ function insert_additnlTrip($driverid,$ad_payable,$ad_tip,$ad_tripdate){
     confirm_query($result_id);
 }
 
-function  getCashAdvance($driver_id,$start_date,$end_date){
+function  getCashAdvance($driver_id){
     global $connection;
     $query="select coalesce(t1.debit,0)-coalesce(t2.credit,0) as cashAdvance from
 (SELECT sum(c_payable) as debit from lpr_cashadvance where c_driverid=$driver_id and c_type='debit' )t1,
@@ -940,5 +940,13 @@ function convert_number_to_money($number){
 		$words .= 'and '.substr($number, -2).'/100';
 		return  ucfirst($words);
 	}
+}
+
+function getAdvanceDeatils($driver_id){
+    global $connection;
+    $query_advance  = "SELECT * FROM lpr_cashadvance where c_driverid=$driver_id";
+    $result_advance = mysqli_query($connection, $query_advance);
+    confirm_query($result_advance);
+    return $result_advance;
 }
 ?>

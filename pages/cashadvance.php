@@ -5,14 +5,14 @@ include("./includes/functions.php");
 ?>
 <?php
 $driver_name="";
+$cashToPrint="";
 if(isset($_POST['ca_submit'])) {
     $driver_id= $_POST['driver_id'];
     $driver_name=$_POST['ca_drivername'];
-    $query_advance  = "SELECT * FROM lpr_cashadvance where c_driverid=$driver_id";
-    $result_advance = mysqli_query($connection, $query_advance);
-    confirm_query($result_advance);
-
-
+    $result_advance = getAdvanceDeatils($driver_id);
+    $print_sheet= getAdvanceDeatils($driver_id);
+    $cash= getCashAdvance($driver_id);
+    $cashToPrint=$cash['cashAdvance'];
 }
 
 
@@ -26,7 +26,157 @@ include("./includes/nav.php");
     ul.ui-autocomplete {
         z-index: 1100;
     }
+
+    .toprint
+    { display: none; }
     </style>
+
+<style type="text/css" media="print">
+    .dontprint
+    { display: none; }
+    .toprint
+    { display: inline;
+    }
+    .to4Columns {
+        -webkit-column-count: 4; /* Chrome, Safari, Opera */
+        -moz-column-count: 4; /* Firefox */
+        column-count: 4;
+
+    }
+    .to3Columns {
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+        -webkit-column-fill: balance; /* Chrome, Safari, Opera */
+        -moz-column-fill: balance; /* Firefox */
+        column-fill: balance;
+    }
+    .to2Columns {
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
+    }
+
+
+    .gap {
+        -webkit-column-gap: 10px; /* Chrome, Safari, Opera */
+        -moz-column-gap: 10px; /* Firefox */
+        column-gap: 10px;
+    }
+    .gap2 {
+        -webkit-column-gap: 30px; /* Chrome, Safari, Opera */
+        -moz-column-gap: 30px; /* Firefox */
+        column-gap: 30px;
+    }
+    @page {
+        size: auto;   /* auto is the initial value */
+        margin:.5cm;
+        /* this affects the margin in the printer settings */
+    }
+
+
+
+
+
+    /*body { margin: 20mm 25mm 20mm 25mm; }*/
+
+    table { page-break-inside:auto }
+    tr    { page-break-inside:avoid; page-break-after:auto }
+    thead { display:table-header-group }
+    tfoot { display:table-footer-group }
+    /*.print:last-child {*/
+    /*page-break-after: auto;*/
+    /*}*/
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+
+    .s1height{
+        line-height: 0.1em;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        padding-bottom: 50px;
+        text-align: center;
+    }
+
+    .footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 100px;
+        width: 100%;
+        overflow:hidden;
+        text-align: center;
+    }
+</style>
+
+<div id="page-wrapper" class="toprint" style="height: auto">
+    <div class="container-fluid" >
+       <div class="row">
+           <div class="col-lg-3">
+               <img src="../images/bus1.jpg" alt="Bus" style="width:150px;height:100px;">
+               <h6 style="float:right"><span>LPR Transportation</span><br>
+                   3455 Azalea Garden Rd,<br>
+                   Norfolk,VA 23513</h6>
+           </div>
+           <div class="col-lg-3">
+               <h2 class="s1height"><span>LPR TRANSPORTATION</span></h2>
+          </div>
+       </div>
+        <div class="row" style="padding-bottom: 20px">
+            <div class="col-lg-12">
+                <h5>Advance Details: <span><?php echo $driver_name; ?></span></h5>
+            </div>
+        </div>
+
+        <table style="padding-bottom: 30px">
+            <!--                    <col width="400">-->
+            <!--                    <col width="200">-->
+            <thead>
+            <tr>
+                <th style="padding-left:20px;text-align: center" class="col-xs-4"> <span>Date</span></th>
+                <th style="padding-left:20px;text-align: center" class="col-xs-4"> <span>Amount($)</span></th>
+                <th style="padding-left:20px;text-align: center" class="col-xs-4"> <span>Transaction Type</span></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            // Use returned data (if any)
+            // Use returned data (if any)
+            if(isset($_POST['ca_submit'])) {
+                while ($sheet = mysqli_fetch_assoc($print_sheet)) {
+                    ?>
+
+                    <tr>
+                        <td style="padding-left:10px;padding-right:20px" class="col-xs-4">
+                            <span><?php echo $sheet['c_Date']; ?></span>
+                        </td>
+                        <td style="padding-left:10px;padding-right:20px" class="col-xs-4">
+                            <span><?php echo $sheet['c_payable']; ?></span>
+                        </td>
+                        <td style="padding-left:10px;padding-right:20px" class="col-xs-4">
+                            <span><?php echo $sheet['c_type']; ?></span>
+                        </td>
+
+                    </tr>
+                <?php }
+            }?>
+
+            </tbody>
+        </table>
+
+        <div class="row" style="padding-top: 40px">
+            <div class="col-lg-12">
+                Balance Due: $ <?php echo $cashToPrint; ?>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
 
 
 <div id="page-wrapper" class="dontprint">
@@ -38,6 +188,9 @@ include("./includes/nav.php");
                 <div class="btn-group form-group">
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#cashmodal">
                         Filters
+                    </button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick="printAdvance()">
+                        Print
                     </button>
                 </div>
                 <!--Start Modal  -->
