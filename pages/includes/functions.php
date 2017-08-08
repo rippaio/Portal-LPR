@@ -805,9 +805,9 @@ function delete_catransaction($transactionid){
 
 function convert_number_to_words($number) {
 
-    $hyphen      = '-';
+    $hyphen      = ' ';
     $conjunction = ' ';
-    $separator   = ', ';
+    $separator   = ' ';
     $negative    = 'negative ';
     $decimal     = ' point ';
     $dictionary  = array(
@@ -918,14 +918,14 @@ function convert_number_to_money($number){
 	$words = convert_number_to_words($number);
 
 	if(strpos($words, 'point') === false){
-		return $words." and 00/100";
+		return  ucfirst($words." and 00/100");
 	}
 	else{
 		$s = explode("point",$words);
 		unset($s[1]);
 		$words = $s[0];
 		$words .= 'and '.substr($number, -2).'/100';
-		return $words;
+		return  ucfirst($words);
 	}
 }
 ?>
