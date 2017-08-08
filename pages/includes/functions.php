@@ -604,7 +604,7 @@ function getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_sta
         $query .=" and lpr_school.school_id=$cb_sSelect";
     }
     if(!empty($cb_sname)){
-        $query .=" and s_fname='$cb_sname'";
+        $query .=" and triplog_studentid=$cb_sname";
     }
     $result = mysqli_query($connection, $query);
     error_log("\nClient Billing Query " . $query, 3, "C:/xampp/apache/logs/error.log");
@@ -635,7 +635,7 @@ function getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb
         $query .=" and lpr_school.school_id=$cb_sSelect";
     }
     if(!empty($cb_sname)){
-        $query .=" and s_fname='$cb_sname'";
+        $query .=" and triplog_studentid=$cb_sname";
     }
     $query.=")t1";
     $result = mysqli_query($connection, $query);
@@ -806,7 +806,7 @@ function delete_catransaction($transactionid){
 function convert_number_to_words($number) {
 
     $hyphen      = '-';
-    $conjunction = ' and ';
+    $conjunction = ' ';
     $separator   = ', ';
     $negative    = 'negative ';
     $decimal     = ' point ';
@@ -916,14 +916,15 @@ function convert_number_to_words($number) {
 }
 function convert_number_to_money($number){
 	$words = convert_number_to_words($number);
+
 	if(strpos($words, 'point') === false){
 		return $words." and 00/100";
 	}
 	else{
-		$pos = strpos($words, 'point');
-		echo $pos;
-		$words = str_replace ('point', 'and', $words);
-		$words .= substr($number, -2).'/100';
+		$s = explode("point",$words);
+		unset($s[1]);
+		$words = $s[0];
+		$words .= 'and '.substr($number, -2).'/100';
 		return $words;
 	}
 }

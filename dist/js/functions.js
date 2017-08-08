@@ -361,6 +361,8 @@ function get_students() {
 
     var sdata = {};
     sdata['mode'] = "get_students";
+    //sdata['client_id'] = $('#ctypeSelect').children("option").filter(":selected").data('zone_id');
+
     $.ajax({
         url: 'ajax/neworder_ajax.php',
         type: 'post',

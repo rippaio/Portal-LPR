@@ -153,8 +153,8 @@ include("./includes/nav.php");
            <!-- /.container-fluid --> 
             </div>
              <!-- /#pagewrapper -->
-<?php echo convert_number_to_money(111.00); ?> <br>
-<?php echo convert_number_to_money(111.11); ?> 
+<!-- <?php echo convert_number_to_money(111.00); ?> <br>
+<?php echo convert_number_to_money(12225.33); ?> --> 
 
 <?php
   require_once("./includes/footer.php");
