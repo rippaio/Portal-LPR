@@ -541,6 +541,19 @@ function  getCashAdvance($driver_id,$start_date,$end_date){
     }
 
 }
+
+function getTotalEarnings($driver_id){
+    global $connection;
+    $query="SELECT sum(amount) as earnings FROM `lpr_payroll` WHERE driver_id=$driver_id and year(enddate)=year(CURRENT_DATE)";
+    $result = mysqli_query($connection, $query);
+    confirm_query($result);
+    if($resultvalue = mysqli_fetch_assoc($result)) {
+        return $resultvalue;
+    } else {
+        return 0;
+    }
+
+}
 //payroll
 function savepayroll($driver_id,$amount,$startdate,$enddate){
     global $connection;

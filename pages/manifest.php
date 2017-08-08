@@ -5,10 +5,18 @@ include("./includes/functions.php");
 <?php
 $clck="AM";
 $c=0;
+$bydrivername="";
+$daterequired=date("Y-m-d");
+if(isset($_POST["searchByDriverName"])){
+    $byBriverId= $_POST["driver_id"];
+    $bydrivername=$_POST["bydriverName"];
+    $daterequired=$_POST["o_startdate"];
+    $clck=$_POST["clockt"];
+}
+
 if(isset($_POST["clock"])){
     $clck= $_POST["clock"];
 }
-$daterequired=date("Y-m-d");
 if(isset($_POST["dateValue"])){
     $daterequired=$_POST["dateValue"];
 }
@@ -18,12 +26,12 @@ $query ="select * from
  (select * from lpr_triplog where triplog_date='$daterequired' and triplog_clock='$clck')R1
   RIGHT outer join
  (select * from ( 
-       (select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.s_city,t1.o_ampicktime as picktime,t1.o_ampickloc as pickloc,t1.o_amdroptime as droptime,'AM' as clockperiod, t1.o_days,t1.o_startdate,t1.o_enddate from ( 
-           select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_ampicktime as time,CONCAT(lpr_student.s_fname,' ',lpr_student.s_lname) as s_fname,lpr_student.s_city,lpr_order.o_ampicktime,lpr_order.o_ampickloc,lpr_order.o_amdroptime, lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
+       (select t1.o_id,t1.o_status,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.s_city,t1.o_ampicktime as picktime,t1.o_ampickloc as pickloc,t1.o_amdroptime as droptime,'AM' as clockperiod, t1.o_days,t1.o_startdate,t1.o_enddate from ( 
+           select lpr_order.o_id,lpr_order.o_status ,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_ampicktime as time,CONCAT(lpr_student.s_fname,' ',lpr_student.s_lname) as s_fname,lpr_student.s_city,lpr_order.o_ampicktime,lpr_order.o_ampickloc,lpr_order.o_amdroptime, lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
            lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and o_ampickloc not like 'null' group by lpr_order.o_id)t1 )
         UNION 
-       (select t1.o_id,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.s_city,t1.picktime,t1.pickloc,t1.droptime,'PM' as clockperiod, t1.o_days,t1.o_startdate,t1.o_enddate  from 
-          (select lpr_order.o_id,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_pmpicktime as time,CONCAT(lpr_student.s_fname,' ',lpr_student.s_lname) as s_fname,lpr_student.s_city,lpr_order.o_pmpicktime as picktime,lpr_order.o_pmpickloc as pickloc,'NA' as droptime,lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
+       (select t1.o_id,t1.o_status,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.s_city,t1.picktime,t1.pickloc,t1.droptime,'PM' as clockperiod, t1.o_days,t1.o_startdate,t1.o_enddate  from 
+          (select lpr_order.o_id,lpr_order.o_status,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_pmpicktime as time,CONCAT(lpr_student.s_fname,' ',lpr_student.s_lname) as s_fname,lpr_student.s_city,lpr_order.o_pmpicktime as picktime,lpr_order.o_pmpickloc as pickloc,'NA' as droptime,lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
            lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and o_pmdroploc not like 'null' group by lpr_order.o_id)t1))R
   )R2  on  R1.triplog_o_id=R2.o_id
   left join
@@ -31,17 +39,32 @@ $query ="select * from
   on R2.o_id=R3.o_id 
   left join (select CONCAT(driver_fname,' ',driver_lname) as driver_name,driver_id from lpr_driver)R4
   on R2.driver_id=R4.driver_id
-  where clockperiod='$clck' and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%'  ORDER BY time";
+  where clockperiod='$clck' and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and o_status not like 'inactive'";
+if(!empty($byBriverId)){
+    $query .=" and R2.driver_id=$byBriverId";
+}
+$query.=" ORDER BY time";
 error_log("\nManifest" . $query , 3, "C:/xampp/apache/logs/error.log");
 $result_triporder = mysqli_query($connection, $query);
 confirm_query($result_triporder);
 $result_triplogdata = getAllTripData();
-$query_print="select * from
-(select * from (SELECT lpr_order.o_id,lpr_order.o_startdate,lpr_order.o_enddate,lpr_order.o_ampickloc,lpr_order.o_ampicktime,lpr_order.o_amdroploc,lpr_order.o_amdroptime,lpr_order.o_pmpickloc,lpr_order.o_pmdroploc,lpr_order.o_pmpicktime,lpr_order.o_days,lpr_order.o_dcomment,lpr_client.client_name,lpr_client.client_street,lpr_client.client_address,lpr_client.client_city,lpr_client.client_state,lpr_client.client_zip,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,GROUP_CONCAT(CASE WHEN lpr_student.s_grade = '' THEN 'NA' else lpr_student.s_grade END) as student_grade,GROUP_CONCAT(lpr_student.s_gender) as student_gender,s_phone,s_altphone,s_street,s_address,s_city,s_state,s_zip
-FROM lpr_order,lpr_client,lpr_student where lpr_order.client_id=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id) t1
+
+//$query_print="select * from
+//(select * from (SELECT lpr_order.o_id,lpr_order.o_startdate,lpr_order.o_enddate,lpr_order.o_ampickloc,lpr_order.o_ampicktime,lpr_order.o_amdroploc,lpr_order.o_amdroptime,lpr_order.o_pmpickloc,lpr_order.o_pmdroploc,lpr_order.o_pmpicktime,lpr_order.o_days,lpr_order.o_dcomment,lpr_client.client_name,lpr_client.client_street,lpr_client.client_address,lpr_client.client_city,lpr_client.client_state,lpr_client.client_zip,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,GROUP_CONCAT(CASE WHEN lpr_student.s_grade = '' THEN 'NA' else lpr_student.s_grade END) as student_grade,GROUP_CONCAT(lpr_student.s_gender) as student_gender,s_phone,s_altphone,s_street,s_address,s_city,s_state,s_zip
+//FROM lpr_order,lpr_client,lpr_student where lpr_order.client_id=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id) t1
+//left join
+//(select triplog_o_id,GROUP_CONCAT(triplog_status) as trip_status,GROUP_CONCAT(triplog_clock) as trip_period,triplog_date  from  lpr_triplog  group by triplog_o_id,triplog_date) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3
+//where trip_status is null or trip_status  not like '%cancel%cancel%'";
+
+$query_print="select * from(select * from
+(select * from (SELECT lpr_order.o_id,lpr_order.o_bs,lpr_order.driver_id,lpr_order.o_startdate,lpr_order.o_enddate,CASE WHEN '$clck' = 'AM' THEN o_ampickloc else o_pmpickloc END as pickloc,CASE WHEN '$clck' = 'AM' THEN o_ampicktime else o_pmpicktime END as picktime,CASE WHEN '$clck' = 'AM' THEN o_amdroploc else o_pmdroploc END as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
+FROM lpr_order,lpr_client,lpr_student where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id  and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
 left join
-(select triplog_o_id,GROUP_CONCAT(triplog_status) as trip_status,GROUP_CONCAT(triplog_clock) as trip_period,triplog_date  from  lpr_triplog  group by triplog_o_id,triplog_date) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3 
-where trip_status is null or trip_status  not like '%cancel%cancel%'";
+(select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='AM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3 
+where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where pickloc not like 'NULL' and droploc not like 'NULL'";
+if(!empty($byBriverId)){
+    $query_print .=" and t4.driver_id=$byBriverId";
+}
 $result_tripPrint = mysqli_query($connection, $query_print);
 confirm_query($result_tripPrint);
 error_log("\nManifest print query " . $query_print , 3, "C:/xampp/apache/logs/error.log");
@@ -136,7 +159,8 @@ include("./includes/nav.php");
     .s1height{
         line-height: 0.2em;
         font-family: Georgia, "Times New Roman", Times, serif;
-        padding-bottom: 8px;
+        padding-bottom: 50px;
+        text-align: center;
     }
     .s3height{
         padding-left: 15px;
@@ -160,196 +184,106 @@ include("./includes/nav.php");
         font-family:  Arial, Helvetica, sans-serif;
         font-size: 14px !important;
     }
+
+    .sheetText{
+        display: table-cell;
+        width: 50px;
+    }
+    .sheetUnderline{
+        display: table-cell; border-bottom: 1px solid black; width:700px
+    }
+
+    .elementPadding{
+        padding-bottom: 15px !important;
+    }
+
 </style>
 
 
 <?php    while($sheets = mysqli_fetch_assoc($result_tripPrint)) {  ?>
     <div class="toprint" style="page-break-before: always;">
+
         <div id="page-wrapper">
             <div class="container-fluid">
-                <div class="row" style="padding-top: 10px">
-                    <div class="col-lg-12">
-                        <h6 class="hschool"><b><span> <?php echo $sheets['client_name']; ?></span></b></h6>
-                    </div>
-                </div>
-                <div class="row ">
-                    <div class="col-lg-12">
-                        <h6 class="hschool hspace"><span> Transportation Department</span></h6>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <h6 class="hschool hspace"><span> <?php echo $sheets['client_address']; ?></span><span> <?php echo $sheets['client_street']; ?></span> </h6>
+                        <h6 style="text-align: right;padding-right: 100px;padding-top: 20px"> <?php if(!empty($sheets['o_icomment'])){?> *<?php echo $sheets['o_icomment']; ?> *<?php }?>  </h6>
+                        <img src="../images/bus1.jpg" alt="Bus" style="width:150px;height:100px;">
+                        <h1 class="s1height"><span>LPR TRANSPORTATION</span></h1>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h6 class="hschool hspace" style="padding-bottom: 10px"><span> <?php echo $sheets['client_city']; ?>,</span><span>  <?php echo $sheets['client_state']; ?></span><span>  <?php echo $sheets['client_zip']; ?></span></h6>
-                    </div>
+                <div style="margin-left: 20px">
+                <?php
+                       $pieces_name= explode(",", $sheets['student_name']);
+                       $Pax=count($pieces_name); ?>
+                <div class="row" style="padding-bottom: 15px">
+                   <span class="sheetText">Name:</span> <span class="sheetUnderline"><?php echo $sheets['student_name']; ?></span>
                 </div>
-            </div>
-            <div class="container-fluid inborder">
-                <div class="row">
-                    <div class="col-lg-12" style="text-align:center;">
-                        <h3 class="s2height touppercase"><?php echo $sheets['client_name']; ?></h3>
-                        <h4 class="s1height touppercase">Contractor Sheet</h4>
-                        <h4 class="s1height touppercase">LPR Transportation
-                            <?php $pieces_status= explode(",", $sheets['trip_status']);
-                                  $pieces_period= explode(",", $sheets['trip_period']);
-                                  $amtrip=false;
-                                  $pmtrip=false;
-                            foreach ($pieces_status as $status) {
-                                  foreach ($pieces_period as $period) {
-                                    if($status=='cancel' and $period=='AM'){
-                                        $pmtrip=true;
-                                        break;
-                                    }
-                                    else if($status='cancel' and $period=='PM'){
-                                        $amtrip=true;
-                                        break;
-                                    }
-                               }
-                               if($pmtrip || $amtrip){
-                                      break;
-                               }
-                            }
-                            ?>
-                            <?php if ($sheets['o_ampickloc']=='NULL' || $pmtrip){?>PM ONLY<?php }
-                            ?>
-                            <?php if ($sheets['o_pmdroploc']=='NULL' || $amtrip){?>AM ONLY<?php }?>  </h4>
-                    </div>
+                <div class="row" style="padding-bottom: 15px">
+                    <span class="sheetText" style="width:100px ">Date Needed:</span><span  class="sheetUnderline"> <?php echo date("F j, Y", strtotime($daterequired));  ?></span>
                 </div>
-                <div class="row">
-                    <div class="dinline">
-                        <h6 class="sheetf" style="padding-left: 15px"> <b>  Date:</b></h6>
-                    </div>
-                    <div class="dinline sheetf" >
-                     <h6 class="sheetf"> <b>  <?php echo date("F j, Y", strtotime($daterequired));  ?></b></h6>
-                    </div>
+                <div class="row" style="padding-bottom: 15px">
+                    <span class="sheetText" style="width:100px ">Time Needed:</span><span  class="sheetUnderline" style="width:300px "> <?php echo date ('H:i',strtotime($sheets['picktime'])) ;  ?></span>
+                    <span class="sheetText" style="width:100px ">#Passengers:</span><span  class="sheetUnderline" style="width:300px "><?php echo $Pax;  ?></span>
                 </div>
-                <div class="row">
-                    <?php $pieces_name= explode(",", $sheets['student_name']); ?>
+                <div class="row" style="padding-bottom: 15px">
+                    <span class="sheetText" style="width:100px ">Phone:</span> <span  class="sheetUnderline"><span> <?php echo $sheets['s_pname']; ?></span><span> <?php echo $sheets['s_phone']; ?></span>/<span> <?php echo $sheets['s_altphone']; ?></span> </span>
+                </div>
+                <div class="row" style="padding-bottom: 25px">
+                    <span class="sheetText" style="width:150px ">Pick up Address:</span> <span  class="sheetUnderline" ><?php echo $sheets['pickloc']; ?></span>
+                </div>
+                    <div class="row" style="padding-bottom: 25px">
+                        <span  class="sheetUnderline" style="width:800px"></span>
+                    </div>
+                    <div class="row" style="padding-bottom: 35px">
+                        <span  class="sheetUnderline" style="width:800px"></span>
+                    </div>
+                <div class="row" style="padding-bottom: 25px">
+                    <span class="sheetText" style="width:150px ">Drop off Address:</span> <span  class="sheetUnderline"><?php echo $sheets['droploc']; ?></span>
+                </div>
+                    <div class="row" style="padding-bottom: 25px">
+                        <span  class="sheetUnderline" style="width:800px"></span>
+                    </div>
+                    <div class="row" style="padding-bottom: 15px">
+                        <span  class="sheetUnderline" style="width:800px"></span>
+                    </div>
+                <div class="row" style="padding-bottom: 25px">
+                    <span class="sheetText" style="width:150px ">Special Instructions:</span><span  class="sheetUnderline"><?php echo $sheets['o_dcomment']; ?></span>
+                </div>
+                    <div class="row" style="padding-bottom: 25px">
+                       <span  class="sheetUnderline" style="width:800px"></span>
+                    </div>
+                    <div class="row" style="padding-bottom: 70px">
+                        <span  class="sheetUnderline" style="width:800px"></span>
+                    </div>
 
-                        <h6 class="s3height sheetf"> <b> Student:</b></h6>
+                <?php
+                $driver="";
+                if(!empty($sheets['driver_id'])){
+                    $driverName=get_drivername($sheets['driver_id']);
+                    $driver=$driverName['driver_name'];
 
-                    <div class="col-lg-5 dinline" style="text-align:left;padding-top: 0;padding-left: 30px">
-                        <?php
-                        foreach ($pieces_name as $name) {
-                        ?>
-                            <h6 class="sheetf"><b><?php echo $name; ?></b></h6>
-                            <?php
-                        }
-                        ?>
-                    </div>
-                    <?php $pieces_grade= explode(",", $sheets['student_grade']); ?>
-                    <div class="col-lg-1 dinline">
-                        <?php
-                        foreach ($pieces_grade as $p_grade) {
-                        ?>
-                           <h6 class="sheetf"><b>Grade:</b></h6>
-                        <?php  } ?>
-                    </div>
-                    <div class="col-lg-2 dinline">
-                        <?php
-                        foreach ($pieces_grade as $p_grade) {
-                        ?>
-                            <h6 class="sheetf"><b><?php echo $p_grade; ?></b></h6>
-                        <?php } ?>
-                    </div>
-                    <?php $pieces_gender= explode(",", $sheets['student_gender']); ?>
-                    <div class="col-lg-1 dinline">
-                        <?php
-                        foreach ($pieces_gender as $p_gender) {
-                        ?>
-                       <h6 class="sheetf"> <b >Gender:</b></h6 >
-                        <?php  } ?>
-                    </div>
-                    <div class="col-lg-3 dinline">
-                        <?php
-                        foreach ($pieces_gender as $p_gender) {
-                        ?>
-                            <h6 class="sheetf" style="text-align: right"><b><?php echo $p_gender; ?></b></h6>
-                        <?php  } ?>
-                    </div>
+                } ?>
+
+                <div class="row" style="padding-bottom: 15px">
+                    <span class="sheetText" style="width:50px ">Rate:</span> <span  class="sheetUnderline" style="width:150px "><?php echo $sheets['o_payable']; ?></span>
+                    <span class="sheetText" style="width:60px;padding-left: 100px;padding-right: 10px ">Driver:</span> <span  class="sheetUnderline" style="width:400px "><?php echo $driver; ?></span>
                 </div>
-            <div class="row">
-                <div class="col-lg-12 ">
-                    <h6 class="sheetf"><b>Address:<span class="s_address sheetf"> <?php echo $sheets['s_street']; ?></span>
-                            <span class="s_address sheetf"> <?php echo $sheets['s_address']; ?>,</span>
-                            <span class="s_address sheetf"> <?php echo $sheets['s_city']; ?>,</span>
-                            <span class="s_address sheetf"> <?php echo $sheets['s_state']; ?></span>
-                            <span class="s_address sheetf"> <?php echo $sheets['s_zip']; ?></span></b></h6>
+                <div class="row" style="padding-bottom: 30px">
+                    <span class="sheetText" style="width:50px ">Tip:</span> <span  class="sheetUnderline" style="width:150px "><?php echo $sheets['o_payable']; ?></span>
+                    <span class="sheetText" style="width:60px;padding-left: 100px;padding-right: 10px ">Assign:</span><span  class="sheetUnderline" style="width:400px "><?php echo $sheets['client_name']; ?></span>
                 </div>
+                <div class="row" style="padding-bottom: 15px">
+                    <span class="sheetText" style="width:300px ">Car/Booster Seat Required:</span> <span  class="sheetUnderline" style="width:200px;text-align: left "><?php if($sheets['o_bs']=="TRUE"){ echo 'YES';}else { echo 'NO';} ?></span>
+                    <span class="sheetText" style="width:300px;padding-left: 20px ">Ride Along Required:</span><span  class="sheetUnderline" style="width:200px "><?php if($sheets['o_ra']=="TRUE"){ echo 'YES';}else { echo 'NO';} ?></span>
+                </div>
+
             </div>
-            <div class="row" style="padding-bottom: 10px">
-                <div class="col-lg-5 dinline ">
-                    <h6 class="sheetf"><b>Start date:<span>   <?php echo $sheets['o_startdate']; ?></span></b></h6>
-                </div>
-                <div class="col-lg-1 dinline ">
-                </div>
-                <div class="col-lg-6 dinline ">
-                    <h6 style="text-align: center" class="sheetf"><b>Days Needed:<span class="s_address">   <?php echo $sheets['o_days']; ?></span></b></h6>
-                </div>
-            </div>
-            <div class="row s_border ">
-                <div class="col-lg-12">
-                    <h6 class="sheetf"><b>AM pick up location:<span class="s_address"> <?php if ($sheets['o_ampickloc']!='NULL'){ echo $sheets['o_ampickloc'];} ?></span></h6>
-                </div>
-            </div>
-            <div class="row" >
-                <div class="col-lg-12">
-                    <h6 class="sheetf"><b>AM pick up time:<span class="s_address">  <?php if ($sheets['o_ampickloc']!='NULL'){echo date ('H:i',strtotime($sheets['o_ampicktime'])) ; }?></span></b></h6>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <h6 class="sheetf"><b>AM drop off location:<span class="s_address">  <?php if ($sheets['o_ampickloc']!='NULL'){  echo $sheets['o_amdroploc'];} ?></span></b></h6>
-                </div>
-            </div>
-            <div class="row" style="padding-bottom: 10px">
-                <div class="col-lg-12">
-                    <h6 class="sheetf"><b>AM drop off time:<span class="s_address">  <?php if ($sheets['o_ampickloc']!='NULL'){ echo date ('H:i',strtotime($sheets['o_amdroptime'])) ;} ?></span></b></h6>
-                </div>
-            </div>
-            <div class="row s_border">
-                <div class="col-lg-12">
-                    <h6 class="sheetf"><b>PM pick up location:<span class="s_address">   <?php   if ($sheets['o_pmdroploc']!='NULL'){ echo $sheets['o_pmpickloc'];} ?></span></b></h6>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <h6 class="sheetf"><b>PM pick up time:<span class="s_address">   <?php  if ($sheets['o_pmdroploc']!='NULL'){ echo date ('H:i',strtotime($sheets['o_pmpicktime'])) ; } ?></span></b></h6>
-                </div>
-            </div>
-            <div class="row" style="padding-bottom: 10px">
-                <div class="col-lg-12">
-                    <h6 class="sheetf"><b>PM drop off location:<span class="s_address">  <?php if ($sheets['o_pmdroploc']!='NULL'){  echo $sheets['o_pmdroploc'];} ?></span></b></h6>
-                </div>
-            </div>
-            <div class="row s_border">
-                <div class="col-lg-12">
-                    <h6 class="sheetf"><b>Parents Name:<span class="s_address">    <?php echo $sheets['s_pname']; ?></span></b></h6>
-                </div>
-            </div>
-            <div class="row" style="padding-bottom: 10px">
-                <div class="col-lg-12">
-                    <h6 class="sheetf"><b>Phone Number:<span class="s_address">   <?php echo $sheets['s_phone']; ?>  <?php if(!empty($sheets['s_altphone'])) {?> - <?php echo $sheets['s_altphone']; }?></span></b></h6>
-                </div>
-            </div>
-                <div class="row s_border">
-                    <div class="col-lg-12">
-                        <h6 style="padding-bottom: 10px" class="sheetf"><b>Comments:<span class="s_address">   <?php echo $sheets['o_dcomment']; ?></span></b></h6>
-                    </div>
-                </div>
-                <br>
-            <div class="row sheetf">
-                <div class="col-lg-12">
-                    <h5 style="text-align: center"><b>Requested By:</b></h5>
-                    <h6 style="text-align: center;padding-bottom: 10px"> <b>    <span>  Department of Transportation</span></b></h6>
-                </div>
             </div>
         </div>
-        </div>
+
+
+
 
         <div style="page-break-after: always">
 
@@ -364,16 +298,17 @@ include("./includes/nav.php");
 <div class="dontprint">
 <div id="page-wrapper">
     <div class="container-fluid">
-    
+
     </div>
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Manifest</h1>
+                <form class="form-horizontal" action="manifest.php" method="post">
                 <div>
                     <div class="container-fluid">
                         <div class="row">
                         <div class="col-lg-10" style="padding-left: 0">
-                            <select class="form-control" id="clock" onchange="getdata(id,this)" style="width:100px;">
+                            <select name="clockt" class="form-control" id="clock" onchange="getdata(id,this)" style="width:100px;">
                                     <option value="AM" <?php if($clck == 'AM'): ?> selected="selected"<?php endif; ?> >AM</option>
                                     <option value="PM" <?php if($clck == 'PM'): ?> selected="selected"<?php endif; ?>>PM</option>
                             </select>
@@ -387,11 +322,26 @@ include("./includes/nav.php");
                     </div>
                 </div>
                 <div class="form-group" style="width: 10%;" >
-                    <div class="input-group">
-                        <input type="text" name="o_startdate" class="form-control" id="manifestdate" placeholder="Select Date"  value="<?php echo $daterequired; ?>" required><span class="input-group-addon"><i class="glyphicon glyphicon-th" ></i></span>
+                    <div class="input-group" style="padding-left: 10px">
+                        <input type="text" name="o_startdate" class="form-control" id="manifestdate" placeholder="Select Date" value="<?php echo $daterequired; ?>" required><span class="input-group-addon"><i class="glyphicon glyphicon-th" ></i></span>
                     </div>
                 </div>
-
+                <div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-1" style="text-align: center">By Driver   :</label>
+                            <div class="col-sm-3">
+                                <div class="input-group"">
+                                    <input id="drivername" name="bydriverName" required class="form-control typeahead" placeholder="" style="width: 400px;" value="<?php echo $bydrivername;?>">
+                                    <input class="form-control" id="driver_id" name="driver_id" type="hidden" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <button type="submit" id="driverSearch" name="searchByDriverName" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                </div>
+                </form>
+                <br>
 
                 <div class="panel panel-default">
 

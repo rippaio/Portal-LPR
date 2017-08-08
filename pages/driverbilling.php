@@ -12,6 +12,7 @@ $other="";
 $start_date="";
 $end_date="";
 $driver_id="";
+$total_earnings="";
 ?>
 <?php
 if(isset($_POST['driver_id'])) {
@@ -31,8 +32,8 @@ if(isset($_POST['driver_id'])) {
   $d_print=getDriverBill($driver_id,$start_date,$end_date);
   $cashAdvanceDetails= getCashAdvance($driver_id,$start_date,$end_date);
   $advance=$cashAdvanceDetails['cashAdvance'];
-
-
+  $earnings_data= getTotalEarnings($driver_id);
+  $total_earnings=$earnings_data['earnings'];
 }
 
 
@@ -135,6 +136,12 @@ include("./includes/nav.php");
                            </div>
             <br>
             <div class="to2Columns">
+                <div style="text-align: left">
+                    <span>TOTAL EARNINGS TILL DATE :</b></span>
+                </div>
+                <div style="text-align: left">$<span class="total_earnings">________</span></div>
+            </div>
+            <div class="to2Columns">
                <div style="text-align: left">
                    <b> <span>TOTAL BILLINGS FOR PERIOD :</b></span></b>
                </div>
@@ -211,7 +218,7 @@ include("./includes/nav.php");
                 <div style="text-align: right">
                     <span>CHECK :</span>
                 </div>
-                <div style="text-align: left">$<span class="db_check">________</span></div>
+                <div style="text-align: left"><span class="db_check">________</span></div>
             </div>
             <div class="to2Columns">
                 <div style="text-align: right">
@@ -398,6 +405,7 @@ include("./includes/nav.php");
                     <input class="form-control" id="db_to"  type="hidden" placeholder="" value="<?php echo $end_date;?>">
                     <input class="form-control" id="cashad_driverid"  type="hidden" placeholder="" value="<?php echo $driver_id;?>">
                     <input class="form-control" id="cashad_initial"  type="hidden" placeholder="" value="<?php echo $advance;?>">
+                    <input class="form-control" id="total_earnings"  type="hidden" placeholder="" value="<?php echo $total_earnings;?>">
 
                     <div class="form-group">
                             <label>Total Billing</label>
@@ -475,12 +483,15 @@ include("./includes/nav.php");
                 </div>
                 <div class="col-lg-4">
                     <div class="form-group">
+                        <div class="form-group">
+                            <label>Check Number</label>
+                            <input class="form-control check_number"  style="width:200px" value=""/>
+                        </div>
                         <label>Total Settlement Check</label><br>
                         <p style="display:inline-block;padding-right: 140px">$<span id="d_finalCheck"><?php echo $driver_payable*0.25+$driver_tip-$advance ?></span></p>
                         <button type="button" class="btn btn-primary" style="display: inline-block" onclick="setDriverBill()">
                             Calculate
                         </button>
-
                     </div>
                 </div>
             </div>
