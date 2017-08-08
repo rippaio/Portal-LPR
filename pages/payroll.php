@@ -34,14 +34,10 @@ if(isset($_POST['driver_id'])&& !empty($_POST['driver_id'])) {
 elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
     $start_date= $_POST['fstartdate'];
     $end_date= $_POST['fenddate'];
-
     $query ="SELECT * FROM lpr_payroll LEFT JOIN lpr_driver ON lpr_payroll.driver_id=lpr_driver.driver_id WHERE '$start_date' <= startdate AND '$end_date' >=enddate ";
-
     error_log("\nChange Order" . $query , 3, "C:/xampp/apache/logs/error.log");
     $result = mysqli_query($connection, $query);
     $result_p = mysqli_query($connection, $query);
-
-
     confirm_query($result);
 }
 ?>
@@ -109,15 +105,6 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
     <div class="toprint" style="page-break-before: always;">
         <div id="page-wrapper">
             <div class="container-fluid">
-
-
-<!--                <div class="row" style="padding-top: 5px;">-->
-<!--                    <div class="col-lg-12">-->
-<!--                        <h5 style="padding-left: 60px"><b><span>LPR OF VA LLC</span></b></h6>-->
-<!--                            <h6 style="padding-left: 60px"><b><span>3455 AZALEA GARDEN ROAD</span></b>  <span></span></h5>-->
-<!--                        <h6 style="padding-left: 60px"><b><span>NORFOLK,VA,23513</span><span style="float:right">--><?php //echo date("m/d/Y"); ?><!--</span></b></h6>-->
-<!--                    </div>-->
-<!--                </div>-->
                 <div class="row" style="padding-top: 40px;">
                     <div class="col-lg-12">
                         <h6><b><span style="float:right"><?php echo date("m/d/Y"); ?></span></b></h6>
@@ -173,7 +160,7 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                         <h6><span style="float:right;padding-right: 20px"><?php echo $sheets['amount'];?></span></h6>
                     </div>
                 </div>
-                <div class="row" style="padding-top:200px";>
+                <div class="row" style="padding-top: 20px;0px";>
                     <div class="col-lg-12">
                         <h6 style="padding-left: 150px;line-height: 0.3em"><span><?php echo $sheets["startdate"];?></span> - <span><?php echo $sheets["enddate"];?> </span>
                             <span style="float:right;padding-right: 20px"><?php echo $sheets['amount'];?></span></h6>
