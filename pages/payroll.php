@@ -110,7 +110,7 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                         <h6><b><span style="float:right"><?php echo date("m/d/Y"); ?></span></b></h6>
                     </div>
                 </div>
-                <div class="row" style="padding-top: 30px;padding-left: 60px">
+                <div class="row" style="padding-top: 25px;padding-left: 60px">
                     <div class="col-lg-12">
                         <h5 style="padding-left: 60px"><b><span><?php echo $sheets['driver_fname'];?></span> <span><?php echo $sheets['driver_lname'];?></span>
                             <span style="float:right;padding-right: 20px">** <?php echo $sheets['amount'];?></span></b></h5>
@@ -131,9 +131,9 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                     </div>
                 </div>
 
-                <div class="row" style="padding-top:25px";>
+                <div class="row" style="padding-top:10px";>
                     <div class="col-lg-12">
-                        <h6 style="padding-left: 150px;line-height: 0.3em">Independent<span>  <?php echo $sheets["startdate"];?></span> - <span><?php echo $sheets["enddate"];?></span></h6>
+                        <h6 style="padding-left: 100px;line-height: 0.3em">Independent<span>  <?php echo $sheets["startdate"];?></span> - <span><?php echo $sheets["enddate"];?></span></h6>
                     </div>
                 </div>
                 <div class="row" style="padding-top:70px";>
@@ -160,7 +160,7 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                         <h6><span style="float:right;padding-right: 20px"><?php echo $sheets['amount'];?></span></h6>
                     </div>
                 </div>
-                <div class="row" style="padding-top: 200px;";>
+                <div class="row" style="padding-top: 240px;";>
                     <div class="col-lg-12">
                         <h6 style="padding-left: 150px;line-height: 0.3em">Independent<span>  <?php echo $sheets["startdate"];?></span> - <span><?php echo $sheets["enddate"];?> </span>
                             <span style="float:right;padding-right: 20px"><?php echo $sheets['amount'];?></span></h6>
