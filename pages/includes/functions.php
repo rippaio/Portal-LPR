@@ -41,7 +41,7 @@
 		
 		$query  = "INSERT INTO lpr_client ";
 		$query .= "(client_name, client_abr, client_street, client_address, client_city, client_state, client_zip, client_country, client_contact, zone_id) ";
-		$query .= "VALUES ('$client_name',  '$client_abr', '$client_street', '$client_address', '$client_city', '$client_state', $client_zip, '$client_country', '$client_contact', $client_zone) ";
+		$query .= "VALUES ('$client_name',  '$client_abr', '$client_street', '$client_address', '$client_city', '$client_state', '$client_zip', '$client_country', '$client_contact', $client_zone) ";
 		//echo $query;
 		$result_id = mysqli_query($connection, $query);
 		error_log("\ninsert_client" . $query , 3, "C:/xampp/apache/logs/error.log");
@@ -73,7 +73,7 @@
 		global $connection;
 		
 		$query  = "UPDATE lpr_client SET ";
-		$query .= "client_name = '$client_name', client_abr = '$client_abr', client_street = '$client_street', client_address = '$client_address' , client_city = '$client_city', client_state = '$client_state', client_zip = $client_zip, client_country ='$client_country', client_contact ='$client_contact', zone_id= $client_zone ";
+		$query .= "client_name = '$client_name', client_abr = '$client_abr', client_street = '$client_street', client_address = '$client_address' , client_city = '$client_city', client_state = '$client_state', client_zip = '$client_zip', client_country ='$client_country', client_contact ='$client_contact', zone_id= $client_zone ";
 		$query .= "WHERE client_id = $client_id ";
 		//echo $query;
 		$result_id = mysqli_query($connection, $query);

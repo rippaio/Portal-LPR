@@ -3,6 +3,10 @@
   include("./includes/functions.php"); 
 ?>
 <?php 
+$query_client  = "SELECT * FROM lpr_zones";
+$result_client = mysqli_query($connection, $query_client);
+$result_client3 = mysqli_query($connection, $query_client);
+
 if(isset($_POST['addclient']))
 {
     $client_name = $_POST['clientname'];
@@ -20,6 +24,7 @@ insert_client($client_name, $client_abr, $client_street, $client_address, $clien
 }
 if(isset($_POST['updateclient']))
 {
+
     $client_name = $_POST['clientname'];
     $client_abr = $_POST['abbrevation'];
     $client_street = $_POST['street'];
@@ -32,6 +37,14 @@ if(isset($_POST['updateclient']))
     $client_zone = (int)$_POST['zone'];
 
 update_client($client_name, $client_abr, $client_street, $client_address, $client_city, $client_state, $client_zip, $client_country, $client_contact, $_GET['client_id'],$client_zone);
+}
+if(isset($_GET['client_id'])){
+    $client = (int)$_GET['client_id'];
+    $query_client2  = "SELECT * FROM lpr_client where client_id=$client";
+    $result_client2 = mysqli_query($connection, $query_client2);
+     while($subject_client2 = mysqli_fetch_assoc($result_client2)) {
+        $zone_id = $subject_client2['zone_id'];
+     }
 }
 ?>
 <?php
@@ -87,14 +100,16 @@ update_client($client_name, $client_abr, $client_street, $client_address, $clien
                             </div>
                             <div class="form-group">
                                 <label>Zone-Type</label>
-                                    <select class="form-control" id="stypeSelect" name="stypeSelect" required>
-                                        <option value="">Select</option>
-                                        <option value="1">Norfolk</option>
-                                        <option value="2">Virginia Beach</option>
-                                        <option value="3">Chesapeake</option>
-                                        <option value="4">Portsmouth</option>
-                                        <option value="5">Hampton</option>
-                                        <option value="6">Suffolk</option>
+                                    <select class="form-control" id="stypeSelect" name="zone" required>
+                                        <?php
+                                                // 3. Use returned data (if any)
+                                                while($subject_client = mysqli_fetch_assoc($result_client3)) {
+                                                    // output data from each row
+                                            ?>
+                                                    <option value="<?php echo $subject_client["zone_id"]; ?>" <?php if ($zone_id == $subject_client["zone_id"]) { ?>selected="true" <?php }; ?> ><?php echo $subject_client["zone_loc"]; ?></option>
+                                            <?php
+                                                }
+                                            ?>
 
                                     </select>
                                 </div>
@@ -162,12 +177,15 @@ else{
                                 <label>Zone-Type</label>
                                     <select class="form-control" id="stypeSelect" name="zone" required>
                                         <option value="">Select</option>
-                                        <option value="1">Norfolk</option>
-                                        <option value="2">Virginia Beach</option>
-                                        <option value="3">Chesapeake</option>
-                                        <option value="4">Portsmouth</option>
-                                        <option value="5">Hampton</option>
-                                        <option value="6">Suffolk</option>
+                                             <?php
+                                                // 3. Use returned data (if any)
+                                                while($subject_client = mysqli_fetch_assoc($result_client)) {
+                                                    // output data from each row
+                                            ?>
+                                                    <option value="<?php echo $subject_client["zone_id"]; ?>"><?php echo $subject_client["zone_loc"]; ?></option>
+                                            <?php
+                                                }
+                                            ?>
 
                                     </select>
                                 </div>
