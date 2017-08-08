@@ -1401,9 +1401,6 @@ function  printDriverBill(){
     $('.db_totalPayable').text(+$('#d_finalCheck').text());
     $('.db_totalPrint').text(+$('#d_finalCheck').text());
     $('.db_issuedDate').text(db_date);
-    $('.total_earnings').text($('#total_earnings').val());
-     $('.db_check').text($('.check_number').val());
-
 
     window.print();
 
@@ -1501,10 +1498,6 @@ $('#savepl_button').click(function(element){
             success: function(data) {
                 log(data);
                 $('#savepl_button').text('Saved');
-                var earnings= +$('#total_earnings').val();
-                var finalCheck=+$('#d_finalCheck').text();
-                var total=  earnings+finalCheck;
-                $('#total_earnings').val(total.toFixed(2));
                 $('#savepl_button').attr('disabled', true);
               
             },
