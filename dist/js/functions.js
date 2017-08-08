@@ -218,9 +218,12 @@ $( "#updateorder" ).submit(function( event ) {
 				    return this.value;
 				}).get().join(",");
 	formData['mode'] = "update";
-	formData['o_ampicktime'] = formData['o_ampicktime'] + ':00';
-	formData['o_amdroptime'] = formData['o_amdroptime'] + ':00';
-	formData['o_pmpicktime'] = formData['o_pmpicktime'] + ':00';
+	// formData['o_ampicktime'] = formData['o_ampicktime'] + ':00';
+	// formData['o_amdroptime'] = formData['o_amdroptime'] + ':00';
+	// formData['o_pmpicktime'] = formData['o_pmpicktime'] + ':00';
+    formData['o_ampicktime'] = $("[name='o_ampicktime']").val() + ':00';
+    formData['o_amdroptime'] = $("[name='o_amdroptime']").val() + ':00';
+    formData['o_pmpicktime'] = $("[name='o_pmpicktime']").val() + ':00';
 	event.preventDefault();
 	log(formData);
 
@@ -272,6 +275,10 @@ $('.typeahead').click(function(){
 
 $('.typeahead_ra').click(function(){
     getridealongs();
+});
+
+$('.typeahead_student').click(function(){
+    get_students();
 });
 
 function getdrivers() {
@@ -338,6 +345,46 @@ function getridealongs() {
                     // manually update the textbox and hidden field
                     $(this).val(ui.item.label);
                     $('input[name="ra_id"]').val(ui.item.value);
+                    log(ui.item.value);
+                }
+            });
+          
+        },
+        error: function(xhr, desc, err) {
+          console.log(xhr);
+          console.log("Details: " + desc + "\nError:" + err);
+        }
+      }); // end ajax call
+}
+
+function get_students() {
+
+    var sdata = {};
+    sdata['mode'] = "get_students";
+    //sdata['client_id'] = $('#ctypeSelect').children("option").filter(":selected").data('zone_id');
+
+    $.ajax({
+        url: 'ajax/neworder_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            var driverObj = $.parseJSON(data);
+            log(data);
+
+            $(".typeahead_student").autocomplete({
+                source: driverObj,
+                focus: function(event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox
+                    $(this).val(ui.item.label);
+                },
+                select: function(event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox and hidden field
+                    $(this).val(ui.item.label);
+                    $('input[name="stu_id"]').val(ui.item.value);
                     log(ui.item.value);
                 }
             });

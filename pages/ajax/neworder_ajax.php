@@ -41,6 +41,15 @@ while($result = mysqli_fetch_assoc($ra)) {
 }
 echo json_encode($return_dobj);
 }
+if ($obj["mode"]=="get_students") {
+
+$ra = studentdetails();
+$return_dobj = array();
+while($result = mysqli_fetch_assoc($ra)) {
+	array_push($return_dobj, $result);
+}
+echo json_encode($return_dobj);
+}
 if ($obj["mode"]=="tripcost") {
 
 $zone_id = (int)$obj["zone_id"];
@@ -77,6 +86,8 @@ $o_fd = (isset($obj["o_fd"]) ? 'TRUE' : 'FALSE');
 $o_ra = (isset($obj["o_ra"]) ? 'TRUE' : 'FALSE');
 $o_wc = (isset($obj["o_wc"]) ? 'TRUE' : 'FALSE');
 $o_as = (isset($obj["o_as"]) ? 'TRUE' : 'FALSE');
+$o_cs = (isset($obj["o_cs"]) ? 'TRUE' : 'FALSE');
+$o_bs = (isset($obj["o_bs"]) ? 'TRUE' : 'FALSE');
 $driver_id = ((int)$obj["driver_id"]==0? 'NULL' : (int)$obj["driver_id"]) ;
 $o_icomment = verify_in($obj["icomment"]);
 $o_dcomment = verify_in($obj["dcomment"]);
@@ -85,7 +96,7 @@ $o_reqby = (int)$obj["optradio"];
 $o_payable = (float)$obj["o_payable"];
 $o_tip = (float)$obj["o_tip"];
 $ra_id = ((int)$obj["ra_id"]==0? 'NULL' : (int)$obj["ra_id"]) ;
-$order = createorder($client_id,$school_id,$o_startdate,$o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip,$ra_id);
+$order = createorder($client_id,$school_id,$o_startdate,$o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$o_cs,$o_bs,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip,$ra_id);
 
 
 $o_id = $order['o_id'];

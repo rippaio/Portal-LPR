@@ -21,7 +21,7 @@ $cb_stypeSelect=$_POST['cb_stypeSelect'];
 $cb_sSelect=$_POST['cb_sSelect'];
 $cb_startdate=$_POST['cb_startdate'];
 $cb_enddate=$_POST['cb_enddate'];
-$cb_sname=$_POST['cb_sname'];
+$cb_sname=(int)$_POST['stu_id'];
 $cb_details= getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
 $cb_forPrint=getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
 $cb_payment=getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
@@ -316,7 +316,8 @@ if(isset($_POST['cb_ctypeSelect'])) {
                                 </div>
                                 <div class="form-group">
                                     <label>Student</label>
-                                    <input class="form-control typeahead" placeholder="" name="cb_sname">
+                                    <input class="form-control typeahead_student" placeholder="">
+                                    <input class="form-control" name="stu_id" type="hidden" placeholder="">
                                 </div>
 
                                 <label>Start Date</label>

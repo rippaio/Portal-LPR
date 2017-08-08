@@ -135,11 +135,11 @@
 		}
 	}
 
-	function createorder($client_id,$school_id,$o_startdate,$o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip,$ra_id){
+	function createorder($client_id,$school_id,$o_startdate,$o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$o_cs,$o_bs,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip,$ra_id){
 
 		global $connection;
-		$query = "INSERT INTO lpr_order(client_id, school_id, o_startdate, o_enddate, o_status, o_ampickloc, o_ampicktime, o_amdroploc, o_amdroptime, o_pmpickloc, o_pmdroploc, o_pmpicktime, o_days, o_fd, o_ra, o_wc, o_as, driver_id, o_icomment, o_dcomment, o_billable, o_reqby, o_payable, o_tip, ra_id) ";
-		$query .= "VALUES ($client_id,  $school_id, '$o_startdate', '$o_enddate', '$o_status', '$o_ampickloc', '$o_ampicktime', '$o_amdroploc', '$o_amdroptime', '$o_pmpickloc', '$o_pmdroploc', '$o_pmpicktime', '$o_days', '$o_fd',  '$o_ra', '$o_wc', '$o_as', $driver_id, '$o_icomment', '$o_dcomment', $o_billable, $o_reqby, $o_payable, $o_tip, $ra_id) ";
+		$query = "INSERT INTO lpr_order(client_id, school_id, o_startdate, o_enddate, o_status, o_ampickloc, o_ampicktime, o_amdroploc, o_amdroptime, o_pmpickloc, o_pmdroploc, o_pmpicktime, o_days, o_fd, o_ra, o_wc, o_as, o_cs, o_bs, driver_id, o_icomment, o_dcomment, o_billable, o_reqby, o_payable, o_tip, ra_id) ";
+		$query .= "VALUES ($client_id,  $school_id, '$o_startdate', '$o_enddate', '$o_status', '$o_ampickloc', '$o_ampicktime', '$o_amdroploc', '$o_amdroptime', '$o_pmpickloc', '$o_pmdroploc', '$o_pmpicktime', '$o_days', '$o_fd',  '$o_ra', '$o_wc', '$o_as', '$o_cs','$o_bs', $driver_id, '$o_icomment', '$o_dcomment', $o_billable, $o_reqby, $o_payable, $o_tip, $ra_id) ";
 		error_log("Insert order\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result = mysqli_query($connection, $query);
 		
@@ -222,7 +222,7 @@
 	function driverdetails()
 	{
 		global $connection;
-		$query = "SELECT driver_id AS value,CASE WHEN driver_dname = ' ' THEN CONCAT(driver_fname,' ', driver_lname) ELSE CONCAT(driver_fname,' ', driver_lname,'(',driver_dname,')') END AS label FROM `lpr_driver` ";
+		$query = "SELECT driver_id AS value,CASE WHEN driver_dname = ' ' THEN CONCAT(driver_fname,' ', driver_lname) ELSE CONCAT(driver_fname,' ', driver_lname,'(',driver_dname,')') END AS label FROM `lpr_driver` WHERE driver_status = 'active'";
 		//error_log("Insert bill\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result_client = mysqli_query($connection, $query);
 		
@@ -239,7 +239,17 @@
 		confirm_query($result_client);
 		return $result_client;
 	}
-
+	
+	function studentdetails()
+	{
+		global $connection;
+		$query = "SELECT `s_id` AS value, CONCAT(`s_fname`,' ',`s_lname`) as label FROM `lpr_student` LEFT JOIN lpr_order on lpr_student.o_id=lpr_order.o_id WHERE lpr_order.o_status = 'active'";
+		//error_log("Insert bill\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+		$result_client = mysqli_query($connection, $query);
+		
+		confirm_query($result_client);
+		return $result_client;
+	}
 	function update_orderdriver($orderid,$driverid)
 	{
 		global $connection;
@@ -372,10 +382,10 @@ function changeorderstatus($o_id,$status){
     return $result;
 }
 
-	function updateorder($o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip,$o_id,$ra_id){
+	function updateorder($o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroploc,$o_amdroptime,$o_pmpickloc,$o_pmdroploc,$o_pmpicktime,$o_days,$o_fd,$o_ra,$o_wc,$o_as,$o_cs,$o_bs,$driver_id,$o_icomment,$o_dcomment,$o_billable,$o_reqby,$o_payable,$o_tip,$o_id,$ra_id){
 
 		global $connection;
-		$query = "UPDATE lpr_order SET o_enddate='$o_enddate', o_status='$o_status', o_ampickloc='$o_ampickloc', o_ampicktime='$o_ampicktime', o_amdroploc='$o_amdroploc', o_amdroptime='$o_amdroptime',o_pmpickloc='$o_pmpickloc', o_pmdroploc='$o_pmdroploc', o_pmpicktime='$o_pmpicktime', o_days='$o_days', o_fd='$o_fd', o_ra='$o_ra', o_wc='$o_wc', o_as='$o_as', driver_id=$driver_id, o_icomment='$o_icomment', o_dcomment='$o_dcomment', o_billable=$o_billable, o_reqby=$o_reqby, o_payable=$o_payable, o_tip= $o_tip, ra_id=$ra_id WHERE o_id = $o_id";
+		$query = "UPDATE lpr_order SET o_enddate='$o_enddate', o_status='$o_status', o_ampickloc='$o_ampickloc', o_ampicktime='$o_ampicktime', o_amdroploc='$o_amdroploc', o_amdroptime='$o_amdroptime',o_pmpickloc='$o_pmpickloc', o_pmdroploc='$o_pmdroploc', o_pmpicktime='$o_pmpicktime', o_days='$o_days', o_fd='$o_fd', o_ra='$o_ra', o_wc='$o_wc', o_as='$o_as',o_cs='$o_cs',o_bs='$o_bs', driver_id=$driver_id, o_icomment='$o_icomment', o_dcomment='$o_dcomment', o_billable=$o_billable, o_reqby=$o_reqby, o_payable=$o_payable, o_tip= $o_tip, ra_id=$ra_id WHERE o_id = $o_id";
 		error_log("Insert order\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result = mysqli_query($connection, $query);
 		
@@ -607,7 +617,7 @@ function getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_sta
         $query .=" and lpr_school.school_id=$cb_sSelect";
     }
     if(!empty($cb_sname)){
-        $query .=" and s_fname='$cb_sname'";
+        $query .=" and triplog_studentid=$cb_sname";
     }
     $result = mysqli_query($connection, $query);
     error_log("\nClient Billing Query " . $query, 3, "C:/xampp/apache/logs/error.log");
@@ -638,7 +648,7 @@ function getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb
         $query .=" and lpr_school.school_id=$cb_sSelect";
     }
     if(!empty($cb_sname)){
-        $query .=" and s_fname='$cb_sname'";
+        $query .=" and triplog_studentid=$cb_sname";
     }
     $query.=")t1";
     $result = mysqli_query($connection, $query);
@@ -700,6 +710,22 @@ function dr_changestatus($d_id,$status){
     $result = mysqli_query($connection, $query);
     error_log("\nInside  driver changestatus" . $query , 3, "C:/xampp/apache/logs/error.log");
     confirm_query($result);
+    if ($status=="inactive") {
+    	$query2 = "UPDATE `lpr_order` SET `driver_id` = NULL WHERE driver_id=$d_id";
+	    $result2 = mysqli_query($connection, $query2);
+	    error_log("\nInside  driver changestatus updating order table" . $query2 , 3, "C:/xampp/apache/logs/error.log");
+	    confirm_query($result2);
+	    $query3 = "UPDATE lpr_driver SET driver_termdate = CURRENT_DATE WHERE driver_id = $d_id";
+	    $result3 = mysqli_query($connection, $query3);
+	    error_log("\nInside  driver changestatus" . $query3 , 3, "C:/xampp/apache/logs/error.log");
+	    confirm_query($result);
+    }
+    elseif ($status=="active") {
+      	$query3 = "UPDATE lpr_driver SET driver_termdate = NULL WHERE driver_id = $d_id";
+	    $result3 = mysqli_query($connection, $query3);
+	    error_log("\nInside  driver changestatus" . $query3 , 3, "C:/xampp/apache/logs/error.log");
+	    confirm_query($result);
+      }  
 
 }
 
@@ -793,7 +819,7 @@ function delete_catransaction($transactionid){
 function convert_number_to_words($number) {
 
     $hyphen      = '-';
-    $conjunction = ' and ';
+    $conjunction = ' ';
     $separator   = ', ';
     $negative    = 'negative ';
     $decimal     = ' point ';
@@ -901,5 +927,18 @@ function convert_number_to_words($number) {
 
     return $string;
 }
+function convert_number_to_money($number){
+	$words = convert_number_to_words($number);
 
+	if(strpos($words, 'point') === false){
+		return $words." and 00/100";
+	}
+	else{
+		$s = explode("point",$words);
+		unset($s[1]);
+		$words = $s[0];
+		$words .= 'and '.substr($number, -2).'/100';
+		return $words;
+	}
+}
 ?>
