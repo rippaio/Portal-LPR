@@ -56,18 +56,27 @@ $result_triplogdata = getAllTripData();
 //(select triplog_o_id,GROUP_CONCAT(triplog_status) as trip_status,GROUP_CONCAT(triplog_clock) as trip_period,triplog_date  from  lpr_triplog  group by triplog_o_id,triplog_date) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3
 //where trip_status is null or trip_status  not like '%cancel%cancel%'";
 
-$query_print="select * from(select * from
-(select * from (SELECT lpr_order.o_id,lpr_order.o_bs,lpr_order.driver_id,lpr_order.o_startdate,lpr_order.o_enddate,CASE WHEN '$clck' = 'AM' THEN o_ampickloc else o_pmpickloc END as pickloc,CASE WHEN '$clck' = 'AM' THEN o_ampicktime else o_pmpicktime END as picktime,CASE WHEN '$clck' = 'AM' THEN o_amdroploc else o_pmdroploc END as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
-FROM lpr_order,lpr_client,lpr_student where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id  and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
+$query_print="select * from (
+(select * from  (select * from
+(select * from (SELECT lpr_order.o_id,lpr_order.o_bs,lpr_order.driver_id,lpr_order.o_startdate,lpr_order.o_enddate,o_ampickloc as pickloc,o_ampicktime as picktime,concat(school_name,', ', o_amdroploc) as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
+FROM lpr_order,lpr_client,lpr_student,lpr_school where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and lpr_school.school_id=lpr_order.school_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
 left join
 (select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='AM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3 
-where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where pickloc not like 'NULL' and droploc not like 'NULL'";
+where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where pickloc not like 'NULL')
+union 
+(select * from(select * from
+(select * from (SELECT lpr_order.o_id,lpr_order.o_bs,lpr_order.driver_id,lpr_order.o_startdate,lpr_order.o_enddate,concat(school_name,', ',o_pmpickloc) as pickloc,o_pmpicktime as picktime,o_pmdroploc as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
+FROM lpr_order,lpr_client,lpr_student,lpr_school where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and lpr_school.school_id=lpr_order.school_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
+left join
+(select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='PM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3 
+where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where droploc not like 'NULL'))u1  left join lpr_driver on lpr_driver.driver_id=u1.driver_id";
 if(!empty($byBriverId)){
-    $query_print .=" and t4.driver_id=$byBriverId";
+    $query_print .=" where u1.driver_id=$byBriverId";
 }
+$query_print .=" order by driver_fname,picktime";
+error_log("\nManifest print query " . $query_print , 3, "C:/xampp/apache/logs/error.log");
 $result_tripPrint = mysqli_query($connection, $query_print);
 confirm_query($result_tripPrint);
-error_log("\nManifest print query " . $query_print , 3, "C:/xampp/apache/logs/error.log");
 ?>
 <?php
 include("./includes/htmlheader.php");
@@ -256,21 +265,12 @@ include("./includes/nav.php");
                     <div class="row" style="padding-bottom: 70px">
                         <span  class="sheetUnderline" style="width:800px"></span>
                     </div>
-
-                <?php
-                $driver="";
-                if(!empty($sheets['driver_id'])){
-                    $driverName=get_drivername($sheets['driver_id']);
-                    $driver=$driverName['driver_name'];
-
-                } ?>
-
                 <div class="row" style="padding-bottom: 15px">
                     <span class="sheetText" style="width:50px ">Rate:</span> <span  class="sheetUnderline" style="width:150px "><?php echo $sheets['o_payable']; ?></span>
-                    <span class="sheetText" style="width:60px;padding-left: 100px;padding-right: 10px ">Driver:</span> <span  class="sheetUnderline" style="width:400px "><?php echo $driver; ?></span>
+                    <span class="sheetText" style="width:60px;padding-left: 100px;padding-right: 10px ">Driver:</span> <span  class="sheetUnderline" style="width:400px "><?php if(!empty($sheets['driver_fname'])) {echo $sheets['driver_fname'];?> <?php echo $sheets['driver_lname']; } else echo "";?></span>
                 </div>
                 <div class="row" style="padding-bottom: 30px">
-                    <span class="sheetText" style="width:50px ">Tip:</span> <span  class="sheetUnderline" style="width:150px "><?php echo $sheets['o_payable']; ?></span>
+                    <span class="sheetText" style="width:50px ">Tip:</span> <span  class="sheetUnderline" style="width:150px "><?php echo $sheets['o_tip']; ?></span>
                     <span class="sheetText" style="width:60px;padding-left: 100px;padding-right: 10px ">Assign:</span><span  class="sheetUnderline" style="width:400px "><?php echo $sheets['client_name']; ?></span>
                 </div>
                 <div class="row" style="padding-bottom: 15px">

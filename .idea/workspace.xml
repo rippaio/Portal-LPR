@@ -2,7 +2,632 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96326416-5915-4291-9f64-22fb087de77c" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/127_0_0_1 (1).sql" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master (2).zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/IMG_5024 (1).JPG" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/LPR.pptx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/README local.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/calendar.sql" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/css/bootstrap-theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/css/bootstrap-theme.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/css/bootstrap-theme.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/css/bootstrap.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/css/github.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/images/screenshot-1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/js/highlight.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/js/html5shiv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/js/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/js/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/assets/js/respond.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/bower.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/dist/bootstrap-clockpicker.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/dist/bootstrap-clockpicker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/dist/bootstrap-clockpicker.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/dist/jquery-clockpicker.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/dist/jquery-clockpicker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/dist/jquery-clockpicker.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/dist/jquery-clockpicker.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/gulpfile.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/jquery.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/src/clockpicker.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/src/clockpicker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/src/standalone.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/test/all.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/test/assets/qunit-1.14.0.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/test/assets/qunit-1.14.0.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/test/assets/utils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/test/suites/basic.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/clockpicker-gh-pages/test/suites/data-api.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/css/fullcalendar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/data/flot-data.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/data/morris-data.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/dist/css/sb-admin-2.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/dist/css/sb-admin-2.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/dist/css/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/dist/js/functions" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/dist/js/functions.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/dist/js/sb-admin-2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/dist/js/sb-admin-2.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/CHANGELOG.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/CONTRIBUTING.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/agenda-views.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/background-events.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/basic-views.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/default.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/external-dragging.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/gcal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/json.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/json/events.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/list-views.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/locales.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/php/get-events.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/php/get-timezones.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/php/utils.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/selectable.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/theme.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/timezones.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/demos/week-numbers.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/fullcalendar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/fullcalendar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/fullcalendar.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/fullcalendar.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/fullcalendar.print.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/gcal.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-bg_diagonals-thick_90_eeeeee_40x40.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-bg_glass_100_e4f1fb_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-bg_glass_50_3baae3_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-bg_glass_80_d7ebf9_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-bg_highlight-hard_100_f2f5f7_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-bg_highlight-hard_70_000000_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-bg_highlight-soft_100_deedf7_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-bg_highlight-soft_25_ffef8f_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-icons_2694e8_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-icons_2e83ff_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-icons_3d80b3_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-icons_72a7cf_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/images/ui-icons_ffffff_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/cupertino/jquery-ui.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/jquery-ui.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/lib/moment.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale-all.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/ar-ma.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/ar-sa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/ar-tn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/ar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/bg.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/cs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/da.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/de-at.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/de.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/el.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/en-au.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/en-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/en-gb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/en-ie.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/en-nz.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/es-do.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/es.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/eu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/fa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/fi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/fr-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/fr-ch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/fr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/gl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/he.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/hi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/hr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/hu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/id.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/is.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/it.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/ja.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/ko.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/lb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/lt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/lv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/mk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/ms-my.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/ms.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/nb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/nl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/nn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/pl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/pt-br.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/pt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/ro.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/ru.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/sk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/sl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/sr-cyrl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/sr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/sv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/th.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/tr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/uk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/vi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/fullcalendar-3.0.1/locale/zh-tw.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/gulpfile.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/js/fullcalendar.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/js/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/js/moment.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/js/sb-admin-2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/less/mixins.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/less/sb-admin-2.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/less/variables.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/lpr_portal.sql" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/addEvent.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/addclient.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/addclient.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/adddriver.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/addevent.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/addschool.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/ajax/neworder_ajax.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/bdd.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/blank.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/buttons.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/calendar.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/changeorder.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/driverbilling.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/drivers.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/editEventDate.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/editEventTitle.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/eventhandler.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/flot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/forms.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/grid.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/icons.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/includes/db_connection.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/includes/footer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/includes/functions.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/includes/functions_old.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/includes/htmlheader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/includes/nav.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/includes/session.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/login.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/manifest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/manifest2.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/morris.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/neworder.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/neworder.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/notifications.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/panels-wells.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/schooldata.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/schooldata.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/snapshot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/src/addclient.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/src/addevent.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/src/bootstrap-switch.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/src/bootstrap-switch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/src/clockpicker.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/src/clockpicker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/src/fullcalendar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/src/fullcalendar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/src/moment.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/src/standalone.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/studentbilling.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/tables.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/pages/typography.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.standalone.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.standalone.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.standalone.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.standalone.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker3.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker3.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker3.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker3.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker3.standalone.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker3.standalone.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker3.standalone.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker3.standalone.min.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.ar.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.az.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.bg.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.bs.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.ca.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.cs.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.cy.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.da.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.de.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.el.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.en-AU.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.en-GB.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.eo.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.es.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.et.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.eu.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.fa.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.fi.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.fo.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.fr-CH.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.fr.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.gl.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.he.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.hr.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.hu.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.hy.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.id.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.is.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.it-CH.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.it.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.ja.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.ka.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.kh.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.kk.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.ko.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.kr.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.lt.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.lv.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.me.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.mk.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.mn.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.ms.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.nb.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.nl-BE.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.nl.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.no.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.pl.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.pt-BR.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.pt.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.ro.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.rs-latin.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.rs.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.ru.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.sk.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.sl.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.sq.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.sr-latin.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.sr.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.sv.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.sw.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.th.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.tr.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.uk.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.vi.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.zh-CN.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-datepicker-1.6.4-dist/locales/bootstrap-datepicker.zh-TW.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-social/bootstrap-social.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-social/bootstrap-social.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap-social/bootstrap-social.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap/fonts/glyphicons-halflings-regular.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap/fonts/glyphicons-halflings-regular.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap/js/bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/bootstrap/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables-plugins/dataTables.bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables-plugins/dataTables.bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables-plugins/dataTables.bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables-plugins/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables-responsive/dataTables.responsive.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables-responsive/dataTables.responsive.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables-responsive/dataTables.responsive.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.bootstrap4.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.bootstrap4.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.foundation.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.foundation.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.jqueryui.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.jqueryui.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.material.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.material.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.semanticui.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.semanticui.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.uikit.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/dataTables.uikit.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/jquery.dataTables.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/jquery.dataTables.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/css/jquery.dataTables_themeroller.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/images/Sorting icons.psd" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/images/favicon.ico" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/images/sort_asc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/images/sort_asc_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/images/sort_both.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/images/sort_desc.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/images/sort_desc_disabled.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.bootstrap.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.bootstrap4.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.bootstrap4.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.foundation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.foundation.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.jqueryui.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.jqueryui.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.material.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.material.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.semanticui.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.semanticui.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.uikit.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/dataTables.uikit.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/jquery.dataTables.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/jquery.dataTables.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/datatables/js/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot-tooltip/jquery.flot.tooltip.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot-tooltip/jquery.flot.tooltip.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot-tooltip/jquery.flot.tooltip.source.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/excanvas.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/excanvas.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.colorhelpers.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.canvas.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.categories.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.crosshair.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.errorbars.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.fillbetween.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.image.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.navigate.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.pie.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.resize.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.selection.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.stack.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.symbol.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.threshold.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.flot.time.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/flot/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/HELP-US-OUT.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/css/font-awesome.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/css/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/fonts/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/fonts/fontawesome-webfont.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/animated.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/bordered-pulled.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/core.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/fixed-width.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/font-awesome.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/icons.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/larger.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/list.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/mixins.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/path.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/rotated-flipped.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/screen-reader.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/stacked.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/less/variables.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_animated.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_bordered-pulled.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_core.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_fixed-width.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_icons.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_larger.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_list.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_mixins.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_path.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_rotated-flipped.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_screen-reader.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_stacked.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/_variables.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome-4.6.3/scss/font-awesome.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/HELP-US-OUT.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/css/font-awesome.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/css/font-awesome.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/css/font-awesome.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/fonts/FontAwesome.otf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/fonts/fontawesome-webfont.eot" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/fonts/fontawesome-webfont.svg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/fonts/fontawesome-webfont.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/fonts/fontawesome-webfont.woff" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/fonts/fontawesome-webfont.woff2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/animated.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/bordered-pulled.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/core.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/extras.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/fixed-width.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/font-awesome.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/icons.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/larger.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/list.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/mixins.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/path.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/rotated-flipped.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/screen-reader.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/spinning.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/stacked.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/less/variables.less" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_animated.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_bordered-pulled.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_core.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_extras.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_fixed-width.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_icons.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_larger.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_list.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_mixins.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_path.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_rotated-flipped.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_screen-reader.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_spinning.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_stacked.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/_variables.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/font-awesome/scss/font-awesome.scss" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/CHANGELOG.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/CONTRIBUTING.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/agenda-views.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/background-events.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/basic-views.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/default.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/external-dragging.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/gcal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/json.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/json/events.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/list-views.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/locales.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/php/get-events.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/php/get-timezones.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/php/utils.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/selectable.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/theme.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/timezones.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/demos/week-numbers.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/fullcalendar.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/fullcalendar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/fullcalendar.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/fullcalendar.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/fullcalendar.print.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/gcal.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-bg_diagonals-thick_90_eeeeee_40x40.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-bg_glass_100_e4f1fb_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-bg_glass_50_3baae3_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-bg_glass_80_d7ebf9_1x400.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-bg_highlight-hard_100_f2f5f7_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-bg_highlight-hard_70_000000_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-bg_highlight-soft_100_deedf7_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-bg_highlight-soft_25_ffef8f_1x100.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-icons_2694e8_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-icons_2e83ff_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-icons_3d80b3_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-icons_72a7cf_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/images/ui-icons_ffffff_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/cupertino/jquery-ui.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/jquery-ui.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/lib/moment.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale-all.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/ar-ma.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/ar-sa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/ar-tn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/ar.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/bg.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/cs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/da.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/de-at.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/de.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/el.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/en-au.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/en-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/en-gb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/en-ie.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/en-nz.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/es-do.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/es.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/eu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/fa.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/fi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/fr-ca.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/fr-ch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/fr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/gl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/he.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/hi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/hr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/hu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/id.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/is.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/it.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/ja.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/ko.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/lb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/lt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/lv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/mk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/ms-my.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/ms.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/nb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/nl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/nn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/pl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/pt-br.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/pt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/ro.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/ru.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/sk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/sl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/sr-cyrl.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/sr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/sv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/th.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/tr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/uk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/vi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/zh-cn.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/fullcalendar/locale/zh-tw.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/AUTHORS.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/LICENSE.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/external/jquery/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/images/ui-icons_444444_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/images/ui-icons_555555_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/images/ui-icons_777620_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/images/ui-icons_777777_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/images/ui-icons_cc0000_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/images/ui-icons_ffffff_256x240.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/jquery-ui.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/jquery-ui.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/jquery-ui.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/jquery-ui.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/jquery-ui.structure.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/jquery-ui.structure.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/jquery-ui.theme.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/jquery-ui.theme.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery-ui-1.12.1/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery/jquery.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/jquery/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/metisMenu/metisMenu.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/metisMenu/metisMenu.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/metisMenu/metisMenu.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/metisMenu/metisMenu.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/morrisjs/morris.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/morrisjs/morris.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/morrisjs/morris.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/raphael/raphael.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Portal-LPR-master/Portal-LPR-master/vendor/raphael/raphael.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/db/lpr_portal (13).sql" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/includes/footer.php" afterPath="$PROJECT_DIR$/pages/includes/footer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/manifest.php" afterPath="$PROJECT_DIR$/pages/manifest.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,6 +639,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="footer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/includes/footer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+              <folding>
+                <marker date="1502393006450" expanded="true" signature="3494:3509" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="studentbilling.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/studentbilling.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -21,32 +658,6 @@
               <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
               <folding>
                 <marker date="1502161382778" expanded="true" signature="112:136" ph="SELECT * FRO... lpr_client" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="payroll.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/payroll.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="162" column="55" lean-forward="false" selection-start-line="162" selection-start-column="55" selection-end-line="162" selection-end-column="55" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#b#0;n#h6#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#2;n#b#0;n#h5#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h6#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#2;n#h6#0;n#div#0;n#div#5;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#h6#1;n#div#0;n#div#5;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#6;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h6#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#h6#1;n#div#0;n#div#7;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h6#0;n#div#0;n#div#8;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#2;n#h6#0;n#div#0;n#div#8;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <marker date="1502224048987" expanded="true" signature="553:730" ph="SELECT * FRO... lpr_payroll" />
-                <marker date="1502224048987" expanded="true" signature="1102:1253" ph="SELECT * FRO... lpr_payroll" />
               </folding>
             </state>
           </provider>
@@ -67,7 +678,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="driverbilling.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="driverbilling.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/driverbilling.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="373">
@@ -83,6 +694,25 @@
             <state relative-caret-position="187">
               <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dist/js/functions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding>
+                <marker date="1502393784237" expanded="true" signature="13983:13998" ph="..." />
+                <marker date="1502393784237" expanded="true" signature="55267:55282" ph="..." />
+                <marker date="1502393784237" expanded="true" signature="56547:56562" ph="..." />
+                <marker date="1502393784237" expanded="true" signature="57859:57874" ph="..." />
+                <marker date="1502393784237" expanded="true" signature="59213:59228" ph="..." />
+                <marker date="1502393784237" expanded="true" signature="60610:60625" ph="..." />
+                <marker date="1502393784237" expanded="true" signature="61993:62008" ph="..." />
+                <marker date="1502393784237" expanded="true" signature="63363:63378" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -103,7 +733,7 @@
         <entry file="file://$PROJECT_DIR$/pages/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+              <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -190,35 +820,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cashadvance.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/cashadvance.php">
+      <file leaf-file-name="manifest.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pages/manifest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="118" column="63" lean-forward="false" selection-start-line="118" selection-start-column="63" selection-end-line="118" selection-end-column="63" />
+            <state relative-caret-position="423">
+              <caret line="352" column="28" lean-forward="false" selection-start-line="352" selection-start-column="28" selection-end-line="352" selection-end-column="28" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h6#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ralongbilling.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/ralongbilling.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="193" column="12" lean-forward="false" selection-start-line="193" selection-start-column="12" selection-end-line="194" selection-end-column="36" />
-              <folding>
-                <element signature="e#2855#2919#0#HTML" expanded="true" />
-                <element signature="e#2929#6439#0#HTML" expanded="false" />
-                <element signature="e#3148#3181#0#HTML" expanded="true" />
-                <element signature="e#3526#3565#0#HTML" expanded="true" />
-                <element signature="e#6473#6499#0#HTML" expanded="true" />
+                <element signature="n#table#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#!!top" expanded="false" />
+                <marker date="1502393798350" expanded="true" signature="560:825" ph="select * fro... *" />
+                <marker date="1502393798350" expanded="true" signature="560:2845" ph="select * fro... *" />
+                <marker date="1502393798350" expanded="true" signature="560:2878" ph="select * fro... *" />
+                <marker date="1502393798350" expanded="true" signature="578:664" ph="select * fro... lpr_triplog" />
+                <marker date="1502393798350" expanded="true" signature="689:825" ph="select * fro... o_id" />
+                <marker date="1502393798350" expanded="true" signature="714:825" ph="select t1.o_... o_id" />
+                <marker date="1502393798350" expanded="true" signature="992:1565" ph="select lpr_o... " />
+                <marker date="1502393798350" expanded="true" signature="1594:2415" ph="select t1.o_... o_id" />
+                <marker date="1502393798350" expanded="true" signature="1824:2412" ph="select lpr_o... " />
+                <marker date="1502393798350" expanded="true" signature="2468:2565" ph="select lpr_s... lpr_student" />
+                <marker date="1502393798350" expanded="true" signature="2607:2692" ph="select CONCA... lpr_driver" />
+                <marker date="1502393798350" expanded="true" signature="3198:4572" ph="select * fro... *" />
+                <marker date="1502393798350" expanded="true" signature="3215:4497" ph="select * fro... o_id" />
+                <marker date="1502393798350" expanded="true" signature="3230:4236" ph="SELECT lpr_o... lpr_order" />
+                <marker date="1502393798350" expanded="true" signature="4256:4430" ph="select tripl... lpr_triplog" />
+                <marker date="1502393798350" expanded="true" signature="4590:6996" ph="select * fro... *" />
+                <marker date="1502393798350" expanded="true" signature="4590:7018" ph="select * fro... *" />
+                <marker date="1502393798350" expanded="true" signature="4590:7055" ph="select * fro... *" />
+                <marker date="1502393798350" expanded="true" signature="4607:5796" ph="select * fro... *" />
+                <marker date="1502393798350" expanded="true" signature="4623:5761" ph="select * fro... *" />
+                <marker date="1502393798350" expanded="true" signature="4638:5683" ph="select * fro... o_id" />
+                <marker date="1502393798350" expanded="true" signature="4653:5440" ph="SELECT lpr_o... lpr_order" />
+                <marker date="1502393798350" expanded="true" signature="5457:5615" ph="select tripl... lpr_triplog" />
+                <marker date="1502393798350" expanded="true" signature="5806:6992" ph="select * fro... *" />
+                <marker date="1502393798350" expanded="true" signature="5820:6957" ph="select * fro... *" />
+                <marker date="1502393798350" expanded="true" signature="5835:6879" ph="select * fro... o_id" />
+                <marker date="1502393798350" expanded="true" signature="5850:6636" ph="SELECT lpr_o... lpr_order" />
+                <marker date="1502393798350" expanded="true" signature="6653:6811" ph="select tripl... lpr_triplog" />
+                <marker date="1502393798350" expanded="true" signature="12685:12687" ph="..." />
+                <marker date="1502393798350" expanded="true" signature="18606:18638" ph="..." />
               </folding>
             </state>
           </provider>
@@ -235,11 +873,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>db_totalPayable</find>
-      <find>case</find>
-      <find>d_prin</find>
-      <find>dont</find>
-      <find>page</find>
       <find>typeahead_ra</find>
       <find>s_fname</find>
       <find>o_days</find>
@@ -265,6 +898,11 @@
       <find>admin</find>
       <find>$cb_details</find>
       <find>$driverBill</find>
+      <find>$driver</find>
+      <find>data</find>
+      <find>dataT</find>
+      <find>v</find>
+      <find>dataTab</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -292,9 +930,6 @@
         <option value="$PROJECT_DIR$/pages/ajax/ra_ajax.php" />
         <option value="$PROJECT_DIR$/pages/includes/nav.php" />
         <option value="$PROJECT_DIR$/pages/ajax/zone_ajax.php" />
-        <option value="$PROJECT_DIR$/pages/manifest.php" />
-        <option value="$PROJECT_DIR$/dist/js/functions.js" />
-        <option value="$PROJECT_DIR$/pages/includes/footer.php" />
         <option value="$PROJECT_DIR$/pages/driverbilling.php" />
         <option value="$PROJECT_DIR$/pages/ralongbilling.php" />
         <option value="$PROJECT_DIR$/pages/cashadvance.php" />
@@ -302,6 +937,9 @@
         <option value="$PROJECT_DIR$/pages/index.html" />
         <option value="$PROJECT_DIR$/pages/includes/htmlheader.php" />
         <option value="$PROJECT_DIR$/pages/includes/functions.php" />
+        <option value="$PROJECT_DIR$/pages/includes/footer.php" />
+        <option value="$PROJECT_DIR$/dist/js/functions.js" />
+        <option value="$PROJECT_DIR$/pages/manifest.php" />
       </list>
     </option>
   </component>
@@ -362,6 +1000,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Portal-LPR" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Portal-LPR" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="includes" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -520,15 +1176,16 @@
       <workItem from="1499118437311" duration="32411000" />
       <workItem from="1499796916542" duration="115181000" />
       <workItem from="1502139930484" duration="4587000" />
-      <workItem from="1502144952309" duration="18281000" />
+      <workItem from="1502144952309" duration="27721000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194621000" />
+    <option name="totallyTimeSpent" value="204061000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13177083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -595,7 +1252,7 @@
         <state relative-caret-position="1496">
           <caret line="88" column="28" lean-forward="false" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
           <folding>
-            <marker date="1502207864198" expanded="true" signature="3494:3509" ph="..." />
+            <marker date="1502393006450" expanded="true" signature="3494:3509" ph="..." />
           </folding>
         </state>
       </provider>
@@ -663,14 +1320,14 @@
         <state relative-caret-position="17238">
           <caret line="1014" column="38" lean-forward="false" selection-start-line="1014" selection-start-column="24" selection-end-line="1014" selection-end-column="38" />
           <folding>
-            <marker date="1502227279538" expanded="true" signature="13983:13998" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="55267:55282" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="56547:56562" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="57859:57874" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="59213:59228" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="60610:60625" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="61993:62008" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="63363:63378" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="13983:13998" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="55267:55282" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="56547:56562" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="57859:57874" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="59213:59228" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="60610:60625" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="61993:62008" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="63363:63378" ph="..." />
           </folding>
         </state>
       </provider>
@@ -759,28 +1416,37 @@
         <state relative-caret-position="5610">
           <caret line="330" column="96" lean-forward="false" selection-start-line="330" selection-start-column="96" selection-end-line="330" selection-end-column="96" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1502146134112" expanded="true" signature="560:825" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="560:2845" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="560:2878" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="578:664" ph="select * fro... lpr_triplog" />
-            <marker date="1502146134112" expanded="true" signature="689:825" ph="select * fro... o_id" />
-            <marker date="1502146134112" expanded="true" signature="714:825" ph="select t1.o_... o_id" />
-            <marker date="1502146134112" expanded="true" signature="992:1565" ph="select lpr_o... " />
-            <marker date="1502146134112" expanded="true" signature="1594:2415" ph="select t1.o_... o_id" />
-            <marker date="1502146134112" expanded="true" signature="1824:2412" ph="select lpr_o... " />
-            <marker date="1502146134112" expanded="true" signature="2468:2565" ph="select lpr_s... lpr_student" />
-            <marker date="1502146134112" expanded="true" signature="2607:2692" ph="select CONCA... lpr_driver" />
-            <marker date="1502146134112" expanded="true" signature="3198:4572" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="3215:4497" ph="select * fro... o_id" />
-            <marker date="1502146134112" expanded="true" signature="3230:4236" ph="SELECT lpr_o... lpr_order" />
-            <marker date="1502146134112" expanded="true" signature="4256:4430" ph="select tripl... lpr_triplog" />
-            <marker date="1502146134112" expanded="true" signature="4590:5878" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="4604:5815" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="4619:5737" ph="select * fro... o_id" />
-            <marker date="1502146134112" expanded="true" signature="4634:5494" ph="SELECT lpr_o... lpr_order" />
-            <marker date="1502146134112" expanded="true" signature="5511:5669" ph="select tripl... lpr_triplog" />
-            <marker date="1502146134112" expanded="true" signature="11456:11458" ph="..." />
+            <element signature="n#table#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <marker date="1502393798350" expanded="true" signature="560:825" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="560:2845" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="560:2878" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="578:664" ph="select * fro... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="689:825" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="714:825" ph="select t1.o_... o_id" />
+            <marker date="1502393798350" expanded="true" signature="992:1565" ph="select lpr_o... " />
+            <marker date="1502393798350" expanded="true" signature="1594:2415" ph="select t1.o_... o_id" />
+            <marker date="1502393798350" expanded="true" signature="1824:2412" ph="select lpr_o... " />
+            <marker date="1502393798350" expanded="true" signature="2468:2565" ph="select lpr_s... lpr_student" />
+            <marker date="1502393798350" expanded="true" signature="2607:2692" ph="select CONCA... lpr_driver" />
+            <marker date="1502393798350" expanded="true" signature="3198:4572" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="3215:4497" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="3230:4236" ph="SELECT lpr_o... lpr_order" />
+            <marker date="1502393798350" expanded="true" signature="4256:4430" ph="select tripl... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="4590:6996" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4590:7018" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4590:7055" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4607:5796" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4623:5761" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4638:5683" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="4653:5440" ph="SELECT lpr_o... lpr_order" />
+            <marker date="1502393798350" expanded="true" signature="5457:5615" ph="select tripl... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="5806:6992" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="5820:6957" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="5835:6879" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="5850:6636" ph="SELECT lpr_o... lpr_order" />
+            <marker date="1502393798350" expanded="true" signature="6653:6811" ph="select tripl... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="12685:12687" ph="..." />
+            <marker date="1502393798350" expanded="true" signature="18606:18638" ph="..." />
           </folding>
         </state>
       </provider>
@@ -790,7 +1456,7 @@
         <state relative-caret-position="1496">
           <caret line="88" column="28" lean-forward="false" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
           <folding>
-            <marker date="1502207864198" expanded="true" signature="3494:3509" ph="..." />
+            <marker date="1502393006450" expanded="true" signature="3494:3509" ph="..." />
           </folding>
         </state>
       </provider>
@@ -858,14 +1524,14 @@
         <state relative-caret-position="17238">
           <caret line="1014" column="38" lean-forward="false" selection-start-line="1014" selection-start-column="24" selection-end-line="1014" selection-end-column="38" />
           <folding>
-            <marker date="1502227279538" expanded="true" signature="13983:13998" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="55267:55282" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="56547:56562" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="57859:57874" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="59213:59228" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="60610:60625" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="61993:62008" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="63363:63378" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="13983:13998" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="55267:55282" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="56547:56562" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="57859:57874" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="59213:59228" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="60610:60625" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="61993:62008" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="63363:63378" ph="..." />
           </folding>
         </state>
       </provider>
@@ -954,28 +1620,37 @@
         <state relative-caret-position="3281">
           <caret line="193" column="39" lean-forward="false" selection-start-line="193" selection-start-column="39" selection-end-line="193" selection-end-column="39" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1502146134112" expanded="true" signature="560:825" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="560:2845" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="560:2878" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="578:664" ph="select * fro... lpr_triplog" />
-            <marker date="1502146134112" expanded="true" signature="689:825" ph="select * fro... o_id" />
-            <marker date="1502146134112" expanded="true" signature="714:825" ph="select t1.o_... o_id" />
-            <marker date="1502146134112" expanded="true" signature="992:1565" ph="select lpr_o... " />
-            <marker date="1502146134112" expanded="true" signature="1594:2415" ph="select t1.o_... o_id" />
-            <marker date="1502146134112" expanded="true" signature="1824:2412" ph="select lpr_o... " />
-            <marker date="1502146134112" expanded="true" signature="2468:2565" ph="select lpr_s... lpr_student" />
-            <marker date="1502146134112" expanded="true" signature="2607:2692" ph="select CONCA... lpr_driver" />
-            <marker date="1502146134112" expanded="true" signature="3198:4572" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="3215:4497" ph="select * fro... o_id" />
-            <marker date="1502146134112" expanded="true" signature="3230:4236" ph="SELECT lpr_o... lpr_order" />
-            <marker date="1502146134112" expanded="true" signature="4256:4430" ph="select tripl... lpr_triplog" />
-            <marker date="1502146134112" expanded="true" signature="4590:5878" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="4604:5815" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="4619:5737" ph="select * fro... o_id" />
-            <marker date="1502146134112" expanded="true" signature="4634:5494" ph="SELECT lpr_o... lpr_order" />
-            <marker date="1502146134112" expanded="true" signature="5511:5669" ph="select tripl... lpr_triplog" />
-            <marker date="1502146134112" expanded="true" signature="11456:11458" ph="..." />
+            <element signature="n#table#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <marker date="1502393798350" expanded="true" signature="560:825" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="560:2845" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="560:2878" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="578:664" ph="select * fro... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="689:825" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="714:825" ph="select t1.o_... o_id" />
+            <marker date="1502393798350" expanded="true" signature="992:1565" ph="select lpr_o... " />
+            <marker date="1502393798350" expanded="true" signature="1594:2415" ph="select t1.o_... o_id" />
+            <marker date="1502393798350" expanded="true" signature="1824:2412" ph="select lpr_o... " />
+            <marker date="1502393798350" expanded="true" signature="2468:2565" ph="select lpr_s... lpr_student" />
+            <marker date="1502393798350" expanded="true" signature="2607:2692" ph="select CONCA... lpr_driver" />
+            <marker date="1502393798350" expanded="true" signature="3198:4572" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="3215:4497" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="3230:4236" ph="SELECT lpr_o... lpr_order" />
+            <marker date="1502393798350" expanded="true" signature="4256:4430" ph="select tripl... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="4590:6996" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4590:7018" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4590:7055" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4607:5796" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4623:5761" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4638:5683" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="4653:5440" ph="SELECT lpr_o... lpr_order" />
+            <marker date="1502393798350" expanded="true" signature="5457:5615" ph="select tripl... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="5806:6992" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="5820:6957" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="5835:6879" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="5850:6636" ph="SELECT lpr_o... lpr_order" />
+            <marker date="1502393798350" expanded="true" signature="6653:6811" ph="select tripl... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="12685:12687" ph="..." />
+            <marker date="1502393798350" expanded="true" signature="18606:18638" ph="..." />
           </folding>
         </state>
       </provider>
@@ -996,74 +1671,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="1427" column="19" lean-forward="true" selection-start-line="1427" selection-start-column="19" selection-end-line="1427" selection-end-column="19" />
-          <folding>
-            <marker date="1502227279538" expanded="true" signature="13983:13998" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="55267:55282" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="56547:56562" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="57859:57874" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="59213:59228" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="60610:60625" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="61993:62008" ph="..." />
-            <marker date="1502227279538" expanded="true" signature="63363:63378" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/includes/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="44" lean-forward="false" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-          <folding>
-            <marker date="1502207864198" expanded="true" signature="3494:3509" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/manifest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="203" column="32" lean-forward="false" selection-start-line="203" selection-start-column="32" selection-end-line="203" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1502146134112" expanded="true" signature="560:825" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="560:2845" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="560:2878" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="578:664" ph="select * fro... lpr_triplog" />
-            <marker date="1502146134112" expanded="true" signature="689:825" ph="select * fro... o_id" />
-            <marker date="1502146134112" expanded="true" signature="714:825" ph="select t1.o_... o_id" />
-            <marker date="1502146134112" expanded="true" signature="992:1565" ph="select lpr_o... " />
-            <marker date="1502146134112" expanded="true" signature="1594:2415" ph="select t1.o_... o_id" />
-            <marker date="1502146134112" expanded="true" signature="1824:2412" ph="select lpr_o... " />
-            <marker date="1502146134112" expanded="true" signature="2468:2565" ph="select lpr_s... lpr_student" />
-            <marker date="1502146134112" expanded="true" signature="2607:2692" ph="select CONCA... lpr_driver" />
-            <marker date="1502146134112" expanded="true" signature="3198:4572" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="3215:4497" ph="select * fro... o_id" />
-            <marker date="1502146134112" expanded="true" signature="3230:4236" ph="SELECT lpr_o... lpr_order" />
-            <marker date="1502146134112" expanded="true" signature="4256:4430" ph="select tripl... lpr_triplog" />
-            <marker date="1502146134112" expanded="true" signature="4590:5878" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="4604:5815" ph="select * fro... *" />
-            <marker date="1502146134112" expanded="true" signature="4619:5737" ph="select * fro... o_id" />
-            <marker date="1502146134112" expanded="true" signature="4634:5494" ph="SELECT lpr_o... lpr_order" />
-            <marker date="1502146134112" expanded="true" signature="5511:5669" ph="select tripl... lpr_triplog" />
-            <marker date="1502146134112" expanded="true" signature="11456:11458" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/ralongbilling.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="193" column="12" lean-forward="false" selection-start-line="193" selection-start-column="12" selection-end-line="194" selection-end-column="36" />
           <folding>
-            <element signature="e#2855#2919#0#HTML" expanded="true" />
+            <element signature="e#2855#2919#0#HTML" expanded="false" />
             <element signature="e#2929#6439#0#HTML" expanded="false" />
-            <element signature="e#3148#3181#0#HTML" expanded="true" />
-            <element signature="e#3526#3565#0#HTML" expanded="true" />
-            <element signature="e#6473#6499#0#HTML" expanded="true" />
+            <element signature="e#3148#3181#0#HTML" expanded="false" />
+            <element signature="e#3526#3565#0#HTML" expanded="false" />
+            <element signature="e#6473#6499#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1111,7 +1728,7 @@
     <entry file="file://$PROJECT_DIR$/pages/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+          <caret line="11" column="37" lean-forward="false" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -1241,6 +1858,73 @@
         <state relative-caret-position="373">
           <caret line="30" column="20" lean-forward="false" selection-start-line="30" selection-start-column="20" selection-end-line="30" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/includes/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="52" lean-forward="true" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+          <folding>
+            <marker date="1502393006450" expanded="true" signature="3494:3509" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/js/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <marker date="1502393784237" expanded="true" signature="13983:13998" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="55267:55282" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="56547:56562" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="57859:57874" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="59213:59228" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="60610:60625" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="61993:62008" ph="..." />
+            <marker date="1502393784237" expanded="true" signature="63363:63378" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/manifest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="352" column="28" lean-forward="false" selection-start-line="352" selection-start-column="28" selection-end-line="352" selection-end-column="28" />
+          <folding>
+            <element signature="n#table#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#div#1;n#!!top" expanded="false" />
+            <marker date="1502393798350" expanded="true" signature="560:825" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="560:2845" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="560:2878" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="578:664" ph="select * fro... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="689:825" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="714:825" ph="select t1.o_... o_id" />
+            <marker date="1502393798350" expanded="true" signature="992:1565" ph="select lpr_o... " />
+            <marker date="1502393798350" expanded="true" signature="1594:2415" ph="select t1.o_... o_id" />
+            <marker date="1502393798350" expanded="true" signature="1824:2412" ph="select lpr_o... " />
+            <marker date="1502393798350" expanded="true" signature="2468:2565" ph="select lpr_s... lpr_student" />
+            <marker date="1502393798350" expanded="true" signature="2607:2692" ph="select CONCA... lpr_driver" />
+            <marker date="1502393798350" expanded="true" signature="3198:4572" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="3215:4497" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="3230:4236" ph="SELECT lpr_o... lpr_order" />
+            <marker date="1502393798350" expanded="true" signature="4256:4430" ph="select tripl... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="4590:6996" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4590:7018" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4590:7055" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4607:5796" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4623:5761" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="4638:5683" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="4653:5440" ph="SELECT lpr_o... lpr_order" />
+            <marker date="1502393798350" expanded="true" signature="5457:5615" ph="select tripl... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="5806:6992" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="5820:6957" ph="select * fro... *" />
+            <marker date="1502393798350" expanded="true" signature="5835:6879" ph="select * fro... o_id" />
+            <marker date="1502393798350" expanded="true" signature="5850:6636" ph="SELECT lpr_o... lpr_order" />
+            <marker date="1502393798350" expanded="true" signature="6653:6811" ph="select tripl... lpr_triplog" />
+            <marker date="1502393798350" expanded="true" signature="12685:12687" ph="..." />
+            <marker date="1502393798350" expanded="true" signature="18606:18638" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
