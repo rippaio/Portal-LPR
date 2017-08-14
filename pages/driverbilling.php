@@ -30,7 +30,7 @@ if(isset($_POST['driver_id'])) {
 
   $driverBill=getDriverBill($driver_id,$start_date,$end_date);
   $d_print=getDriverBill($driver_id,$start_date,$end_date);
-  $cashAdvanceDetails= getCashAdvance($driver_id,$start_date,$end_date);
+  $cashAdvanceDetails= getCashAdvance($driver_id);
   $advance=$cashAdvanceDetails['cashAdvance'];
   $earnings_data= getTotalEarnings($driver_id);
   $total_earnings=$earnings_data['earnings'];

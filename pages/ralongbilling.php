@@ -85,59 +85,62 @@ include("./includes/nav.php");
             border: 1px solid black;
         }
 
+        .s1height{
+            line-height: 0.2em;
+            font-family: Georgia, "Times New Roman", Times, serif;
+            padding-bottom: 50px;
+            text-align: center;
+        }
+
+        .footer {
+            left: 0;
+            bottom: 0;
+            height: 100px;
+            width: 100%;
+            overflow:hidden;
+            text-align: center;
+        }
 
     </style>
 
     <div class="toprint" style="padding-left: 100px;height: auto;page-break-after: avoid">
         <div id="page-wrapper">
-            <br><br>
             <div class="container-fluid">
-                <div class="to2Columns" >
-                    <div style="page-break-inside:avoid;">
-                        <b>LPR Ground Transportation</b><br>
-                        <b> 3455 Azalea Garden Rd<br>
-                            Norfolk,VA 23513
-                        </b>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <img src="../images/bus1.jpg" alt="Bus" style="width:150px;height:100px;">
+                        </div>
+                        <div class="col-lg-6">
+                            <h1 class="s1height"><span>LPR TRANSPORTATION</span></h1>
+                        </div>
                     </div>
 
-                    <div style="page-break-inside:avoid;padding-top: 5px;float: right">
-                        <b>
-                        <span style="padding-left:20px">INVOICE
-                        </span>
-                        </b>
-                        <table>
-                            <thead>
-                            <tr style="width: 100px">
-                                <th style="width:10px;padding-left:20px" > <span>Date</span></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td style="width:100px;padding-left:10px;padding-right:20px"> <span class="ra_date">_______</span></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <span style="float:right;padding-right: 15px">Date: <span class="ra_date">_______</span></span>
+                        </div>
                     </div>
-
-                </div>
                 <br><br>
-                <div>
+                <div class="row">
+                    <div class="col-lg-12">
                    <span>Payable to</span>
                                 <span class="cb_client"><?php echo $ra_name; ?></span><br>
 
-
+                    </div>
                 </div>
-                <div>
+                <div class="row">
+                    <div class="col-lg-12">
                     <span>Total Trips:</span>
                     <span id="ra_Trips">0</span><br>
 
-
+                    </div>
                 </div>
-                <div>
+                <div class="row">
+                    <div class="col-lg-12">
                     <span>Amount per Ride Along:</span>
-                    $<span id="r_amount">0</span>
+                    $ <span id="r_amount">0</span>
 
-
+                    </div>
                 </div>
                 <br><br>
                 <div>
@@ -185,6 +188,15 @@ include("./includes/nav.php");
             </div>
         </div>
 
+        <div class="row footer" style="padding-top: 30px;">
+            <div class="col-lg-12">
+                <h5> LPR Transportation,
+                    3455 Azalea Garden Rd,
+                    Norfolk,VA 23513
+                </h5>
+            </div>
+
+        </div>
     </div>
 
     <div class="dontprint">

@@ -1,2 +1,0 @@
-$('#stypeSelect').change(function(){
-});
