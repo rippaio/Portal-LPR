@@ -42,3 +42,7 @@ table.dataTable tfoot td {
 table.dataTable.no-footer {
 	border-bottom: none;
 }
+
+.form-control[readonly] {
+    background-color: #eee !important;
+}
