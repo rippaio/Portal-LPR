@@ -261,7 +261,7 @@ $result_billing = mysqli_query($connection, $query_billing);
                                                     <input type="checkbox" name="o_as" class="aocheckbox" value="addnlstop" <?php echo($subject["o_as"]=="TRUE"? 'checked' : ''); ?> >Additional Stop
                                                 </label>
                                             </div>
-                                            <div class="checkbox" style="display: none;">
+                                            <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" name="o_cs" class="aocheckbox" value="carseat" <?php echo($subject["o_cs"]=="TRUE"? 'checked' : ''); ?> >Car Seat
                                                 </label>

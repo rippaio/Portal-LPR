@@ -17,6 +17,10 @@
 
 
     <script src="../dist/js/jquery.dataTables.min.js"></script>
+    <script src="../dist/js/dataTables.buttons.min.js"></script>
+    <script src="../dist/js/buttons.print.min.js"></script>
+
+
     <script src="./src/clockpicker.js"></script>
     <script src="../vendor/jquery-ui-1.12.1/jquery-ui.js"></script>
     <!-- <script src="../vendor/bootstrap-datepicker-1.6.4-dist/js/bootstrap-datepicker.js"></script> -->
@@ -29,7 +33,7 @@
 
 
 
-    <script src="../dist/js/functions.js?v=5"></script>
+    <script src="../dist/js/functions.js?v=6"></script>
 
 
     <script type="text/javascript">

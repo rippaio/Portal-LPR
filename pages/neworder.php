@@ -275,7 +275,7 @@ confirm_query($result_client);
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" name="o_cs" class="aocheckbox" value="carseat" style="display: none;">Car Seat
+                                                    <input type="checkbox" name="o_cs" class="aocheckbox" value="carseat">Car Seat
                                                 </label>
                                             </div>
                                             <div class="checkbox">

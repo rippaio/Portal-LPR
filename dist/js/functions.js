@@ -2,7 +2,22 @@ function log(val){
 	console.log(val);
 }
 
-$('.dataTab').DataTable();
+$('.dataTab').DataTable(
+    {
+        dom: 'Bfrtip',
+        buttons: [
+            'print'
+        ],
+        "pageLength": 1000
+    }
+
+);
+$('.buttons-excel, .buttons-print').each(function() {
+    $(this).removeClass('dt-button');
+    $(this).addClass('btn')
+    $(this).addClass('btn-primary')
+})
+
 
 $('#ctypeSelect').change(function(){
 	var client = $('#ctypeSelect').val();
