@@ -863,8 +863,9 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
     sdata['pickloc'] = $(id).siblings("[headers='pickloc']").text();
     sdata['picktime'] = gettime();
     //var dropt = $(id).siblings("[headers='picktime']").children().children('input').val();
-    sdata['picktime'] = $(id).siblings("[headers='picktime']").children().children('input').val();
-   	sdata['droptime'] = $(id).siblings("[headers='droptime']").children().children('input').val();
+    sdata['picktime'] = $(id).siblings("[headers='picktime']").children('div').val();
+   	//sdata['droptime'] = $(id).siblings("[headers='droptime']").children().children('input').val();
+    sdata['droptime'] = $(id).siblings("[headers='droptime']").children('div').val();
    	sdata['picktime'] = sdata['picktime']+ ':00';
    	sdata['droptime'] = sdata['droptime']+ ':00';
    	sdata['pax']= $(id).siblings("[headers='pax']").text();
@@ -952,13 +953,13 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
     }
 
 	if (state == false){
-		var picktime = $(id).siblings("[headers='picktime']").children('span:first').text();
-   		var droptime = $(id).siblings("[headers='droptime']").children('span:first').text();
+		var picktime = $(id).siblings("[headers='picktime']").children('span:first').text().substr(0,5);
+   		var droptime = $(id).siblings("[headers='droptime']").children('span:first').text().substr(0,5);
 		var diver_temp = $(id).siblings("[headers='dname']").text();
 		 var diver_temp_id = $(id).siblings('input').data('driverid');
 		log($(id).parents('tr').find('td'));
-		$(id).parents('tr').find('td').eq(6).replaceWith('<td class="col-xs-1" headers="droptime"><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true"> <input type="text" class="form-control" value="'+droptime+'"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div></td>');
-		$(id).parents('tr').find('td').eq(5).replaceWith('<td class="col-xs-1" headers="picktime"><div class="input-group clockpicker" data-placement="left" data-align="top" data-autoclose="true"> <input type="text" class="form-control" value="'+picktime+'"> <span class="input-group-addon"> <span class="glyphicon glyphicon-time"></span> </span> </div></td>');
+		$(id).parents('tr').find('td').eq(6).replaceWith('<td class="col-xs-1" headers="droptime"><div class="bfh-timepicker pm" name="o_amtime" data-time="'+droptime+'" data-align="right"></div></td>');
+		$(id).parents('tr').find('td').eq(5).replaceWith('<td class="col-xs-1" headers="picktime"><div class="bfh-timepicker am" name="o_amtime" data-time="'+picktime+'" data-align="right"></div></td>');
 		$(id).parents('tr').find('td').eq(3).replaceWith('<td class="col-xs-1" headers="dname"><input class="form-control typeahead" placeholder="'+diver_temp+'"><input class="form-control" name="driver_id" type="hidden" value ="'+diver_temp_id+'"placeholder=""></td>');
 		$('.clockpicker').clockpicker({
             placement: 'top',
@@ -966,6 +967,9 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
             donetext: 'Done'
 
        });
+        $('.bfh-timepicker').bfhtimepicker();
+        $(id).siblings("[headers='picktime']").children('.bfh-timepicker.am').val(picktime);
+        $(id).siblings("[headers='droptime']").children('.bfh-timepicker.pm').val(droptime);
 		$('.typeahead').click(function(){
 			getdrivers();
 		});
