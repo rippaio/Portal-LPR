@@ -27,11 +27,11 @@ $query ="select * from
   RIGHT outer join
  (select * from ( 
        (select t1.o_id,t1.o_status,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.s_city,t1.o_ampicktime as picktime,t1.o_ampickloc as pickloc,t1.o_amdroptime as droptime,'AM' as clockperiod, t1.o_days,t1.o_startdate,t1.o_enddate from ( 
-           select lpr_order.o_id,lpr_order.o_status ,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_ampicktime as time,CONCAT(lpr_student.s_fname,' ',lpr_student.s_lname) as s_fname,lpr_student.s_city,lpr_order.o_ampicktime,lpr_order.o_ampickloc,lpr_order.o_amdroptime, lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
+           select lpr_order.o_id,lpr_order.o_status ,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_ampicktime as time,GROUP_CONCAT(CONCAT(lpr_student.s_fname,' ',lpr_student.s_lname)) as s_fname,lpr_student.s_city,lpr_order.o_ampicktime,lpr_order.o_ampickloc,lpr_order.o_amdroptime, lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
            lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and o_ampickloc not like 'null' group by lpr_order.o_id)t1 )
         UNION 
        (select t1.o_id,t1.o_status,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.s_city,t1.picktime,t1.pickloc,t1.droptime,'PM' as clockperiod, t1.o_days,t1.o_startdate,t1.o_enddate  from 
-          (select lpr_order.o_id,lpr_order.o_status,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_pmpicktime as time,CONCAT(lpr_student.s_fname,' ',lpr_student.s_lname) as s_fname,lpr_student.s_city,lpr_order.o_pmpicktime as picktime,lpr_order.o_pmpickloc as pickloc,'NA' as droptime,lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
+          (select lpr_order.o_id,lpr_order.o_status,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_pmpicktime as time,GROUP_CONCAT(CONCAT(lpr_student.s_fname,' ',lpr_student.s_lname)) as s_fname,lpr_student.s_city,lpr_order.o_pmpicktime as picktime,lpr_order.o_pmpickloc as pickloc,'NA' as droptime,lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
            lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and o_pmdroploc not like 'null' group by lpr_order.o_id)t1))R
   )R2  on  R1.triplog_o_id=R2.o_id
   left join
@@ -49,12 +49,6 @@ $result_triporder = mysqli_query($connection, $query);
 confirm_query($result_triporder);
 $result_triplogdata = getAllTripData();
 
-//$query_print="select * from
-//(select * from (SELECT lpr_order.o_id,lpr_order.o_startdate,lpr_order.o_enddate,lpr_order.o_ampickloc,lpr_order.o_ampicktime,lpr_order.o_amdroploc,lpr_order.o_amdroptime,lpr_order.o_pmpickloc,lpr_order.o_pmdroploc,lpr_order.o_pmpicktime,lpr_order.o_days,lpr_order.o_dcomment,lpr_client.client_name,lpr_client.client_street,lpr_client.client_address,lpr_client.client_city,lpr_client.client_state,lpr_client.client_zip,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,GROUP_CONCAT(CASE WHEN lpr_student.s_grade = '' THEN 'NA' else lpr_student.s_grade END) as student_grade,GROUP_CONCAT(lpr_student.s_gender) as student_gender,s_phone,s_altphone,s_street,s_address,s_city,s_state,s_zip
-//FROM lpr_order,lpr_client,lpr_student where lpr_order.client_id=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id) t1
-//left join
-//(select triplog_o_id,GROUP_CONCAT(triplog_status) as trip_status,GROUP_CONCAT(triplog_clock) as trip_period,triplog_date  from  lpr_triplog  group by triplog_o_id,triplog_date) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3
-//where trip_status is null or trip_status  not like '%cancel%cancel%'";
 
 $query_print="select * from (
 (select * from  (select * from
