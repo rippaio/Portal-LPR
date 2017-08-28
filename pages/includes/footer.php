@@ -33,7 +33,7 @@
 
 
 
-    <script src="../dist/js/functions.js?v=6"></script>
+    <script src="../dist/js/functions.js?v=7"></script>
 
 
     <script type="text/javascript">

@@ -320,15 +320,15 @@ include("./includes/nav.php");
                 <div>
                     <div class="container-fluid">
                         <div class="row">
-                        <div class="col-lg-10" style="padding-left: 0">
+                        <div class="col-lg-8" style="padding-left: 0">
                             <select name="clockt" class="form-control" id="clock" onchange="getdata(id,this)" style="width:100px;">
                                     <option value="AM" <?php if($clck == 'AM'): ?> selected="selected"<?php endif; ?> >AM</option>
                                     <option value="PM" <?php if($clck == 'PM'): ?> selected="selected"<?php endif; ?>>PM</option>
                             </select>
                         </div>
-                            <div class="col-lg-2" style="padding-left:60px">
+                            <div class="col-lg-4 pull-right">
                             <button type="button" class="btn btn-primary btn-lg col-sm-6" onclick="printSheet();">
-                                 Print All
+                                 Print Contractor Sheets
                              </button>
                             </div>
                         </div>
