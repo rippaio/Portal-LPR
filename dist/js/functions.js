@@ -82,10 +82,16 @@ $('#sSelect').change(function(){
       }); // end ajax call
 
 });
+function checknull(data){
+    if (data != null) {
+        return data;
+    }
+    else return "";
+}
 
 function fillLocation(data){
-	$('#amDropLoc').val(data.school_street+" "+data.school_address+" "+data.school_city);
-	$('#pmDropLoc').val(data.school_street+" "+data.school_address+" "+data.school_city);
+	$('#amDropLoc').val(data.school_street+" "+checknull(data.school_address)+" "+data.school_city);
+	$('#pmDropLoc').val(data.school_street+" "+checknull(data.school_address)+" "+data.school_city);
 }
 
  $('input[name="billsplit"]').change(function(element) {
@@ -1702,9 +1708,7 @@ function dr_changestatus_ajax(did,status){
 
 //School by asmita
 
-function log(val){
-    console.log(val);
-}
+
 
 $( function() {
 
