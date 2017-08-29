@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="96326416-5915-4291-9f64-22fb087de77c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/manifest.php" afterPath="$PROJECT_DIR$/pages/manifest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/includes/footer.php" afterPath="$PROJECT_DIR$/pages/includes/footer.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,19 +14,13 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="footer.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="footer.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/includes/footer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="35" column="44" lean-forward="false" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
+            <state relative-caret-position="407">
+              <caret line="45" column="53" lean-forward="true" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
               <folding>
-                <marker date="1503959639942" expanded="true" signature="3621:3636" ph="..." />
-                <marker date="1503959639942" expanded="true" signature="4618:4741" ph="//..." />
-                <marker date="1503959639942" expanded="true" signature="4802:4911" ph="{...}" />
-                <marker date="1503959639942" expanded="true" signature="4923:5584" ph="//..." />
-                <marker date="1503959639942" expanded="true" signature="5628:5733" ph="..." />
-                <marker date="1503959639942" expanded="true" signature="5634:5730" ph="..." />
-                <marker date="1503959639942" expanded="true" signature="5696:5728" ph="..." />
+                <marker date="1503960631644" expanded="true" signature="3621:3636" ph="..." />
               </folding>
             </state>
           </provider>
@@ -67,71 +61,17 @@
       <file leaf-file-name="functions.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dist/js/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+            <state relative-caret-position="297">
+              <caret line="84" column="25" lean-forward="true" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
               <folding>
-                <marker date="1503959639913" expanded="true" signature="53710:53808" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="53848:54488" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="54060:54466" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-                <marker date="1503959639913" expanded="true" signature="54185:54313" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="54355:54460" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="54522:65769" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="54686:65700" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="54725:54769" ph="/** Elementary School Data ...*/" />
-                <marker date="1503959639913" expanded="true" signature="54993:55966" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-                <marker date="1503959639913" expanded="true" signature="55136:55792" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="55236:55776" ph="{...}" />
+                <marker date="1503959639913" expanded="true" signature="14378:14393" ph="..." />
                 <marker date="1503959639913" expanded="true" signature="55635:55650" ph="..." />
-                <marker date="1503959639913" expanded="true" signature="55839:55956" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="55995:56035" ph="/** Middle School Data ...*/" />
-                <marker date="1503959639913" expanded="true" signature="56254:57300" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-                <marker date="1503959639913" expanded="true" signature="56397:57126" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="56530:57056" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="56658:57038" ph="{...}" />
                 <marker date="1503959639913" expanded="true" signature="56915:56930" ph="..." />
-                <marker date="1503959639913" expanded="true" signature="57173:57290" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="57329:57367" ph="/** High School Data ...*/" />
-                <marker date="1503959639913" expanded="true" signature="57584:58612" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-                <marker date="1503959639913" expanded="true" signature="57727:58438" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="57858:58368" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="57980:58350" ph="{...}" />
                 <marker date="1503959639913" expanded="true" signature="58227:58242" ph="..." />
-                <marker date="1503959639913" expanded="true" signature="58485:58602" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="58641:58686" ph="/** alternative School Data ...*/" />
-                <marker date="1503959639913" expanded="true" signature="58910:59966" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-                <marker date="1503959639913" expanded="true" signature="59053:59792" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="59184:59722" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="59320:59704" ph="{...}" />
                 <marker date="1503959639913" expanded="true" signature="59581:59596" ph="..." />
-                <marker date="1503959639913" expanded="true" signature="59839:59956" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="59995:60040" ph="/** alternative School Data ...*/" />
-                <marker date="1503959639913" expanded="true" signature="60050:60093" ph="/** preschool School Data ...*/" />
-                <marker date="1503959639913" expanded="true" signature="60315:61363" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-                <marker date="1503959639913" expanded="true" signature="60458:61189" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="60589:61119" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="60721:61101" ph="{...}" />
                 <marker date="1503959639913" expanded="true" signature="60978:60993" ph="..." />
-                <marker date="1503959639913" expanded="true" signature="61236:61353" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="61392:61435" ph="/** preschool School Data ...*/" />
-                <marker date="1503959639913" expanded="true" signature="61445:61486" ph="/** special School Data ...*/" />
-                <marker date="1503959639913" expanded="true" signature="61706:62746" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-                <marker date="1503959639913" expanded="true" signature="61849:62572" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="61980:62502" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="62108:62484" ph="{...}" />
                 <marker date="1503959639913" expanded="true" signature="62361:62376" ph="..." />
-                <marker date="1503959639913" expanded="true" signature="62619:62736" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="62775:62816" ph="/** special School Data ...*/" />
-                <marker date="1503959639913" expanded="true" signature="62827:62866" ph="/** pilot School Data ...*/" />
-                <marker date="1503959639913" expanded="true" signature="63084:64116" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-                <marker date="1503959639913" expanded="true" signature="63227:63942" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="63358:63872" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="63482:63854" ph="{...}" />
                 <marker date="1503959639913" expanded="true" signature="63731:63746" ph="..." />
-                <marker date="1503959639913" expanded="true" signature="63989:64106" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="64145:64184" ph="/** pilot School Data ...*/" />
-                <marker date="1503959639913" expanded="true" signature="64194:65694" ph="//..." />
-                <marker date="1503959639913" expanded="true" signature="65793:65966" ph="{...}" />
-                <marker date="1503959639913" expanded="true" signature="66176:66219" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -259,7 +199,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manifest.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="manifest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/manifest.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">
@@ -315,8 +255,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>grade</find>
-      <find>s3height</find>
       <find>cal</find>
       <find>cash</find>
       <find>HEAD</find>
@@ -345,6 +283,8 @@
       <find>o_bs</find>
       <find>v=</find>
       <find>print</find>
+      <find>student_name</find>
+      <find>checknull</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -382,8 +322,8 @@
         <option value="$PROJECT_DIR$/pages/changeorder.php" />
         <option value="$PROJECT_DIR$/pages/neworder.php" />
         <option value="$PROJECT_DIR$/pages/editorder.php" />
-        <option value="$PROJECT_DIR$/pages/includes/footer.php" />
         <option value="$PROJECT_DIR$/pages/manifest.php" />
+        <option value="$PROJECT_DIR$/pages/includes/footer.php" />
       </list>
     </option>
   </component>
@@ -628,12 +568,12 @@
       <workItem from="1499118437311" duration="32411000" />
       <workItem from="1499796916542" duration="115181000" />
       <workItem from="1502139930484" duration="4587000" />
-      <workItem from="1502144952309" duration="40115000" />
+      <workItem from="1502144952309" duration="40893000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="216455000" />
+    <option name="totallyTimeSpent" value="217233000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -704,13 +644,7 @@
         <state relative-caret-position="1496">
           <caret line="88" column="28" lean-forward="false" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
           <folding>
-            <marker date="1503959639942" expanded="true" signature="3621:3636" ph="..." />
-            <marker date="1503959639942" expanded="true" signature="4618:4741" ph="//..." />
-            <marker date="1503959639942" expanded="true" signature="4802:4911" ph="{...}" />
-            <marker date="1503959639942" expanded="true" signature="4923:5584" ph="//..." />
-            <marker date="1503959639942" expanded="true" signature="5628:5733" ph="..." />
-            <marker date="1503959639942" expanded="true" signature="5634:5730" ph="..." />
-            <marker date="1503959639942" expanded="true" signature="5696:5728" ph="..." />
+            <marker date="1503960631644" expanded="true" signature="3621:3636" ph="..." />
           </folding>
         </state>
       </provider>
@@ -778,68 +712,14 @@
         <state relative-caret-position="17238">
           <caret line="1014" column="38" lean-forward="false" selection-start-line="1014" selection-start-column="24" selection-end-line="1014" selection-end-column="38" />
           <folding>
-            <marker date="1503959639913" expanded="true" signature="53710:53808" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="53848:54488" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54060:54466" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="54185:54313" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54355:54460" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54522:65769" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54686:65700" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54725:54769" ph="/** Elementary School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="54993:55966" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="55136:55792" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="55236:55776" ph="{...}" />
+            <marker date="1503959639913" expanded="true" signature="14378:14393" ph="..." />
             <marker date="1503959639913" expanded="true" signature="55635:55650" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="55839:55956" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="55995:56035" ph="/** Middle School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="56254:57300" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="56397:57126" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="56530:57056" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="56658:57038" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="56915:56930" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="57173:57290" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="57329:57367" ph="/** High School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="57584:58612" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="57727:58438" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="57858:58368" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="57980:58350" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="58227:58242" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="58485:58602" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="58641:58686" ph="/** alternative School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="58910:59966" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="59053:59792" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="59184:59722" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="59320:59704" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="59581:59596" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="59839:59956" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="59995:60040" ph="/** alternative School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="60050:60093" ph="/** preschool School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="60315:61363" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="60458:61189" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="60589:61119" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="60721:61101" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="60978:60993" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="61236:61353" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="61392:61435" ph="/** preschool School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="61445:61486" ph="/** special School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="61706:62746" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="61849:62572" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="61980:62502" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="62108:62484" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="62361:62376" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="62619:62736" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="62775:62816" ph="/** special School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="62827:62866" ph="/** pilot School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="63084:64116" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="63227:63942" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="63358:63872" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="63482:63854" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="63731:63746" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="63989:64106" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="64145:64184" ph="/** pilot School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="64194:65694" ph="//..." />
-            <marker date="1503959639913" expanded="true" signature="65793:65966" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="66176:66219" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -971,13 +851,7 @@
         <state relative-caret-position="1496">
           <caret line="88" column="28" lean-forward="false" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
           <folding>
-            <marker date="1503959639942" expanded="true" signature="3621:3636" ph="..." />
-            <marker date="1503959639942" expanded="true" signature="4618:4741" ph="//..." />
-            <marker date="1503959639942" expanded="true" signature="4802:4911" ph="{...}" />
-            <marker date="1503959639942" expanded="true" signature="4923:5584" ph="//..." />
-            <marker date="1503959639942" expanded="true" signature="5628:5733" ph="..." />
-            <marker date="1503959639942" expanded="true" signature="5634:5730" ph="..." />
-            <marker date="1503959639942" expanded="true" signature="5696:5728" ph="..." />
+            <marker date="1503960631644" expanded="true" signature="3621:3636" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1045,68 +919,14 @@
         <state relative-caret-position="17238">
           <caret line="1014" column="38" lean-forward="false" selection-start-line="1014" selection-start-column="24" selection-end-line="1014" selection-end-column="38" />
           <folding>
-            <marker date="1503959639913" expanded="true" signature="53710:53808" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="53848:54488" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54060:54466" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="54185:54313" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54355:54460" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54522:65769" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54686:65700" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54725:54769" ph="/** Elementary School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="54993:55966" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="55136:55792" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="55236:55776" ph="{...}" />
+            <marker date="1503959639913" expanded="true" signature="14378:14393" ph="..." />
             <marker date="1503959639913" expanded="true" signature="55635:55650" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="55839:55956" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="55995:56035" ph="/** Middle School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="56254:57300" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="56397:57126" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="56530:57056" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="56658:57038" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="56915:56930" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="57173:57290" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="57329:57367" ph="/** High School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="57584:58612" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="57727:58438" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="57858:58368" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="57980:58350" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="58227:58242" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="58485:58602" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="58641:58686" ph="/** alternative School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="58910:59966" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="59053:59792" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="59184:59722" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="59320:59704" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="59581:59596" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="59839:59956" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="59995:60040" ph="/** alternative School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="60050:60093" ph="/** preschool School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="60315:61363" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="60458:61189" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="60589:61119" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="60721:61101" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="60978:60993" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="61236:61353" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="61392:61435" ph="/** preschool School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="61445:61486" ph="/** special School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="61706:62746" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="61849:62572" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="61980:62502" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="62108:62484" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="62361:62376" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="62619:62736" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="62775:62816" ph="/** special School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="62827:62866" ph="/** pilot School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="63084:64116" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="63227:63942" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="63358:63872" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="63482:63854" ph="{...}" />
             <marker date="1503959639913" expanded="true" signature="63731:63746" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="63989:64106" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="64145:64184" ph="/** pilot School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="64194:65694" ph="//..." />
-            <marker date="1503959639913" expanded="true" signature="65793:65966" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="66176:66219" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1449,77 +1269,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding>
-            <marker date="1503959639913" expanded="true" signature="53710:53808" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="53848:54488" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54060:54466" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="54185:54313" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54355:54460" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54522:65769" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54686:65700" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="54725:54769" ph="/** Elementary School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="54993:55966" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="55136:55792" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="55236:55776" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="55635:55650" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="55839:55956" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="55995:56035" ph="/** Middle School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="56254:57300" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="56397:57126" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="56530:57056" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="56658:57038" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="56915:56930" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="57173:57290" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="57329:57367" ph="/** High School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="57584:58612" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="57727:58438" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="57858:58368" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="57980:58350" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="58227:58242" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="58485:58602" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="58641:58686" ph="/** alternative School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="58910:59966" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="59053:59792" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="59184:59722" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="59320:59704" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="59581:59596" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="59839:59956" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="59995:60040" ph="/** alternative School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="60050:60093" ph="/** preschool School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="60315:61363" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="60458:61189" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="60589:61119" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="60721:61101" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="60978:60993" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="61236:61353" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="61392:61435" ph="/** preschool School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="61445:61486" ph="/** special School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="61706:62746" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="61849:62572" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="61980:62502" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="62108:62484" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="62361:62376" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="62619:62736" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="62775:62816" ph="/** special School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="62827:62866" ph="/** pilot School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="63084:64116" ph="{&quot;url&quot;: 'ajax/neworder_ajax.php'...}" />
-            <marker date="1503959639913" expanded="true" signature="63227:63942" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="63358:63872" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="63482:63854" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="63731:63746" ph="..." />
-            <marker date="1503959639913" expanded="true" signature="63989:64106" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="64145:64184" ph="/** pilot School Data ...*/" />
-            <marker date="1503959639913" expanded="true" signature="64194:65694" ph="//..." />
-            <marker date="1503959639913" expanded="true" signature="65793:65966" ph="{...}" />
-            <marker date="1503959639913" expanded="true" signature="66176:66219" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/changeorder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
@@ -1563,22 +1312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/includes/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="35" column="44" lean-forward="false" selection-start-line="35" selection-start-column="44" selection-end-line="35" selection-end-column="44" />
-          <folding>
-            <marker date="1503959639942" expanded="true" signature="3621:3636" ph="..." />
-            <marker date="1503959639942" expanded="true" signature="4618:4741" ph="//..." />
-            <marker date="1503959639942" expanded="true" signature="4802:4911" ph="{...}" />
-            <marker date="1503959639942" expanded="true" signature="4923:5584" ph="//..." />
-            <marker date="1503959639942" expanded="true" signature="5628:5733" ph="..." />
-            <marker date="1503959639942" expanded="true" signature="5634:5730" ph="..." />
-            <marker date="1503959639942" expanded="true" signature="5696:5728" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/manifest.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -1618,6 +1351,33 @@
             <marker date="1503960224051" expanded="true" signature="5318:5476" ph="select tripl... lpr_triplog" />
             <marker date="1503960224051" expanded="true" signature="11597:11599" ph="..." />
             <marker date="1503960224051" expanded="true" signature="17790:17822" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/js/functions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="84" column="25" lean-forward="true" selection-start-line="84" selection-start-column="25" selection-end-line="84" selection-end-column="25" />
+          <folding>
+            <marker date="1503959639913" expanded="true" signature="14378:14393" ph="..." />
+            <marker date="1503959639913" expanded="true" signature="55635:55650" ph="..." />
+            <marker date="1503959639913" expanded="true" signature="56915:56930" ph="..." />
+            <marker date="1503959639913" expanded="true" signature="58227:58242" ph="..." />
+            <marker date="1503959639913" expanded="true" signature="59581:59596" ph="..." />
+            <marker date="1503959639913" expanded="true" signature="60978:60993" ph="..." />
+            <marker date="1503959639913" expanded="true" signature="62361:62376" ph="..." />
+            <marker date="1503959639913" expanded="true" signature="63731:63746" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/includes/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="45" column="53" lean-forward="true" selection-start-line="45" selection-start-column="53" selection-end-line="45" selection-end-column="53" />
+          <folding>
+            <marker date="1503960631644" expanded="true" signature="3621:3636" ph="..." />
           </folding>
         </state>
       </provider>
