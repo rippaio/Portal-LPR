@@ -49,10 +49,10 @@ $order = updateorder($o_enddate,$o_status,$o_ampickloc,$o_ampicktime,$o_amdroplo
 
 
 
-$s_fname = verify_in($obj['s_fname']);
-$s_lname = verify_in($obj['s_lname']);
-$s_grade = verify_in($obj['s_grade']);
-$s_gender = verify_in($obj['s_gender']);
+$s_fname = $obj['s_fname'];
+$s_lname = $obj['s_lname'];
+$s_grade = $obj['s_grade'];
+$s_gender = $obj['s_gender'];
 $s_pfname = verify_in($obj['pfname']);
 $s_plname = verify_in($obj['plname']);
 $s_phone = verify_in($obj['phone']);
