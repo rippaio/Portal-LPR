@@ -8,7 +8,8 @@ $('.dataTab').DataTable(
         buttons: [
             'print'
         ],
-        "pageLength": 1000
+        "pageLength": 1000,
+        "order": []
     }
 
 );
@@ -1426,7 +1427,8 @@ function  printDriverBill(){
     $('.db_totalPayable').text(+$('#d_finalCheck').text());
     $('.db_totalPrint').text(+$('#d_finalCheck').text());
     $('.db_issuedDate').text(db_date);
-
+    $('.db_check').text($('.check_number').val());
+    $('.total_erng').text($('#total_earnings').val());
     window.print();
 
 }

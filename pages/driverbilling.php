@@ -12,7 +12,7 @@ $other="";
 $start_date="";
 $end_date="";
 $driver_id="";
-$total_earnings="";
+$total_earnings=0;
 ?>
 <?php
 if(isset($_POST['driver_id'])) {
@@ -139,7 +139,7 @@ include("./includes/nav.php");
                 <div style="text-align: left">
                     <span>TOTAL EARNINGS TILL DATE :</b></span>
                 </div>
-                <div style="text-align: left">$<span class="total_earnings">________</span></div>
+                <div style="text-align: left">$<span class="total_erng">0</span></div>
             </div>
             <div class="to2Columns">
                <div style="text-align: left">
