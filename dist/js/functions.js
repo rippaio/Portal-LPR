@@ -294,6 +294,10 @@ $('.typeahead').click(function(){
 	getdrivers();
 });
 
+$('.pmtypeahead').click(function(){
+    pmgetdrivers();
+});
+
 $('.typeahead_ra').click(function(){
     getridealongs();
 });
@@ -331,6 +335,44 @@ function getdrivers() {
 					log(ui.item.value);
 				}
 			});
+          
+        },
+        error: function(xhr, desc, err) {
+          console.log(xhr);
+          console.log("Details: " + desc + "\nError:" + err);
+        }
+      }); // end ajax call
+}
+
+function pmgetdrivers() {
+
+    var sdata = {};
+    sdata['mode'] = "getdriver";
+    $.ajax({
+        url: 'ajax/neworder_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            var driverObj = $.parseJSON(data);
+            log(data);
+
+            $(".pmtypeahead").autocomplete({
+                source: driverObj,
+                focus: function(event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox
+                    $(this).val(ui.item.label);
+                },
+                select: function(event, ui) {
+                    // prevent autocomplete from updating the textbox
+                    event.preventDefault();
+                    // manually update the textbox and hidden field
+                    $(this).val(ui.item.label);
+                    $('input[name="pm_driver_id"]').val(ui.item.value);
+                    log(ui.item.value);
+                }
+            });
           
         },
         error: function(xhr, desc, err) {
@@ -442,6 +484,12 @@ $('input[name="pmcheck"]').click(function(){
 $('input[name="o_ra"]').click(function(){
 
                 $("[name='ridealongdiv']").toggle();
+            
+        });
+
+$('input[name="add_driver"]').click(function(){
+
+                $("[name='add_driver_div']").toggle();
             
         });
 
@@ -892,6 +940,7 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
    	sdata['pax']= $(id).siblings("[headers='pax']").text();
    	sdata['current_date'] = getday();
    	sdata['trip_date'] = $(id).siblings('input').data('trip_date');
+    sdata['period'] = $("[name='clockt']").children("option").filter(":selected").val();
     //log(dropt);
     //sdata['pickloc'] = .children('input').val();
     log(sdata);

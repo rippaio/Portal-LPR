@@ -385,7 +385,25 @@ $result_billing = mysqli_query($connection, $query_billing);
                                             <input class="form-control typeahead" placeholder="" value="<?php echo($subject["driver_dname"]!=NULL? $subject["driver_dname"] : $subject["driver_fname"].' '.$subject["driver_lname"]); ?>">
                                             <input class="form-control" name="driver_id" type="hidden" placeholder="" value="<?php echo $subject["driver_id"]; ?>">
                                         </div>
-                                        
+                                        <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="add_driver" class="aocheckbox" value="ridealong" <?php echo($subject["pm_driver_id"]!=NULL? 'checked' : ''); ?> >Add PM Driver
+                                                </label>
+                                        </div>
+
+                                        <?php
+                                        $pm_driver_id = (int)$subject['pm_driver_id'];
+                                        $adddriver_query = "SELECT * FROM lpr_driver WHERE driver_id=$pm_driver_id";
+                                        $result_adddriver = mysqli_query($connection, $adddriver_query);
+                                        $subject_addstudent = mysqli_fetch_assoc($result_adddriver);
+                                        ?>
+
+                                        <div class="form-group <?php echo($subject["pm_driver_id"]!=NULL? '' : 'hidebox'); ?>" name="add_driver_div" >
+                                            <label>PM Driver</label>
+                                            <input class="form-control pmtypeahead" value="<?php echo($subject_addstudent["driver_dname"]!=NULL? $subject_addstudent["driver_dname"] : $subject_addstudent["driver_fname"].' '.$subject_addstudent["driver_lname"]); ?>">
+                                            <input class="form-control" name="pm_driver_id" type="hidden" value="<?php echo $subject_addstudent["driver_id"]; ?>">
+                                        </div>
+
                                          <div class="form-group">
                                             <label>Payable to the driver</label>
                                             <div class="input-group">

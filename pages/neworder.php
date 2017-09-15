@@ -379,6 +379,17 @@ confirm_query($result_client);
                                             <input class="form-control typeahead" placeholder="">
                                             <input class="form-control" name="driver_id" type="hidden" placeholder="">
                                         </div>
+                                        <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="add_driver" class="aocheckbox" value="ridealong">Add PM Driver
+                                                </label>
+                                            </div>
+
+                                        <div class="form-group hidebox" name="add_driver_div" >
+                                            <label>PM Driver</label>
+                                            <input class="form-control pmtypeahead" placeholder="">
+                                            <input class="form-control" name="pm_driver_id" type="hidden" placeholder="">
+                                        </div>
                                         
                                          <div class="form-group">
                                             <label>Payable to the driver</label>
