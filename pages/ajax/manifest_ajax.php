@@ -56,14 +56,25 @@ $trip = update_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pi
 //print_r($trip['id']);
 }
 if ($obj["mode"]=="savepayroll") {
-
-
 $driver_id = (int)$obj["driver_id"];
 $amount = (float)$obj["amount"];
 $startdate = $obj["startdate"];
 $enddate = $obj["enddate"];
+$totalBilling=$obj["totalBilling"];
+$payToContractorsPerc=$obj["payToContractorsPerc"];
+$payToContractors  = $obj["payToContractors"];
+$tips=$obj["tips"];
+$additions=$obj["additions"];
+$contractorsTotal=$obj["contractorsTotal"];
+$fuelAdvance=$obj["fuelAdvance"];
+$toll= $obj["toll"];
+$leasePerc=$obj["leasePerc"];
+$lease=$obj["lease"];
+$others= $obj["others"];
+$checkNumber=$obj["checkNumber"];
+    error_log("\ntbill  payroll  " . $totalBilling, 3, "C:/xampp/apache/logs/error.log");
 
-$order=savepayroll($driver_id,$amount,$startdate,$enddate);
+$order=savepayroll($driver_id,$amount,$startdate,$enddate,$totalBilling,$payToContractorsPerc,$payToContractors,$tips,$additions,$contractorsTotal,$fuelAdvance,$toll,$leasePerc,$lease,$others,$checkNumber);
 print_r($order);
 }
 if ($obj["mode"]=="deletepayroll") {
@@ -72,4 +83,30 @@ $id = (int)$obj["id"];
 
 $order=deletepayroll($id);
 }
+
+//Update Payroll From Driver Billing System
+if ($obj["mode"]=="updatepayroll") {
+    $pay_id=$obj["pay_id"];
+    $driver_id = (int)$obj["driver_id"];
+    $amount = (float)$obj["amount"];
+    $startdate = $obj["startdate"];
+    $enddate = $obj["enddate"];
+    $totalBilling=$obj["totalBilling"];
+    $payToContractorsPerc=$obj["payToContractorsPerc"];
+    $payToContractors  = $obj["payToContractors"];
+    $tips=$obj["tips"];
+    $additions=$obj["additions"];
+    $contractorsTotal=$obj["contractorsTotal"];
+    $fuelAdvance=$obj["fuelAdvance"];
+    $toll= $obj["toll"];
+    $leasePerc=$obj["leasePerc"];
+    $lease=$obj["lease"];
+    $others= $obj["others"];
+    $checkNumber=$obj["checkNumber"];
+    error_log("\nUpdate  payroll  " . $totalBilling, 3, "C:/xampp/apache/logs/error.log");
+
+    $order=updatePayroll($pay_id,$amount,$startdate,$enddate,$payToContractorsPerc,$payToContractors,$additions,$contractorsTotal,$fuelAdvance,$toll,$leasePerc,$lease,$others,$checkNumber);
+}
+//Update Payroll From Driver Billing System ends
+
 ?>

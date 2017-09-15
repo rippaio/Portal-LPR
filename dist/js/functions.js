@@ -1515,6 +1515,19 @@ $('#savepl_button').click(function(element){
     sdata['startdate'] = $(id).siblings('input').data('startdate');
     sdata['enddate'] = $(id).siblings('input').data('enddate');
     sdata['amount'] = $('#d_finalCheck').text();
+    sdata['totalBilling']=$('#d_payable').text();
+    sdata['payToContractorsPerc']=$('#d_contractorsPay').val();
+    sdata['payToContractors']=$('#d_pay').text();
+    sdata['tips']=$('#d_tip').text();
+    sdata['additions']=$('#d_additions').val()
+    sdata['contractorsTotal']=$('#d_contractorTotal').text();
+    sdata['fuelAdvance']=$('.fuel_advance').val()
+    sdata['toll']=$('.d_tolls').val()
+    sdata['leasePerc']=$('.d_leasepercentage').val();
+    sdata['lease']=$('.d_lease').text();
+    sdata['others']=$('.d_others').val();
+    sdata['checkNumber']=$('.check_number').val();
+
 
         sdata['mode'] = "savepayroll";
         log(sdata);
@@ -1537,6 +1550,55 @@ $('#savepl_button').click(function(element){
 
 
 });
+
+// Driver Billing
+$('#updateDriverBill').click(function(element){
+
+    var id = element.target;
+    var sdata = {};
+
+    sdata['driver_id'] = $('#cashad_driverid').val();
+    sdata['startdate'] =$('#db_from').val();
+    sdata['enddate'] = $('#db_to').val();
+    sdata['amount'] = $('#d_finalCheck').text();
+    sdata['totalBilling']=$('#d_payable').text();
+    sdata['payToContractorsPerc']=$('#d_contractorsPay').val();
+    sdata['payToContractors']=$('#d_pay').text();
+    sdata['tips']=$('#d_tip').text();
+    sdata['additions']=$('#d_additions').val()
+    sdata['contractorsTotal']=$('#d_contractorTotal').text();
+    sdata['fuelAdvance']=$('.fuel_advance').val()
+    sdata['toll']=$('.d_tolls').val()
+    sdata['leasePerc']=$('.d_leasepercentage').val();
+    sdata['lease']=$('.d_lease').text();
+    sdata['others']=$('.d_others').val();
+    sdata['checkNumber']=$('.check_number').val();
+    sdata['pay_id']= $('#pay_id').val();
+
+    sdata['mode'] = "updatepayroll";
+    log(sdata);
+    $.ajax({
+        url: 'ajax/manifest_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            log(data);
+        alert("Data Updated");
+            window.location.href="driverbilling.php";
+
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
+
+
+
+});
+
+
+
 function cash_modal(){
     alert('Data Updated Successfully');
 }

@@ -76,14 +76,7 @@ confirm_query($result_tripPrint);
 include("./includes/htmlheader.php");
 include("./includes/nav.php");
 ?>
-<!--SELECT lpr_order.o_id,lpr_order.o_startdate,lpr_order.o_enddate,lpr_order.o_ampickloc,lpr_order.o_ampicktime,lpr_order.o_amdroploc,lpr_order.o_amdroptime,lpr_order.o_pmpickloc,lpr_order.o_pmdroploc,lpr_order.o_pmpicktime,lpr_order.o_days,lpr_order.o_dcomment,lpr_client.client_name,lpr_client.client_street,lpr_client.client_address,lpr_client.client_city,lpr_client.client_state,lpr_client.client_zip,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,GROUP_CONCAT(concat(lpr_student.s_grade)) as student_grade,GROUP_CONCAT(concat(lpr_student.s_gender)) as student_gender,s_phone,s_altphone,s_street,s_address,s_city,s_state,s_zip-->
-<!--FROM lpr_order,lpr_client,lpr_student where lpr_order.o_id=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id-->
-<!--group by o_id-->
 
-<!--select * from (select * from (SELECT lpr_order.o_id,lpr_order.o_startdate,lpr_order.o_enddate,lpr_order.o_ampickloc,lpr_order.o_ampicktime,lpr_order.o_amdroploc,lpr_order.o_amdroptime,lpr_order.o_pmpickloc,lpr_order.o_pmdroploc,lpr_order.o_pmpicktime,lpr_order.o_days,lpr_order.o_dcomment,lpr_client.client_name,lpr_client.client_street,lpr_client.client_address,lpr_client.client_city,lpr_client.client_state,lpr_client.client_zip,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,GROUP_CONCAT(CASE WHEN lpr_student.s_grade = '' THEN 'NA' else lpr_student.s_grade END) as student_grade,GROUP_CONCAT(lpr_student.s_gender) as student_gender,s_phone,s_altphone,s_street,s_address,s_city,s_state,s_zip-->
-<!--FROM lpr_order,lpr_client,lpr_student where lpr_order.o_id=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and o_startdate <='2017-07-25' and o_enddate >='2017-07-25' and o_days like '%Tuesday%' and lpr_order.o_status in ('active') group by o_id) t1-->
-<!--left join (select triplog_o_id,GROUP_CONCAT(triplog_status) as trip_status,GROUP_CONCAT(triplog_clock) as trip_period,triplog_date  from  lpr_triplog  group by triplog_o_id) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='2017-07-25') t3 where-->
-<!--trip_status is null or trip_status  not like '%cancel%cancel'-->
 
 
 <style type="text/css">
