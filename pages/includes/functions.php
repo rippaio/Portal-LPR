@@ -553,6 +553,31 @@ function insert_additnlTrip($driverid,$ad_payable,$ad_tip,$ad_tripdate){
     confirm_query($result_id);
 }
 
+// Addtinl trip Details System
+function getAdtnlTripDetails($ad_studentId){
+    global $connection;
+    $query="SELECT * FROM `lpr_student`,lpr_order where lpr_student.s_id=$ad_studentId  and lpr_student.o_id=lpr_order.o_id";
+    $result = mysqli_query($connection, $query);
+    confirm_query($result);
+    if($resultvalue = mysqli_fetch_assoc($result)) {
+        return $resultvalue;
+    } else {
+        return null;
+    }
+}//Addtinl trip Details System ends
+
+//Addtinl trip Details System
+function  insertAdtnlTripClient($driverid,$ad_tripdate,$ad_studentId,$ad_oid,$ad_scId){
+    global $connection;
+    $query= "INSERT INTO `lpr_triplog`(`triplog_o_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`, `triplog_city`,
+ `triplog_time`, `triplog_pickloc`, `triplog_picktime`, `triplog_droptime`, `triplog_status`, `triplog_date`, `triplog_clock`, `triplog_date_updated`, `triplog_driver_payable`, `triplog_client_payable`)
+  VALUES($ad_oid,$ad_scId,$driverid,$ad_studentId,'Adtnl Trip',CURRENT_TIME,'Adtnl Trip',CURRENT_TIME,CURRENT_TIME,'success',CURRENT_DATE ,'AM',CURRENT_DATE,'FALSE','TRUE') ";
+    error_log("\ninsert Driver additnal trip to triplog" . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+}//Addtinl trip Details System ends
+
+
 function  getCashAdvance($driver_id){
     global $connection;
     $query="select coalesce(t1.debit,0)-coalesce(t2.credit,0) as cashAdvance from

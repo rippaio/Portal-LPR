@@ -19,12 +19,24 @@ if(isset($_POST['driver_id'])) {
 }
 
 if(isset($_POST['additnl_driverid'])) {
-
+    error_log("\nDriver aditnl trip query ", 3, "C:/xampp/apache/logs/error.log");
     $driverid=$_POST['additnl_driverid'] ;
     $ad_payable=$_POST['additnl_payable'];
     $ad_tip=$_POST['additnl_tip'];
     $ad_tripdate=$_POST['additnl_tripDate'];
-    insert_additnlTrip($driverid,$ad_payable,$ad_tip,$ad_tripdate);
+    $ad_studentId=$_POST['stu_id'];
+    $ad_driver_yes_no=$_POST['driver_yes_no'];
+    $ad_client_yes_no=$_POST['client_yes_no'];
+    error_log("\nDriver aditnl trip query ".$ad_driver_yes_no, 3, "C:/xampp/apache/logs/error.log");
+    if($ad_driver_yes_no=='Yes'){
+    insert_additnlTrip($driverid,$ad_payable,$ad_tip,$ad_tripdate);}
+    if($ad_client_yes_no=='Yes'){
+        $details=getAdtnlTripDetails($ad_studentId);
+        $ad_oid=$details["o_id"];
+        $ad_scId=$details["school_id"];
+        insertAdtnlTripClient($driverid,$ad_tripdate,$ad_studentId,$ad_oid,$ad_scId);
+    }
+
 }
 ?>
 
