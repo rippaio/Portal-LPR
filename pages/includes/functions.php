@@ -253,19 +253,29 @@
 	function update_orderdriver($orderid,$driverid,$period)
 	{
 		global $connection;
-		$query  = "UPDATE lpr_order SET ";
-		if ($period == 'AM') {
+				if ($period == 'AM') {
+			$query  = "UPDATE lpr_order SET ";
+
 			$query .= "driver_id= $driverid ";
-		}
-		elseif ($period == 'PM') {
-			$query .= "pm_driver_id= $driverid ";
-		}
-		
-		$query .= "WHERE o_id = $orderid ";
-		//echo $query;
+			$query .= "WHERE o_id = $orderid ";
+			//echo $query;
 		$result = mysqli_query($connection, $query);
 		
 		confirm_query($result);
+		}
+		elseif ($period == 'PM') {
+			$query  = "UPDATE lpr_order SET ";
+
+			$query .= "pm_driver_id= $driverid ";
+			$query .= "WHERE o_id = $orderid ";
+			//echo $query;
+		$result = mysqli_query($connection, $query);
+		
+		confirm_query($result);
+		}
+		
+		
+		
 	}
 
 
