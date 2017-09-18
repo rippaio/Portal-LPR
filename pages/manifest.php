@@ -31,7 +31,7 @@ $query ="select * from
            lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and o_ampickloc not like 'null' group by lpr_order.o_id)t1 )
         UNION 
        (select t1.o_id,t1.o_status,t1.school_id,t1.driver_id,t1.client_id,t1.s_id,t1.school_city,t1.time,t1.s_fname,t1.s_city,t1.picktime,t1.pickloc,t1.droptime,'PM' as clockperiod, t1.o_days,t1.o_startdate,t1.o_enddate  from 
-          (select lpr_order.o_id,lpr_order.o_status,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.driver_id, lpr_school.school_city,lpr_order.o_pmpicktime as time,GROUP_CONCAT(CONCAT(lpr_student.s_fname,' ',lpr_student.s_lname)) as s_fname,lpr_student.s_city,lpr_order.o_pmpicktime as picktime,lpr_order.o_pmpickloc as pickloc,'NA' as droptime,lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
+          (select lpr_order.o_id,lpr_order.o_status,lpr_school.school_id,lpr_order.client_id,lpr_student.s_id,lpr_order.pm_driver_id as driver_id, lpr_school.school_city,lpr_order.o_pmpicktime as time,GROUP_CONCAT(CONCAT(lpr_student.s_fname,' ',lpr_student.s_lname)) as s_fname,lpr_student.s_city,lpr_order.o_pmpicktime as picktime,lpr_order.o_pmpickloc as pickloc,'NA' as droptime,lpr_order.o_days,lpr_order.o_startdate,lpr_order.o_enddate from 
            lpr_order,lpr_school,lpr_student where lpr_order.o_id=lpr_student.o_id and lpr_order.school_id=lpr_school.school_id and o_pmdroploc not like 'null' group by lpr_order.o_id)t1))R
   )R2  on  R1.triplog_o_id=R2.o_id
   left join
@@ -59,7 +59,7 @@ left join
 where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where pickloc not like 'NULL')
 union 
 (select * from(select * from
-(select * from (SELECT lpr_order.o_id,lpr_order.o_bs,lpr_order.o_cs,lpr_order.driver_id,lpr_order.o_startdate,lpr_order.o_enddate,concat(school_name,', ',o_pmpickloc) as pickloc,o_pmpicktime as picktime,o_pmdroploc as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
+(select * from (SELECT lpr_order.o_id,lpr_order.o_bs,lpr_order.o_cs,lpr_order.pm_driver_id as driver_id,lpr_order.o_startdate,lpr_order.o_enddate,concat(school_name,', ',o_pmpickloc) as pickloc,o_pmpicktime as picktime,o_pmdroploc as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
 FROM lpr_order,lpr_client,lpr_student,lpr_school where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and lpr_school.school_id=lpr_order.school_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
 left join
 (select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='PM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3 
@@ -256,11 +256,8 @@ include("./includes/nav.php");
                         <span  class="sheetUnderline" style="width:800px"></span>
                     </div>
                 <div class="row" style="padding-bottom: 25px">
-                    <span class="sheetText" style="width:150px ">Special Instructions:</span><span  class="sheetUnderline"><?php echo $sheets['o_dcomment']; ?></span>
+                    <span class="sheetText" style="width:150px ">Special Instructions:</span><span><?php echo wordwrap( $sheets['o_dcomment'],100,"<br>\n"); ?></span>
                 </div>
-                    <div class="row" style="padding-bottom: 25px">
-                       <span  class="sheetUnderline" style="width:800px"></span>
-                    </div>
                     <div class="row" style="padding-bottom: 70px">
                         <span  class="sheetUnderline" style="width:800px"></span>
                     </div>
