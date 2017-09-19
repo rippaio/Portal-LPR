@@ -22,7 +22,15 @@ confirm_query($result);
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
+
                         <h1 class="page-header">Orders</h1>
+                        <div class="row" style="padding-bottom: 10px">
+                            <div style="padding-right: 60px; float:right;display: inline">
+                        <a type="button" class="btn btn-primary btn-lg" href="http://localhost.org/phpmyadmin/sql.php?server=1&db=lpr_portal&table=lpr_student_audit" target="_blank">
+                            Track address changes
+                        </a>
+                        </div>
+                        </div>
                         <div class="panel panel-default">
                                 <div class="panel-heading">
                                     All Orders
