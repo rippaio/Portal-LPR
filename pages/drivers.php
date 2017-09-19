@@ -19,12 +19,24 @@ if(isset($_POST['driver_id'])) {
 }
 
 if(isset($_POST['additnl_driverid'])) {
-
+    error_log("\nDriver aditnl trip query ", 3, "C:/xampp/apache/logs/error.log");
     $driverid=$_POST['additnl_driverid'] ;
     $ad_payable=$_POST['additnl_payable'];
     $ad_tip=$_POST['additnl_tip'];
     $ad_tripdate=$_POST['additnl_tripDate'];
-    insert_additnlTrip($driverid,$ad_payable,$ad_tip,$ad_tripdate);
+    $ad_studentId=$_POST['stu_id'];
+    $ad_driver_yes_no=$_POST['driver_yes_no'];
+    $ad_client_yes_no=$_POST['client_yes_no'];
+    error_log("\nDriver aditnl trip query ".$ad_driver_yes_no, 3, "C:/xampp/apache/logs/error.log");
+    if($ad_driver_yes_no=='Yes'){
+    insert_additnlTrip($driverid,$ad_payable,$ad_tip,$ad_tripdate);}
+    if($ad_client_yes_no=='Yes'){
+        $details=getAdtnlTripDetails($ad_studentId);
+        $ad_oid=$details["o_id"];
+        $ad_scId=$details["school_id"];
+        insertAdtnlTripClient($driverid,$ad_tripdate,$ad_studentId,$ad_oid,$ad_scId);
+    }
+
 }
 ?>
 
@@ -149,7 +161,7 @@ if(isset($_POST['additnl_driverid'])) {
                                         <?php } else {?>
                                             <td class="col-xs-1"><button type="button" class="btn btn-danger dstatus" onclick="dr_changestatus(this);">Inactive</button></td>
                                         <?php } ?>
-                                        <td class="col-xs-1"> <a href="<?php echo 'adddrivertrip.php?driver_id=' . $subject_client['driver_id'].'&drivername='.$subject_client["driver_fname"]; ?>" class="btn btn-warning " role="button">Add Trip</a></td>
+                                        <td class="col-xs-1"> <a href="<?php echo 'adddrivertrip.php?driver_id=' . $subject_client['driver_id'].'&drivername='.$subject_client["driver_fname"]." ". $subject_client["driver_lname"]; ?>" class="btn btn-warning " role="button">Add Trip</a></td>
                                        <input type="hidden" data-driverid="<?php echo  $subject_client['driver_id']; ?>">
                                      </tr>
 

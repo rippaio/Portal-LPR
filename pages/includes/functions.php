@@ -553,6 +553,31 @@ function insert_additnlTrip($driverid,$ad_payable,$ad_tip,$ad_tripdate){
     confirm_query($result_id);
 }
 
+// Addtinl trip Details System
+function getAdtnlTripDetails($ad_studentId){
+    global $connection;
+    $query="SELECT * FROM `lpr_student`,lpr_order where lpr_student.s_id=$ad_studentId  and lpr_student.o_id=lpr_order.o_id";
+    $result = mysqli_query($connection, $query);
+    confirm_query($result);
+    if($resultvalue = mysqli_fetch_assoc($result)) {
+        return $resultvalue;
+    } else {
+        return null;
+    }
+}//Addtinl trip Details System ends
+
+//Addtinl trip Details System
+function  insertAdtnlTripClient($driverid,$ad_tripdate,$ad_studentId,$ad_oid,$ad_scId){
+    global $connection;
+    $query= "INSERT INTO `lpr_triplog`(`triplog_o_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`, `triplog_city`,
+ `triplog_time`, `triplog_pickloc`, `triplog_picktime`, `triplog_droptime`, `triplog_status`, `triplog_date`, `triplog_clock`, `triplog_date_updated`, `triplog_driver_payable`, `triplog_client_payable`)
+  VALUES($ad_oid,$ad_scId,$driverid,$ad_studentId,'Adtnl Trip',CURRENT_TIME,'Adtnl Trip',CURRENT_TIME,CURRENT_TIME,'success',CURRENT_DATE ,'AM',CURRENT_DATE,'FALSE','TRUE') ";
+    error_log("\ninsert Driver additnal trip to triplog" . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+}//Addtinl trip Details System ends
+
+
 function  getCashAdvance($driver_id){
     global $connection;
     $query="select coalesce(t1.debit,0)-coalesce(t2.credit,0) as cashAdvance from
@@ -581,9 +606,10 @@ function getTotalEarnings($driver_id){
 
 }
 //payroll
-function savepayroll($driver_id,$amount,$startdate,$enddate){
+function savepayroll($driver_id,$amount,$startdate,$enddate,$totalBilling,$payToContractorsPerc,$payToContractors,$tips,$additions,$contractorsTotal,$fuelAdvance,$toll,$leasePerc,$lease,$others,$checkNumber){
     global $connection;
-    $query= "INSERT INTO lpr_payroll (startdate, enddate, savedate, amount,driver_id) VALUES ('$startdate','$enddate',CURRENT_DATE,$amount,$driver_id)";
+    $query= "INSERT INTO lpr_payroll (startdate, enddate, savedate, amount,driver_id,`tBill`, `payToContractorsPerc`, `payToContractors`, `tips`, `additions`, `contractorsTotal`, `fuelAdvance`, `toll`, `leasePerc`, `lease`, `others`, `checkNumber`) 
+      VALUES ('$startdate','$enddate',CURRENT_DATE,$amount,$driver_id,$totalBilling,$payToContractorsPerc,$payToContractors,$tips,$additions,$contractorsTotal,$fuelAdvance,$toll,$leasePerc,$lease,$others,$checkNumber)";
     error_log("\nSaving payroll  " . $query, 3, "C:/xampp/apache/logs/error.log");
     $result_id = mysqli_query($connection, $query);
     confirm_query($result_id);
@@ -611,12 +637,21 @@ function deletepayroll($id){
     return true;
 }
 
+//Update Payroll -Driver Billing System
+function updatePayroll($pay_id,$amount,$startdate,$enddate,$payToContractorsPerc,$payToContractors,$additions,$contractorsTotal,$fuelAdvance,$toll,$leasePerc,$lease,$others,$checkNumber){
+    global $connection;
+    $query ="UPDATE `lpr_payroll` SET `startdate`='$startdate',`enddate`='$enddate',`amount`=$amount,
+`payToContractorsPerc`=$payToContractorsPerc,`payToContractors`=$payToContractors,`additions`=$additions,`contractorsTotal`=$contractorsTotal,`fuelAdvance`=$fuelAdvance,`toll`=$toll,`leasePerc`=$leasePerc,
+`lease`=$lease,`others`=$others,`checkNumber`=$checkNumber WHERE pl_id=$pay_id ";
+    $result_id = mysqli_query($connection, $query);
+    error_log("Inside query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+    confirm_query($result_id);
+}
+//Update Payroll - Driver Billing System
+
 
 function getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate){
     global $connection;
-//    $query="SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,o_billable,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school
-// WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and
-// triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate' and triplog_client_payable in ('TRUE')";
     $query=" SELECT `triplog_o_id`, lpr_billing.client_id as triplog_client_id, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,lpr_billing.amount as o_billable,
  CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,CONCAT(s_fname,' ',s_lname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc,
  CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc,triplog_picktime,triplog_clock,lpr_school.school_abr
@@ -643,9 +678,6 @@ function getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_sta
 
 function getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate){
     global $connection;
-//    $query="select count(triplog_o_id) as tripcount ,sum(amount)as totalbillable,client_name,client_street,client_address,client_city,client_state,client_zip from (SELECT `triplog_o_id`, `triplog_client_id`, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,lpr_billing.amount,CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,client_street,client_address,client_city,client_state,client_zip,CONCAT(s_lname,' ',s_fname) as s_name,school_name, CASE WHEN triplog_clock='AM' then o_ampickloc else o_pmpickloc end pickloc, CASE WHEN triplog_clock='AM' then o_amdroploc else o_pmdroploc end as droploc FROM `lpr_triplog`,lpr_order,lpr_driver,lpr_student,lpr_client,lpr_school,lpr_billing
-// WHERE  triplog_o_id=lpr_order.o_id and  triplog_driver_id=lpr_driver.driver_id and triplog_studentid=lpr_student.s_id and  triplog_client_id=lpr_client.client_id and lpr_billing.o_id=triplog_o_id and lpr_billing.client_id=$cb_client and
-// triplog_school_id=lpr_school.school_id and  triplog_client_id=$cb_client and triplog_date between '$cb_startdate' and '$cb_enddate' and triplog_client_payable in ('TRUE') and lpr_order.o_status in ('active')";
     $query="select count(triplog_o_id) as tripcount ,sum(o_billable)as totalbillable,client_name,client_street,client_address,client_city,client_state,client_zip from
  ( SELECT `triplog_o_id`, lpr_billing.client_id as triplog_client_id, `triplog_school_id`, `triplog_driver_id`, `triplog_studentid`,`triplog_time`, `triplog_pickloc`, `triplog_date`,lpr_billing.amount as o_billable,
  CONCAT(driver_lname,' ',driver_fname) as d_name,client_name,client_street,client_address,client_city,client_state,client_zip,CONCAT(s_fname,' ',s_lname) as s_name,school_name,
@@ -965,4 +997,33 @@ function getAdvanceDeatils($driver_id){
     confirm_query($result_advance);
     return $result_advance;
 }
+
+//Get Payroll Details for Payroll Edit System
+function getPayrollById($payId){
+    global $connection;
+    $query_advance  = "SELECT * FROM lpr_payroll left join lpr_driver on lpr_payroll.driver_id=lpr_driver.driver_id where lpr_payroll.pl_id=$payId";
+    $result_advance = mysqli_query($connection, $query_advance);
+    confirm_query($result_advance);
+    if($results = mysqli_fetch_assoc($result_advance)) {
+        return $results;
+    } else {
+        return null;
+    }
+
+}
+//Get Payroll Details for Payroll Edit System Ends
+
+// Get Check Number : Driver Billing System
+function getCheckNumber(){
+    global $connection;
+    $query_advance  = "SELECT max(checkNumber) as checkNum FROM lpr_payroll";
+    $result_advance = mysqli_query($connection, $query_advance);
+    confirm_query($result_advance);
+    if($results = mysqli_fetch_assoc($result_advance)) {
+        return $results;
+    } else {
+        return null;
+    }
+}
+//End of  Get Check Number
 ?>

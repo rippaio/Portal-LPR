@@ -213,6 +213,7 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                                                     <th>Start Date</th>
                                                     <th>End Date</th>
                                                     <th>Amount</th>
+                                                    <th>Edit</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -232,8 +233,7 @@ elseif (isset($_POST['fstartdate'],$_POST['fenddate'])) {
                                                     <td><?php echo $subject["startdate"]; ?></td>
                                                     <td><?php echo $subject["enddate"]; ?></td>
                                                     <td><?php echo $subject["amount"]; ?></td>
-                                                    
-                                                    
+                                                    <td class="col-xs-1"><a href="<?php echo 'driverbilling.php?payId=' . $subject['pl_id']; ?>" class="size2" style="color: #5cb85c;margin: inherit;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                                                     <td><button type="button" class="btn btn-danger" onclick="deletepay(this,<?php echo $subject["pl_id"]; ?>);">Delete</button></td>
                                                 </tr>
                                             <?php } }?>

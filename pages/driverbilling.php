@@ -4,29 +4,56 @@ include("./includes/functions.php");
 $driver_payable=0;
 $driver_tip = 0;
 $driver_name="";
-$additions="";
-$fuel_advance="";
-$toll="";
-$advance="";
-$other="";
+$additions=0;
+$fuel_advance=0;
+$toll=0;
+$advance=0;
+$other=0;
 $start_date="";
 $end_date="";
 $driver_id="";
-$total_earnings="";
+$total_earnings=0;
+$contractorsPerc=25;
+$leasePerc=0;
+$pay_id=0;
+$checkNumber=0;
 ?>
 <?php
+
+if(isset($_GET['payId'])){
+    $editPayRoll=getPayrollById($_GET['payId']);
+    $pay_id=$_GET['payId'];
+    $driver_id=$editPayRoll['driver_id'];
+    $toll=$editPayRoll['toll'];
+    $driver_name=$editPayRoll['driver_fname'].' '.$editPayRoll['driver_lname'];
+    $additions=$editPayRoll['additions'];
+    $fuel_advance=$editPayRoll['fuelAdvance'];
+    $other=$editPayRoll['others'];
+    $checkNumber=$editPayRoll['checkNumber'];
+    $driver_pay=$editPayRoll['tBill'];
+    $driverTips=$editPayRoll['tips'];
+    $driverCtotal=$editPayRoll['contractorsTotal'];
+    $driverFamount=$editPayRoll['amount'];
+    $contractorsPerc=$editPayRoll['payToContractorsPerc'];
+    $leasePerc=$editPayRoll['leasePerc'];
+    $lease=$editPayRoll['lease'];
+    $start_date=$editPayRoll['startdate'];
+    $end_date= $editPayRoll['enddate'];
+    $payContractors=$editPayRoll['payToContractors'];
+    $cashAdvanceDetails= getCashAdvance($driver_id);
+    $advance=$cashAdvanceDetails['cashAdvance'];
+    $earnings_data= getTotalEarnings($driver_id);
+    $total_earnings=$earnings_data['earnings'];
+
+}
+
 if(isset($_POST['driver_id'])) {
    $driver_id= $_POST['driver_id'];
    $start_date= $_POST['fstartdate'];
    $end_date= $_POST['fenddate'];
    $driver_name=$_POST['db_drivername'];
- // $driverTripsCount= getDriverTripCount($driver_id,$start_date,$end_date);
- // error_log("\nDriver Billing trips count" . $driverTripsCount['drivertripcount'] , 3, "C:/xampp/apache/logs/error.log");
-//  $driverBillDetails= getDriverBillDetails($driver_id,$start_date,$end_date);
-//while ($billDetails = mysqli_fetch_assoc($driverBillDetails)) {
-//   $driver_tip += $billDetails['tripperorder']*$billDetails['o_tip'];
-//   $driver_payable+=$billDetails['tripperorder']*$billDetails['o_payable'];
-//}
+   $check=getCheckNumber();
+   $checkNumber=$check["checkNum"]+1;
 
   $driverBill=getDriverBill($driver_id,$start_date,$end_date);
   $d_print=getDriverBill($driver_id,$start_date,$end_date);
@@ -34,6 +61,7 @@ if(isset($_POST['driver_id'])) {
   $advance=$cashAdvanceDetails['cashAdvance'];
   $earnings_data= getTotalEarnings($driver_id);
   $total_earnings=$earnings_data['earnings'];
+
 }
 
 
@@ -139,7 +167,7 @@ include("./includes/nav.php");
                 <div style="text-align: left">
                     <span>TOTAL EARNINGS TILL DATE :</b></span>
                 </div>
-                <div style="text-align: left">$<span class="total_earnings">________</span></div>
+                <div style="text-align: left">$<span class="total_erng">0</span></div>
             </div>
             <div class="to2Columns">
                <div style="text-align: left">
@@ -308,7 +336,7 @@ include("./includes/nav.php");
                 </div>
                 <!--Start Modal  -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <form method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form method="post" enctype="multipart/form-data" class="form-horizontal" action="driverbilling.php">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -345,12 +373,13 @@ include("./includes/nav.php");
                 <!--End Modal  -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div style="display: inline-block">
+                        <div>
                             <span>Settlement Record : </span>
-
-                        </div>
-                        <div style="display: inline-block" >
-                                <h4 id="db_drivername"><?php echo $driver_name; ?>  </h4>
+                              <h4 id="db_drivername" style="display: inline-block"><?php echo $driver_name; ?>  </h4>
+                            <span style="padding-left: 10px">From:</span>
+                              <h5 id="db_startdate" style="display: inline-block"><?php echo $start_date; ?>  </h5>
+                            <span style="padding-left: 10px">To:</span>
+                              <h5 id="db_enddate" style="display: inline-block"><?php echo $end_date; ?>  </h5>
                         </div>
 
 
@@ -406,28 +435,42 @@ include("./includes/nav.php");
                     <input class="form-control" id="cashad_driverid"  type="hidden" placeholder="" value="<?php echo $driver_id;?>">
                     <input class="form-control" id="cashad_initial"  type="hidden" placeholder="" value="<?php echo $advance;?>">
                     <input class="form-control" id="total_earnings"  type="hidden" placeholder="" value="<?php echo $total_earnings;?>">
+                    <input class="form-control" id="pay_id"  type="hidden" placeholder="" value="<?php echo $pay_id;?>">
+
 
                     <div class="form-group">
                             <label>Total Billing</label>
-                            <p style="height:40px;">$<span id="d_payable"><?php echo $driver_payable; ?></span></p>
+                    <?php    if(isset($_GET['payId'])){ ?>
+                        <p style="height:40px;">$<span id="d_payable"><?php echo $driver_pay; ?></span></p>
+                    <?php } else{?>
+                        <p style="height:40px;">$<span id="d_payable"><?php echo $driver_payable; ?></span></p>
+                     <?php } ?>
                     </div>
                     <div class="form-group">
                         <select id="d_contractorsPay">
-                            <option value="5">5%</option>
-                            <option value="10">10%</option>
-                            <option value="15">15%</option>
-                            <option value="20">20%</option>
-                            <option value="25" selected>25%</option>
-                            <option value="30">30%</option>
-                            <option value="35">35%</option>
-                            <option value="40">40%</option>
+                            <option value="5" <?php if ($contractorsPerc == 5) { ?>selected="true" <?php }; ?> > 5%</option>
+                            <option  value="10" <?php if ($contractorsPerc == 10) { ?>selected="true" <?php }; ?> > 10%</option>
+                            <option  value="15" <?php if ($contractorsPerc == 15) { ?>selected="true" <?php }; ?> > 15%</option>
+                            <option  value="20" <?php if ($contractorsPerc == 20) { ?>selected="true" <?php }; ?> > 20%</option>
+                            <option  value="25" <?php if ($contractorsPerc == 25) { ?>selected="true" <?php }; ?> > 25%</option>
+                            <option  value="30" <?php if ($contractorsPerc == 30) { ?>selected="true" <?php }; ?> > 30%</option>
+                            <option  value="35" <?php if ($contractorsPerc == 35) { ?>selected="true" <?php }; ?> > 35%</option>
+                            <option  value="40" <?php if ($contractorsPerc ==40) { ?>selected="true" <?php }; ?> > 40%</option>
                         </select>
                         <label>Pay To Contractors</label>
-                        <p>$<span id="d_pay"><?php echo $driver_payable*0.25; ?></span></p>
+                        <?php    if(isset($_GET['payId'])){ ?>
+                            <p>$<span id="d_pay"><?php echo $driver_pay*($contractorsPerc/100.0); ?></span></p>
+                        <?php } else{?>
+                            <p>$<span id="d_pay"><?php echo $driver_payable*0.25; ?></span></p>
+                        <?php } ?>
                     </div>
                     <div class="form-group">
                         <label>Tips</label>
-                    <p style="height:25px;">$<span  id="d_tip"><?php echo $driver_tip; ?></span></p>
+                        <?php    if(isset($_GET['payId'])){ ?>
+                            <p style="height:25px;">$<span  id="d_tip"><?php echo $driverTips; ?></span></p>
+                        <?php } else{?>
+                            <p style="height:25px;">$<span  id="d_tip"><?php echo $driver_tip; ?></span></p>
+                        <?php } ?>
                     </div>
                     <div class="form-group">
                         <label>Additions</label>
@@ -436,7 +479,11 @@ include("./includes/nav.php");
                     </div>
                     <div class="form-group">
                         <label style="height:30px;">Contactors Total</label>
-                        <p> $<span id="d_contractorTotal"><?php echo $driver_payable*0.25+$driver_tip; ?></span></p>
+                        <?php    if(isset($_GET['payId'])){ ?>
+                            <p> $<span id="d_contractorTotal"><?php echo $driverCtotal; ?></span></p>
+                        <?php } else{?>
+                            <p> $<span id="d_contractorTotal"><?php echo $driver_payable*0.25+$driver_tip; ?></span></p>
+                        <?php } ?>
                     </div>
 
                 </div>
@@ -452,18 +499,22 @@ include("./includes/nav.php");
                     </div>
                     <div class="form-group">
                         <select class="d_leasepercentage">
-                            <option value="0">0%</option>
-                            <option value="5">5%</option>
-                            <option value="10">10%</option>
-                            <option value="15">15%</option>
-                            <option value="20">20%</option>
-                            <option value="25">25%</option>
-                            <option value="30">30%</option>
-                            <option value="35">35%</option>
-                            <option value="40">40%</option>
+                            <option   value="0" <?php if ($leasePerc == 0) { ?>selected="true" <?php }; ?> > 0%</option>
+                            <option  value="5" <?php if ($leasePerc == 5) { ?>selected="true" <?php }; ?> > 5%</option>
+                            <option  value="10" <?php if ($leasePerc == 10) { ?>selected="true" <?php }; ?> > 10%</option>
+                            <option  value="15" <?php if ($leasePerc == 15) { ?>selected="true" <?php }; ?> > 15%</option>
+                            <option  value="20" <?php if ($leasePerc == 20) { ?>selected="true" <?php }; ?> > 20%</option>
+                            <option  value="25" <?php if ($leasePerc == 25) { ?>selected="true" <?php }; ?> > 25%</option>
+                            <option  value="30" <?php if ($leasePerc == 30) { ?>selected="true" <?php }; ?> > 30%</option>
+                            <option  value="35" <?php if ($leasePerc == 35) { ?>selected="true" <?php }; ?> > 35%</option>
+                            <option  value="40" <?php if ($leasePerc ==40) { ?>selected="true" <?php }; ?> > 40%</option>
                         </select>
                         <label>Lease</label>
-                        <p>$<span class="d_lease">0</span></p>
+                        <?php    if(isset($_GET['payId'])){ ?>
+                            <p>$<span class="d_lease"><?php echo $lease; ?></span></p>
+                        <?php } else{?>
+                            <p>$<span class="d_lease">0</span></p>
+                        <?php } ?>
                     </div>
 
                         <div class="form-group">
@@ -485,10 +536,14 @@ include("./includes/nav.php");
                     <div class="form-group">
                         <div class="form-group">
                             <label>Check Number</label>
-                            <input class="form-control check_number"  style="width:200px" value=""/>
+                            <input class="form-control check_number"  style="width:200px" value="<?php echo $checkNumber; ?>"/>
                         </div>
                         <label>Total Settlement Check</label><br>
-                        <p style="display:inline-block;padding-right: 140px">$<span id="d_finalCheck"><?php echo $driver_payable*0.25+$driver_tip-$advance ?></span></p>
+                        <?php    if(isset($_GET['payId'])){ ?>
+                            <p style="display:inline-block;padding-right: 140px">$<span id="d_finalCheck"><?php echo $driverFamount; ?></span></p>
+                        <?php } else{?>
+                            <p style="display:inline-block;padding-right: 140px">$<span id="d_finalCheck"><?php echo $driver_payable*0.25+$driver_tip-$advance ?></span></p>
+                        <?php } ?>
                         <button type="button" class="btn btn-primary" style="display: inline-block" onclick="setDriverBill()">
                             Calculate
                         </button>
@@ -496,13 +551,14 @@ include("./includes/nav.php");
                 </div>
             </div>
             <!-- /.col-lg-12 -->
+        <?php
+        if(isset($_GET['payId'])) { ?>
+                 <button type="submit" class="btn btn-primary btn-lg"  id="updateDriverBill" name="updateDriverBill" style="margin-left: 25px">Update</button>
             <?php
-            if(isset($_POST['driver_id']) && checkpayroll($driver_id,$start_date,$end_date)) { 
-                //error_log("\nSaving payroll  " . checkpayroll($driver_id,$start_date,$end_date), 3, "C:/xampp/apache/logs/error.log");
-                ?>
+               } else if(isset($_POST['driver_id']) && checkpayroll($driver_id,$start_date,$end_date)) {
+             ?>
                 <div class="form-group hidebox" id="savepl">
-                    
-                    <button type="submit" class="btn btn-primary btn-lg"  id="savepl_button">Save to Payroll</button>
+                    <button type="submit" class="btn btn-primary btn-lg"  id="savepl_button" style="margin-left: 20px">Save to Payroll</button>
                     <input type="hidden" class="form-control" data-driver_id="<?php echo $driver_id; ?>" data-startdate="<?php echo $start_date; ?>" data-enddate="<?php echo $end_date; ?>" />
                 </div>
 

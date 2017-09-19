@@ -32,6 +32,13 @@ include("./includes/nav.php");
                             <p class="help-block"></p>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">Student</label>
+                        <div class="col-sm-6">
+                        <input class="form-control typeahead_student" required  placeholder="">
+                        <input class="form-control" name="stu_id" type="hidden" placeholder="">
+                        </div>
+                    </div>
                     <div class="form-group" >
                                     <label class="control-label col-sm-2">Trip Date</label>
                                     <div class="input-group col-sm-6" style="padding-left: 15px">
@@ -41,7 +48,7 @@ include("./includes/nav.php");
 
                     </div>
                     <div class="form-group">
-                            <label class="control-label col-sm-2">Payable</label>
+                            <label class="control-label col-sm-2">Payable to driver</label>
                             <div class="col-sm-6">
                             <input class="form-control" type="number" placeholder="Enter Amount" name="additnl_payable" required value="">
                             <p class="help-block"></p>
@@ -54,13 +61,31 @@ include("./includes/nav.php");
                             <p class="help-block"></p>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="driver_yes_no_radio" class="control-label col-sm-3">Is driver payable ?</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="driver_yes_no" value="Yes" checked>Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="driver_yes_no" value="No">No
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="client_yes_no_radio" class="control-label col-sm-3">Is client payable ?</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="client_yes_no" value="Yes" checked>Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="client_yes_no" value="No">No
+                        </label>
+                    </div>
                 </div>
             </div>
                 <!-- /.col-lg-12 -->
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-6">
-                        <button type="submit" class="btn btn-primary btn-lg" name="adddriver">Submit</button>
+                        <button type="submit" class="btn btn-primary btn-lg"  style="margin-top: 20px" name="adtnl_trip">Submit</button>
                     </div>
                 </div>
         </form>
