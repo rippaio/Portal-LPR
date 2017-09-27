@@ -166,6 +166,12 @@ $result_billing = mysqli_query($connection, $query_billing);
                                                  <?php } ?>
                                         </div>
                                         <h4>AM Trip</h4>
+                                        <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="amcheck" value="am" checked>AM Trip
+                                                </label>
+                                        </div>
+                                         <div name="amdiv">
                                             <div class="form-group">
                                                 <label>Pickup Location</label>
                                                 <input class="form-control" name="o_ampickloc" placeholder="Enter Location" value="<?php echo $subject["o_ampickloc"]; ?>" required>
@@ -196,7 +202,14 @@ $result_billing = mysqli_query($connection, $query_billing);
                                                 <div class="bfh-timepicker" name="o_amdroptime" data-time="<?php echo substr($subject["o_amdroptime"], 0, 5); ?>" data-align="right">
                                                 </div>
                                             </div>
+                                        </div>
                                             <h4>PM Trip</h4>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" name="pmcheck" value="pm" checked>PM Trip
+                                                </label>
+                                            </div>
+                                            <div name="pmdiv">
                                             <div class="form-group">
                                                 <label>Pickup Location</label>
                                                 <input class="form-control" id="pmDropLoc" name="o_pmpickloc" placeholder="Enter Location" value="<?php echo $subject["o_pmpickloc"]; ?>"required>
@@ -216,6 +229,7 @@ $result_billing = mysqli_query($connection, $query_billing);
                                                 <label>Drop Location</label>
                                                 <input class="form-control" placeholder="Enter Location" name="o_pmdroploc" value="<?php echo $subject["o_pmdroploc"]; ?>" required>
                                             </div>
+                                        </div>
                                         
                                     
                                     </div>    

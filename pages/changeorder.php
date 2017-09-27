@@ -8,7 +8,7 @@ include("./includes/nav.php");
 ?>
 <?php
 
-$query =" SELECT * FROM `lpr_order` LEFT JOIN lpr_client ON lpr_order.o_reqby = lpr_client.client_id LEFT JOIN lpr_school ON lpr_order.school_id = lpr_school.school_id LEFT JOIN lpr_student ON lpr_order.o_id = lpr_student.o_id LEFT JOIN lpr_driver ON lpr_order.driver_id = lpr_driver.driver_id LEFT JOIN (SELECT lpr_billing.o_id,count(lpr_billing.o_id) as zones ,SUM(lpr_billing.amount) as clientbill from lpr_billing GROUP by lpr_billing.o_id) AS bill ON lpr_order.o_id = bill.o_id GROUP by lpr_order.o_id";
+$query ="SELECT lpr_order.o_id, lpr_client.client_abr,lpr_school.school_abr,lpr_student.s_fname,lpr_student.s_lname,lpr_driver.driver_fname,lpr_driver.driver_lname,lpr_driver.driver_dname,lpr_order.o_startdate,lpr_order.o_enddate,lpr_order.o_ampickloc,lpr_order.o_status FROM `lpr_order` LEFT JOIN lpr_client ON lpr_order.o_reqby = lpr_client.client_id LEFT JOIN lpr_school ON lpr_order.school_id = lpr_school.school_id LEFT JOIN lpr_student ON lpr_order.o_id = lpr_student.o_id LEFT JOIN lpr_driver ON lpr_order.driver_id = lpr_driver.driver_id LEFT JOIN (SELECT lpr_billing.o_id,count(lpr_billing.o_id) as zones ,SUM(lpr_billing.amount) as clientbill from lpr_billing GROUP by lpr_billing.o_id) AS bill ON lpr_order.o_id = bill.o_id GROUP by lpr_order.o_id";
 
 //error_log("\nChange Order" . $query , 3, "C:/xampp/apache/logs/error.log");
 $result = mysqli_query($connection, $query);
