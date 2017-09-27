@@ -223,7 +223,7 @@ $( "#createorder" ).submit(function( event ) {
         success: function(data) {
             //$('#billtext').val(data);
             log(data);
-            alert("Order created! Please proceed to manifest");
+            $('#myModal').modal('toggle');
           
         },
         error: function(xhr, desc, err) {
@@ -262,6 +262,7 @@ $( "#updateorder" ).submit(function( event ) {
         success: function(data) {
             //$('#billtext').val(data);
             log(data);
+            $("[name='modal_href']").attr('href','editorder.php?oid='+data);
             alert("Order updated! Please proceed to manifest");
           
         },
@@ -473,7 +474,7 @@ $('input[name="o_pmdroploc"]').on('focus', function(){
 });
 
 $('input[name="amcheck"]').click(function(){
-    
+
 if(!$('input[name="amcheck"]').is(":checked")){
     $('input[name="o_amdroploc"]').val("");
 }
