@@ -11,10 +11,10 @@ $totalpayable="";
 $client_name="";
 $invoice_number=0;
 confirm_query($result_client);
+$cb_startdate="";
+$cb_enddate="";
 ?>
 <?php
-//error_log("\nStudent Billing Query " . $_GET['cd_ctypeSelect'], 3, "C:/xampp/apache/logs/error.log");
-//var_dump(isset($_POST['cb_ctypeSelect']));
 if(isset($_POST['cb_ctypeSelect'])) {
 $cb_client=$_POST['cb_ctypeSelect'];
 $cb_stypeSelect=$_POST['cb_stypeSelect'];
@@ -26,7 +26,8 @@ $cb_details= getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb
 $cb_forPrint=getClientBill($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
 $cb_payment=getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb_startdate,$cb_enddate);
 
-$invoice_number=getInvoiceNumber();
+$invoice_data=getInvoiceNumber();
+$invoice_number=$invoice_data['invoice']+1;
 
 while ($c_pay = mysqli_fetch_assoc($cb_payment)) {
     $totaltrips = $c_pay['tripcount'];
@@ -40,6 +41,19 @@ while ($c_pay = mysqli_fetch_assoc($cb_payment)) {
 }
 }
 ?>
+<?php
+if(isset($_GET['invoiceId'])) {
+    $invoice_number=$_GET['invoiceId'];
+    $billData = getInvoiceById($invoice_number);
+    $totaltrips=$billData['totaltrips'];
+    $totalpayable=$billData['totalpayable'];
+    $cb_startdate=$billData['startdate'];
+    $cb_enddate=$billData['enddate'];
+    $client_name=$_GET['clientName'];
+    $cb_client=$_GET['cid'];
+}
+?>
+
 <?php
 include("./includes/htmlheader.php");
 include("./includes/nav.php");
@@ -266,6 +280,9 @@ if(isset($_POST['cb_ctypeSelect'])) {
                     <button type="button" class="btn btn-primary btn-lg" onclick="printClientBill();">
                         Print
                     </button>
+                    <a href="Bill.php" type="button" class="btn btn-primary btn-lg">
+                        Bills
+                    </a>
 
                 </div>
                 <!--Start Modal  -->
@@ -340,12 +357,12 @@ if(isset($_POST['cb_ctypeSelect'])) {
                 <!--End Modal  -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <div style="display: inline-block">
-                            <h4>  Trips:</h4>
-                        </div>
-                        <div style="display: inline-block;padding-left: 10px" >
-                            <h4><?php echo $client_name; ?>  </h4>
-                        </div>
+                        <span>Trips: </span>
+                        <h5  style="display: inline-block"><?php echo $client_name; ?>  </h5>
+                        <span style="padding-left: 10px">From:</span>
+                        <h5  style="display: inline-block"><?php echo $cb_startdate; ?>  </h5>
+                        <span style="padding-left: 10px">To:</span>
+                        <h5  style="display: inline-block"><?php echo $cb_enddate; ?>  </h5>
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
@@ -392,37 +409,28 @@ if(isset($_POST['cb_ctypeSelect'])) {
 
                     <div class="form-group">
                         <label>Total Trips</label>
-                        <input class="form-control"  value="<?php echo $totaltrips; ?>">
+                        <input id="totaltrips" class="form-control"  value="<?php echo $totaltrips; ?>">
                         <p class="help-block"></p>
-                    </div>
-                    <!-- <div class="form-group">
-                        <label>Taxable Pay</label>
-                        <input class="form-control" placeholder="34">
-                        <p class="help-block"></p>
-                    </div>
-                    <div class="form-group">
-                        <label>Tips</label>
-                        <input class="form-control" placeholder="67">
-                    </div>
-                    <div class="form-group">
-                        <label>Total taxable</label>
-                        <input class="form-control" placeholder="50">
-                    </div>
-                    <div class="form-group">
-                        <label>Total Cash</label>
-                        <input class="form-control" placeholder="00">
-                    </div> -->
-                    <div class="form-group">
-                        <label>Total Payable</label>
-                        <input class="form-control" value="<?php echo $totalpayable; ?>">
                     </div>
 
+                    <div class="form-group">
+                        <label>Total Payable</label>
+                        <input id="totalbillable" class="form-control" value="<?php echo $totalpayable; ?>">
+                    </div>
                 </div>
-                <div class="col-lg-8">
-                    <!-- <div class="form-group">
-                    <a href="adddriver.html" class="btn btn-primary btn-lg" role="button">Print</a>
-                    </div> -->
-                </div>
+            <?php    if(isset($_GET['invoiceId'])) { ?>
+                <button type="submit" class="btn btn-primary btn-lg"  id="updateClientBill" name="updateClientBill" style="margin-left: 20px;margin-top: 90px">Update</button>
+                <input type="hidden" class="form-control" data-clientid="<?php echo $cb_client; ?>"  data-invoicenumber="<?php echo $invoice_number; ?>" data-startdate="<?php echo $cb_startdate; ?>" data-enddate="<?php echo $cb_enddate; ?> " />
+                <?php
+                } else if(isset($_POST['cb_ctypeSelect']) && checkClientBill($cb_client,$cb_startdate,$cb_enddate)) {
+                    ?>
+                    <div class="form-group" id="savecb">
+                        <button type="submit" class="btn btn-primary btn-lg"  id="savecb_button" style="margin-left: 20px;margin-top: 90px">Save to Payroll</button>
+                        <input type="hidden" class="form-control" data-clientid="<?php echo $cb_client; ?>" data-startdate="<?php echo $cb_startdate; ?>" data-enddate="<?php echo $cb_enddate; ?>" />
+                    </div>
+
+                <?php } ?>
+
             </div>
             <!-- /.col-lg-12 -->
         </div>

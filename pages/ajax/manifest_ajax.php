@@ -79,12 +79,45 @@ $checkNumber=$obj["checkNumber"];
 $order=savepayroll($driver_id,$amount,$startdate,$enddate,$totalBilling,$payToContractorsPerc,$payToContractors,$tips,$additions,$contractorsTotal,$fuelAdvance,$toll,$leasePerc,$lease,$others,$checkNumber);
 print_r($order);
 }
+
+// Client Bill Save
+if ($obj["mode"]=="saveClientBill") {
+    $c_id = $obj["c_id"];
+    $enddate = $obj["enddate"];
+    $startdate=$obj["startdate"];
+    $totaltrips=$obj["totaltrips"];
+    $totalbillable= $obj["totalbillable"];
+    saveClientBill($c_id,$startdate,$enddate,$totaltrips,$totalbillable);
+}
+
+// Client Bill Update
+if ($obj["mode"]=="UpdateClientBill") {
+    $invoiceid= $obj["invoiceId"];
+    $c_id = $obj["c_id"];
+    $enddate = $obj["enddate"];
+    $startdate=$obj["startdate"];
+    $totaltrips=$obj["totaltrips"];
+    $totalbillable= $obj["totalbillable"];
+    updateClientBill($invoiceid,$totaltrips,$totalbillable);
+}
+
+
 if ($obj["mode"]=="deletepayroll") {
 
 $id = (int)$obj["id"];
 
 $order=deletepayroll($id);
 }
+
+//Delete Bill
+if ($obj["mode"]=="deleteBill") {
+
+    $id = (int)$obj["id"];
+
+    $order=deleteBill($id);
+}
+
+
 
 //Update Payroll From Driver Billing System
 if ($obj["mode"]=="updatepayroll") {

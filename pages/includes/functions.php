@@ -616,6 +616,28 @@ function savepayroll($driver_id,$amount,$startdate,$enddate,$totalBilling,$payTo
     return true;
 }
 
+//Client Bill save
+function saveClientBill($c_id,$startdate,$enddate,$totaltrips,$totalbillable){
+    global $connection;
+    $query= "INSERT INTO `lpr_invoice`(invoice_date, `startdate`, `enddate`, `cid`, `totaltrips`, `totalpayable`) VALUES (CURRENT_DATE,'$startdate','$enddate',$c_id,$totaltrips,$totalbillable)";
+    error_log("\nSaving Client Bill  " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+    return true;
+}
+
+function updateClientBill($invoiceid,$totaltrips,$totalbillable){
+    global $connection;
+    $query ="UPDATE `lpr_invoice` SET totaltrips=$totaltrips,`totalpayable`=$totalbillable WHERE `invoice_id`=$invoiceid";
+    $result_id = mysqli_query($connection, $query);
+    error_log("Inside update cleinet bill query\n" . $query , 3, "C:/xampp/apache/logs/error.log");
+    confirm_query($result_id);
+
+}
+
+
+
+
 function checkpayroll($driver_id,$startdate,$enddate){
     global $connection;
     $query= "SELECT * FROM `lpr_payroll` WHERE (('$startdate' BETWEEN startdate AND enddate) OR ('$enddate' BETWEEN startdate AND enddate)) AND driver_id =$driver_id";
@@ -628,9 +650,34 @@ function checkpayroll($driver_id,$startdate,$enddate){
         return true;
     }
 }
+
+function checkClientBill($cb_ctypeSelect,$cb_startdate,$cb_enddate){
+    global $connection;
+    $query= "SELECT * FROM `lpr_invoice` WHERE (('$cb_startdate' BETWEEN startdate AND enddate) OR ('$cb_enddate' BETWEEN startdate AND enddate)) AND cid =$cb_ctypeSelect";
+    error_log("\nSaving payroll  " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+    if(mysqli_num_rows($result_id)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
 function deletepayroll($id){
     global $connection;
     $query= "DELETE FROM lpr_payroll where pl_id=$id";
+    error_log("\ndelete payroll  " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result_id = mysqli_query($connection, $query);
+    confirm_query($result_id);
+    return true;
+}
+
+//Delete Bill
+function deleteBill($id){
+    global $connection;
+    $query= "DELETE FROM lpr_invoice where invoice_id=$id";
     error_log("\ndelete payroll  " . $query, 3, "C:/xampp/apache/logs/error.log");
     $result_id = mysqli_query($connection, $query);
     confirm_query($result_id);
@@ -707,14 +754,31 @@ function getClientPayement($cb_client,$cb_stypeSelect ,$cb_sSelect,$cb_sname,$cb
 
 function getInvoiceNumber(){
     global $connection;
-    $query= "INSERT INTO `lpr_invoice`(`invoice_date`) VALUES (CURRENT_DATE)";
+    $query= "SELECT max(lpr_invoice.invoice_id)as invoice from lpr_invoice";
     error_log("\ninsert Invoice Number " . $query, 3, "C:/xampp/apache/logs/error.log");
     $result = mysqli_query($connection, $query);
     confirm_query($result);
-    $invoice=mysqli_insert_id($connection);
-    error_log("\nInvice  Number " . $invoice, 3, "C:/xampp/apache/logs/error.log");
-    return $invoice;
+    if($results = mysqli_fetch_assoc($result)) {
+        return $results;
+    } else {
+        return null;
+    }
 }
+
+//Get Invoice Details
+function  getInvoiceById($invoice){
+    global $connection;
+    $query= "SELECT * from lpr_invoice where invoice_id=$invoice";
+    error_log("\ninsert Invoice Number " . $query, 3, "C:/xampp/apache/logs/error.log");
+    $result = mysqli_query($connection, $query);
+    confirm_query($result);
+    if($results = mysqli_fetch_assoc($result)) {
+        return $results;
+    } else {
+        return null;
+    }
+}
+
 
 
 
