@@ -43,7 +43,8 @@ $query ="select * from
 if(!empty($byBriverId)){
     $query .=" and R2.driver_id=$byBriverId";
 }
-$query.=" ORDER BY case when triplog_status=\"pending\" then 1 when triplog_status=\"none\" then 2  when triplog_status is NULL then 3 when triplog_status=\"noshow\" then 4 when triplog_status=\"cancel\" then 5 when triplog_status=\"success\" then 6 else 7 end,time";
+$query.=" ORDER BY time";
+//ORDER BY case when triplog_status="pending" then 1 when triplog_status="none" then 2  when triplog_status is NULL then 3 when triplog_status="noshow" then 4 when triplog_status="cancel" then 5 when triplog_status="success" then 6 else 7 end,time
 error_log("\nManifest" . $query , 3, "C:/xampp/apache/logs/error.log");
 $result_triporder = mysqli_query($connection, $query);
 confirm_query($result_triporder);

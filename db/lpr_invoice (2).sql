@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2017 at 06:33 PM
+-- Generation Time: Oct 02, 2017 at 06:43 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -23,16 +23,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lpr_student_audit`
+-- Table structure for table `lpr_invoice`
 --
 
-CREATE TABLE `lpr_student_audit` (
-  `id` int(11) NOT NULL,
-  `student_id` int(11) NOT NULL,
-  `student_name` varchar(50) NOT NULL,
-  `student_address` varchar(100) NOT NULL,
-  `student_address_new` varchar(100) DEFAULT NULL,
-  `date` datetime DEFAULT CURRENT_TIMESTAMP
+CREATE TABLE `lpr_invoice` (
+  `invoice_id` int(11) NOT NULL,
+  `invoice_date` date NOT NULL,
+  `startdate` date DEFAULT NULL,
+  `enddate` date DEFAULT NULL,
+  `cid` int(11) DEFAULT NULL,
+  `totaltrips` int(11) DEFAULT NULL,
+  `totalpayable` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -40,31 +41,20 @@ CREATE TABLE `lpr_student_audit` (
 --
 
 --
--- Indexes for table `lpr_student_audit`
+-- Indexes for table `lpr_invoice`
 --
-ALTER TABLE `lpr_student_audit`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `student_id` (`student_id`);
+ALTER TABLE `lpr_invoice`
+  ADD PRIMARY KEY (`invoice_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `lpr_student_audit`
+-- AUTO_INCREMENT for table `lpr_invoice`
 --
-ALTER TABLE `lpr_student_audit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `lpr_student_audit`
---
-ALTER TABLE `lpr_student_audit`
-  ADD CONSTRAINT `lpr_student_audit_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `lpr_student` (`s_id`);
-
+ALTER TABLE `lpr_invoice`
+  MODIFY `invoice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=560;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
