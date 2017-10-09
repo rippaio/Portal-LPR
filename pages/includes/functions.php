@@ -250,7 +250,7 @@
 		confirm_query($result_client);
 		return $result_client;
 	}
-	function update_orderdriver($orderid,$driverid,$period)
+	function update_orderdriver($orderid,$driverid,$period,$trip_date)
 	{
 		global $connection;
 				// if ($period == 'AM') {
@@ -274,7 +274,7 @@
 		// confirm_query($result);
 		// }
 
-		$insert_query = "INSERT INTO `lpr_driver_contract`(`o_id`, `driver_id`, `start_date`, `period`,status) VALUES ($orderid,$driverid,CURRENT_DATE(),'$period','open')";
+		$insert_query = "INSERT INTO `lpr_driver_contract`(`o_id`, `driver_id`, `start_date`, `period`,status) VALUES ($orderid,$driverid,'$trip_date','$period','open')";
 		$result_insert = mysqli_query($connection, $insert_query);
 		
 		
@@ -380,6 +380,7 @@ function get_studentname($s_id){
 function get_drivername($d_id){
     global $connection;
     $query = "SELECT CONCAT(driver_fname,' ',driver_lname) as driver_name FROM lpr_driver where driver_id=$d_id";
+    error_log("\nInside driver name query " . $query , 3, "C:/xampp/apache/logs/error.log");
     $result_drivername = mysqli_query($connection, $query);
     confirm_query($result_drivername);
     if($result = mysqli_fetch_assoc($result_drivername)) {
@@ -1093,4 +1094,25 @@ function getCheckNumber(){
     }
 }
 //End of  Get Check Number
+
+
+
+function getDriverForM($oid, $did, $period,$daterequired){
+    global $connection;
+    $query_advance  = "SELECT * FROM lpr_driver_contract
+WHERE start_date <= '$daterequired' and o_id=$oid and period='$period'
+ORDER BY start_date DESC LIMIT 1";
+    error_log("Inside driver M query\n" . $query_advance , 3, "C:/xampp/apache/logs/error.log");
+    $result_advance = mysqli_query($connection, $query_advance);
+    confirm_query($result_advance);
+    $results=  mysqli_fetch_assoc($result_advance);
+    if(!empty($results)){
+        $name=get_drivername($results['driver_id']);
+        error_log("Inside driver Manifest query 1 \n" . $name['driver_name'] , 3, "C:/xampp/apache/logs/error.log");
+        return $name['driver_name'];
+    }else{
+        return null;
+    }
+
+}
 ?>

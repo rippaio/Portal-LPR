@@ -37,8 +37,8 @@ $query ="select * from
   left join
  (select lpr_student.o_id,COUNT(lpr_student.s_id) as pax from lpr_student group BY lpr_student.o_id)R3   
   on R2.o_id=R3.o_id 
-  left join (select CONCAT(driver_fname,' ',driver_lname) as driver_name,driver_id from lpr_driver)R4
-  on R2.driver_id=R4.driver_id
+  left join (select CONCAT(driver_fname,' ',driver_lname) as driver_name,driver_id as driverid from lpr_driver)R4
+  on R2.driver_id=R4.driverid
   where clockperiod='$clck' and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and o_status not like 'inactive'";
 if(!empty($byBriverId)){
     $query .=" and R2.driver_id=$byBriverId";
@@ -472,7 +472,15 @@ include("./includes/nav.php");
                                                 </td>
                                                 <td class="col-xs-1" headers ="time"><?php echo $subject_tripdata["time"]; ?></td>
                                                 <td class="col-xs-1"><?php echo $subject_tripdata["s_fname"]; ?></td>
-                                                <td class="col-xs-1" headers ="dname"><?php echo $subject_tripdata["driver_name"]; ?></td>
+                                               <?php
+                                            $driverFullName=getDriverForM( $subject_tripdata["o_id"], $subject_tripdata["driver_id"], $subject_tripdata["clockperiod"],$daterequired);
+                                               ?>
+                                                <td class="col-xs-1" headers ="dname"><?php
+                                                    if(!empty($driverFullName)) { echo $driverFullName;}
+                                                    else {
+                                                    echo $subject_tripdata["driver_name"]; }
+                                                    ?>
+                                                </td>
                                                 <td class="col-xs-1" headers ="pickloc"><?php echo $subject_tripdata["pickloc"]; ?></td>
                                                 <td class="col-xs-1" headers ="picktime" ><span><?php echo $subject_tripdata["picktime"]; ?></span>
                                                     <span class="input-group-clock" style="color: #bc2328;"
