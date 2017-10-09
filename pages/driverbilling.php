@@ -564,7 +564,6 @@ include("./includes/nav.php");
 
             <?php } else {?>
                 <div class="form-group hidebox" id="savepl">
-                    
                     <button type="submit" class="btn btn-primary btn-lg"  disabled id="savepl_button">Saved</button>
                 </div>
             <?php }?>

@@ -59,7 +59,7 @@ $trip = update_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pi
 }
 if ($obj["mode"]=="savepayroll") {
 $driver_id = (int)$obj["driver_id"];
-$amount = (float)$obj["amount"];
+$amount =  number_format($obj["amount"], 2, '.', '');
 $startdate = $obj["startdate"];
 $enddate = $obj["enddate"];
 $totalBilling=$obj["totalBilling"];
@@ -75,16 +75,51 @@ $lease=$obj["lease"];
 $others= $obj["others"];
 $checkNumber=$obj["checkNumber"];
     error_log("\ntbill  payroll  " . $totalBilling, 3, "C:/xampp/apache/logs/error.log");
+    var_dump($amount);
+    error_log("\nSaving payroll amount " . $amount, 3, "C:/xampp/apache/logs/error.log");
 
 $order=savepayroll($driver_id,$amount,$startdate,$enddate,$totalBilling,$payToContractorsPerc,$payToContractors,$tips,$additions,$contractorsTotal,$fuelAdvance,$toll,$leasePerc,$lease,$others,$checkNumber);
 print_r($order);
 }
+
+// Client Bill Save
+if ($obj["mode"]=="saveClientBill") {
+    $c_id = $obj["c_id"];
+    $enddate = $obj["enddate"];
+    $startdate=$obj["startdate"];
+    $totaltrips=$obj["totaltrips"];
+    $totalbillable= $obj["totalbillable"];
+    saveClientBill($c_id,$startdate,$enddate,$totaltrips,$totalbillable);
+}
+
+// Client Bill Update
+if ($obj["mode"]=="UpdateClientBill") {
+    $invoiceid= $obj["invoiceId"];
+    $c_id = $obj["c_id"];
+    $enddate = $obj["enddate"];
+    $startdate=$obj["startdate"];
+    $totaltrips=$obj["totaltrips"];
+    $totalbillable= $obj["totalbillable"];
+    updateClientBill($invoiceid,$totaltrips,$totalbillable);
+}
+
+
 if ($obj["mode"]=="deletepayroll") {
 
 $id = (int)$obj["id"];
 
 $order=deletepayroll($id);
 }
+
+//Delete Bill
+if ($obj["mode"]=="deleteBill") {
+
+    $id = (int)$obj["id"];
+
+    $order=deleteBill($id);
+}
+
+
 
 //Update Payroll From Driver Billing System
 if ($obj["mode"]=="updatepayroll") {

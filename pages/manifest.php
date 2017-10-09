@@ -44,6 +44,7 @@ if(!empty($byBriverId)){
     $query .=" and R2.driver_id=$byBriverId";
 }
 $query.=" ORDER BY time";
+//ORDER BY case when triplog_status="pending" then 1 when triplog_status="none" then 2  when triplog_status is NULL then 3 when triplog_status="noshow" then 4 when triplog_status="cancel" then 5 when triplog_status="success" then 6 else 7 end,time
 error_log("\nManifest" . $query , 3, "C:/xampp/apache/logs/error.log");
 $result_triporder = mysqli_query($connection, $query);
 confirm_query($result_triporder);
@@ -52,14 +53,14 @@ $result_triplogdata = getAllTripData();
 
 $query_print="select * from (
 (select * from  (select * from
-(select * from (SELECT lpr_order.o_id,lpr_order.o_bs,lpr_order.o_cs,lpr_order.driver_id,lpr_order.o_startdate,lpr_order.o_enddate,o_ampickloc as pickloc,o_ampicktime as picktime,concat(school_name,', ', o_amdroploc) as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
+(select * from (SELECT lpr_order.o_id,o_wc,o_fd,lpr_order.o_bs,lpr_order.o_cs,lpr_order.driver_id,lpr_order.o_startdate,lpr_order.o_enddate,o_ampickloc as pickloc,o_ampicktime as picktime,concat(o_amdroploc,', ',school_name) as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
 FROM lpr_order,lpr_client,lpr_student,lpr_school where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and lpr_school.school_id=lpr_order.school_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
 left join
 (select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='AM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3 
 where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where pickloc not like 'NULL')
 union 
 (select * from(select * from
-(select * from (SELECT lpr_order.o_id,lpr_order.o_bs,lpr_order.o_cs,lpr_order.pm_driver_id as driver_id,lpr_order.o_startdate,lpr_order.o_enddate,concat(school_name,', ',o_pmpickloc) as pickloc,o_pmpicktime as picktime,o_pmdroploc as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
+(select * from (SELECT lpr_order.o_id,o_wc,o_fd,lpr_order.o_bs,lpr_order.o_cs,lpr_order.pm_driver_id as driver_id,lpr_order.o_startdate,lpr_order.o_enddate,concat(o_pmpickloc,', ',school_name) as pickloc,o_pmpicktime as picktime,o_pmdroploc as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
 FROM lpr_order,lpr_client,lpr_student,lpr_school where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and lpr_school.school_id=lpr_order.school_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
 left join
 (select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='PM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3 
@@ -274,6 +275,10 @@ include("./includes/nav.php");
                     <span class="sheetText" style="width:200px;padding-left: 10px ">  Booster Seat Required:</span> <span  class="sheetUnderline" style="width:100px;text-align: left "><?php if($sheets['o_bs']=="TRUE"){ echo 'YES';}else { echo 'NO';} ?></span>
                     <span class="sheetText" style="width:200px;padding-left: 20px ">Ride Along Required:</span><span  class="sheetUnderline" style="width:100px "><?php if($sheets['o_ra']=="TRUE"){ echo 'YES';}else { echo 'NO';} ?></span>
                 </div>
+                    <div class="row" style="padding-bottom: 15px">
+                        <span class="sheetText" style="width:200px ">Wheel Chair Required:</span> <span  class="sheetUnderline" style="width:150px "><?php if($sheets['o_wc']=="TRUE"){ echo 'YES';}else { echo 'NO';} ?></span>
+                        <span class="sheetText" style="width:200px;padding-left: 50px;padding-right: 10px ">Female Driver Only:</span><span  class="sheetUnderline" style="width:150px "><?php if($sheets['o_fd']=="TRUE"){ echo 'YES';}else { echo 'NO';} ?></span>
+                    </div>
 
             </div>
             </div>

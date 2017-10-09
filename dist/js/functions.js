@@ -1076,10 +1076,10 @@ function changestatus(a){
 	}
 
 }
-//payroll
-function deletepay(a,id){
+//Client Bill
+function deleteBill(a,id){
     var sdata = {};
-    sdata['mode'] = "deletepayroll";
+    sdata['mode'] = "deleteBill";
     sdata['id'] = id;
     log(sdata['mode']);
     $.ajax({
@@ -1096,6 +1096,28 @@ function deletepay(a,id){
       }); // end ajax call
     
 }
+
+//Pay roll
+function deletepay(a,id){
+    var sdata = {};
+    sdata['mode'] = "deletepayroll";
+    sdata['id'] = id;
+    log(sdata['mode']);
+    $.ajax({
+        url: 'ajax/manifest_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            $(a).parent('td').parent().remove();
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
+
+}
+
 
 
 //Calendar
@@ -1603,6 +1625,77 @@ $('#savepl_button').click(function(element){
               console.log("Details: " + desc + "\nError:" + err);
             }
           }); // end ajax call
+
+
+
+});
+
+//Client Bill Saving
+
+$('#savecb_button').click(function(element){
+    var id = element.target;
+    var sdata = {};
+
+    sdata['c_id'] = $(id).siblings('input').data('clientid');
+    sdata['startdate'] = $(id).siblings('input').data('startdate');
+    sdata['enddate'] = $(id).siblings('input').data('enddate');
+    sdata['totaltrips'] = $('#totaltrips').val();
+    sdata['totalbillable']=$('#totalbillable').val();
+
+
+
+    sdata['mode'] = "saveClientBill";
+    log(sdata);
+    $.ajax({
+        url: 'ajax/manifest_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            log(data);
+            $('#savecb_button').text('Saved');
+            $('#savecb_button').attr('disabled', true);
+
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
+
+
+
+});
+
+//Client Bill Updating
+
+$('#updateClientBill').click(function(element){
+    var id = element.target;
+    var sdata = {};
+    sdata['c_id'] = $(id).siblings('input').data('clientid');
+    sdata['startdate'] = $(id).siblings('input').data('startdate');
+    sdata['enddate'] = $(id).siblings('input').data('enddate');
+    sdata['invoiceId'] = $(id).siblings('input').data('invoicenumber');
+    sdata['totaltrips'] = $('#totaltrips').val();
+    sdata['totalbillable']=$('#totalbillable').val();
+
+
+
+    sdata['mode'] = "UpdateClientBill";
+    log(sdata);
+    $.ajax({
+        url: 'ajax/manifest_ajax.php',
+        type: 'post',
+        data: {myData:sdata},
+        success: function(data) {
+            log(data);
+            $('#updateClientBill').text('Saved');
+
+        },
+        error: function(xhr, desc, err) {
+            console.log(xhr);
+            console.log("Details: " + desc + "\nError:" + err);
+        }
+    }); // end ajax call
 
 
 
