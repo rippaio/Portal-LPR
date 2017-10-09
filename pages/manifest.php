@@ -53,14 +53,14 @@ $result_triplogdata = getAllTripData();
 
 $query_print="select * from (
 (select * from  (select * from
-(select * from (SELECT lpr_order.o_id,o_wc,o_fd,lpr_order.o_bs,lpr_order.o_cs,lpr_order.driver_id,lpr_order.o_startdate,lpr_order.o_enddate,o_ampickloc as pickloc,o_ampicktime as picktime,concat(o_amdroploc,', ',school_name) as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
+(select * from (SELECT lpr_order.o_id,o_wc,o_fd,lpr_order.o_bs,lpr_order.o_cs,lpr_order.driver_id,lpr_order.o_startdate,lpr_order.o_enddate,o_ampickloc as pickloc,o_ampicktime as picktime,concat(o_amdroploc,', ',school_name) as droploc,'AM' as clockP,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
 FROM lpr_order,lpr_client,lpr_student,lpr_school where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and lpr_school.school_id=lpr_order.school_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
 left join
 (select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='AM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3 
 where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where pickloc not like 'NULL')
 union 
 (select * from(select * from
-(select * from (SELECT lpr_order.o_id,o_wc,o_fd,lpr_order.o_bs,lpr_order.o_cs,lpr_order.pm_driver_id as driver_id,lpr_order.o_startdate,lpr_order.o_enddate,concat(o_pmpickloc,', ',school_name) as pickloc,o_pmpicktime as picktime,o_pmdroploc as droploc,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
+(select * from (SELECT lpr_order.o_id,o_wc,o_fd,lpr_order.o_bs,lpr_order.o_cs,lpr_order.pm_driver_id as driver_id,lpr_order.o_startdate,lpr_order.o_enddate,concat(o_pmpickloc,', ',school_name) as pickloc,o_pmpicktime as picktime,o_pmdroploc as droploc,'PM' as clockP,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
 FROM lpr_order,lpr_client,lpr_student,lpr_school where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and lpr_school.school_id=lpr_order.school_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
 left join
 (select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='PM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3 
@@ -264,7 +264,11 @@ include("./includes/nav.php");
                     </div>
                 <div class="row" style="padding-bottom: 15px">
                     <span class="sheetText" style="width:50px ">Rate:</span> <span  class="sheetUnderline" style="width:150px "><?php echo $sheets['o_payable']; ?></span>
-                    <span class="sheetText" style="width:60px;padding-left: 100px;padding-right: 10px ">Driver:</span> <span  class="sheetUnderline" style="width:400px "><?php if(!empty($sheets['driver_fname'])) {echo $sheets['driver_fname'];?> <?php echo $sheets['driver_lname']; } else echo "";?></span>
+                  <?php  $driverMid1=getDriverForM( $sheets["o_id"],$sheets["clockP"],$daterequired);
+                  ?>
+                    <span class="sheetText" style="width:60px;padding-left: 100px;padding-right: 10px ">Driver:</span> <span  class="sheetUnderline" style="width:400px "><?php if(!empty($driverMid1)) {$drivername=get_drivername($driverMid1);echo $drivername["driver_name"];}
+                        else if(!empty($sheets['driver_fname'])) {echo $sheets['driver_fname'];?> <?php echo $sheets['driver_lname'];}
+                        else echo "";?></span>
                 </div>
                 <div class="row" style="padding-bottom: 30px">
                     <span class="sheetText" style="width:50px ">Tip:</span> <span  class="sheetUnderline" style="width:150px "><?php echo $sheets['o_tip']; ?></span>
@@ -473,10 +477,14 @@ include("./includes/nav.php");
                                                 <td class="col-xs-1" headers ="time"><?php echo $subject_tripdata["time"]; ?></td>
                                                 <td class="col-xs-1"><?php echo $subject_tripdata["s_fname"]; ?></td>
                                                <?php
-                                            $driverFullName=getDriverForM( $subject_tripdata["o_id"], $subject_tripdata["driver_id"], $subject_tripdata["clockperiod"],$daterequired);
+                                            $driverMid=getDriverForM( $subject_tripdata["o_id"], $subject_tripdata["clockperiod"],$daterequired);
                                                ?>
                                                 <td class="col-xs-1" headers ="dname"><?php
-                                                    if(!empty($driverFullName)) { echo $driverFullName;}
+                                                    if(!empty($driverMid))
+                                                    {
+                                                        $drivername=get_drivername($driverMid);
+                                                       echo $drivername["driver_name"];
+                                                    }
                                                     else {
                                                     echo $subject_tripdata["driver_name"]; }
                                                     ?>
@@ -500,7 +508,7 @@ include("./includes/nav.php");
                                                     
                                                 </td>
                                                 <td class="col-xs-1"><span class="noshow size2" id ="<?php echo uniqid(); ?>"><i class="fa fa-male" aria-hidden="true"></i></span><span class="cancel size2 pad" id ="<?php echo uniqid(); ?>"><i class="fa fa-times-circle" aria-hidden="true"></i></span></td>
-                                                <input type="hidden" name="" data-orderid="<?php echo $subject_tripdata["o_id"] ?>" data-schoolid="<?php echo $subject_tripdata["school_id"]; ?>" data-driverid="<?php echo $subject_tripdata["driver_id"]; ?>" data-clientid="<?php echo $subject_tripdata["client_id"]; ?>" data-sid="<?php echo $subject_tripdata["s_id"]; ?>" data-updated="false" data-trip_id="0" data-trip_period="<?php echo $subject_tripdata["clockperiod"]; ?>" data-trip_status ="none" data-trip_date="<?php echo $daterequired; ?>">
+                                                <input type="hidden" name="" data-orderid="<?php echo $subject_tripdata["o_id"] ?>" data-schoolid="<?php echo $subject_tripdata["school_id"]; ?>" data-driverid="<?php  if(!empty($driverMid)) {echo $driverMid;} else {echo $subject_tripdata["driver_id"]; }?>" data-clientid="<?php echo $subject_tripdata["client_id"]; ?>" data-sid="<?php echo $subject_tripdata["s_id"]; ?>" data-updated="false" data-trip_id="0" data-trip_period="<?php echo $subject_tripdata["clockperiod"]; ?>" data-trip_status ="none" data-trip_date="<?php echo $daterequired; ?>">
                                             </tr>
 
 

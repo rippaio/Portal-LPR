@@ -1097,7 +1097,7 @@ function getCheckNumber(){
 
 
 
-function getDriverForM($oid, $did, $period,$daterequired){
+function getDriverForM($oid,$period,$daterequired){
     global $connection;
     $query_advance  = "SELECT * FROM lpr_driver_contract
 WHERE start_date <= '$daterequired' and o_id=$oid and period='$period'
@@ -1107,9 +1107,9 @@ ORDER BY start_date DESC LIMIT 1";
     confirm_query($result_advance);
     $results=  mysqli_fetch_assoc($result_advance);
     if(!empty($results)){
-        $name=get_drivername($results['driver_id']);
-        error_log("Inside driver Manifest query 1 \n" . $name['driver_name'] , 3, "C:/xampp/apache/logs/error.log");
-        return $name['driver_name'];
+//        $name=get_drivername($results['driver_id']);
+//        error_log("Inside driver Manifest query 1 \n" . $name['driver_name'] , 3, "C:/xampp/apache/logs/error.log");
+        return $results['driver_id'];
     }else{
         return null;
     }
