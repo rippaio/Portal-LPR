@@ -98,6 +98,9 @@
                                 <li>
                                     <a href="cashadvance.php">Advances</a>
                                 </li>
+                                <li>
+                                    <a href="stats.php">Stats</a>
+                                </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>

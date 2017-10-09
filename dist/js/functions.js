@@ -2234,3 +2234,12 @@ function ca_deleteadvance(tid){
         }
     }); // end ajax call
 }
+
+$('#statsclient').change(function() {
+var client= $('#statsclient').val();
+
+
+
+
+
+});
