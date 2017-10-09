@@ -253,26 +253,29 @@
 	function update_orderdriver($orderid,$driverid,$period)
 	{
 		global $connection;
-				if ($period == 'AM') {
-			$query  = "UPDATE lpr_order SET ";
+				// if ($period == 'AM') {
+			$query  = "UPDATE lpr_driver_contract SET ";
 
-			$query .= "driver_id= $driverid ";
-			$query .= "WHERE o_id = $orderid ";
+			$query .= "end_date= current_date() - interval 1 day,status='close'";
+			$query .= "WHERE o_id = $orderid AND period='$period' AND status='open' LIMIT 1";
 			//echo $query;
 		$result = mysqli_query($connection, $query);
 		
 		confirm_query($result);
-		}
-		elseif ($period == 'PM') {
-			$query  = "UPDATE lpr_order SET ";
+		// }
+		// elseif ($period == 'PM') {
+		// 	$query  = "UPDATE lpr_order SET ";
 
-			$query .= "pm_driver_id= $driverid ";
-			$query .= "WHERE o_id = $orderid ";
-			//echo $query;
-		$result = mysqli_query($connection, $query);
+		// 	$query .= "pm_driver_id= $driverid ";
+		// 	$query .= "WHERE o_id = $orderid ";
+		// 	//echo $query;
+		// $result = mysqli_query($connection, $query);
 		
-		confirm_query($result);
-		}
+		// confirm_query($result);
+		// }
+
+		$insert_query = "INSERT INTO `lpr_driver_contract`(`o_id`, `driver_id`, `start_date`, `period`,status) VALUES ($orderid,$driverid,CURRENT_DATE(),'$period','open')";
+		$result_insert = mysqli_query($connection, $insert_query);
 		
 		
 		
