@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2017 at 04:18 PM
+-- Generation Time: Oct 11, 2017 at 03:35 PM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 7.0.16
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -37,14 +37,6 @@ CREATE TABLE `lpr_driver_contract` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `lpr_driver_contract`
---
-
-INSERT INTO `lpr_driver_contract` (`o_id`, `driver_id`, `start_date`, `end_date`, `status`, `period`, `id`) VALUES
-(149, 112, '2017-10-02', '2017-10-03', 'close', 'AM', 6),
-(149, 112, '2017-10-04', NULL, 'open', 'AM', 7);
-
---
 -- Indexes for dumped tables
 --
 
@@ -64,7 +56,7 @@ ALTER TABLE `lpr_driver_contract`
 -- AUTO_INCREMENT for table `lpr_driver_contract`
 --
 ALTER TABLE `lpr_driver_contract`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --
