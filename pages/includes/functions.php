@@ -258,7 +258,7 @@
 
 			$query .= "end_date= '$trip_date' - interval 1 day,status='close'";
 			$query .= "WHERE o_id = $orderid AND period='$period' AND status='open' LIMIT 1";
-			//echo $query;
+			error_log("Insert contract\n" . $query , 3, "C:/xampp/apache/logs/error.log");
 		$result = mysqli_query($connection, $query);
 		
 		confirm_query($result);
@@ -1102,7 +1102,7 @@ function getDriverForM($oid,$period,$daterequired){
     $query_advance  = "SELECT * FROM lpr_driver_contract
 WHERE start_date <= '$daterequired' and o_id=$oid and period='$period'
 ORDER BY start_date DESC LIMIT 1";
-    error_log("Inside driver M query\n" . $query_advance , 3, "C:/xampp/apache/logs/error.log");
+    //error_log("Inside driver M query\n" . $query_advance , 3, "C:/xampp/apache/logs/error.log");
     $result_advance = mysqli_query($connection, $query_advance);
     confirm_query($result_advance);
     $results=  mysqli_fetch_assoc($result_advance);
