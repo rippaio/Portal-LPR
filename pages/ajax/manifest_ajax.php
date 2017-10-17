@@ -28,7 +28,9 @@ $driver_payable = (isset($obj['driver_payable'])? $obj["driver_payable"] : 'TRUE
 $client_payable = (isset($obj['client_payable'])? $obj["client_payable"] : 'TRUE');
 $period = (isset($obj['period'])? $obj['period'] : 'NULL');
 
+if (isset($obj['period'])){
 $order=update_orderdriver($orderid,$driverid,$period,$trip_date);
+}
 $trip = insert_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$clockperiod,$current_date,$driver_payable,$client_payable);
 print_r($trip['id']);
 }
@@ -52,8 +54,9 @@ $trip_id = (int)$obj['trip_id'];
 $driver_payable = (isset($obj['driver_payable'])? $obj["driver_payable"] : 'TRUE');
 $client_payable = (isset($obj['client_payable'])? $obj["client_payable"] : 'TRUE');
 $period = (isset($obj['period'])? $obj['period'] : 'NULL');
-
+if (isset($obj['period'])){
 $order=update_orderdriver($orderid,$driverid,$period,$trip_date);
+}
 $trip = update_trip($orderid,$clientid,$schoolid,$driverid,$s_id,$city,$time,$pickloc,$picktime,$droptime,$pax,$status,$trip_date,$trip_id,$driver_payable,$client_payable);
 //print_r($trip['id']);
 }

@@ -949,7 +949,9 @@ $("[name='bill-checkbox']").on('switchChange.bootstrapSwitch', function (event, 
    	sdata['pax']= $(id).siblings("[headers='pax']").text();
    	sdata['current_date'] = getday();
    	sdata['trip_date'] = $(id).siblings('input').data('trip_date');
-    sdata['period'] = $("[name='clockt']").children("option").filter(":selected").val();
+    if (sdata['driverid'] != diver_temp){
+        sdata['period'] = $("[name='clockt']").children("option").filter(":selected").val();
+    }
     //log(dropt);
     //sdata['pickloc'] = .children('input').val();
     log(sdata);
