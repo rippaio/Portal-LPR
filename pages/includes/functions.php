@@ -256,7 +256,7 @@
 				// if ($period == 'AM') {
 			$query  = "UPDATE lpr_driver_contract SET ";
 
-			$query .= "end_date= current_date() - interval 1 day,status='close'";
+			$query .= "end_date= '$trip_date' - interval 1 day,status='close'";
 			$query .= "WHERE o_id = $orderid AND period='$period' AND status='open' LIMIT 1";
 			//echo $query;
 		$result = mysqli_query($connection, $query);
@@ -1115,4 +1115,74 @@ ORDER BY start_date DESC LIMIT 1";
     }
 
 }
+
+function inzoneStats($client,$start_date,$end_date){
+    global $connection;
+    $query_advance  = "select sum(triplog_pax) stud_count from (select t2.o_id,count(t2.o_id) count ,triplog_pax from  (select * from  (select distinct triplog_o_id,triplog_pax from lpr_triplog where triplog_date between '$start_date' and '$end_date' and triplog_status='success')t1  join lpr_billing on t1.triplog_o_id=lpr_billing.o_id)t2 
+group by t2.o_id having count=1)t3 join lpr_billing on t3.o_id=lpr_billing.o_id WHERE client_id=$client";
+    $result_advance = mysqli_query($connection, $query_advance);
+    confirm_query($result_advance);
+    if($results = mysqli_fetch_assoc($result_advance)) {
+        return $results;
+    } else {
+        return null;
+    }
+
+}
+
+function outZoneStats($client,$start_date,$end_date){
+    global $connection;
+    $query_advance  = "
+select sum(triplog_pax) o_studCount from
+ (select t5.o_id,t5.client_id,triplog_pax from  
+   (select t4.o_id,COUNT(t4.o_id) counto,client_id from 
+     (select * from lpr_billing where lpr_billing.o_id in 
+       (select t3.o_id ref_oid from 
+          (select t2.o_id,count(t2.o_id) count from  
+            (select * from  
+              (select distinct triplog_o_id from lpr_triplog where triplog_date between '$start_date' and '$end_date' and triplog_status='success')t1  join lpr_billing on 
+                       t1.triplog_o_id=lpr_billing.o_id
+                           )t2 group by t2.o_id having count >=2
+                             )t3
+                              ) and amount!=0
+                                )t4 group by t4.o_id having counto=1
+                                 ) t5 join lpr_triplog on lpr_triplog.triplog_o_id=t5.o_id group by t5.o_id having client_id=$client) t6
+    ";
+    $result_advance = mysqli_query($connection, $query_advance);
+    confirm_query($result_advance);
+    if($results = mysqli_fetch_assoc($result_advance)) {
+        return $results;
+    } else {
+        return null;
+    }
+}
+
+
+function specialEdStats($client,$start_date,$end_date){
+    global $connection;
+    $query_advance  = "
+select sum(triplog_pax) splitbill from 
+   (select t4.o_id,triplog_pax from
+     (select * from lpr_billing where lpr_billing.o_id in 
+        (select t3.o_id ref_oid from 
+          (select t2.o_id,count(t2.o_id) count from  
+             (select * from  
+                  (select distinct triplog_o_id from lpr_triplog where triplog_date between '$start_date' and '$end_date' and triplog_status='success'
+                      )t1  join lpr_billing on  t1.triplog_o_id=lpr_billing.o_id and amount!=0
+                         )t2 group by t2.o_id having count >=2 
+                             )t3 
+                                 ) and client_id=$client
+                                    )t4 join lpr_triplog on lpr_triplog.triplog_o_id=t4.o_id group by t4.o_id
+                                        )t6
+    ";
+    $result_advance = mysqli_query($connection, $query_advance);
+    confirm_query($result_advance);
+    if($results = mysqli_fetch_assoc($result_advance)) {
+        return $results;
+    } else {
+        return null;
+    }
+}
+
+
 ?>
