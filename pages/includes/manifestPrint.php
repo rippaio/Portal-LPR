@@ -54,10 +54,8 @@
                     </div>
                     <div class="row" style="padding-bottom: 15px">
                         <span class="sheetText" style="width:50px ">Rate:</span> <span  class="sheetUnderline" style="width:150px "><?php echo $sheets['o_payable']; ?></span>
-                        <?php  $driverMid1=getDriverForM( $sheets["o_id"],$sheets["clockP"],$daterequired);
-                        ?>
-                        <span class="sheetText" style="width:60px;padding-left: 100px;padding-right: 10px ">Driver:</span> <span  class="sheetUnderline" style="width:400px "><?php if(!empty($driverMid1)) {$drivername=get_drivername($driverMid1);echo $drivername["driver_name"];}
-                            else if(!empty($sheets['driver_fname'])) {echo $sheets['driver_fname'];?> <?php echo $sheets['driver_lname'];}
+                        <span class="sheetText" style="width:60px;padding-left: 100px;padding-right: 10px ">Driver:</span> <span  class="sheetUnderline" style="width:400px ">
+                            <?php if(!empty($sheets['driver_fname'])) {echo $sheets['driver_fname'];?> <?php echo $sheets['driver_lname'];}
                             else echo "";?></span>
                     </div>
                     <div class="row" style="padding-bottom: 30px">

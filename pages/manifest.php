@@ -51,20 +51,38 @@ confirm_query($result_triporder);
 $result_triplogdata = getAllTripData();
 
 
-$query_print="select * from (
-(select * from  (select * from
+//$query_print="select * from (
+//(select * from  (select * from
+//(select * from (SELECT lpr_order.o_id,o_wc,o_fd,lpr_order.o_bs,lpr_order.o_cs,lpr_order.driver_id,lpr_order.o_startdate,lpr_order.o_enddate,o_ampickloc as pickloc,o_ampicktime as picktime,concat(o_amdroploc,', ',school_name) as droploc,'AM' as clockP,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
+//FROM lpr_order,lpr_client,lpr_student,lpr_school where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and lpr_school.school_id=lpr_order.school_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
+//left join
+//(select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='AM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3
+//where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where pickloc not like 'NULL')
+//union
+//(select * from(select * from
+//(select * from (SELECT lpr_order.o_id,o_wc,o_fd,lpr_order.o_bs,lpr_order.o_cs,lpr_order.pm_driver_id as driver_id,lpr_order.o_startdate,lpr_order.o_enddate,concat(o_pmpickloc,', ',school_name) as pickloc,o_pmpicktime as picktime,o_pmdroploc as droploc,'PM' as clockP,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
+//FROM lpr_order,lpr_client,lpr_student,lpr_school where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and lpr_school.school_id=lpr_order.school_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
+//left join
+//(select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='PM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3
+//where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where droploc not like 'NULL'))u1  left join lpr_driver on lpr_driver.driver_id=u1.driver_id";
+$query_print=
+    "select * from (
+(select o_id,o_wc,o_fd,o_bs,o_cs,CASE WHEN did is null then driver_id else did end as driver_id,o_startdate,o_enddate,pickloc,picktime,droploc,clockP,o_days,o_dcomment,o_icomment,o_payable,o_tip,o_ra,client_name,student_name,s_pname,s_phone,s_altphone,triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id,oid,did,start_date,end_date,period from (select * from (select * from  (select * from
 (select * from (SELECT lpr_order.o_id,o_wc,o_fd,lpr_order.o_bs,lpr_order.o_cs,lpr_order.driver_id,lpr_order.o_startdate,lpr_order.o_enddate,o_ampickloc as pickloc,o_ampicktime as picktime,concat(o_amdroploc,', ',school_name) as droploc,'AM' as clockP,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
 FROM lpr_order,lpr_client,lpr_student,lpr_school where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and lpr_school.school_id=lpr_order.school_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
 left join
 (select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='AM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3 
-where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where pickloc not like 'NULL')
+where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where pickloc not like 'NULL')d1 left join (select o_id oid,driver_id  did,start_date,end_date,period from lpr_driver_contract)d2  on d1.o_id=d2.oid and d1.clockP=d2.period and (('$daterequired' between d2.start_date and
+d2.end_date) or ('$daterequired'>= d2.start_date and d2.end_date is null) ) )a1)
 union 
-(select * from(select * from
+(select o_id,o_wc,o_fd,o_bs,o_cs,CASE WHEN did is null then driver_id else did end as driver_id,o_startdate,o_enddate,pickloc,picktime,droploc,clockP,o_days,o_dcomment,o_icomment,o_payable,o_tip,o_ra,client_name,student_name,s_pname,s_phone,s_altphone,triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id,oid,did,start_date,end_date,period from (select * from(select * from(select * from
 (select * from (SELECT lpr_order.o_id,o_wc,o_fd,lpr_order.o_bs,lpr_order.o_cs,lpr_order.pm_driver_id as driver_id,lpr_order.o_startdate,lpr_order.o_enddate,concat(o_pmpickloc,', ',school_name) as pickloc,o_pmpicktime as picktime,o_pmdroploc as droploc,'PM' as clockP,lpr_order.o_days,lpr_order.o_dcomment,lpr_order.o_icomment,lpr_order.o_payable,lpr_order.o_tip,lpr_order.o_ra,lpr_client.client_name,GROUP_CONCAT(concat(lpr_student.s_fname,' ',lpr_student.s_lname)) as student_name,concat(s_pfname,' ',s_plname) as s_pname,s_phone,s_altphone
 FROM lpr_order,lpr_client,lpr_student,lpr_school where lpr_order.o_reqby=lpr_client.client_id and lpr_order.o_id=lpr_student.o_id and lpr_school.school_id=lpr_order.school_id and o_startdate <='$daterequired' and o_enddate >='$daterequired' and o_days like '%$day%' and lpr_order.o_status in ('active') group by o_id ) t1
 left join
 (select triplog_o_id,triplog_date,triplog_status,triplog_clock,triplog_driver_id from  lpr_triplog  where triplog_clock='PM' group by triplog_o_id,triplog_date ) t2 on t1.o_id=t2.triplog_o_id and t2.triplog_date='$daterequired') t3 
-where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where droploc not like 'NULL'))u1  left join lpr_driver on lpr_driver.driver_id=u1.driver_id";
+where t3.triplog_status is null or t3.triplog_status not like '%cancel%' ) t4 where droploc not like 'NULL')d1 left join (select o_id oid,driver_id  did,start_date,end_date,period from lpr_driver_contract)d2 on d1.o_id=d2.oid and d1.clockP=d2.period and (('$daterequired' between d2.start_date and
+d2.end_date) or ('$daterequired'>= d2.start_date and d2.end_date is null) ))a1))u1  left join lpr_driver on lpr_driver.driver_id=u1.driver_id";
+
 if(!empty($byBriverId)){
     $query_print .=" where u1.driver_id=$byBriverId";
 }
